@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inside Sales System — Parth Dave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#6C3FC5; --purple-dark:#4E2C93; --purple-tint:#F1EBFC; --purple-tint-2:#E4D6F7;
+    --bg:#FFFFFF; --ink:#1A1720; --ink-dim:#635C70; --line:#E7E1EF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:'Lato',sans-serif; -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1000px; margin:0 auto; padding:0 32px;}
+  @media (max-width:520px){ .wrap{padding:0 18px;} }
+  a{color:inherit;}
+  nav{position:sticky; top:0; z-index:30; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; justify-content:space-between; align-items:center; padding:18px 32px;}
+  nav .name{font-weight:900; font-size:16px; text-decoration:none;}
+  nav .links{display:flex; gap:28px; font-size:14px; font-weight:700;}
+  nav .links a{color:var(--ink-dim); text-decoration:none;}
+  nav .links a:hover{color:var(--purple);}
+  @media (max-width:680px){ nav .links{display:none;} nav .wrap{padding:16px 18px;} }
+  .content{padding:64px 0 100px;}
+  .back-link{font-size:14px; font-weight:900; color:var(--purple); text-decoration:none; display:inline-flex; align-items:center; gap:8px; margin-bottom:40px;}
+  .detail-tag-row{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px;}
+  .detail-tag-row span{font-size:11.5px; font-weight:900; text-transform:uppercase; padding:5px 12px; border-radius:4px;}
+  .detail-tag-row .vertical{background:var(--purple); color:#fff;}
+  .detail-tag-row .channel{background:var(--purple-tint); color:var(--purple-dark);}
+  h2.headline{font-size:clamp(28px,4.4vw,46px); font-weight:900; line-height:1.16; margin:0 0 22px; max-width:22ch;}
+  .role-line{font-size:15.5px; line-height:1.65; color:var(--ink-dim); max-width:70ch; margin:0 0 40px;}
+  .role-line b{display:inline-block; font-size:11px; font-weight:900; letter-spacing:0.06em; text-transform:uppercase; color:var(--purple-dark); background:var(--purple-tint); padding:4px 10px; border-radius:4px; margin-right:10px;}
+  .detail-problem{font-size:20px; line-height:1.7; font-weight:400; font-style:italic; color:var(--ink); max-width:66ch; margin:0 0 52px; border-left:3px solid var(--purple); padding-left:24px;}
+  .section-label{font-size:14px; font-weight:900; color:var(--purple); margin:0 0 22px; text-transform:uppercase; letter-spacing:0.03em;}
+  .system{background:var(--ink); color:#fff; border-radius:18px; padding:40px 36px 36px; margin:0 0 56px;}
+  .sys-kicker{font-size:12px; font-weight:900; letter-spacing:0.08em; text-transform:uppercase; color:#B9A3EE;}
+  .sys-title{font-size:clamp(22px,3vw,30px); font-weight:900; line-height:1.2; margin:10px 0 8px;}
+  .sys-sub{font-size:16px; line-height:1.6; color:rgba(255,255,255,0.7); max-width:60ch; margin:0 0 30px;}
+  .sys-in{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:0 0 18px; font-size:13px; font-weight:700; color:rgba(255,255,255,0.7);}
+  .sys-in span.pill{background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14); color:#fff; padding:6px 12px; border-radius:999px;}
+  .layers{display:grid; grid-template-columns:repeat(5,1fr); gap:10px; counter-reset:layer;}
+  .layer{position:relative; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:18px 16px 20px; counter-increment:layer;}
+  .layer::before{content:counter(layer,decimal-leading-zero); display:block; font-size:12px; font-weight:900; color:#B9A3EE; margin-bottom:10px;}
+  .layer:not(:last-child)::after{content:''; position:absolute; right:-9px; top:50%; width:8px; height:8px; border-top:1.5px solid #B9A3EE; border-right:1.5px solid #B9A3EE; transform:translateY(-50%) rotate(45deg); z-index:2;}
+  .layer.key{background:var(--purple); border-color:var(--purple);}
+  .layer.key::before{color:#fff;}
+  .layer h5{margin:0 0 6px; font-size:16px; font-weight:900; line-height:1.25;}
+  .layer .who{font-size:11px; font-weight:900; letter-spacing:0.06em; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-bottom:10px;}
+  .layer.key .who{color:rgba(255,255,255,0.85);}
+  .layer p{margin:0; font-size:13.5px; line-height:1.5; color:rgba(255,255,255,0.8);}
+  .sys-note{margin:22px 0 0; font-size:14px; line-height:1.6; color:rgba(255,255,255,0.7);}
+  .sys-note b{color:#fff;}
+  @media (max-width:860px){
+    .layers{grid-template-columns:1fr; gap:12px;}
+    .layer:not(:last-child)::after{right:auto; left:28px; top:auto; bottom:-9px; transform:rotate(135deg);}
+    .system{padding:30px 20px 26px;}
+  }
+  .approach-list{margin:0 0 52px;}
+  .approach-row{display:grid; grid-template-columns:44px 1fr; gap:20px; padding:26px 0; border-top:1px solid var(--line);}
+  .approach-row:last-child{border-bottom:1px solid var(--line);}
+  .approach-row .a-num{font-weight:900; color:var(--purple); font-size:17px;}
+  .approach-row h4{margin:0 0 8px; font-size:18px; font-weight:900;}
+  .approach-row p{margin:0; color:var(--ink-dim); font-size:15.5px; line-height:1.7;}
+  .detail-outcome-label{font-size:14px; font-weight:900; color:var(--purple); margin-bottom:22px; text-transform:uppercase; letter-spacing:0.03em;}
+  .detail-outcome-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:0; background:var(--purple-tint); border-radius:18px; padding:40px;}
+  @media (max-width:640px){ .detail-outcome-grid{grid-template-columns:1fr; gap:30px; padding:30px 24px;} }
+  .detail-cell{padding:0 28px; border-right:1px solid var(--purple-tint-2);}
+  .detail-cell:first-child{padding-left:0;}
+  .detail-cell:last-child{border-right:none;}
+  @media (max-width:640px){ .detail-cell{border-right:none; padding:0;} }
+  .detail-cell .num{font-size:clamp(40px,5.4vw,58px); font-weight:900; color:var(--purple-dark); line-height:1;}
+  .detail-cell.hero .num{color:var(--purple); font-size:clamp(48px,6.4vw,70px);}
+  .detail-cell .lbl{margin-top:12px; font-size:14.5px; color:var(--ink-dim); line-height:1.5; font-weight:700;}
+  .data-note{margin:18px 0 0; font-size:13px; line-height:1.6; color:var(--ink-dim); max-width:80ch;}
+  .detail-foot{margin-top:44px; font-size:13px; font-weight:700; color:var(--ink-dim);}
+  footer{padding:60px 0; border-top:1px solid var(--line); background:var(--purple-tint); text-align:center; font-size:13px; font-weight:700; color:var(--ink-dim);}
+  .cv{margin:0 0 48px; background:var(--ink); color:#fff; border-radius:14px; padding:40px 44px; display:grid; grid-template-columns:1fr 1.1fr; gap:40px; align-items:center; min-height:320px; position:relative; overflow:hidden;}
+  .cv::after{content:''; position:absolute; right:-120px; top:-120px; width:360px; height:360px; border-radius:50%; background:radial-gradient(circle, rgba(108,63,197,0.45), rgba(108,63,197,0) 70%); pointer-events:none;}
+  .cv-k{font-size:12px; font-weight:900; letter-spacing:0.08em; text-transform:uppercase; color:#B9A3EE; margin-bottom:18px;}
+  .cv-num{font-size:clamp(56px,8vw,92px); font-weight:900; line-height:0.95; letter-spacing:-0.02em; color:#fff;}
+  .cv-num em{font-style:normal; color:#B9A3EE;}
+  .cv-lbl{margin-top:14px; font-size:16px; line-height:1.5; color:rgba(255,255,255,0.75); max-width:28ch; font-weight:700;}
+  .cv-side{position:relative; z-index:1;}
+  .cv-row{margin:0 0 18px;}
+  .cv-row:last-child{margin-bottom:0;}
+  .cv-row .t{display:flex; justify-content:space-between; gap:12px; font-size:13.5px; font-weight:700; color:rgba(255,255,255,0.75); margin-bottom:8px;}
+  .cv-row .t b{color:#fff; font-size:18px; font-weight:900;}
+  .cv-bar{height:12px; border-radius:6px; background:rgba(255,255,255,0.08);}
+  .cv-bar i{display:block; height:100%; border-radius:6px; background:linear-gradient(90deg,#6C3FC5,#A98BFF);}
+  .cv-bar i.dim{background:rgba(255,255,255,0.28);}
+  .cv-flow{display:flex; flex-direction:column; gap:8px;}
+  .cv-step{display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:10px 14px; font-size:14px; font-weight:700;}
+  .cv-step span{font-size:11px; font-weight:900; color:#B9A3EE; width:20px;}
+  .cv-step.key{background:#6C3FC5; border-color:#6C3FC5;}
+  .cv-step.key span{color:#fff;}
+  .cv-step em{margin-left:auto; font-style:normal; font-size:12px; color:rgba(255,255,255,0.65);}
+  .cv-step.key em{color:#fff;}
+  @media (max-width:760px){ .cv{grid-template-columns:1fr; padding:30px 24px; gap:28px; min-height:0;} }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="name" href="../index-full.html">Parth Dave</a>
+    <div class="links"><a href="../index-full.html#case-studies">All Case Studies</a></div>
+  </div>
+</nav>
+<div class="wrap content">
+  <a class="back-link" href="../index-full.html#case-studies">&larr; All case studies</a>
+  <div class="detail-tag-row"><span class="vertical">Inside sales</span><span class="channel">Chat &middot; Calling &middot; AI routing</span></div>
+  <h2 class="headline">Built a human + AI sales layer that sold 779 machines</h2>
+  <p class="role-line"><b>My role</b> Designed the conversion system end to end: the chatbot, AI routing, live chat and calling handoffs, the call brief, and the email follow-up behind it.</p>
+
+  <div class="cv" role="img" aria-label="779 machines sold through a five-layer human and AI sales system">
+    <div><div class="cv-k">Human + AI inside sales</div><div class="cv-num">779</div><div class="cv-lbl">Machines sold through the calling and live chat layer, 618 of them by a two-person calling team</div></div>
+    <div class="cv-side cv-flow">
+      <div class="cv-step"><span>01</span>On-site chatbot<em>HubSpot</em></div>
+      <div class="cv-step"><span>02</span>AI pre-qualifier<em>Every booked call</em></div>
+      <div class="cv-step"><span>03</span>Live chat<em>3 agents</em></div>
+      <div class="cv-step key"><span>04</span>Calling team<em>2 callers</em></div>
+      <div class="cv-step"><span>05</span>Email nurture<em>Klaviyo</em></div>
+    </div>
+  </div>
+  <p class="detail-problem">&ldquo;A $1,400-plus product with a long, research-heavy buying journey. High-intent shoppers often had one question left about financing, delivery or warranty between them and checkout. Ads and email could bring them back to the site; neither could answer that question in the moment.&rdquo;</p>
+
+  <div class="section-label">The system</div>
+  <div class="system">
+    <div class="sys-kicker">One connected flow, not separate tools</div>
+    <div class="sys-title">Each layer catches what the one before it can&rsquo;t.</div>
+    <p class="sys-sub">Self-serve first, people where they matter, and no conversation left to end on a single touch.</p>
+    <div class="sys-in">Triggered by <span class="pill">Abandoned carts</span><span class="pill">&ldquo;Request a callback&rdquo; forms</span><span class="pill">Booked calls</span><span class="pill">Live site visits</span></div>
+    <div class="layers">
+      <div class="layer"><h5>On-site chatbot</h5><div class="who">HubSpot</div><p>Answers self-serve questions before anyone needs a person.</p></div>
+      <div class="layer"><h5>AI pre-qualifier</h5><div class="who">Every booked call</div><p>Separates real purchase conversations from support issues and routes each to the right team.</p></div>
+      <div class="layer"><h5>Live chat</h5><div class="who">3 agents</div><p>Picks up real-time questions the bot can&rsquo;t resolve.</p></div>
+      <div class="layer key"><h5>Calling team</h5><div class="who">2 callers</div><p>Closes high-intent conversations and calls high-ticket cart abandoners within 2 hours.</p></div>
+      <div class="layer"><h5>Email nurture</h5><div class="who">Klaviyo</div><p>Follows up with anyone who didn&rsquo;t buy on the first touch, so the conversation keeps going.</p></div>
+    </div>
+    <p class="sys-note"><b>The brief for every human in it: relationship over sales.</b> Build trust, answer the real question, and let the buyer make their own decision.</p>
+  </div>
+
+  <div class="section-label">How it was built</div>
+  <div class="approach-list">
+    <div class="approach-row"><div class="a-num">01</div><div><h4>Put AI in front of people, not instead of them</h4><p>An AI-assisted layer ran on every booked call, filtering sales queries from support issues before either reached a live person. Callers spent their time on real purchase conversations, and chat support handled service questions, instead of both teams sorting through one mixed queue.</p></div></div>
+    <div class="approach-row"><div class="a-num">02</div><div><h4>Called high-ticket cart abandoners within two hours</h4><p>The moment a cart was abandoned, email and WhatsApp went out automatically through Klaviyo. In parallel, the calling team reached high-ticket abandoners personally within 2 hours, fast enough to catch genuine hesitation rather than idle curiosity.</p></div></div>
+    <div class="approach-row"><div class="a-num">03</div><div><h4>Wrote a script for trust, not a discount close</h4><p>The calling brief was to answer real questions and remove friction around financing, delivery timing and warranty. Callers used decision language (&ldquo;you&rsquo;re set to own it today&rdquo;) instead of discount language (&ldquo;here&rsquo;s your $200 off&rdquo;), the same framing that beat discount-led offers in paid ads and email. People picked up expecting a pitch and got a conversation instead.</p></div></div>
+    <div class="approach-row"><div class="a-num">04</div><div><h4>Gave undecided visitors a reason to talk</h4><p>Consultative landing pages carried a &ldquo;request a callback&rdquo; form instead of a bigger discount. It captured people who weren&rsquo;t ready to buy but wanted answers first, and fed them straight to the calling team.</p></div></div>
+    <div class="approach-row"><div class="a-num">05</div><div><h4>Reused the same system to launch a new market</h4><p>For a from-scratch market launch, the model was rebuilt as an on-site AI agent handling product questions, pricing and demo booking, routing high-intent conversations to a live inside sales team, with WhatsApp follow-up and a dedicated calling team for abandoned carts.</p></div></div>
+  </div>
+
+  <div class="detail-outcome-label">Outcome</div>
+  <div class="detail-outcome-grid">
+    <div class="detail-cell hero"><div class="num">779</div><div class="lbl">Machines sold through the calling and live chat layer</div></div>
+    <div class="detail-cell"><div class="num">~$1.17M</div><div class="lbl">Estimated revenue, at a $1,500 average selling price</div></div>
+    <div class="detail-cell"><div class="num">618</div><div class="lbl">Sold by a two-person calling team in one quarter</div></div>
+  </div>
+  <p class="data-note">Calling data covers October to December 2025 and live chat data covers September to October 2025, the only months tracked for each, so the 779 total combines two different windows. Revenue is an estimate: units sold multiplied by a $1,500 blended selling price.</p>
+  <div class="detail-foot">COMPANY NAME WITHHELD · FULL DATA AVAILABLE ON REQUEST</div>
+</div>
+<footer>Parth Dave &mdash; Growth &amp; GTM Marketing</footer>
+</body>
+</html>
