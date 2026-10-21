@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Inside Sales System — Parth Dave</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
     :root {
       --bg: #FAF6EF;
@@ -497,6 +497,79 @@
     .lightbox-close:hover {
       opacity: 0.8;
     }
+  
+    /* ---- Page components restored in the new design system ---- */
+    .content { width: 100%; min-width: 0; padding-top: 48px; padding-bottom: 80px; }
+    @media (max-width: 768px) { .content { padding-top: 32px; padding-bottom: 56px; } }
+
+    .role-line { font-size: 16px; color: var(--muted); margin-bottom: 32px; }
+    .role-line b { display: inline-block; margin-right: 8px; padding: 3px 10px; border-radius: 999px;
+      background: var(--accent-tint); color: var(--accent); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; vertical-align: 2px; }
+
+    .section-label { font-family: 'Fraunces', Georgia, serif; font-size: 28px; font-weight: 600;
+      line-height: 1.2; color: var(--ink); margin: 0 0 20px; }
+    @media (max-width: 768px) { .section-label { font-size: 22px; } }
+
+    /* Cover visual: headline stat + the five-layer flow */
+    .cv { background: var(--accent); color: #fff; border: none; border-radius: 16px; padding: 40px;
+      margin: 0 0 64px; cursor: default; display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px;
+      align-items: center; position: relative; overflow: hidden; }
+    .cv::after { content: ''; position: absolute; right: -120px; top: -120px; width: 340px; height: 340px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.14), rgba(255,255,255,0) 70%); pointer-events: none; }
+    .cv-k { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(255,255,255,0.75); margin-bottom: 14px; }
+    .cv-num { font-family: 'Fraunces', Georgia, serif; font-size: 88px; font-weight: 600; line-height: 0.95; }
+    .cv-lbl { margin-top: 14px; font-size: 15px; line-height: 1.5; color: rgba(255,255,255,0.85); max-width: 30ch; }
+    .cv-side { position: relative; z-index: 1; }
+    .cv-flow { display: flex; flex-direction: column; gap: 8px; }
+    .cv-step { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18); border-radius: 10px; padding: 10px 14px; font-size: 14px; font-weight: 600; }
+    .cv-step span { width: 20px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.65); }
+    .cv-step em { margin-left: auto; font-style: normal; font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.7); }
+    .cv-step.key { background: #fff; color: var(--accent); border-color: #fff; }
+    .cv-step.key span, .cv-step.key em { color: var(--accent); }
+    @media (max-width: 768px) {
+      .cv { grid-template-columns: 1fr; gap: 28px; padding: 28px 20px; margin-bottom: 48px; }
+      .cv-num { font-size: 64px; }
+    }
+
+    /* The system */
+    .system { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin: 0 0 64px; }
+    @media (max-width: 768px) { .system { padding: 24px 20px; margin-bottom: 48px; } }
+    .sys-kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .sys-title { font-family: 'Fraunces', Georgia, serif; font-size: 26px; font-weight: 600; line-height: 1.25; margin-bottom: 8px; }
+    @media (max-width: 768px) { .sys-title { font-size: 22px; } }
+    .sys-sub { font-size: 16px; color: var(--muted); margin-bottom: 24px; }
+    .sys-in { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 24px;
+      font-size: 13px; font-weight: 600; color: var(--muted); }
+    .sys-in .pill { padding: 5px 12px; border-radius: 999px; background: var(--accent-light);
+      border: 1px solid var(--accent-tint); color: var(--accent); font-weight: 600; }
+
+    .layers { display: flex; flex-direction: column; gap: 10px; counter-reset: layer; }
+    .layer { position: relative; display: grid; grid-template-columns: 36px 180px 1fr; gap: 16px; align-items: baseline;
+      background: var(--accent-light); border-radius: 12px; padding: 16px 20px; counter-increment: layer; }
+    .layer::before { content: counter(layer, decimal-leading-zero); font-family: 'Fraunces', Georgia, serif;
+      font-weight: 600; font-size: 16px; color: var(--accent); grid-row: 1 / span 2; }
+    .layer h5 { font-size: 16px; font-weight: 600; line-height: 1.3; grid-column: 2; }
+    .layer .who { grid-column: 2; grid-row: 2; font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted); }
+    .layer p { grid-column: 3; grid-row: 1 / span 2; font-size: 15px; line-height: 1.5; color: var(--ink); align-self: center; }
+    .layer.key { background: var(--accent); color: #fff; }
+    .layer.key::before, .layer.key .who, .layer.key p { color: rgba(255,255,255,0.9); }
+    .layer:not(:last-child)::after { content: ''; position: absolute; left: 30px; bottom: -9px; width: 1px; height: 8px; background: var(--accent-tint); }
+    @media (max-width: 768px) {
+      .layer { grid-template-columns: 32px 1fr; gap: 4px 12px; padding: 16px; }
+      .layer h5 { grid-column: 2; grid-row: 1; }
+      .layer .who { grid-column: 2; grid-row: 2; }
+      .layer p { grid-column: 2; grid-row: 3; margin-top: 6px; }
+      .layer::before { grid-row: 1; }
+    }
+    .sys-note { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 15px; color: var(--muted); }
+    .sys-note b { color: var(--ink); font-weight: 600; }
+
+    .data-note { margin-top: 16px; font-size: 13px; line-height: 1.6; color: var(--muted); }
+
   </style>
 </head>
 <body>

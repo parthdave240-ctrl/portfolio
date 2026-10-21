@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Repositioning Freight Tiger as India's AI-native freight operating system — Parth Dave</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
     :root {
       --bg: #FAF6EF;
@@ -497,6 +497,69 @@
     .lightbox-close:hover {
       opacity: 0.8;
     }
+  
+    /* ---- Page components restored in the new design system ---- */
+    .content { width: 100%; min-width: 0; padding-top: 48px; padding-bottom: 80px; }
+    @media (max-width: 768px) { .content { padding-top: 32px; padding-bottom: 56px; } }
+
+    .role-line { font-size: 16px; color: var(--muted); margin-bottom: 32px; }
+    .role-line b { display: inline-block; margin-right: 8px; padding: 3px 10px; border-radius: 999px;
+      background: var(--accent-tint); color: var(--accent); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; vertical-align: 2px; }
+
+    img.real-img, img.deck-shot { width: 100%; max-width: 100%; height: auto; display: block;
+      border-radius: 12px; border: 1px solid var(--border); background: var(--surface); cursor: zoom-in; }
+    .img-cap { margin: 12px 0 48px; font-size: 13px; line-height: 1.55; color: var(--muted); }
+
+    .section-label { font-family: 'Fraunces', Georgia, serif; font-size: 28px; font-weight: 600;
+      line-height: 1.2; color: var(--ink); margin: 64px 0 20px; }
+    @media (max-width: 768px) { .section-label { font-size: 22px; margin-top: 48px; } }
+
+    .pos-block { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+    @media (max-width: 768px) { .pos-block { padding: 24px 20px; } }
+    .pos-kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px; }
+    .pos-claim { font-family: 'Fraunces', Georgia, serif; font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 12px; }
+    .pos-claim em { color: var(--accent); }
+    @media (max-width: 768px) { .pos-claim { font-size: 26px; } }
+    .pos-sub { font-size: 16px; color: var(--muted); margin-bottom: 28px; }
+
+    .layers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .layer { background: var(--accent-light); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+    .layer.l0 { grid-column: 1 / -1; background: var(--accent); color: #fff; }
+    .l-name { font-size: 18px; font-weight: 600; line-height: 1.25; color: inherit; }
+    .l-name span { display: block; margin-top: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--accent); }
+    .l-line { font-size: 15px; line-height: 1.5; color: var(--ink); flex: 1; }
+    .l-buyer { font-size: 13px; color: var(--muted); padding-top: 10px; border-top: 1px solid var(--accent-tint); }
+    .l-buyer span { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2px; }
+    .layer.l0 .l-name span, .layer.l0 .l-line, .layer.l0 .l-buyer { color: rgba(255,255,255,0.88); }
+    .layer.l0 .l-buyer { border-top-color: rgba(255,255,255,0.25); }
+    @media (max-width: 768px) { .layers { grid-template-columns: 1fr; } }
+
+    .before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+    .before-after > div, .after-wide { min-width: 0; }
+    @media (max-width: 768px) { .before-after { grid-template-columns: 1fr; gap: 0; } }
+    .ba-label { display: inline-block; margin-bottom: 10px; padding: 4px 10px; border-radius: 999px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .ba-label.before { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+    .ba-label.after { background: var(--accent); color: #fff; }
+
+    .deck-intro { font-size: 17px; color: var(--ink); margin-bottom: 24px; }
+    .deck-intro b { font-weight: 600; }
+
+    .approach-list { margin-top: 0; }
+    .detail-outcome-grid.four { grid-template-columns: repeat(2, 1fr); row-gap: 32px; }
+    .detail-outcome-grid.four .detail-cell { padding: 0 28px; border-right: 1px solid var(--accent-tint); }
+    .detail-outcome-grid.four .detail-cell:nth-child(odd) { padding-left: 0; }
+    .detail-outcome-grid.four .detail-cell:nth-child(even) { padding-right: 0; border-right: none; }
+    @media (max-width: 768px) {
+      .detail-outcome-grid.four { grid-template-columns: 1fr; row-gap: 0; }
+      .detail-outcome-grid.four .detail-cell { padding: 24px 0; border-right: none; border-bottom: 1px solid var(--accent-tint); }
+      .detail-outcome-grid.four .detail-cell:first-child { padding-top: 0; }
+      .detail-outcome-grid.four .detail-cell:last-child { border-bottom: none; padding-bottom: 0; }
+    }
+
   </style>
 </head>
 <body>
@@ -585,5 +648,25 @@
   <div class="detail-foot">Freight Tiger · <a href="https://freighttiger.com" target="_blank">freighttiger.com</a></div>
 </div>
 <footer>Parth Dave &mdash; Growth &amp; GTM Marketing</footer>
+<script>
+(function () {
+  var box = document.createElement('div');
+  box.className = 'lightbox';
+  box.setAttribute('role', 'dialog');
+  box.setAttribute('aria-modal', 'true');
+  box.innerHTML = '<div class="lightbox-content"><button class="lightbox-close" aria-label="Close image">&times;</button><img alt=""></div>';
+  document.body.appendChild(box);
+  var big = box.querySelector('img');
+  function close() { box.classList.remove('active'); big.removeAttribute('src'); }
+  document.querySelectorAll('img.real-img, img.deck-shot').forEach(function (img) {
+    img.setAttribute('tabindex', '0');
+    function open() { big.src = img.src; big.alt = img.alt; box.classList.add('active'); }
+    img.addEventListener('click', open);
+    img.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+  });
+  box.addEventListener('click', close);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
+</script>
 </body>
 </html>
