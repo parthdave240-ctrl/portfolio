@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How I built an AI-run LinkedIn growth system with Claude — Parth Dave</title>
+<meta name="description" content="A detailed build log: how I set up an AI-assisted LinkedIn growth system from an empty folder, with an ICP, a voice, guardrails, a CRM log and a daily review gate. And how founders and sales teams can use the same approach.">
+<meta property="og:title" content="How I built an AI-run LinkedIn growth system with Claude">
+<meta property="og:description" content="ICP, positioning, voice, guardrails and a daily review gate: the full build, including what went wrong.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF6EF;
+    --surface: #FFFFFF;
+    --accent: #4B2A8C;
+    --accent-light: #F1ECFA;
+    --accent-tint: #E8E0F5;
+    --ink: #1C1A17;
+    --muted: #5A5650;
+    --border: #E8E2D9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  nav {
+    position: sticky; top: 0; height: 64px;
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+    z-index: 100; display: flex; align-items: center;
+  }
+  nav .wrap { display: flex; justify-content: space-between; align-items: center; }
+  nav a { font-weight: 600; font-size: 16px; text-decoration: none; color: var(--ink); }
+  nav a:hover { color: var(--accent); }
+  nav .links { display: flex; gap: 24px; font-size: 14px; }
+  .wrap { max-width: 820px; width: 100%; margin: 0 auto; padding: 0 24px; }
+  @media (max-width: 390px) { .wrap { padding: 0 16px; } }
+  main { padding: 48px 0 64px; }
+  @media (max-width: 768px) { main { padding-top: 32px; } }
+
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px; margin-bottom: 24px;
+  }
+  .back-link:hover { text-decoration: underline; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .tag-row span {
+    display: inline-block; padding: 4px 10px; border-radius: 999px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .tag-row .primary { background-color: var(--accent); color: #fff; }
+  .tag-row .secondary { background-color: var(--accent-tint); color: var(--accent); }
+
+  h1.headline {
+    font-family: 'Fraunces', Georgia, serif; font-size: 46px; font-weight: 600;
+    line-height: 1.12; margin-bottom: 20px;
+  }
+  @media (max-width: 768px) { h1.headline { font-size: 31px; } }
+  .lede { font-size: 20px; color: var(--muted); line-height: 1.55; margin-bottom: 32px; }
+  @media (max-width: 768px) { .lede { font-size: 18px; } }
+
+  h2 {
+    font-family: 'Fraunces', Georgia, serif; font-size: 30px; font-weight: 600;
+    line-height: 1.2; margin: 64px 0 16px;
+  }
+  @media (max-width: 768px) { h2 { font-size: 24px; margin-top: 48px; } }
+  h3 { font-size: 18px; font-weight: 600; margin: 28px 0 8px; }
+  p { margin-bottom: 16px; }
+  p.muted, .muted { color: var(--muted); }
+  ul, ol { margin: 0 0 16px 22px; }
+  li { margin-bottom: 8px; }
+  strong { font-weight: 600; }
+  a.inline { color: var(--accent); }
+
+  .glance {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 8px 24px; margin-bottom: 32px;
+  }
+  .glance dl { display: grid; grid-template-columns: 150px 1fr; }
+  .glance dt, .glance dd { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .glance dt { font-weight: 600; font-size: 14px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
+  .glance dd { color: var(--ink); font-size: 16px; }
+  .glance dt:last-of-type, .glance dd:last-of-type { border-bottom: none; }
+  @media (max-width: 600px) {
+    .glance dl { grid-template-columns: 1fr; }
+    .glance dt { padding-bottom: 0; border-bottom: none; }
+  }
+
+  .toc { background: var(--accent-light); border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; }
+  .toc h4 { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .toc ol { margin: 0 0 0 20px; columns: 2; column-gap: 32px; font-size: 15px; }
+  .toc li { margin-bottom: 4px; break-inside: avoid; }
+  .toc a { color: var(--ink); text-decoration: none; }
+  .toc a:hover { color: var(--accent); text-decoration: underline; }
+  @media (max-width: 600px) { .toc ol { columns: 1; } }
+
+  .callout {
+    border-left: 3px solid var(--accent); padding-left: 24px; margin: 28px 0;
+    font-family: 'Fraunces', Georgia, serif; font-style: italic; font-size: 20px; line-height: 1.55;
+  }
+  @media (max-width: 768px) { .callout { font-size: 18px; } }
+
+  .steps { margin: 20px 0 8px; }
+  .step {
+    display: grid; grid-template-columns: 48px 1fr; gap: 20px;
+    padding: 22px 0; border-bottom: 1px solid var(--border);
+  }
+  .step:first-child { border-top: 1px solid var(--border); }
+  .step .n { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 18px; color: var(--accent); padding-top: 2px; }
+  .step h4 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+  .step p { font-size: 16px; color: var(--muted); margin: 0; }
+
+  .table-wrap { overflow-x: auto; margin: 16px 0 24px; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { background: var(--accent-light); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+  tr:last-child td { border-bottom: none; }
+  td.hl, th.hl { background: #FBF8FF; font-weight: 600; }
+  @media (max-width: 768px) { table { font-size: 14px; } }
+
+  pre.tree {
+    background: #1C1A17; color: #F3EFF8; border-radius: 10px; padding: 18px 20px;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 13.5px; line-height: 1.6;
+    overflow-x: auto; margin: 16px 0 24px;
+  }
+
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0 24px; }
+  @media (max-width: 700px) { .pair { grid-template-columns: 1fr; } }
+  .pair .box { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; font-size: 15px; }
+  .pair .box .lbl { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .pair .good .lbl { color: #1F7A4D; }
+  .pair .bad .lbl { color: #B0382E; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin: 16px 0 24px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+  .card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .card p { font-size: 15px; color: var(--muted); margin: 0; }
+
+  details { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; }
+  summary { cursor: pointer; font-weight: 600; font-size: 16px; }
+  details p { margin: 10px 0 0; color: var(--muted); font-size: 16px; }
+
+  .note { background: var(--accent-light); border-radius: 10px; padding: 14px 18px; font-size: 15px; color: var(--muted); margin: 16px 0 24px; }
+
+  .cta {
+    background: var(--ink); color: #F3EFF8; border-radius: 14px; padding: 36px 32px; margin-top: 64px;
+  }
+  .cta h2 { color: #fff; margin: 0 0 12px; font-size: 28px; }
+  .cta p { color: #C9C3D6; }
+  .cta .btn {
+    display: inline-block; background: #F3EFF8; color: #15121E; padding: 12px 22px;
+    border-radius: 999px; font-weight: 700; font-size: 15px; text-decoration: none; margin-right: 12px; margin-top: 8px;
+  }
+  .cta .btn.ghost { background: transparent; color: #F3EFF8; border: 1px solid #5A4A8A; }
+
+  footer { text-align: center; color: var(--muted); font-size: 14px; padding: 32px 16px 48px; border-top: 1px solid var(--border); background: var(--surface); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="name" href="index.html">Parth Dave</a>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+  <a class="back-link" href="index.html">&larr; Back to home</a>
+  <div class="tag-row"><span class="primary">Build log</span><span class="secondary">AI-powered GTM</span></div>
+  <h1 class="headline">I built a LinkedIn growth system with Claude. Here is exactly how it works.</h1>
+  <p class="lede">A small system that finds the right people, engages with them like a person, logs everything, and keeps a human in charge. I built it from an empty folder, and this page explains every part, including what went wrong.</p>
+
+  <div class="glance">
+    <dl>
+      <dt>What it does</dt>
+      <dd>Finds relevant posts by people who fit my ideal customer profile, drafts a short comment for each, and after I approve, comments and sends a connection request. Every step is logged and reported weekly.</dd>
+      <dt>Built with</dt>
+      <dd>Claude (reads profiles, drafts, operates the browser), Chrome, Brevo as the log, and a Git repo of plain-text rules.</dd>
+      <dt>Human in the loop</dt>
+      <dd>I approve, edit or reject every comment before it is posted. Nothing goes out on its own.</dd>
+      <dt>Built for</dt>
+      <dd>Founders doing their own sales, sales teams that want warmer outreach, and marketing leaders who want a consistent LinkedIn presence.</dd>
+      <dt>Status</dt>
+      <dd>Running since late October 2026. It is early, so I have not drawn conclusions from results yet. I will add them to this page as they come in.</dd>
+    </dl>
+  </div>
+
+  <div class="toc">
+    <h4>On this page</h4>
+    <ol>
+      <li><a href="#problem">The problem</a></li>
+      <li><a href="#loop">How it works, day to day</a></li>
+      <li><a href="#foundation">The foundation: a repo of rules</a></li>
+      <li><a href="#icp">The ICP</a></li>
+      <li><a href="#positioning">Positioning</a></li>
+      <li><a href="#differentiation">How it differs</a></li>
+      <li><a href="#voice">The voice file</a></li>
+      <li><a href="#guardrails">Guardrails</a></li>
+      <li><a href="#log">The log and the report</a></li>
+      <li><a href="#batch">The daily batch and review gate</a></li>
+      <li><a href="#lessons">What went wrong</a></li>
+      <li><a href="#who">Who it is useful for</a></li>
+      <li><a href="#deploy">Deploying it for your team</a></li>
+      <li><a href="#faq">Questions</a></li>
+    </ol>
+  </div>
+
+  <h2 id="problem">The problem</h2>
+  <p>LinkedIn is where most B2B buying conversations start, and most outreach there fails for one of two reasons.</p>
+  <p><strong>It is manual.</strong> Finding the right people, reading their profiles, writing something real, and logging it all takes hours. So it happens in bursts and stops when the week gets busy.</p>
+  <p><strong>Or it is automated badly.</strong> Templates, high volume, and no one checking what goes out. It reads like automation, the replies show it, and the account takes the risk.</p>
+  <div class="callout">What I wanted sits in between: the consistency of a system, with the judgment and tone of a person.</div>
+  <p>There is a third problem that hides behind both: nobody can say afterwards what was sent, to whom, or what happened next. A system worth having keeps its own record.</p>
+
+  <h2 id="loop">How it works, day to day</h2>
+  <p>Five people a day. That is deliberate: small enough to stay personal, large enough to build a pipeline over weeks.</p>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><div><h4>Find</h4><p>Recent posts by people who fit the ICP, in the right regions. Marketing or growth content, or an achievement worth congratulating.</p></div></div>
+    <div class="step"><div class="n">02</div><div><h4>Read and score</h4><p>Claude reads the post and the author's profile (read-only), then scores the person out of ten against the ICP. Hard gates come first: if they fail, the person is skipped.</p></div></div>
+    <div class="step"><div class="n">03</div><div><h4>Draft</h4><p>One short comment in my voice. Genuine, specific, nothing about me, no links.</p></div></div>
+    <div class="step"><div class="n">04</div><div><h4>Review</h4><p>I see the post, the person and the draft. I approve, edit, or reject each one.</p></div></div>
+    <div class="step"><div class="n">05</div><div><h4>Engage</h4><p>Approved comments are posted. Later, after looking at the profile again, a blank connection request goes out, spaced through the day.</p></div></div>
+    <div class="step"><div class="n">06</div><div><h4>Log</h4><p>The comment, the post, the dates, and the request are recorded in a CRM-style log. Nothing is kept in anyone's head.</p></div></div>
+    <div class="step"><div class="n">07</div><div><h4>Follow up</h4><p>When someone accepts, a short, warm message goes out with my portfolio as something that might be useful. No pitch, no ask.</p></div></div>
+  </div>
+
+  <h2 id="foundation">The foundation: a repo of rules</h2>
+  <p>The first thing I built was not a script. It was a folder of plain-text files that explain the whole system in words: who to target, how to sound, what is off limits, and what the daily routine is. Claude reads these at the start of every session. A file called <strong>CLAUDE.md</strong> is the rulebook.</p>
+  <pre class="tree">personal-growth/
+├── CLAUDE.md                 rules the AI reads every session
+├── knowledge/
+│   ├── audience/             ICP, how profiles are targeted and scored
+│   └── brand/                voice, portfolio reference
+├── playbooks/
+│   └── linkedin-engagement/
+│       ├── daily-run.md
+│       ├── batch-preparation.md
+│       ├── commenting/
+│       └── connection-requests/
+├── tracking/linkedin/        log schema, weekly report
+├── scripts/linkedin/         create fields, log a contact, report
+└── projects/ templates/ skills/ campaigns/ experiments/ archive/</pre>
+  <p>Why plain files in a Git repo? They are readable by anyone on a team, every change is versioned, and nothing is locked inside a tool. If the AI changes, the rules stay.</p>
+
+  <h2 id="icp">The ICP</h2>
+  <p>A system is only as good as who it points at. I wrote the ideal customer profile before anything else.</p>
+  <div class="cards">
+    <div class="card"><h4>Who</h4><p>Senior marketing leaders (Head of Marketing, VP, CMO, demand gen directors) and founders or co-founders.</p></div>
+    <div class="card"><h4>Companies</h4><p>B2B SaaS first, seed to Series C or revenue-funded, roughly 10 to 500 people. D2C and B2C second.</p></div>
+    <div class="card"><h4>Where</h4><p>USA and Europe.</p></div>
+    <div class="card"><h4>Skip</h4><p>Recruiters, agencies selling the same service, students, anyone already contacted.</p></div>
+  </div>
+  <h3>The score</h3>
+  <p>Each profile gets a score out of ten. The weights are easy to change per client.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Criterion</th><th>Points</th></tr></thead>
+      <tbody>
+        <tr><td>Title fits a target group</td><td>0 to 3</td></tr>
+        <tr><td>Company stage and size match</td><td>0 to 2</td></tr>
+        <tr><td>Funding or revenue signal</td><td>0 to 2</td></tr>
+        <tr><td>Company type and growth need match my experience</td><td>0 to 2 (B2B SaaS up to 2, D2C or B2C up to 1)</td></tr>
+        <tr><td>Reachable and active on LinkedIn</td><td>0 to 1</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>7 or more:</strong> connect. <strong>5 to 6:</strong> comes to me to decide. <strong>4 or less:</strong> skip. Because D2C can earn at most one point on company type, it needs a near-perfect score elsewhere to qualify. That is how "secondary" is enforced in numbers rather than intentions.</p>
+  <p>One more rule I added after the first review: <strong>activity does not decide eligibility.</strong> Someone who rarely posts can still be a great contact. A recent post just makes the comment easier to personalise.</p>
+
+  <h2 id="positioning">Positioning</h2>
+  <div class="callout">A careful assistant, not a spam cannon.</div>
+  <p>For founders and sales teams who want LinkedIn to feel like a conversation, this is a small AI-run workflow that finds the right people, engages like a person, and keeps a human in charge.</p>
+  <ul>
+    <li><strong>Small on purpose.</strong> Five people a day, not five hundred.</li>
+    <li><strong>Personal.</strong> Every comment is written for one post and one person.</li>
+    <li><strong>Reviewed.</strong> A human approves before anything is posted.</li>
+    <li><strong>Recorded.</strong> Every action lands in a log you can report on.</li>
+    <li><strong>Owned.</strong> The rules are plain files you keep, not settings inside someone else's tool.</li>
+  </ul>
+
+  <h2 id="differentiation">How it differs</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th></th><th>Doing it manually</th><th>Typical automation tools</th><th class="hl">This system</th></tr></thead>
+      <tbody>
+        <tr><td>Personalisation</td><td>High, when you have time</td><td>Often template-based</td><td class="hl">High: each comment drafted for one post and person</td></tr>
+        <tr><td>Volume</td><td>Inconsistent</td><td>Often high</td><td class="hl">Deliberately low and steady</td></tr>
+        <tr><td>Control</td><td>Full</td><td>Often limited review</td><td class="hl">Approval before anything is posted</td></tr>
+        <tr><td>Record of what happened</td><td>Usually patchy</td><td>Tool-specific</td><td class="hl">Logged in your own CRM</td></tr>
+        <tr><td>Voice</td><td>Yours</td><td>Generic</td><td class="hl">Written down in a voice file and applied every time</td></tr>
+        <tr><td>Ownership</td><td>Yours</td><td>Inside the tool</td><td class="hl">Plain files and your own accounts</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">These are generalisations. Individual tools vary, and the point is the approach, not a ranking.</p>
+
+  <h2 id="voice">The voice file</h2>
+  <p>Before writing a single message I wrote down how I sound. I built it from my own writing on my portfolio and profile. It has three traits.</p>
+  <div class="cards">
+    <div class="card"><h4>Genuine</h4><p>Only say what is true and visible. No flattery, no performing enthusiasm.</p></div>
+    <div class="card"><h4>To the point</h4><p>Short, plain sentences. One idea each.</p></div>
+    <div class="card"><h4>Giving</h4><p>Appreciate first. Offer, do not ask. Talk about myself later.</p></div>
+  </div>
+  <h3>How the rules evolved</h3>
+  <p>My first draft rules produced notes that praised companies and quoted people's About sections. They read as forced. After review I rewrote them:</p>
+  <ul>
+    <li>There is no single template. The wording changes from note to note.</li>
+    <li>Appreciation must be genuine and proportionate. If it would feel stretched, say less.</li>
+    <li>Read everything, refer to little. No direct references to someone's About section, no company praise as the reason.</li>
+    <li>Quiet profiles are still eligible. Write about what they do, or send a blank request.</li>
+  </ul>
+  <div class="pair">
+    <div class="box good"><div class="lbl">Sounds like me</div>"Really enjoyed your thinking on partnerships and creators. Would love to connect."<br><br>"Congratulations, Maya. Well deserved."</div>
+    <div class="box bad"><div class="lbl">Does not</div>"Hi, I came across your impressive profile! I am a growth marketer passionate about synergy."<br><br>"Great post!"</div>
+  </div>
+  <p class="muted">Examples are fictional.</p>
+  <h3>Comment rules</h3>
+  <p>Comments are one very short line, on marketing or growth posts or on achievements. No links, nothing about me, no generic filler. If there is nothing genuine to say, the post is skipped.</p>
+
+  <h2 id="guardrails">Guardrails</h2>
+  <p>Giving an AI access to a LinkedIn account needs boundaries. These are written into the rulebook and checked every time.</p>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><div><h4>Account separation</h4><p>Personal and company work run in separate browser profiles. The AI only uses the personal profile for personal outreach.</p></div></div>
+    <div class="step"><div class="n">02</div><div><h4>Verify before every action</h4><p>Before anything on LinkedIn, it confirms the signed-in account is mine. If not, it stops.</p></div></div>
+    <div class="step"><div class="n">03</div><div><h4>Secrets stay secret</h4><p>API keys live in one ignored file. They are never printed, logged, or committed.</p></div></div>
+    <div class="step"><div class="n">04</div><div><h4>A daily cap</h4><p>Five people a day, counted from the log, not from memory.</p></div></div>
+    <div class="step"><div class="n">05</div><div><h4>Human approval</h4><p>Comments are approved before they are posted. Automation is something I can switch on later, not a starting point.</p></div></div>
+    <div class="step"><div class="n">06</div><div><h4>Stop on warnings</h4><p>Any CAPTCHA, verification prompt, or warning from LinkedIn stops the run. It never tries to get around one.</p></div></div>
+    <div class="step"><div class="n">07</div><div><h4>Nothing about me, nothing pushy</h4><p>The first touch contains no pitch, no link, and no ask. The portfolio only appears after someone accepts.</p></div></div>
+    <div class="step"><div class="n">08</div><div><h4>Privacy</h4><p>Raw profile text and personal details are not stored. Local batch files stay off GitHub.</p></div></div>
+  </div>
+
+  <h2 id="log">The log and the report</h2>
+  <p>Brevo is the system of record. Every person becomes a contact keyed by their LinkedIn handle, with no email needed to start. They are not blocked from email either, so I can segment and email them later if it makes sense.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Group</th><th>Fields</th></tr></thead>
+      <tbody>
+        <tr><td>Who</td><td>Name, profile URL, job title, company, location</td></tr>
+        <tr><td>Fit</td><td>Company type, target group, ICP score</td></tr>
+        <tr><td>Engagement</td><td>Type (comment, request with note, blank request, comment then request), status</td></tr>
+        <tr><td>Comment</td><td>The exact comment, the date, the post URL</td></tr>
+        <tr><td>Request</td><td>The note (or blank), the day it was sent, the day it was accepted</td></tr>
+        <tr><td>Follow-up</td><td>The message and when it was sent</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>A weekly report reads this log and shows, week on week: comments, requests sent, accepted, still pending, and the acceptance rate. It also compares requests with a note against blank ones, so the numbers can settle arguments that opinions cannot.</p>
+
+  <h2 id="batch">The daily batch and review gate</h2>
+  <p>Each morning a scheduled task is set to prepare the day's batch: five posts, five authors, five draft comments. This preparation is read-only. It never comments, never connects, never reacts.</p>
+  <p>Then comes the rule I like best: <strong>if I have not reviewed yesterday's batch, no new batch is created.</strong> It cannot pile up and it cannot run ahead of me. When I have approved, edited, or rejected every item, the approved ones are posted and the next batch can be prepared. Rejected people are logged as skipped, so they never come back.</p>
+
+  <h2 id="lessons">What went wrong</h2>
+  <p>A build log without mistakes is a brochure. Several of the guardrails above exist because something went wrong.</p>
+  <div class="cards">
+    <div class="card"><h4>The first notes were wrong</h4><p>They praised companies and sounded forced. I rewrote the rules.</p></div>
+    <div class="card"><h4>The free-tier limit</h4><p>LinkedIn allowed me only five personalised notes a month. So the routine became: comment first, then send a blank request.</p></div>
+    <div class="card"><h4>A key in a screenshot</h4><p>An API key appeared in a screenshot. It was revoked and replaced. Keys now live in one ignored file and are never printed.</p></div>
+    <div class="card"><h4>A typo locked my own folder</h4><p>A wrong permissions command locked the project folder. A one-minute fix, and a reminder to keep commands small.</p></div>
+    <div class="card"><h4>A missing ignore rule</h4><p>Local batch files with people's names would have been committed to GitHub. It was caught before the first batch and is now ignored.</p></div>
+  </div>
+
+  <h2 id="who">Who it is useful for</h2>
+  <h3>Founders</h3>
+  <p>Early sales are founder-led, and LinkedIn is usually where the first conversations happen. The system replaces hours of finding people and writing messages with a short daily review, while the founder's voice stays intact.</p>
+  <h3>Sales teams</h3>
+  <p>Warm up accounts before outbound lands. Keep a consistent presence in the posts your buyers read. Give sales leaders a record of what was done and a weekly view of what is working, instead of relying on each rep's habits.</p>
+  <h3>Marketing leaders</h3>
+  <p>Support social selling and account-based plays with steady, human engagement, and measure it.</p>
+  <h3>What changes, and what does not</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Customised per team</th><th>Stays the same</th></tr></thead>
+      <tbody>
+        <tr><td>ICP, regions, scoring weights</td><td>Hard gates before any action</td></tr>
+        <tr><td>Voice and comment rules</td><td>Human review before posting</td></tr>
+        <tr><td>CRM or log (here Brevo; it could be HubSpot or another)</td><td>Everything logged, reported weekly</td></tr>
+        <tr><td>Daily volume and who approves</td><td>Daily cap and stop-on-warning rules</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="deploy">Deploying it for your team</h2>
+  <p>If you want a system like this set up for you or your team, this is how I would approach it.</p>
+  <h3>What I set up</h3>
+  <ul>
+    <li>Your ICP and scoring, written down and agreed.</li>
+    <li>Your voice file, built from your own writing.</li>
+    <li>The rulebook, guardrails, and daily routine.</li>
+    <li>A log in your CRM, with the fields and a weekly report.</li>
+    <li>A daily batch with a review gate, so nothing happens without you.</li>
+  </ul>
+  <h3>What I need from you</h3>
+  <ul>
+    <li>A short working session on who you sell to, and samples of how you write.</li>
+    <li>Your own LinkedIn account, signed in on your computer. I do not need your password.</li>
+    <li>A CRM or Brevo account for the log.</li>
+    <li>A few minutes a day to review the batch.</li>
+  </ul>
+  <h3>The phases</h3>
+  <ol>
+    <li><strong>Define.</strong> ICP, voice, and rules.</li>
+    <li><strong>Build.</strong> The repo, the log, and the guardrails.</li>
+    <li><strong>Dry run.</strong> Real profiles, nothing sent, until you trust the drafts.</li>
+    <li><strong>Approval phase.</strong> You review every comment before it is posted.</li>
+    <li><strong>Daily batch.</strong> The batch is prepared each morning, and you decide how much to automate over time.</li>
+  </ol>
+  <div class="note">You stay in control throughout: your account, your voice, your approval, your data.</div>
+
+  <h2 id="faq">Questions</h2>
+  <details><summary>Is this safe for my LinkedIn account?</summary><p>LinkedIn limits automated activity, and no tool can promise an account will never be restricted. This system is deliberately small, spaced out, and human-approved, and it stops on any warning. That lowers the risk, but it does not remove it.</p></details>
+  <details><summary>Do I need LinkedIn Premium?</summary><p>No. I built this on a free account. The free tier limits personalised connection notes to a few a month, so the routine uses comments first and blank requests after.</p></details>
+  <details><summary>Does it write my posts?</summary><p>No. It engages with other people's posts. Writing your own content is a separate job, and one I would do with you, not automatically.</p></details>
+  <details><summary>Does it replace an SDR or a marketer?</summary><p>No. It handles finding, reading, drafting and logging, so a person can spend their time on the conversations that follow.</p></details>
+  <details><summary>Which tools does it use?</summary><p>Claude, a Chrome browser, a CRM or Brevo for the log, and a Git repo for the rules. Nothing proprietary.</p></details>
+  <details><summary>What results can I expect?</summary><p>It is early, and I would rather show numbers than promise them. I will add mine to this page as they come in.</p></details>
+
+  <div class="cta">
+    <h2>Want a system like this for your team?</h2>
+    <p>Tell me who you sell to and how you want to sound. I will tell you honestly whether this approach fits.</p>
+    <a class="btn" href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call &rarr;</a>
+    <a class="btn ghost" href="index.html">Back to home</a>
+  </div>
+
+</div>
+</main>
+
+<footer>Parth Dave &mdash; Growth &amp; GTM Marketing</footer>
+</body>
+</html>
