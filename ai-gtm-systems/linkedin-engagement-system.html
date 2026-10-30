@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How I built an AI-run LinkedIn growth system with Claude — Parth Dave</title>
-<meta name="description" content="A detailed build log: how I set up an AI-assisted LinkedIn growth system from an empty folder, with an ICP, a voice, guardrails, a CRM log and a daily review gate. And how founders and sales teams can use the same approach.">
-<meta property="og:title" content="How I built an AI-run LinkedIn growth system with Claude">
-<meta property="og:description" content="ICP, positioning, voice, guardrails and a daily review gate: the full build, including what went wrong.">
+<title>I built a LinkedIn growth system with Claude. Here's exactly how it works. — Parth Dave</title>
+<meta name="description" content="A LinkedIn growth system that researches and qualifies prospects, engages with relevant posts, manages connection requests and prepares follow-ups. How it works, why I built it this way and what went wrong.">
+<meta property="og:title" content="I built a LinkedIn growth system with Claude. Here's exactly how it works.">
+<meta property="og:description" content="Three workflows, one system: commenting, connection requests and follow-ups, built on an ICP, a voice and a repo of rules.">
 <meta property="og:type" content="article">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -182,22 +182,26 @@
 
   <a class="back-link" href="/ai-gtm-systems/">&larr; All AI GTM systems</a>
   <div class="tag-row"><span class="primary">Build log</span><span class="secondary">AI-powered GTM</span></div>
-  <h1 class="headline">I built a LinkedIn growth system with Claude. Here is exactly how it works.</h1>
-  <p class="lede">A small system that finds the right people, engages with them like a person, logs everything, and keeps a human in charge. I built it from an empty folder, and this page explains every part, including what went wrong.</p>
-  <img class="hero-img" src="/images/linkedin-system-cover.svg" alt="The LinkedIn system loop: find, draft, review, engage and log, with a human approval step">
+  <h1 class="headline">I built a LinkedIn growth system with Claude. Here's exactly how it works.</h1>
+  <p class="lede">A system that researches the right people, qualifies prospects, engages with relevant content, manages connection requests and prepares follow-ups.</p>
+  <img class="hero-img" src="/images/linkedin-system-cover.svg" alt="The LinkedIn growth system: research, qualify, comment or connect, follow up and log, with configurable review">
+
+  <p>I built it around my ICP, positioning, voice and operating rules, using Claude, a cloud-based execution environment and a repository of instructions.</p>
+  <p>It supports three core workflows: commenting, connection requests and follow-ups. They can run independently or work together as one connected prospecting process.</p>
+  <p>This page explains how it works, why I built it this way, what went wrong and what I've learned so far.</p>
 
   <div class="glance">
     <dl>
       <dt>What it does</dt>
-      <dd>Finds relevant posts by people who fit my ideal customer profile, reads their profiles, drafts a short comment for each, then comments, sends a connection request and follows up once they accept. Every step is logged and reported weekly.</dd>
+      <dd>Researches LinkedIn profiles, qualifies prospects against an ICP, identifies relevant posts, prepares and publishes comments, manages connection requests with or without personalised notes, and prepares follow-ups after someone accepts. Activities are recorded and reported.</dd>
       <dt>Built with</dt>
-      <dd>Claude (reads profiles, drafts, operates the browser), Chrome, Brevo as the log, and a Git repo of plain-text rules.</dd>
+      <dd>Claude, a Git repository of growth rules, a cloud-based execution environment, browser workflows and Brevo for prospect and activity logging.</dd>
       <dt>Human in the loop</dt>
-      <dd>Approval is a setting, not a rule of the system. You can review every comment before it is posted, or let the system act within a daily cap. In my own run I approve, edit or reject every comment today.</dd>
+      <dd>Research, qualification and message preparation can be handled by the system. Review and approval requirements can be configured for external actions. I started with human approval and continue to review the output.</dd>
       <dt>Built for</dt>
-      <dd>Founders doing their own sales, sales teams that want warmer outreach, and marketing leaders who want a consistent LinkedIn presence.</dd>
+      <dd>Founders managing their own sales, sales teams building warmer prospect relationships, and marketing leaders looking for a consistent LinkedIn prospecting process.</dd>
       <dt>Status</dt>
-      <dd>Running since late October 2026. It is early, so I have not drawn conclusions from results yet. I will add them to this page as they come in.</dd>
+      <dd>Running since late October 2026. It's still early, so I haven't drawn conclusions about pipeline or revenue impact. I'll add meaningful results as the data builds.</dd>
     </dl>
   </div>
 
@@ -205,85 +209,142 @@
     <h4>On this page</h4>
     <ol>
       <li><a href="#problem">The problem</a></li>
+      <li><a href="#workflows">Three workflows, one system</a></li>
       <li><a href="#loop">How it works, day to day</a></li>
       <li><a href="#foundation">The foundation: a repo of rules</a></li>
       <li><a href="#icp">The ICP</a></li>
       <li><a href="#positioning">Positioning</a></li>
       <li><a href="#differentiation">How it differs</a></li>
+      <li><a href="#architecture">How it is put together</a></li>
       <li><a href="#voice">The voice file</a></li>
-      <li><a href="#guardrails">Guardrails</a></li>
+      <li><a href="#guardrails">Guardrails and governance</a></li>
       <li><a href="#log">The log and the report</a></li>
       <li><a href="#batch">The daily batch and review gate</a></li>
-      <li><a href="#results">Results and what is next</a></li>
       <li><a href="#lessons">What went wrong</a></li>
-      <li><a href="#who">Who it is useful for</a></li>
+      <li><a href="#results">Results and what's next</a></li>
+      <li><a href="#who">Who is this useful for?</a></li>
       <li><a href="#deploy">Deploying it for your team</a></li>
       <li><a href="#faq">Questions</a></li>
     </ol>
   </div>
 
   <h2 id="problem">The problem</h2>
-  <p>LinkedIn is where most B2B buying conversations start, and most outreach there fails for one of two reasons.</p>
-  <p><strong>It is manual.</strong> Finding the right people, reading their profiles, writing something real, and logging it all takes hours. So it happens in bursts and stops when the week gets busy.</p>
-  <p><strong>Or it is automated badly.</strong> Templates, high volume, and no one checking what goes out. It reads like automation, the replies show it, and the account takes the risk.</p>
-  <div class="callout">What I wanted sits in between: the consistency of a system, with the judgment and tone of a person.</div>
-  <p>There is a third problem that hides behind both: nobody can say afterwards what was sent, to whom, or what happened next. A system worth having keeps its own record.</p>
+  <p>LinkedIn is an important channel for B2B prospecting, relationship building and sales conversations. But using it consistently takes more work than it appears.</p>
+  <p>Finding the right people, reading their profiles, understanding what they care about, engaging with their content, sending connection requests and keeping track of conversations takes time.</p>
+  <p>So prospecting often happens in bursts. People spend a few days finding prospects, get busy with other work and stop.</p>
+  <p>The alternative is to use automation tools. These can make execution faster, but the quality of the outcome depends on how well the targeting, messaging and workflow are designed.</p>
+  <p>Poorly configured automation can result in generic comments, irrelevant connection requests and follow-ups that feel disconnected from the original interaction.</p>
+  <p>There's also a tracking problem. After a few weeks, it becomes difficult to remember who was contacted, what was said, whether a request was accepted and what happened next.</p>
+  <p>I wanted to build something that brought these activities together.</p>
+  <div class="callout">The goal was simple: the consistency of a system, with the context and judgment of a person.</div>
+
+  <h2 id="workflows">Three workflows, one LinkedIn growth system</h2>
+  <p>I didn't want to build one large automation that tried to do everything.</p>
+  <p>Instead, I separated LinkedIn engagement into three workflows. Each has a different purpose, its own instructions and its own operating rules. They can work independently or be connected into a broader prospecting process.</p>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><div><h4>Commenting and engagement</h4><p>Find relevant posts from people who fit the ideal customer profile, understand the context and prepare a short comment in my voice. The objective is to contribute something genuine to a conversation, not to leave generic comments just to increase activity. The system evaluates the post and the author's profile first. If there's nothing meaningful to add, the post can be skipped.</p></div></div>
+    <div class="step"><div class="n">02</div><div><h4>Connection requests</h4><p>Research LinkedIn profiles, identify qualified prospects and prepare connection requests. The workflow checks the prospect's qualification, previous interaction history and applicable rules before preparing the next action.</p></div></div>
+    <div class="step"><div class="n">03</div><div><h4>Follow-ups</h4><p>Track accepted connection requests and prepare contextual follow-up messages, using the existing prospect information and interaction history. It can introduce my portfolio or work when relevant, without immediately turning the conversation into a sales pitch. The idea is to continue a conversation, not start a completely new one.</p></div></div>
+  </div>
+  <p>Connection requests come in two forms:</p>
+  <ul>
+    <li><strong>Personalised requests:</strong> a short note based on the person's role, work or a relevant interaction.</li>
+    <li><strong>Blank requests:</strong> a connection request without a personalised note.</li>
+  </ul>
+
+  <h3>They can run independently or together</h3>
+  <p>These aren't three steps that every prospect must go through.</p>
+  <p>I can use commenting to engage with relevant people without sending a connection request. I can send a connection request without commenting first. I can also run follow-ups for people who have already accepted a request.</p>
+  <p>When it makes sense, the workflows can be connected into a single journey:</p>
+  <div class="callout">Research &rarr; Qualify &rarr; Comment or connect &rarr; Acceptance &rarr; Follow-up &rarr; Activity logging</div>
+  <p>For example, someone might publish a relevant post. The system identifies them as a suitable prospect, prepares a contextual comment and records the interaction. A connection request can then be considered, followed by a message if they accept.</p>
+  <p>Alternatively, the system can research a list of profiles, qualify them and prepare connection requests without requiring any commenting activity.</p>
+  <p>The important part is that the system maintains context across these activities. It knows what has already happened and can use that information to inform the next action. Not every prospect needs to go through every stage.</p>
 
   <h2 id="loop">How it works, day to day</h2>
-  <p>Five people a day. That is deliberate: small enough to stay personal, large enough to build a pipeline over weeks.</p>
+  <p>The system isn't restricted to five people or five comments a day. It can research profiles, evaluate prospects against the ICP, identify relevant posts, prepare comments, manage connection requests and prepare follow-ups.</p>
+  <p>The number of prospects processed and actions performed is configurable. Five people a day is simply the current operating batch I use to keep the process manageable and reviewable.</p>
+  <h3>The workflow</h3>
   <div class="steps">
-    <div class="step"><div class="n">01</div><div><h4>Find</h4><p>Recent posts by people who fit the ICP, in the right regions. Marketing or growth content, or an achievement worth congratulating.</p></div></div>
-    <div class="step"><div class="n">02</div><div><h4>Read and score</h4><p>Claude reads the post and the author's profile (read-only), then scores the person out of ten against the ICP. Hard gates come first: if they fail, the person is skipped.</p></div></div>
-    <div class="step"><div class="n">03</div><div><h4>Draft</h4><p>One short comment in my voice. Genuine, specific, nothing about me, no links.</p></div></div>
-    <div class="step"><div class="n">04</div><div><h4>Review (optional)</h4><p>I see the post, the person and the draft. I approve, edit, or reject each one. This gate can be kept on for every item or relaxed once you trust the drafts.</p></div></div>
-    <div class="step"><div class="n">05</div><div><h4>Engage</h4><p>The comment is posted, either by Claude in the browser or by you. Later, after looking at the profile again, a blank connection request goes out, spaced through the day.</p></div></div>
-    <div class="step"><div class="n">06</div><div><h4>Log</h4><p>The comment, the post, the dates, and the request are recorded in a CRM-style log. Nothing is kept in anyone's head.</p></div></div>
-    <div class="step"><div class="n">07</div><div><h4>Follow up</h4><p>When someone accepts, a short, warm message goes out with my portfolio as something that might be useful. No pitch, no ask. It can be sent after you approve the wording, or sent directly.</p></div></div>
+    <div class="step"><div class="n">01</div><div><h4>Research</h4><p>Find people through relevant LinkedIn profiles, companies and activity. Research their roles, organisations and professional context.</p></div></div>
+    <div class="step"><div class="n">02</div><div><h4>Qualify</h4><p>Evaluate profiles against the ICP, scoring criteria and exclusion rules. Each prospect receives a score out of ten. Hard exclusion rules come first. If someone fails an important qualification criterion, they're skipped.</p></div></div>
+    <div class="step"><div class="n">03</div><div><h4>Identify opportunities</h4><p>Look for relevant posts, professional achievements or other reasons to start a meaningful interaction. A prospect doesn't need to be active on LinkedIn to qualify. Recent activity simply creates an opportunity for the commenting workflow.</p></div></div>
+    <div class="step"><div class="n">04</div><div><h4>Comment</h4><p>Prepare a short, contextual comment in my voice. The system considers the post and the person rather than relying on generic templates.</p></div></div>
+    <div class="step"><div class="n">05</div><div><h4>Connect</h4><p>Prepare a connection request, with or without a personalised note, depending on the context and configured rules.</p></div></div>
+    <div class="step"><div class="n">06</div><div><h4>Follow up</h4><p>Track accepted requests and prepare contextual follow-up messages based on the existing prospect record.</p></div></div>
+    <div class="step"><div class="n">07</div><div><h4>Log and report</h4><p>Record prospect details, activities, dates, URLs and statuses. Use the activity log to understand what happened and what needs attention.</p></div></div>
   </div>
-  <p>The five stages are connected on purpose. Research, qualification, messaging and tracking are not four separate activities in four different tools.</p>
-  <h3>How much you hand over is your choice</h3>
-  <p>Commenting, reviewing a profile, sending a request and following up can each be handled in whichever way suits you. The same rules apply in all three set-ups.</p>
+
+  <h3>How much do you hand over?</h3>
+  <p>The level of automation can vary. The important distinction is between preparing an action and executing it.</p>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Set-up</th><th>What the system does</th><th>What you do</th></tr></thead>
+      <thead><tr><th>Setup</th><th>What the system does</th><th>What you do</th></tr></thead>
       <tbody>
-        <tr><td>Prepare only</td><td>Finds, scores and drafts. Logs the research.</td><td>Posts the comment and sends the request yourself.</td></tr>
-        <tr><td>Approve, then act</td><td>Drafts, then posts and sends once you approve each item.</td><td>Reviews every comment and follow-up.</td></tr>
-        <tr><td>Act within caps</td><td>Posts and sends on its own, inside the daily cap, gates and stop rules.</td><td>Reads the log and the weekly report, and changes the rules.</td></tr>
+        <tr><td>Prepare only</td><td>Researches, qualifies, drafts and logs</td><td>Reviews and performs permitted external actions</td></tr>
+        <tr><td>Approve, then act</td><td>Prepares actions and proceeds after approval</td><td>Reviews and approves the relevant actions</td></tr>
+        <tr><td>Configured execution</td><td>Carries out permitted configured actions within defined rules</td><td>Monitors activity, reviews logs and manages exceptions</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="muted">I started with approve-then-act and recommend anyone does. Moving to the next set-up is a deliberate change to the rulebook, not a default.</p>
+  <p>I started with approval before action. I recommend starting there too. Moving to a different setup should be a deliberate decision based on the workflow, permissions and applicable platform rules.</p>
+
+  <h3>How are activity limits decided?</h3>
+  <p>The daily batch size and operating limits are configurable. Five prospects a day is the current routine, not a technical restriction.</p>
+  <p>The appropriate limits depend on the platform's applicable rules, account permissions, the type of activity, workflow quality and the team's capacity to review and manage interactions.</p>
+  <p>The objective isn't to maximise activity or disguise automation. It's to build a sustainable, relevant prospecting process that respects LinkedIn's rules. No particular volume or spacing can guarantee that an account won't be restricted.</p>
 
   <h2 id="foundation">The foundation: a repo of rules</h2>
-  <p>The first thing I built was not a script. It was a folder of plain-text files that explain the whole system in words: who to target, how to sound, what is off limits, and what the daily routine is. Claude reads these at the start of every session. A file called <strong>CLAUDE.md</strong> is the rulebook.</p>
+  <p>The first thing I built wasn't a script. It was a folder of plain-text files explaining how the system should work.</p>
+  <p>Who to target. How to score prospects. How to sound. What is off limits. What each workflow should do. When to stop.</p>
+  <p>Claude reads these instructions as part of its working context. A file called <strong>CLAUDE.md</strong> acts as the main rulebook.</p>
   <pre class="tree">personal-growth/
-├── CLAUDE.md                 rules the AI reads every session
+├── CLAUDE.md
 ├── knowledge/
-│   ├── audience/             ICP, how profiles are targeted and scored
-│   └── brand/                voice, portfolio reference
+│   ├── audience/
+│   │   ├── icp.md
+│   │   └── scoring.md
+│   └── brand/
+│       ├── voice.md
+│       └── portfolio.md
 ├── playbooks/
 │   └── linkedin-engagement/
 │       ├── daily-run.md
 │       ├── batch-preparation.md
 │       ├── commenting/
-│       └── connection-requests/
-├── tracking/linkedin/        log schema, weekly report
-├── scripts/linkedin/         create fields, log a contact, report
-└── projects/ templates/ skills/ campaigns/ experiments/ archive/</pre>
-  <p>I separated the strategy from the execution. The AI helps carry out the process, but the repo holds the decisions behind it: who to target, what to say, what not to do, and when to stop. It also means I never re-explain my ICP and positioning at the start of a new task.</p>
-  <p>Why plain files in a Git repo? They are readable by anyone on a team, every change is versioned, and nothing is locked inside a tool. The model can change. The growth strategy does not have to.</p>
+│       ├── connection-requests/
+│       └── follow-ups/
+├── tracking/
+│   └── linkedin/
+├── scripts/
+│   └── linkedin/
+└── projects/
+    ├── templates/
+    ├── skills/
+    ├── campaigns/
+    ├── experiments/
+    └── archive/</pre>
+  <p>The structure separates strategy from execution. The ICP defines who to target. The voice file defines how to communicate. Each playbook defines how a particular workflow operates. The tracking layer records what happened.</p>
+  <h3>Why plain files in a Git repository?</h3>
+  <ul>
+    <li>They're readable by anyone on a team.</li>
+    <li>Every change can be versioned.</li>
+    <li>Rules aren't locked inside a particular automation platform.</li>
+    <li>The AI model can change without requiring the entire growth strategy to be rebuilt.</li>
+    <li>Different workflows can reuse the same underlying audience and brand context.</li>
+  </ul>
+  <div class="callout">The tools execute the tasks. The repository holds the decisions behind them.</div>
 
-  <h2 id="icp">The ICP</h2>
-  <p>A system is only as good as who it points at. I wrote the ideal customer profile before anything else.</p>
+  <h2 id="icp">The ICP: who should the system find?</h2>
+  <p>A system is only as good as the people it points at. I defined the ideal customer profile before building the workflows.</p>
   <div class="cards">
-    <div class="card"><h4>Who</h4><p>Senior marketing leaders (Head of Marketing, VP, CMO, demand gen directors) and founders or co-founders.</p></div>
-    <div class="card"><h4>Companies</h4><p>B2B SaaS first, seed to Series C or revenue-funded, roughly 10 to 500 people. D2C and B2C second.</p></div>
+    <div class="card"><h4>Who</h4><p>Senior marketing leaders (Head of Marketing, VP of Marketing, CMO, Demand Generation Directors) and founders or co-founders.</p></div>
+    <div class="card"><h4>Companies</h4><p>B2B SaaS first, typically seed to Series C or revenue-funded, with approximately 10 to 500 employees. D2C and B2C companies are a secondary audience.</p></div>
     <div class="card"><h4>Where</h4><p>USA and Europe.</p></div>
-    <div class="card"><h4>Skip</h4><p>Recruiters, agencies selling the same service, students, anyone already contacted.</p></div>
+    <div class="card"><h4>Who to skip</h4><p>Recruiters, agencies selling the same service, students, anyone already contacted, and profiles that fail the qualification rules.</p></div>
   </div>
-  <h3>The score</h3>
-  <p>Each profile gets a score out of ten. The weights are easy to change per client.</p>
+  <h3>The scoring model</h3>
+  <p>Each prospect receives a score out of ten.</p>
   <div class="table-wrap">
     <table>
       <thead><tr><th>Criterion</th><th>Points</th></tr></thead>
@@ -291,173 +352,255 @@
         <tr><td>Title fits a target group</td><td>0 to 3</td></tr>
         <tr><td>Company stage and size match</td><td>0 to 2</td></tr>
         <tr><td>Funding or revenue signal</td><td>0 to 2</td></tr>
-        <tr><td>Company type and growth need match my experience</td><td>0 to 2 (B2B SaaS up to 2, D2C or B2C up to 1)</td></tr>
+        <tr><td>Company type and growth need match my experience</td><td>0 to 2</td></tr>
         <tr><td>Reachable and active on LinkedIn</td><td>0 to 1</td></tr>
+        <tr><td class="hl">Total</td><td class="hl">10</td></tr>
       </tbody>
     </table>
   </div>
-  <p><strong>7 or more:</strong> connect. <strong>5 to 6:</strong> comes to me to decide. <strong>4 or less:</strong> skip. Because D2C can earn at most one point on company type, it needs a near-perfect score elsewhere to qualify. That is how "secondary" is enforced in numbers rather than intentions.</p>
-  <p>One more rule I added after the first review: <strong>activity does not decide eligibility.</strong> Someone who rarely posts can still be a great contact. A recent post just makes the comment easier to personalise.</p>
-
-  <h2 id="positioning">Positioning</h2>
-  <div class="callout">A careful assistant, not a spam cannon.</div>
-  <p>For founders and sales teams who want LinkedIn to feel like a conversation, this is a small AI-run workflow that finds the right people, engages like a person, and keeps a human in charge.</p>
-  <ul>
-    <li><strong>Small on purpose.</strong> Five people a day, not five hundred.</li>
-    <li><strong>Personal.</strong> Every comment is written for one post and one person.</li>
-    <li><strong>Reviewed.</strong> A human approves before anything is posted.</li>
-    <li><strong>Recorded.</strong> Every action lands in a log you can report on.</li>
-    <li><strong>Owned.</strong> The rules are plain files you keep, not settings inside someone else's tool.</li>
-  </ul>
-
-  <h2 id="differentiation">How it differs</h2>
+  <p>The company-type score gives B2B SaaS up to two points and D2C or B2C up to one point. The decision rules are:</p>
   <div class="table-wrap">
     <table>
-      <thead><tr><th></th><th>Doing it manually</th><th>Typical automation tools</th><th class="hl">This system</th></tr></thead>
+      <thead><tr><th>Score</th><th>Decision</th></tr></thead>
       <tbody>
-        <tr><td>Personalisation</td><td>High, when you have time</td><td>Often template-based</td><td class="hl">High: each comment drafted for one post and person</td></tr>
-        <tr><td>Volume</td><td>Inconsistent</td><td>Often high</td><td class="hl">Deliberately low and steady</td></tr>
-        <tr><td>Control</td><td>Full</td><td>Often limited review</td><td class="hl">Approval before anything is posted</td></tr>
-        <tr><td>Record of what happened</td><td>Usually patchy</td><td>Tool-specific</td><td class="hl">Logged in your own CRM</td></tr>
-        <tr><td>Voice</td><td>Yours</td><td>Generic</td><td class="hl">Written down in a voice file and applied every time</td></tr>
-        <tr><td>Ownership</td><td>Yours</td><td>Inside the tool</td><td class="hl">Plain files and your own accounts</td></tr>
+        <tr><td>7 to 10</td><td>Eligible to proceed</td></tr>
+        <tr><td>5 to 6</td><td>Review manually</td></tr>
+        <tr><td>0 to 4</td><td>Skip</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="muted">These are generalisations. Individual tools vary, and the point is the approach, not a ranking.</p>
+  <p>One more rule I added after the first review: <strong>activity does not decide eligibility.</strong> Someone who rarely posts can still be a great contact. A recent post simply makes the commenting workflow easier to personalise.</p>
+
+  <h2 id="positioning">Positioning: a careful assistant, not a spam cannon</h2>
+  <p>For founders and sales teams who want LinkedIn to feel like a conversation, this is a configurable growth system that finds relevant people, supports meaningful engagement and keeps a record of what happens.</p>
+  <p>Five principles guide it:</p>
+  <ul>
+    <li><strong>Flexible:</strong> research, commenting, connection requests and follow-ups can run independently or together.</li>
+    <li><strong>Personal:</strong> each interaction uses relevant profile and content context.</li>
+    <li><strong>Controlled:</strong> review and approval requirements can be configured.</li>
+    <li><strong>Recorded:</strong> activities are captured in a log that can be reported on.</li>
+    <li><strong>Owned:</strong> the underlying rules are maintained in plain files rather than being entirely dependent on one automation platform.</li>
+  </ul>
+
+  <h2 id="differentiation">How it differs from manual activity and ready-made tools</h2>
+  <p>There are already tools that help automate LinkedIn engagement, connection requests and follow-ups. They can be useful, especially when you need a standard workflow that's quick to set up.</p>
+  <p>I wanted to explore a different approach: a system where the growth strategy determines how the workflows operate.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Dimension</th><th>Manual LinkedIn activity</th><th>Ready-made automation tools</th><th class="hl">Custom growth system</th></tr></thead>
+      <tbody>
+        <tr><td>Prospect research</td><td>Individual research</td><td>Depends on available features</td><td class="hl">Custom research and qualification rules</td></tr>
+        <tr><td>Commenting</td><td>Personal but time-consuming</td><td>Depends on supported capabilities</td><td class="hl">Contextual comments using a defined voice</td></tr>
+        <tr><td>Connection requests</td><td>Prepared and sent manually</td><td>Configurable workflows where supported</td><td class="hl">Custom rules for personalised or blank requests</td></tr>
+        <tr><td>Follow-ups</td><td>Easy to forget or repeat</td><td>Often based on predefined sequences</td><td class="hl">Context-aware follow-up logic</td></tr>
+        <tr><td>Workflow coordination</td><td>Managed manually</td><td>Depends on integrations</td><td class="hl">Workflows can share prospect history</td></tr>
+        <tr><td>Human review</td><td>Direct personal control</td><td>Varies by product</td><td class="hl">Explicit review gates can be configured</td></tr>
+        <tr><td>Reporting</td><td>Often fragmented</td><td>Provider-specific reports</td><td class="hl">Custom activity log and reporting</td></tr>
+        <tr><td>Ownership</td><td>Individual's process</td><td>Depends on provider</td><td class="hl">Greater control over rules and repository</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">These are broad differences, not a universal ranking. Some existing tools offer sophisticated personalisation, integrations and review features.</p>
+  <p>A custom system isn't automatically better. It makes more sense when you need specific qualification logic, connected workflows, custom integrations or greater control over your operating rules. The trade-off is greater development, monitoring and maintenance responsibility.</p>
+
+  <h2 id="architecture">How the system is put together</h2>
+  <p>The system has four main layers.</p>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><div><h4>Strategy and instructions</h4><p>The Git repository stores the ICP, positioning, voice, qualification rules, workflow instructions and operating constraints.</p></div></div>
+    <div class="step"><div class="n">02</div><div><h4>AI and orchestration</h4><p>Claude reads the instructions, researches profiles, evaluates prospects and prepares contextual comments and messages.</p></div></div>
+    <div class="step"><div class="n">03</div><div><h4>Cloud execution and integrations</h4><p>The cloud-based execution environment provides a place to run configured workflows and coordinate the required services. Browser-based workflows interact with LinkedIn through the configured environment, subject to the applicable platform permissions. Other scripts and integrations handle supporting tasks.</p></div></div>
+    <div class="step"><div class="n">04</div><div><h4>Data and reporting</h4><p>Brevo acts as the prospect and activity log. Reporting scripts use the recorded information to produce weekly summaries.</p></div></div>
+  </div>
+  <p>The important distinction is that Claude provides the reasoning and preparation, while the execution environment and connected services handle the relevant operations.</p>
+  <p>Cloud hosting changes where the system runs. It doesn't automatically make external platform activity compliant, secure or risk-free.</p>
 
   <h2 id="voice">The voice file</h2>
-  <p>Before writing a single message I wrote down how I sound. I built it from my own writing on my portfolio and profile. It has three traits.</p>
+  <p>Before writing a single message, I wrote down how I sound. I built it from my own writing on my portfolio and LinkedIn profile. It has three traits.</p>
   <div class="cards">
     <div class="card"><h4>Genuine</h4><p>Only say what is true and visible. No flattery, no performing enthusiasm.</p></div>
-    <div class="card"><h4>To the point</h4><p>Short, plain sentences. One idea each.</p></div>
-    <div class="card"><h4>Giving</h4><p>Appreciate first. Offer, do not ask. Talk about myself later.</p></div>
+    <div class="card"><h4>To the point</h4><p>Short, plain sentences. One idea at a time.</p></div>
+    <div class="card"><h4>Giving</h4><p>Appreciate first. Offer, don't ask. Talk about myself later.</p></div>
   </div>
   <h3>How the rules evolved</h3>
-  <p>My first draft rules produced notes that praised companies and quoted people's About sections. They read as forced. After review I rewrote them:</p>
+  <p>My first draft rules produced notes that praised companies and quoted people's About sections. They sounded forced. After reviewing the output, I changed the instructions:</p>
   <ul>
-    <li>There is no single template. The wording changes from note to note.</li>
-    <li>Appreciation must be genuine and proportionate. If it would feel stretched, say less.</li>
-    <li>Read everything, refer to little. No direct references to someone's About section, no company praise as the reason.</li>
-    <li>Quiet profiles are still eligible. Write about what they do, or send a blank request.</li>
+    <li>There is no single template. Wording changes from person to person.</li>
+    <li>Appreciation must be genuine and proportionate. If it feels stretched, say less.</li>
+    <li>Read everything, refer to little. Avoid unnecessary references to someone's About section or generic company praise.</li>
+    <li>Quiet profiles are still eligible. Write about what they do, or use a blank request when appropriate.</li>
   </ul>
+  <p>The voice file isn't a library of messages to copy and paste. It's a set of principles that guides how messages are written.</p>
   <div class="pair">
     <div class="box good"><div class="lbl">Sounds like me</div>"Really enjoyed your thinking on partnerships and creators. Would love to connect."<br><br>"Congratulations, Maya. Well deserved."</div>
     <div class="box bad"><div class="lbl">Does not</div>"Hi, I came across your impressive profile! I am a growth marketer passionate about synergy."<br><br>"Great post!"</div>
   </div>
   <p class="muted">Examples are fictional.</p>
   <h3>Comment rules</h3>
-  <p>Comments are one very short line, on marketing or growth posts or on achievements. No links, nothing about me, no generic filler. If there is nothing genuine to say, the post is skipped.</p>
+  <p>Comments are one very short line, on relevant marketing or growth posts or professional achievements. No links, nothing about me, no generic filler. If there's nothing genuine to say, the post is skipped.</p>
 
-  <h2 id="guardrails">Guardrails</h2>
-  <p>Giving an AI access to a LinkedIn account needs boundaries. These are written into the rulebook and checked every time.</p>
+  <h2 id="guardrails">Guardrails and governance</h2>
+  <p>Giving an AI system access to a LinkedIn workflow requires clear boundaries. These are written into the rulebook and should be reviewed as the system evolves.</p>
   <div class="steps">
-    <div class="step"><div class="n">01</div><div><h4>Account separation</h4><p>Personal and company work run in separate browser profiles. The AI only uses the personal profile for personal outreach.</p></div></div>
-    <div class="step"><div class="n">02</div><div><h4>Verify before every action</h4><p>Before anything on LinkedIn, it confirms the signed-in account is mine. If not, it stops.</p></div></div>
-    <div class="step"><div class="n">03</div><div><h4>Secrets stay secret</h4><p>API keys live in one ignored file. They are never printed, logged, or committed.</p></div></div>
-    <div class="step"><div class="n">04</div><div><h4>A daily cap</h4><p>Five people a day, counted from the log, not from memory.</p></div></div>
-    <div class="step"><div class="n">05</div><div><h4>Approval you can turn on or off</h4><p>Comments can be approved before they are posted. I started with approval on, and moving to less review is a deliberate change, never the starting point.</p></div></div>
-    <div class="step"><div class="n">06</div><div><h4>Stop on warnings</h4><p>Any CAPTCHA, verification prompt, or warning from LinkedIn stops the run. It never tries to get around one.</p></div></div>
-    <div class="step"><div class="n">07</div><div><h4>Nothing about me, nothing pushy</h4><p>The first touch contains no pitch, no link, and no ask. The portfolio only appears after someone accepts.</p></div></div>
-    <div class="step"><div class="n">08</div><div><h4>Privacy</h4><p>Raw profile text and personal details are not stored. Local batch files stay off GitHub.</p></div></div>
-    <div class="step"><div class="n">09</div><div><h4>Know the platform's rules</h4><p>LinkedIn restricts automated activity, and a review step does not remove those restrictions. Volume stays low and spaced out, and no system can guarantee an account is never restricted. Check LinkedIn's current terms before deciding how much to automate.</p></div></div>
+    <div class="step"><div class="n">01</div><div><h4>Account separation</h4><p>Personal and company work should run in separate browser profiles. The system should use only the account authorised for the relevant activity.</p></div></div>
+    <div class="step"><div class="n">02</div><div><h4>Verify before every action</h4><p>Before an external action, verify that the correct account and execution context are being used. If the expected account cannot be confirmed, stop.</p></div></div>
+    <div class="step"><div class="n">03</div><div><h4>Secrets stay secret</h4><p>API keys and credentials are stored securely. They're never printed, logged, included in screenshots or committed to Git.</p></div></div>
+    <div class="step"><div class="n">04</div><div><h4>Configurable activity limits</h4><p>The current routine uses a small daily batch. The operating limits can be configured based on platform rules, account permissions and the team's capacity. These limits are internal controls, not a guarantee of platform compliance or account safety.</p></div></div>
+    <div class="step"><div class="n">05</div><div><h4>Human review</h4><p>Comments and other external actions follow their configured review requirements. I started with approval enabled. Moving to a different execution setup should be a deliberate decision, with appropriate checks and permissions.</p></div></div>
+    <div class="step"><div class="n">06</div><div><h4>Stop on warnings</h4><p>Any CAPTCHA, verification prompt or warning from LinkedIn stops the run. The system should never attempt to bypass these controls.</p></div></div>
+    <div class="step"><div class="n">07</div><div><h4>No unnecessary pitching</h4><p>The initial interaction should be relevant and genuine. No forced pitch, irrelevant links or unnecessary asks. The portfolio can be introduced later when it makes sense in the conversation.</p></div></div>
+    <div class="step"><div class="n">08</div><div><h4>Privacy</h4><p>Raw profile text and unnecessary personal details should not be stored. Local working files containing prospect information must remain outside public repositories.</p></div></div>
+    <div class="step"><div class="n">09</div><div><h4>Respect platform rules</h4><p>LinkedIn restricts certain forms of unauthorised third-party automation, including automated engagement and connection activity. Human approval, low activity volume and cloud hosting do not remove those restrictions. The implementation must use methods permitted by the platform and respect account permissions and applicable policies. No system can guarantee that an account will never be restricted.</p></div></div>
   </div>
 
   <h2 id="log">The log and the report</h2>
-  <p>Brevo is the system of record. Every person becomes a contact keyed by their LinkedIn handle, with no email needed to start. They are not blocked from email either, so I can segment and email them later if it makes sense.</p>
+  <p>Brevo is the system of record. Every person becomes a contact keyed by their LinkedIn handle, without requiring an email address at the start. The log captures the information needed to understand who was contacted, why they were selected and what happened.</p>
   <div class="table-wrap">
     <table>
       <thead><tr><th>Group</th><th>Fields</th></tr></thead>
       <tbody>
         <tr><td>Who</td><td>Name, profile URL, job title, company, location</td></tr>
         <tr><td>Fit</td><td>Company type, target group, ICP score</td></tr>
-        <tr><td>Engagement</td><td>Type (comment, request with note, blank request, comment then request), status</td></tr>
-        <tr><td>Comment</td><td>The exact comment, the date, the post URL</td></tr>
-        <tr><td>Request</td><td>The note (or blank), the day it was sent, the day it was accepted</td></tr>
-        <tr><td>Follow-up</td><td>The message and when it was sent</td></tr>
+        <tr><td>Research</td><td>Research date, qualification status</td></tr>
+        <tr><td>Engagement</td><td>Activity type and status</td></tr>
+        <tr><td>Comment</td><td>Exact comment, date and post URL</td></tr>
+        <tr><td>Request</td><td>Note or blank, date sent and acceptance date</td></tr>
+        <tr><td>Follow-up</td><td>Message and activity date</td></tr>
       </tbody>
     </table>
   </div>
-  <p>A weekly report reads this log and shows, week on week: profiles researched, how many qualified (an ICP score of 7 or more), comments, requests sent, accepted, still pending, and the acceptance rate. It also compares requests with a note against blank ones, so the numbers can settle arguments that opinions cannot.</p>
+  <p>A weekly report reads this log and shows:</p>
+  <ul>
+    <li>Profiles researched.</li>
+    <li>Prospects that qualified.</li>
+    <li>Comments prepared or published.</li>
+    <li>Connection requests sent.</li>
+    <li>Requests accepted.</li>
+    <li>Requests still pending.</li>
+    <li>Connection acceptance rate.</li>
+    <li>Acceptance rate for requests with notes versus blank requests.</li>
+    <li>Follow-ups prepared or sent.</li>
+  </ul>
+  <p>As the system gathers more data, I also want to understand what happens beyond the initial interaction.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Additional metric</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td>Replies received</td><td>Shows whether interactions lead to conversations</td></tr>
+        <tr><td>Meetings generated</td><td>Connects prospecting activity to commercial outcomes</td></tr>
+        <tr><td>Time per qualified prospect</td><td>Helps assess operational efficiency</td></tr>
+        <tr><td>Cross-stage conversion</td><td>Shows how prospects progress between workflows</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>These additional metrics should only be reported once the required data is reliably captured. The objective is to understand the complete prospecting process, not just the number of comments or requests.</p>
 
   <h2 id="batch">The daily batch and review gate</h2>
-  <p>Each morning a scheduled task is set to prepare the day's batch: five posts, five authors, five draft comments. This preparation is read-only. It never comments, never connects, never reacts.</p>
-  <p>Then comes the rule I like best: <strong>if I have not reviewed yesterday's batch, no new batch is created.</strong> It cannot pile up and it cannot run ahead of me. When I have approved, edited, or rejected every item, the approved ones are posted and the next batch can be prepared. With approval switched off, the same idea applies: the next batch waits until the last one is logged. Rejected people are logged as skipped, so they never come back.</p>
+  <p>The batch size is configurable. Five prospects a day is simply the current routine, not a technical restriction.</p>
+  <p>The system can research and qualify a larger set of profiles, prepare comments, manage connection requests and process follow-ups according to the configured workflows. The batch is a way of managing work, not a limitation of the system's architecture.</p>
+  <p>Each batch is prepared for review. The review gate prevents work from accumulating faster than it can be checked.</p>
+  <p><strong>If I haven't reviewed the previous batch, no new batch is created.</strong> Once the items have been approved, edited or rejected, the relevant permitted actions can proceed. Rejected prospects are recorded as skipped, so they don't keep coming back.</p>
 
   <h2 id="lessons">What went wrong</h2>
   <p>A build log without mistakes is a brochure. Several of the guardrails above exist because something went wrong.</p>
   <div class="cards">
-    <div class="card"><h4>The first notes were wrong</h4><p>They praised companies and sounded forced. I rewrote the rules.</p></div>
-    <div class="card"><h4>The free-tier limit</h4><p>LinkedIn allowed me only five personalised notes a month. So the routine became: comment first, then send a blank request.</p></div>
-    <div class="card"><h4>A key in a screenshot</h4><p>An API key appeared in a screenshot. It was revoked and replaced. Keys now live in one ignored file and are never printed.</p></div>
-    <div class="card"><h4>A typo locked my own folder</h4><p>A wrong permissions command locked the project folder. A one-minute fix, and a reminder to keep commands small.</p></div>
-    <div class="card"><h4>A missing ignore rule</h4><p>Local batch files with people's names would have been committed to GitHub. It was caught before the first batch and is now ignored.</p></div>
+    <div class="card"><h4>The first notes were wrong</h4><p>They praised companies and sounded forced. I rewrote the rules to focus on genuine, specific observations rather than generic compliments.</p></div>
+    <div class="card"><h4>The free-tier limit</h4><p>LinkedIn's personalised connection-note allowance affected the original workflow. So the routine evolved to use relevant engagement first, followed by blank connection requests where appropriate. The exact limits can vary by account and platform rules, so this shouldn't be treated as a permanent universal allowance.</p></div>
+    <div class="card"><h4>A key in a screenshot</h4><p>An API key appeared in a screenshot. It was revoked and replaced. Keys now live in a protected, ignored file and are never printed.</p></div>
+    <div class="card"><h4>A typo locked my own folder</h4><p>A wrong permissions command locked the project folder. It was a one-minute fix, but a useful reminder to keep commands small and verify them before running them.</p></div>
+    <div class="card"><h4>A missing ignore rule</h4><p>Local batch files containing people's names could have been committed to GitHub. It was caught before the first batch and is now ignored.</p></div>
+    <div class="card"><h4>Workflow before automation</h4><p>One important design principle was to separate the growth process from the tool used to execute it. The ICP, qualification logic, voice and approval requirements need to be defined first. Otherwise, it's easy to build an automation that works technically but doesn't serve the actual sales process.</p></div>
   </div>
 
-  <h2 id="results">Results and what is next</h2>
-  <p>The system is new, so I am not claiming it has produced pipeline or revenue. What I can show today is the operating system itself: how people are found, how they are scored, how comments are written and reviewed, and how every action is recorded.</p>
-  <p>Over the coming weeks I will look at acceptance rates, conversations started, meetings booked and, eventually, pipeline. I will publish those numbers here once there is enough data to mean something.</p>
+  <h2 id="results">Results and what's next</h2>
+  <p>The system is still new, so I'm not claiming it has generated pipeline or revenue. What I can show today is the operating system itself:</p>
+  <ul>
+    <li>How prospects are researched and qualified.</li>
+    <li>How relevant posts are identified.</li>
+    <li>How comments are prepared and reviewed.</li>
+    <li>How connection requests are managed.</li>
+    <li>How follow-ups are prepared.</li>
+    <li>How interactions are recorded.</li>
+    <li>How review and approval fit into the process.</li>
+  </ul>
+  <p>Over the coming weeks, I'll look at acceptance rates, conversations started, meetings booked and eventually pipeline. I'll publish those numbers here once there's enough data to mean something.</p>
+  <p>The first thing I want to understand isn't how many actions the system can perform. It's whether the process helps create better conversations with the right people.</p>
 
-  <h2 id="who">Who it is useful for</h2>
+  <h2 id="who">Who is this useful for?</h2>
   <h3>Founders</h3>
-  <p>Early sales are founder-led, and LinkedIn is usually where the first conversations happen. The system replaces hours of finding people and writing messages with a short daily review, while the founder's voice stays intact.</p>
+  <p>Early sales are often founder-led, and LinkedIn can be an important place to build the first relationships. The system can reduce the time spent finding relevant people, understanding their profiles and preparing interactions, while keeping the founder's voice and judgment involved.</p>
   <h3>Sales teams</h3>
-  <p>Warm up accounts before outbound lands. Keep a consistent presence in the posts your buyers read. Give sales leaders a record of what was done and a weekly view of what is working, instead of relying on each rep's habits.</p>
+  <p>Sales teams can use the approach to build more consistent prospecting and engagement workflows. It creates a record of what happened, helps coordinate interactions and provides visibility beyond individual team members' habits.</p>
   <h3>Marketing leaders</h3>
-  <p>Support social selling and account-based plays with steady, human engagement, and measure it.</p>
-  <p>It does not have to stop at LinkedIn. The same thinking carries to lead research and qualification, content workflows, lifecycle marketing and sales operations.</p>
-  <h3>What changes, and what does not</h3>
+  <p>Marketing teams can use the system to support social selling, account-based engagement and relationship-building around the people their business wants to reach. It can also extend beyond LinkedIn. The same principles apply to lead research, content workflows, lifecycle marketing and sales operations.</p>
+  <p>The system is most useful when LinkedIn is an important part of the sales process, but the team struggles to maintain consistency. It's less useful when there's no clear ICP, no meaningful reason to engage with prospects or no capacity to follow up on the conversations generated.</p>
+  <h3>What changes, and what stays the same?</h3>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Customised per team</th><th>Stays the same</th></tr></thead>
+      <thead><tr><th>Customised per team</th><th>Stays consistent</th></tr></thead>
       <tbody>
-        <tr><td>ICP, regions, scoring weights</td><td>Hard gates before any action</td></tr>
-        <tr><td>Voice and comment rules</td><td>Everything logged, reported weekly</td></tr>
-        <tr><td>CRM or log (here Brevo; it could be HubSpot or another)</td><td>Daily cap and stop-on-warning rules</td></tr>
-        <tr><td>Daily volume, and whether approval is on</td><td>Qualification before engagement</td></tr>
+        <tr><td>ICP, regions and scoring</td><td>Qualification before engagement</td></tr>
+        <tr><td>Voice, positioning and messaging</td><td>Documented operating rules</td></tr>
+        <tr><td>Daily volume and workflow priorities</td><td>Defined review requirements</td></tr>
+        <tr><td>CRM, integrations and execution setup</td><td>Tracking and reporting</td></tr>
+        <tr><td>Workflow owners and permissions</td><td>Security and stop conditions</td></tr>
       </tbody>
     </table>
   </div>
 
   <h2 id="deploy">Deploying it for your team</h2>
-  <p>If you want a system like this set up for you or your team, I would not start by choosing an AI tool. I would start with the business: who you are trying to reach, what makes a good prospect, what your messaging should say, and which steps need human judgment. Then I would turn those answers into a working system. The tools differ. The thinking does not.</p>
+  <p>Building this for another team starts with the growth process, not the technology.</p>
+  <p>I'd first understand who the business wants to reach, how it positions itself, what its sales process looks like and where LinkedIn fits. Then I'd translate those decisions into a structured set of rules, workflows, integrations and reporting.</p>
+  <p>The objective isn't to introduce AI into every activity. It's to build a system around the parts of the process where consistency, context and better execution can make a difference.</p>
   <h3>What I set up</h3>
   <ul>
-    <li>Your ICP and scoring, written down and agreed.</li>
-    <li>Your voice file, built from your own writing.</li>
-    <li>The rulebook, guardrails, and daily routine.</li>
-    <li>A log in your CRM, with the fields and a weekly report.</li>
-    <li>A daily batch with a review gate that you can keep on or relax, and your choice of who posts and sends.</li>
+    <li><strong>ICP and scoring:</strong> target audiences, qualification criteria, exclusion rules and scoring logic.</li>
+    <li><strong>Voice and positioning:</strong> messaging principles based on how the founder or team actually communicates.</li>
+    <li><strong>Research workflow:</strong> profile discovery, prospect qualification and prioritisation.</li>
+    <li><strong>Commenting workflow:</strong> relevant post discovery, contextual comment preparation and review.</li>
+    <li><strong>Connection-request workflow:</strong> personalised and blank request logic, with appropriate qualification and review.</li>
+    <li><strong>Follow-up workflow:</strong> contextual messages based on connection status and previous interactions.</li>
+    <li><strong>Tracking and reporting:</strong> prospect records, activity history and reporting.</li>
+    <li><strong>Operating rules:</strong> permissions, approval requirements, safeguards and documentation.</li>
   </ul>
+  <p class="muted">The exact scope depends on the team's process and technical requirements.</p>
   <h3>What I need from you</h3>
   <ul>
-    <li>A short working session on who you sell to, and samples of how you write.</li>
-    <li>Your own LinkedIn account, signed in on your computer. I do not need your password.</li>
-    <li>A CRM or Brevo account for the log.</li>
-    <li>A few minutes a day to review the batch, if you keep approval on.</li>
+    <li>A working session to understand who you sell to.</li>
+    <li>Examples of how you and your team communicate.</li>
+    <li>An agreed execution setup and the required account permissions.</li>
+    <li>A CRM or activity-logging system.</li>
+    <li>A clear decision on which activities require human review.</li>
   </ul>
+  <p>I don't need your LinkedIn password.</p>
   <h3>The phases</h3>
   <ol>
-    <li><strong>Define.</strong> ICP, voice, and rules.</li>
-    <li><strong>Build.</strong> The repo, the log, and the guardrails.</li>
-    <li><strong>Dry run.</strong> Real profiles, nothing sent, until you trust the drafts.</li>
-    <li><strong>Approval phase.</strong> You review every comment before it is posted, and the edits you make improve the rules.</li>
-    <li><strong>Daily batch.</strong> The batch is prepared each morning, and you decide how much to hand over over time.</li>
+    <li><strong>Define:</strong> ICP, positioning, voice and operating rules.</li>
+    <li><strong>Build:</strong> repository, workflows, integrations, logging and safeguards.</li>
+    <li><strong>Dry run:</strong> test against real profiles and content without external actions.</li>
+    <li><strong>Review:</strong> evaluate drafts, refine instructions and establish approval requirements.</li>
+    <li><strong>Operate:</strong> introduce the agreed workflows, monitor activity and improve the system over time.</li>
   </ol>
-  <div class="note">You stay in control throughout: your account, your voice, your rules on approval, your data.</div>
+  <div class="note">You stay involved throughout: your account, your voice, your rules and your data.</div>
 
   <h2 id="faq">Questions</h2>
-  <details><summary>Is this safe for my LinkedIn account?</summary><p>LinkedIn limits automated activity, and no tool can promise an account will never be restricted. LinkedIn also restricts automated engagement and connection activity, and a human review step does not remove those restrictions. This system is deliberately small, spaced out, and stops on any warning, and you can keep a person doing the posting and sending. That lowers the risk, but it does not remove it.</p></details>
-  <details><summary>Do I need LinkedIn Premium?</summary><p>No. I built this on a free account. The free tier limits personalised connection notes to a few a month, so the routine uses comments first and blank requests after.</p></details>
-  <details><summary>Can it run without my approval?</summary><p>Yes, it can be set up that way, inside a daily cap and with the same gates and stop rules. I would still start with approval on, review the edits you make, and relax it only once the drafts earn your trust.</p></details>
-  <details><summary>Does it write my posts?</summary><p>No. It engages with other people's posts. Writing your own content is a separate job, and one I would do with you, not automatically.</p></details>
-  <details><summary>Does it replace an SDR or a marketer?</summary><p>No. It handles finding, reading, drafting and logging, so a person can spend their time on the conversations that follow.</p></details>
-  <details><summary>Which tools does it use?</summary><p>Claude, a Chrome browser, a CRM or Brevo for the log, and a Git repo for the rules. Nothing proprietary.</p></details>
-  <details><summary>What results can I expect?</summary><p>It is early, and I would rather show numbers than promise them. I will add mine to this page as they come in.</p></details>
+  <details><summary>Is this safe for my LinkedIn account?</summary><p>No system can guarantee that an account will never be restricted. LinkedIn restricts certain forms of automated activity, including unauthorised engagement and connection activity. Human review does not remove those restrictions. The system uses defined operating limits, review requirements and stop conditions. These are safeguards, not a guarantee of compliance or account safety. The implementation must follow the platform's current rules and permitted methods.</p></details>
+  <details><summary>Is five people a day the limit?</summary><p>No. Five is the current operating batch size, not a system limitation. The system can research and qualify profiles, identify relevant posts, prepare comments, manage connection requests and prepare follow-ups. The batch size and operating limits are configurable, subject to platform rules, account permissions and workflow requirements.</p></details>
+  <details><summary>Do I need LinkedIn Premium?</summary><p>No. The original implementation was built using a free account. Personalised connection-note allowances can vary by account and platform rules. The workflow supports both personalised and blank requests, so it doesn't depend entirely on one approach.</p></details>
+  <details><summary>Can the three workflows run independently?</summary><p>Yes. Commenting, connection requests and follow-ups are separate workflows. They can run independently or be connected through shared prospect information and interaction history.</p></details>
+  <details><summary>Can it send connection requests with or without a note?</summary><p>Yes. The system supports both personalised and blank connection-request workflows. The choice depends on the context, available functionality, account permissions and configured rules.</p></details>
+  <details><summary>Does it automatically comment on posts?</summary><p>The system can identify relevant posts, evaluate them and prepare comments. The actual publishing process depends on the configured approval requirements and permitted execution method.</p></details>
+  <details><summary>Does it follow up after someone accepts?</summary><p>The system tracks connection status and prepares contextual follow-ups using the existing prospect record. The execution process depends on the configured approval requirements.</p></details>
+  <details><summary>Does it need my laptop to be switched on?</summary><p>The system uses a cloud-based execution environment for its configured workflows, so it doesn't rely on my personal laptop being open for tasks hosted there. The required infrastructure, browser sessions, credentials and connected services still need to be available.</p></details>
+  <details><summary>Does it write my LinkedIn posts?</summary><p>No. This system focuses on researching prospects, engaging with other people's posts and managing prospect interactions. Writing and publishing your own content is a separate workflow.</p></details>
+  <details><summary>Does it replace an SDR or a marketer?</summary><p>No. It supports research, qualification, drafting, tracking and repeatable execution. People are still needed to make decisions, build relationships and handle meaningful sales conversations.</p></details>
+  <details><summary>Which tools does it use?</summary><p>Claude, a Git repository for the rules, a cloud-based execution environment, browser workflows and Brevo for logging and reporting. The exact tools can change depending on the team's existing systems and requirements.</p></details>
+  <details><summary>What results can I expect?</summary><p>It's early, and I'd rather show numbers than promise them. The objective is to make prospecting more consistent, reduce repetitive work and create better visibility into what happens after an interaction. I'll add measured results as the data builds.</p></details>
 
   <div class="cta">
-    <h2>Want a system like this for your team?</h2>
-    <p>Tell me who you sell to and how you want to sound. I will tell you honestly whether this approach fits.</p>
+    <h2>Want a LinkedIn growth system built around your process?</h2>
+    <p>Whether you're a founder managing your own prospecting or a team looking to build a more consistent social-selling process, I can help define the workflow, build the underlying system and connect it to your existing tools.</p>
+    <p>The starting point is understanding who you want to reach, how you want to engage and what should happen after the first interaction.</p>
+    <p><strong>Tell me who you sell to and how you want to sound. I'll tell you honestly whether this approach fits.</strong></p>
     <a class="btn" href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call &rarr;</a>
     <a class="btn ghost" href="/">Back to home</a>
   </div>
