@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build a growth repo: AI marketing and sales that stays on-ICP, on-voice and on the record — Parth Dave</title>
+<meta name="description" content="AI makes marketing output cheap and direction the hard part. A growth repo writes that direction down once so every message, sequence and report follows it. Why it matters now, what changes with and without one, the folders, the playbooks, the tool connections, and what it does and does not prove yet.">
+<meta property="og:title" content="Build a growth repo: AI marketing and sales that stays on-ICP, on-voice and on the record">
+<meta property="og:description" content="Why a growth repo matters in the AI era, what changes with and without one, and how to set it up.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF6EF;
+    --surface: #FFFFFF;
+    --accent: #4B2A8C;
+    --accent-light: #F1ECFA;
+    --accent-tint: #E8E0F5;
+    --ink: #1C1A17;
+    --muted: #5A5650;
+    --border: #E8E2D9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  nav {
+    position: sticky; top: 0; height: 64px;
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+    z-index: 100; display: flex; align-items: center;
+  }
+  nav .wrap { display: flex; justify-content: space-between; align-items: center; }
+  nav a { font-weight: 600; font-size: 16px; text-decoration: none; color: var(--ink); }
+  nav a:hover { color: var(--accent); }
+  nav .links { display: flex; gap: 24px; font-size: 14px; }
+  .wrap { max-width: 820px; width: 100%; margin: 0 auto; padding: 0 24px; }
+  @media (max-width: 390px) { .wrap { padding: 0 16px; } }
+  main { padding: 48px 0 64px; }
+  @media (max-width: 768px) { main { padding-top: 32px; } }
+
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px; margin-bottom: 24px;
+  }
+  .back-link:hover { text-decoration: underline; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .tag-row span {
+    display: inline-block; padding: 4px 10px; border-radius: 999px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .tag-row .primary { background-color: var(--accent); color: #fff; }
+  .tag-row .secondary { background-color: var(--accent-tint); color: var(--accent); }
+
+  h1.headline {
+    font-family: 'Fraunces', Georgia, serif; font-size: 46px; font-weight: 600;
+    line-height: 1.12; margin-bottom: 20px;
+  }
+  @media (max-width: 768px) { h1.headline { font-size: 31px; } }
+  .lede { font-size: 20px; color: var(--muted); line-height: 1.55; margin-bottom: 32px; }
+  @media (max-width: 768px) { .lede { font-size: 18px; } }
+
+  h2 {
+    font-family: 'Fraunces', Georgia, serif; font-size: 30px; font-weight: 600;
+    line-height: 1.2; margin: 64px 0 16px;
+  }
+  @media (max-width: 768px) { h2 { font-size: 24px; margin-top: 48px; } }
+  h3 { font-size: 18px; font-weight: 600; margin: 28px 0 8px; }
+  p { margin-bottom: 16px; }
+  p.muted, .muted { color: var(--muted); }
+  ul, ol { margin: 0 0 16px 22px; }
+  li { margin-bottom: 8px; }
+  strong { font-weight: 600; }
+  a.inline { color: var(--accent); }
+
+  .glance {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 8px 24px; margin-bottom: 32px;
+  }
+  .glance dl { display: grid; grid-template-columns: 150px 1fr; }
+  .glance dt, .glance dd { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .glance dt { font-weight: 600; font-size: 14px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
+  .glance dd { color: var(--ink); font-size: 16px; }
+  .glance dt:last-of-type, .glance dd:last-of-type { border-bottom: none; }
+  @media (max-width: 600px) {
+    .glance dl { grid-template-columns: 1fr; }
+    .glance dt { padding-bottom: 0; border-bottom: none; }
+  }
+
+  .toc { background: var(--accent-light); border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; }
+  .toc h4 { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .toc ol { margin: 0 0 0 20px; columns: 2; column-gap: 32px; font-size: 15px; }
+  .toc li { margin-bottom: 4px; break-inside: avoid; }
+  .toc a { color: var(--ink); text-decoration: none; }
+  .toc a:hover { color: var(--accent); text-decoration: underline; }
+  @media (max-width: 600px) { .toc ol { columns: 1; } }
+
+  .callout {
+    border-left: 3px solid var(--accent); padding-left: 24px; margin: 28px 0;
+    font-family: 'Fraunces', Georgia, serif; font-style: italic; font-size: 20px; line-height: 1.55;
+  }
+  @media (max-width: 768px) { .callout { font-size: 18px; } }
+
+  .steps { margin: 20px 0 8px; }
+  .step {
+    display: grid; grid-template-columns: 48px 1fr; gap: 20px;
+    padding: 22px 0; border-bottom: 1px solid var(--border);
+  }
+  .step:first-child { border-top: 1px solid var(--border); }
+  .step .n { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 18px; color: var(--accent); padding-top: 2px; }
+  .step h4 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+  .step p { font-size: 16px; color: var(--muted); margin: 0; }
+
+  .table-wrap { overflow-x: auto; margin: 16px 0 24px; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { background: var(--accent-light); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+  tr:last-child td { border-bottom: none; }
+  td.hl, th.hl { background: #FBF8FF; font-weight: 600; }
+  @media (max-width: 768px) { table { font-size: 14px; } }
+
+  pre.tree {
+    background: #1C1A17; color: #F3EFF8; border-radius: 10px; padding: 18px 20px;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 13.5px; line-height: 1.6;
+    overflow-x: auto; margin: 16px 0 24px;
+  }
+
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0 24px; }
+  @media (max-width: 700px) { .pair { grid-template-columns: 1fr; } }
+  .pair .box { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; font-size: 15px; }
+  .pair .box .lbl { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .pair .good .lbl { color: #1F7A4D; }
+  .pair .bad .lbl { color: #B0382E; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin: 16px 0 24px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+  .card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .card p { font-size: 15px; color: var(--muted); margin: 0; }
+
+  details { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; }
+  summary { cursor: pointer; font-weight: 600; font-size: 16px; }
+  details p { margin: 10px 0 0; color: var(--muted); font-size: 16px; }
+
+  .note { background: var(--accent-light); border-radius: 10px; padding: 14px 18px; font-size: 15px; color: var(--muted); margin: 16px 0 24px; }
+
+  .cta {
+    background: var(--ink); color: #F3EFF8; border-radius: 14px; padding: 36px 32px; margin-top: 64px;
+  }
+  .cta h2 { color: #fff; margin: 0 0 12px; font-size: 28px; }
+  .cta p { color: #C9C3D6; }
+  .cta .btn {
+    display: inline-block; background: #F3EFF8; color: #15121E; padding: 12px 22px;
+    border-radius: 999px; font-weight: 700; font-size: 15px; text-decoration: none; margin-right: 12px; margin-top: 8px;
+  }
+  .cta .btn.ghost { background: transparent; color: #F3EFF8; border: 1px solid #5A4A8A; }
+
+  footer { text-align: center; color: var(--muted); font-size: 14px; padding: 32px 16px 48px; border-top: 1px solid var(--border); background: var(--surface); }
+
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
+  .badge.live { background: #E3F4EA; color: #1F7A4D; }
+  .badge.plan { background: #FFF1D6; color: #8A5A00; }
+  .flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin: 20px 0 8px; }
+  .flow .node { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 8px; text-align: center; font-size: 13.5px; line-height: 1.35; position: relative; }
+  .flow .node b { display: block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+  .flow .node:not(:last-child)::after { content: "\2192"; position: absolute; right: -12px; top: 50%; transform: translateY(-50%); color: var(--accent); font-weight: 700; }
+  @media (max-width: 860px) {
+    .flow { grid-template-columns: 1fr; gap: 18px; }
+    .flow .node:not(:last-child)::after { content: "\2193"; right: auto; left: 50%; top: auto; bottom: -17px; transform: translateX(-50%); }
+  }
+  .hero-img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--border); margin: 0 0 32px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="name" href="index.html">Parth Dave</a>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+  <a class="back-link" href="ai-gtm-systems.html">&larr; All AI GTM systems</a>
+  <div class="tag-row"><span class="primary">Guide</span><span class="secondary">Growth operations</span></div>
+  <h1 class="headline">Build a growth repo so your AI marketing and sales stays on-ICP, on-voice and on the record.</h1>
+  <p class="lede">AI makes output cheap. Direction is the hard part. A growth repo is where you write that direction down once, so every message, sequence and report follows it, whoever or whatever produces it.</p>
+  <img class="hero-img" src="images/growth-repo-cover.svg" alt="A growth repo folder tree connected to the tools it feeds: CRM log, email tool, LinkedIn and weekly report">
+
+  <div class="glance">
+    <dl>
+      <dt>What it is</dt>
+      <dd>A Git repository of rules, playbooks, schemas and small scripts for growth work, written so both people and an AI assistant can follow them.</dd>
+      <dt>What it covers</dt>
+      <dd>ICP, positioning, differentiation, voice, LinkedIn outreach, email outreach, tracking and reporting, and the guardrails around all of it.</dd>
+      <dt>What it connects to</dt>
+      <dd>Your CRM or log (Brevo, HubSpot), email sequencing (Lemlist or similar), the browser where LinkedIn is used, and GitHub for history.</dd>
+      <dt>Built for</dt>
+      <dd>Founders, sales teams, marketing leaders and agencies who want growth work to be consistent, reviewable and portable.</dd>
+      <dt>Honest status</dt>
+      <dd>In my own repo, LinkedIn engagement, the Brevo log, the ICP, voice and weekly reporting are built and running. Email outreach, Lemlist and HubSpot are shown as the pattern, not as something I have live. Each section says which is which.</dd>
+    </dl>
+  </div>
+
+  <div class="toc">
+    <h4>On this page</h4>
+    <ol>
+      <li><a href="#why-now">Why this matters in the AI era</a></li>
+      <li><a href="#with-without">With and without a growth repo</a></li>
+      <li><a href="#what">What a growth repo is</a></li>
+      <li><a href="#folders">The folder structure</a></li>
+      <li><a href="#foundations">ICP, positioning, differentiation, voice</a></li>
+      <li><a href="#linkedin">LinkedIn outreach playbooks</a></li>
+      <li><a href="#email">Email outreach playbooks</a></li>
+      <li><a href="#tools">How it connects to your tools</a></li>
+      <li><a href="#guardrails">Guardrails and governance</a></li>
+      <li><a href="#tracking">Tracking and reporting</a></li>
+      <li><a href="#effectiveness">Effectiveness and outcomes</a></li>
+      <li><a href="#setup">How to set one up</a></li>
+      <li><a href="#lessons">Mistakes to avoid</a></li>
+      <li><a href="#deploy">Setting one up for your team</a></li>
+      <li><a href="#faq">Questions</a></li>
+    </ol>
+  </div>
+
+  <h2 id="why-now">Why this matters in the AI era</h2>
+  <p>AI has made output cheap. A decent first draft of a message, a sequence or a landing page now takes seconds. What it has not made cheap is knowing <strong>who</strong> the message should go to, <strong>how</strong> it should sound, and what must <strong>never</strong> be said.</p>
+  <p>That moves the bottleneck from producing to directing. The teams that do well are not the ones with the most output. They are the ones whose output is consistent with a clear strategy.</p>
+  <p>When AI joins marketing and sales without a shared source of truth, three problems show up:</p>
+  <ul>
+    <li><strong>Generic, off-brand output.</strong> Every chat starts from nothing, so the result sounds like everyone else's.</li>
+    <li><strong>Drift.</strong> Several people and several assistants each hold a different version of the ICP and the tone, and they slowly diverge.</li>
+    <li><strong>Unaccountable action.</strong> Once AI can post, send or update records, "who approved this, and why was it allowed?" becomes a real question.</li>
+  </ul>
+  <div class="callout">AI amplifies whatever you give it. A growth repo makes sure that is a clear strategy, not a guess.</div>
+  <p>A growth repo answers all three. It is the <strong>briefing</strong> the assistant reads, the <strong>rulebook</strong> it follows, and the <strong>record</strong> of what happened.</p>
+  <h3>What it is designed to give you</h3>
+  <div class="cards">
+    <div class="card"><h4>On-ICP targeting</h4><p>One definition of a good lead, used in every channel and tool.</p></div>
+    <div class="card"><h4>On-voice messages</h4><p>Drafts that sound like you, because the voice is written down with examples.</p></div>
+    <div class="card"><h4>Safe automation</h4><p>Approval, caps, account checks and stop rules before AI acts for you.</p></div>
+    <div class="card"><h4>A complete record</h4><p>Every action logged, and every rule change in version history.</p></div>
+    <div class="card"><h4>A learning loop</h4><p>A weekly report that turns results into rule changes.</p></div>
+    <div class="card"><h4>Easy handover</h4><p>A new hire, contractor or agency starts from the same rules.</p></div>
+  </div>
+  <p class="muted">These are what the structure is designed to deliver. The results section below says what I have and have not measured so far.</p>
+
+  <h2 id="with-without">With and without a growth repo</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th></th><th>Without a growth repo</th><th class="hl">With a growth repo</th></tr></thead>
+      <tbody>
+        <tr><td>Context for the AI</td><td>You re-explain your audience and tone in every chat, and the answers vary.</td><td class="hl">The assistant reads the same ICP, voice and rules every session.</td></tr>
+        <tr><td>Who gets targeted</td><td>Depends on who is doing the work and which tool they are in.</td><td class="hl">One ICP and one score decide, wherever the work happens.</td></tr>
+        <tr><td>How it sounds</td><td>Generic AI tone, or whoever wrote the last draft.</td><td class="hl">A written voice with good and bad examples, applied every time.</td></tr>
+        <tr><td>Safety</td><td>Limits live in people's heads and depend on whoever is at the keyboard.</td><td class="hl">Approval steps, caps, account checks and stop rules are written down.</td></tr>
+        <tr><td>The record</td><td>History is scattered across tools and chats.</td><td class="hl">Every action is logged and every rule change is a commit.</td></tr>
+        <tr><td>Learning</td><td>Insights stay with individuals.</td><td class="hl">Report, then rule change, then visible in history.</td></tr>
+        <tr><td>Handover</td><td>A new hire or agency starts from scratch.</td><td class="hl">They read the repo and start with the same rules.</td></tr>
+        <tr><td>Switching tools or assistants</td><td>The rules are trapped inside each tool.</td><td class="hl">The rules are plain files you keep.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note">This describes tendencies, not guarantees. A repo does not make a weak strategy good. It makes whatever strategy you have consistent, reviewable and portable.</div>
+
+  <h2 id="what">What a growth repo is</h2>
+  <p>Most growth teams have the same assets scattered in the same places: the ICP in a slide deck, the tone of voice in someone's head, the outreach rules in a Notion page nobody updates, and the real history buried in four different tools.</p>
+  <p>A growth repo pulls the <strong>rules</strong> into one place as plain files. It does not replace your tools. Your CRM still stores contacts, your email tool still sends sequences, LinkedIn is still where conversations happen. The repo is the layer above them that says who, how, when, and what is not allowed.</p>
+  <div class="callout">Tools hold the data. The repo holds the decisions.</div>
+  <p>That split matters because decisions are what teams lose: why this audience, why this tone, why this cap. When they live in files with version history, they can be read, argued with, improved and handed over.</p>
+
+  <h2 id="folders">The folder structure</h2>
+  <p>The structure matters less than keeping one rule: <strong>reference lives in a few durable folders, and active work lives in a few clearly named ones.</strong> That keeps the repo from filling up with scratch files.</p>
+  <pre class="tree">growth-repo/
+├── CLAUDE.md              rules the AI assistant reads every session
+├── README.md              the map of the repo
+├── knowledge/             source-of-truth facts
+│   ├── audience/          ICP, personas, how profiles are scored
+│   ├── brand/             voice, positioning, differentiation, proof
+│   └── messaging/         value props, objections, competitor notes
+├── playbooks/             repeatable procedures, one folder per area
+│   ├── linkedin-engagement/
+│   │   ├── daily-run.md
+│   │   ├── commenting/
+│   │   └── connection-requests/
+│   ├── email-outreach/    sequences, deliverability rules, replies
+│   └── reporting/         weekly and monthly review
+├── tracking/              log schemas, KPI definitions, reports
+├── scripts/               small, durable automation (log, report)
+├── templates/             reusable briefs and formats
+├── skills/                reusable AI skill instructions (approved only)
+├── campaigns/             approved campaign plans and retros
+├── experiments/           approved tests: hypothesis, result, decision
+├── projects/              deliverables: pages, content, assets
+├── assets/                small assets and links to larger storage
+├── archive/               retired material
+└── _personal/             ignored local context (never committed)</pre>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Folder</th><th>What goes in</th><th>Status in my repo</th></tr></thead>
+      <tbody>
+        <tr><td><code>knowledge/audience</code></td><td>ICP, scoring, targeting signals</td><td><span class="badge live">Built</span></td></tr>
+        <tr><td><code>knowledge/brand</code></td><td>Voice, portfolio and proof</td><td><span class="badge live">Built</span></td></tr>
+        <tr><td><code>playbooks/linkedin-engagement</code></td><td>Daily run, commenting, connection requests</td><td><span class="badge live">Built</span></td></tr>
+        <tr><td><code>tracking/linkedin</code></td><td>Log fields and the weekly report</td><td><span class="badge live">Built</span></td></tr>
+        <tr><td><code>scripts/linkedin</code></td><td>Create fields, log a contact, report</td><td><span class="badge live">Built</span></td></tr>
+        <tr><td><code>playbooks/email-outreach</code></td><td>Sequences, copy rules, deliverability</td><td><span class="badge plan">Pattern</span></td></tr>
+        <tr><td><code>knowledge/messaging</code></td><td>Value props, objections, competitors</td><td><span class="badge plan">Pattern</span></td></tr>
+        <tr><td><code>campaigns</code>, <code>experiments</code></td><td>Approved plans and tests</td><td><span class="badge plan">Pattern</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">Two rules keep it tidy: no files for temporary analysis or brainstorming (that stays in chat), and large files and exports are linked to, not committed.</p>
+
+  <h2 id="foundations">ICP, positioning, differentiation, voice</h2>
+  <p>These four files are the core. Write them before any outreach, because every message depends on them.</p>
+  <h3>The ICP</h3>
+  <p>Who you target and how you decide, written as a rule and not a feeling. In my repo it names two groups (senior marketing leaders, and founders), company fit in tiers (B2B SaaS first, D2C and B2C second), regions, and a score out of ten with a decision rule: 7 or more connect, 5 to 6 comes to me, 4 or less skip. It also lists who to always skip, such as agencies selling the same service.</p>
+  <h3>Positioning</h3>
+  <p>One clear sentence on what you are for and who, plus the reasons it is true. Positioning in the repo is not a slogan. It is the reference every message is checked against: if a line does not fit the positioning, it does not go out.</p>
+  <h3>Differentiation</h3>
+  <p>What makes you different from the three alternatives a buyer actually considers: doing nothing, doing it themselves, or hiring someone else. Written as a short table, it keeps messaging honest and stops you claiming things you cannot show.</p>
+  <h3>Voice</h3>
+  <p>How you sound, with examples of good and bad. Mine has three traits (genuine, to the point, giving) and rules such as "appreciate first, talk about yourself later". It is built from real writing, not adjectives.</p>
+  <div class="note">Why files and not a deck: the AI assistant reads them directly, so the same ICP and voice shape every draft, and you can change a rule once and see it applied everywhere.</div>
+
+  <h2 id="linkedin">LinkedIn outreach playbooks</h2>
+  <span class="badge live">Built and running</span>
+  <p>This is the part I have built and run. It is split by activity, because each has different rules.</p>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><div><h4>Daily run</h4><p>Five people a day. Find a relevant post, draft a short comment, review it, post it, then send a request. Counted from the log, not from memory.</p></div></div>
+    <div class="step"><div class="n">02</div><div><h4>Commenting</h4><p>Which posts to pick (marketing content or achievements), and how to write a comment: short, plain, genuine, nothing about you.</p></div></div>
+    <div class="step"><div class="n">03</div><div><h4>Connection requests</h4><p>Hard gates before any request, the scoring rule, how to write a note, cooldowns, and the follow-up after someone accepts.</p></div></div>
+    <div class="step"><div class="n">04</div><div><h4>Batch preparation and the review gate</h4><p>A scheduled task prepares the next batch without posting anything. No new batch is created until the last one is reviewed.</p></div></div>
+  </div>
+  <p>I wrote the full story of this system on its own page: <a class="inline" href="ai-gtm-system.html">how I built the LinkedIn growth system</a>.</p>
+
+  <h2 id="email">Email outreach playbooks</h2>
+  <span class="badge plan">The pattern, not live in my repo</span>
+  <p>I have not built or run email outreach in my own repo yet, so I will not claim results. This is how the same structure would carry it, and it is the layout I would set up for a team that wants it.</p>
+  <ul>
+    <li><strong>Who gets emailed.</strong> The same ICP and scoring as LinkedIn. One definition of a good lead, used everywhere.</li>
+    <li><strong>One channel at a time per person.</strong> A rule that stops the same prospect getting a LinkedIn touch and a sequence on the same day.</li>
+    <li><strong>Copy rules.</strong> Length, tone and what is banned, taken from the voice file. Sequences are written as files, reviewed, and versioned.</li>
+    <li><strong>Deliverability rules.</strong> Sending limits, warm-up, verified addresses only, and when to stop. These are the things that quietly damage a domain if nobody owns them.</li>
+    <li><strong>Reply handling.</strong> Which replies need a human, which stop the sequence, and how outcomes are logged.</li>
+    <li><strong>An approval step.</strong> The same review gate: nothing is added to a live sequence until a person approves the copy and the list.</li>
+  </ul>
+
+  <h2 id="tools">How it connects to your tools</h2>
+  <p>The principle is simple: <strong>the repo defines the rules, the assistant applies them, the tools execute and store.</strong> Results flow back into a log, the log produces a report, and the report changes the rules.</p>
+  <div class="flow">
+    <div class="node"><b>Repo</b>ICP, voice, rules</div>
+    <div class="node"><b>Assistant</b>reads, drafts</div>
+    <div class="node"><b>Review</b>a person approves</div>
+    <div class="node"><b>Tools</b>send and store</div>
+    <div class="node"><b>Log</b>CRM record</div>
+    <div class="node"><b>Report</b>what worked</div>
+  </div>
+  <p class="muted">The report feeds back into the repo: findings become rule changes, with a commit explaining why.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>System</th><th>Its role</th><th>What stays in the repo</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Claude</td><td>Reads the rules, researches profiles, drafts, and operates the browser</td><td>The rules it follows, written down</td><td><span class="badge live">Live</span></td></tr>
+        <tr><td>Chrome and LinkedIn</td><td>Where posts are read, comments posted and requests sent</td><td>Gates, caps, voice, stop rules</td><td><span class="badge live">Live</span></td></tr>
+        <tr><td>Brevo</td><td>The log: one contact per person with fields for fit, comment, request and dates</td><td>The field definitions and the script that writes them</td><td><span class="badge live">Live</span></td></tr>
+        <tr><td>GitHub</td><td>History and backup for every rule change</td><td>Everything</td><td><span class="badge live">Live</span></td></tr>
+        <tr><td>Lemlist (or similar)</td><td>Runs email sequences and tracks sends, opens and replies</td><td>ICP, copy rules, sequences as files, deliverability limits</td><td><span class="badge plan">Pattern</span></td></tr>
+        <tr><td>HubSpot (or another CRM)</td><td>Source of truth for contacts, deals and pipeline stages</td><td>Field definitions, stage definitions, sync rules</td><td><span class="badge plan">Pattern</span></td></tr>
+        <tr><td>Other sales systems</td><td>Enrichment, dialers, data providers</td><td>Which fields they may write, and what needs approval</td><td><span class="badge plan">Pattern</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>Three ways a tool connects</h3>
+  <ul>
+    <li><strong>Through a script.</strong> A small, reviewed script writes to the tool's API (this is how my Brevo log works). The script is in the repo, so you can read exactly what it does.</li>
+    <li><strong>Through the browser.</strong> The assistant operates a tool's own interface under your account, with verification and approval. This is how LinkedIn is handled.</li>
+    <li><strong>Through exports.</strong> Where there is no safe API access, exports are reviewed by a person and kept out of the repo.</li>
+  </ul>
+  <p>The same split applies to any CRM: the repo says what a field means and who may write it, and the CRM holds the actual records. Personal data stays in the tools, never in the repo.</p>
+
+  <h2 id="guardrails">Guardrails and governance</h2>
+  <p>When an AI assistant can act in your accounts, the rules about what it may do are as important as the rules about what it should write.</p>
+  <div class="cards">
+    <div class="card"><h4>Account separation</h4><p>Personal and company accounts stay apart. The assistant verifies which account is signed in before any action.</p></div>
+    <div class="card"><h4>Human approval</h4><p>Posts, sends and list changes wait for a person. Automation is switched on later, deliberately.</p></div>
+    <div class="card"><h4>Caps and cooldowns</h4><p>Daily limits and wait times between touches, counted from the log.</p></div>
+    <div class="card"><h4>Secrets stay out</h4><p>Keys live in one ignored file and are never printed or committed.</p></div>
+    <div class="card"><h4>Stop conditions</h4><p>Any warning, verification prompt or unexpected account stops the run.</p></div>
+    <div class="card"><h4>No personal data in Git</h4><p>Contact lists, exports and drafts with names stay local or in the CRM.</p></div>
+  </div>
+
+  <h2 id="tracking">Tracking and reporting</h2>
+  <p>If the work is not logged, it cannot be improved. The repo defines the log: what fields exist, what they mean, and when each one is written. A small script produces a weekly report from the log.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Measure</th><th>How it is calculated</th><th>What it tells you</th></tr></thead>
+      <tbody>
+        <tr><td>Comments and requests per week</td><td>Count by date</td><td>Whether the routine is actually happening</td></tr>
+        <tr><td>Acceptance rate</td><td>Accepted divided by sent</td><td>Whether the right people are being reached, and how</td></tr>
+        <tr><td>Note vs blank request</td><td>Acceptance rate for each</td><td>Whether personalised notes earn their quota</td></tr>
+        <tr><td>Reply rate</td><td>Replies divided by accepted</td><td>Whether follow-ups start conversations</td></tr>
+        <tr><td>Meetings booked</td><td>Count, by source</td><td>The outcome the whole system exists for</td></tr>
+        <tr><td>Pipeline sourced</td><td>Deal value from logged contacts (from the CRM)</td><td>Whether the activity turns into revenue</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">The first three are measured in my repo today. Meetings and pipeline come from the CRM, and I have not wired those in yet.</p>
+
+  <h2 id="effectiveness">Effectiveness and outcomes</h2>
+  <p>This is the section I want to be most careful with, because it is where growth write-ups usually over-claim.</p>
+  <h3>What I can say honestly today</h3>
+  <ul>
+    <li>The system is running and logging. The routine, the rules and the report exist and work.</li>
+    <li>It is early. I have not drawn conclusions about conversion, and I will publish numbers here as they come in rather than promise any.</li>
+    <li>The clearest early gains are about <strong>process</strong>: consistent targeting, consistent voice, a record of every action, and review before anything is sent.</li>
+  </ul>
+  <h3>What it should improve, and how to check</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Outcome</th><th>Where to look</th><th>When to judge it</th></tr></thead>
+      <tbody>
+        <tr><td>Time spent on prospecting admin</td><td>Hours per week before and after</td><td>First month</td></tr>
+        <tr><td>Consistency of outreach</td><td>Comments and requests per week in the report</td><td>First month</td></tr>
+        <tr><td>Quality of targeting</td><td>Acceptance rate by segment</td><td>Weeks 4 to 8</td></tr>
+        <tr><td>Conversation quality</td><td>Reply rate and meetings</td><td>Weeks 8 to 12</td></tr>
+        <tr><td>Revenue impact</td><td>Pipeline sourced from logged contacts</td><td>A full sales cycle</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note">A fair test: run it for a quarter, with the same ICP, and compare against your previous quarter's outreach. If the numbers do not move, the repo still gave you a clear record of why.</div>
+
+  <h2 id="setup">How to set one up</h2>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><div><h4>Create the repo</h4><p>A private Git repository. Add a short README (the map) and a <code>CLAUDE.md</code> (the rules the assistant follows).</p></div></div>
+    <div class="step"><div class="n">02</div><div><h4>Set the ground rules first</h4><p>An ignore file for secrets and local data, a note on which accounts may be used, and the rule that active work lives in only a few folders.</p></div></div>
+    <div class="step"><div class="n">03</div><div><h4>Write the ICP</h4><p>Groups, company fit, regions, a score and a decision rule, and who to always skip.</p></div></div>
+    <div class="step"><div class="n">04</div><div><h4>Write positioning, differentiation and voice</h4><p>From real material: your site, calls, past emails. Include good and bad examples.</p></div></div>
+    <div class="step"><div class="n">05</div><div><h4>Choose the log</h4><p>Pick the CRM that will hold the record, and define the fields before you write any data.</p></div></div>
+    <div class="step"><div class="n">06</div><div><h4>Write the first playbook</h4><p>Start with one channel. Write the daily routine, the gates, the caps and the stop rules.</p></div></div>
+    <div class="step"><div class="n">07</div><div><h4>Dry run</h4><p>Run it on real profiles or leads with nothing sent. Edit the rules from what you see.</p></div></div>
+    <div class="step"><div class="n">08</div><div><h4>Approval phase</h4><p>Review everything before it goes out. Track edits, and use them to improve the rules.</p></div></div>
+    <div class="step"><div class="n">09</div><div><h4>Add the report</h4><p>A weekly report from the log. Read it every week and change one thing at a time.</p></div></div>
+    <div class="step"><div class="n">10</div><div><h4>Add the next channel</h4><p>Email, then lifecycle or events. Each gets its own playbook folder and reuses the same ICP and voice.</p></div></div>
+  </div>
+
+  <h2 id="lessons">Mistakes to avoid</h2>
+  <div class="cards">
+    <div class="card"><h4>Copying a template</h4><p>My first outreach rules produced forced, template-sounding notes. Rules written from your own voice beat a borrowed template.</p></div>
+    <div class="card"><h4>Ignoring platform limits</h4><p>LinkedIn's free tier allowed only five personalised notes a month. Check limits early and design around them.</p></div>
+    <div class="card"><h4>Secrets in screenshots</h4><p>An API key appeared in a screenshot and had to be replaced. Keep keys in one ignored file and never show them on screen.</p></div>
+    <div class="card"><h4>A missing ignore rule</h4><p>Local files with people's names almost went to GitHub. Set the ignore rules before you create any data.</p></div>
+    <div class="card"><h4>Trusting a default</h4><p>The default browser was signed in as someone else's account. Always verify the account before acting, never assume.</p></div>
+    <div class="card"><h4>Padding the quota</h4><p>Some days there are fewer than five good targets. Doing fewer beats filling the quota with weak matches.</p></div>
+  </div>
+
+  <h2 id="deploy">Setting one up for your team</h2>
+  <p>If you want a growth repo set up for your team, I would start with a working session on your ICP and voice, then build the structure around the channel you care about most. The phases and the review gate are the same as for any team: define, build, dry run, approve, then run daily. You stay in control of your accounts, your voice and your data.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Customised per team</th><th>Stays the same</th></tr></thead>
+      <tbody>
+        <tr><td>ICP, regions, scoring weights</td><td>Hard gates before any action</td></tr>
+        <tr><td>Voice, positioning, differentiation</td><td>Human review before anything is sent</td></tr>
+        <tr><td>Which channels and which tools</td><td>Everything logged, reported weekly</td></tr>
+        <tr><td>Volumes and who approves</td><td>Caps, cooldowns and stop-on-warning rules</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="faq">Questions</h2>
+  <details><summary>Do I need to be technical?</summary><p>No. The repo is text files, and the assistant does the technical parts. You need to be able to read and edit documents, and to review what it proposes.</p></details>
+  <details><summary>Does this replace my CRM or email tool?</summary><p>No. Your tools keep their jobs. The repo holds the rules and the definitions they should follow.</p></details>
+  <details><summary>Is it only for LinkedIn?</summary><p>No. LinkedIn is the channel I built first. The structure carries email, lifecycle and events the same way, each with its own playbook folder.</p></details>
+  <details><summary>Have you connected Lemlist and HubSpot?</summary><p>Not in my own repo. Brevo and the browser are live. Lemlist and HubSpot are shown as the pattern for how the repo would connect, and I would build and test that with you before relying on it.</p></details>
+  <details><summary>What results can I expect?</summary><p>It is early, and I would rather show numbers than promise them. The reliable gains are consistency, a record of everything, and review before anything goes out. Conversion results need a few months of data.</p></details>
+  <details><summary>Is it safe for my accounts?</summary><p>Platforms limit automated activity and no tool can guarantee an account is never restricted. A growth repo keeps volume low, requires approval, verifies the account and stops on warnings, which lowers the risk but does not remove it.</p></details>
+
+  <div class="cta">
+    <h2>Want a growth repo for your team?</h2>
+    <p>Tell me who you sell to and which channels matter. I will tell you honestly what is worth building first.</p>
+    <a class="btn" href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call &rarr;</a>
+    <a class="btn ghost" href="ai-gtm-system.html">Read the LinkedIn build</a>
+  </div>
+
+</div>
+</main>
+
+<footer>Parth Dave &mdash; Growth &amp; GTM Marketing</footer>
+</body>
+</html>

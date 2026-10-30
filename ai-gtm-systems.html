@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI GTM systems: practical builds for consistent marketing and sales — Parth Dave</title>
+<meta name="description" content="Practical write-ups of AI-assisted go-to-market systems: how they are built, the guardrails, what is live, and what each has and has not proven yet.">
+<meta property="og:title" content="AI GTM systems: practical builds for consistent marketing and sales">
+<meta property="og:description" content="Build logs and guides on AI-assisted go-to-market systems, including what went wrong.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF6EF;
+    --surface: #FFFFFF;
+    --accent: #4B2A8C;
+    --accent-light: #F1ECFA;
+    --accent-tint: #E8E0F5;
+    --ink: #1C1A17;
+    --muted: #5A5650;
+    --border: #E8E2D9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  nav {
+    position: sticky; top: 0; height: 64px;
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+    z-index: 100; display: flex; align-items: center;
+  }
+  nav .wrap { display: flex; justify-content: space-between; align-items: center; }
+  nav a { font-weight: 600; font-size: 16px; text-decoration: none; color: var(--ink); }
+  nav a:hover { color: var(--accent); }
+  nav .links { display: flex; gap: 24px; font-size: 14px; }
+  .wrap { max-width: 820px; width: 100%; margin: 0 auto; padding: 0 24px; }
+  @media (max-width: 390px) { .wrap { padding: 0 16px; } }
+  main { padding: 48px 0 64px; }
+  @media (max-width: 768px) { main { padding-top: 32px; } }
+
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px; margin-bottom: 24px;
+  }
+  .back-link:hover { text-decoration: underline; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .tag-row span {
+    display: inline-block; padding: 4px 10px; border-radius: 999px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .tag-row .primary { background-color: var(--accent); color: #fff; }
+  .tag-row .secondary { background-color: var(--accent-tint); color: var(--accent); }
+
+  h1.headline {
+    font-family: 'Fraunces', Georgia, serif; font-size: 46px; font-weight: 600;
+    line-height: 1.12; margin-bottom: 20px;
+  }
+  @media (max-width: 768px) { h1.headline { font-size: 31px; } }
+  .lede { font-size: 20px; color: var(--muted); line-height: 1.55; margin-bottom: 32px; }
+  @media (max-width: 768px) { .lede { font-size: 18px; } }
+
+  h2 {
+    font-family: 'Fraunces', Georgia, serif; font-size: 30px; font-weight: 600;
+    line-height: 1.2; margin: 64px 0 16px;
+  }
+  @media (max-width: 768px) { h2 { font-size: 24px; margin-top: 48px; } }
+  h3 { font-size: 18px; font-weight: 600; margin: 28px 0 8px; }
+  p { margin-bottom: 16px; }
+  p.muted, .muted { color: var(--muted); }
+  ul, ol { margin: 0 0 16px 22px; }
+  li { margin-bottom: 8px; }
+  strong { font-weight: 600; }
+  a.inline { color: var(--accent); }
+
+  .glance {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 8px 24px; margin-bottom: 32px;
+  }
+  .glance dl { display: grid; grid-template-columns: 150px 1fr; }
+  .glance dt, .glance dd { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .glance dt { font-weight: 600; font-size: 14px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
+  .glance dd { color: var(--ink); font-size: 16px; }
+  .glance dt:last-of-type, .glance dd:last-of-type { border-bottom: none; }
+  @media (max-width: 600px) {
+    .glance dl { grid-template-columns: 1fr; }
+    .glance dt { padding-bottom: 0; border-bottom: none; }
+  }
+
+  .toc { background: var(--accent-light); border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; }
+  .toc h4 { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .toc ol { margin: 0 0 0 20px; columns: 2; column-gap: 32px; font-size: 15px; }
+  .toc li { margin-bottom: 4px; break-inside: avoid; }
+  .toc a { color: var(--ink); text-decoration: none; }
+  .toc a:hover { color: var(--accent); text-decoration: underline; }
+  @media (max-width: 600px) { .toc ol { columns: 1; } }
+
+  .callout {
+    border-left: 3px solid var(--accent); padding-left: 24px; margin: 28px 0;
+    font-family: 'Fraunces', Georgia, serif; font-style: italic; font-size: 20px; line-height: 1.55;
+  }
+  @media (max-width: 768px) { .callout { font-size: 18px; } }
+
+  .steps { margin: 20px 0 8px; }
+  .step {
+    display: grid; grid-template-columns: 48px 1fr; gap: 20px;
+    padding: 22px 0; border-bottom: 1px solid var(--border);
+  }
+  .step:first-child { border-top: 1px solid var(--border); }
+  .step .n { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 18px; color: var(--accent); padding-top: 2px; }
+  .step h4 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+  .step p { font-size: 16px; color: var(--muted); margin: 0; }
+
+  .table-wrap { overflow-x: auto; margin: 16px 0 24px; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { background: var(--accent-light); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+  tr:last-child td { border-bottom: none; }
+  td.hl, th.hl { background: #FBF8FF; font-weight: 600; }
+  @media (max-width: 768px) { table { font-size: 14px; } }
+
+  pre.tree {
+    background: #1C1A17; color: #F3EFF8; border-radius: 10px; padding: 18px 20px;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 13.5px; line-height: 1.6;
+    overflow-x: auto; margin: 16px 0 24px;
+  }
+
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0 24px; }
+  @media (max-width: 700px) { .pair { grid-template-columns: 1fr; } }
+  .pair .box { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; font-size: 15px; }
+  .pair .box .lbl { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .pair .good .lbl { color: #1F7A4D; }
+  .pair .bad .lbl { color: #B0382E; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin: 16px 0 24px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+  .card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .card p { font-size: 15px; color: var(--muted); margin: 0; }
+
+  details { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; }
+  summary { cursor: pointer; font-weight: 600; font-size: 16px; }
+  details p { margin: 10px 0 0; color: var(--muted); font-size: 16px; }
+
+  .note { background: var(--accent-light); border-radius: 10px; padding: 14px 18px; font-size: 15px; color: var(--muted); margin: 16px 0 24px; }
+
+  .cta {
+    background: var(--ink); color: #F3EFF8; border-radius: 14px; padding: 36px 32px; margin-top: 64px;
+  }
+  .cta h2 { color: #fff; margin: 0 0 12px; font-size: 28px; }
+  .cta p { color: #C9C3D6; }
+  .cta .btn {
+    display: inline-block; background: #F3EFF8; color: #15121E; padding: 12px 22px;
+    border-radius: 999px; font-weight: 700; font-size: 15px; text-decoration: none; margin-right: 12px; margin-top: 8px;
+  }
+  .cta .btn.ghost { background: transparent; color: #F3EFF8; border: 1px solid #5A4A8A; }
+
+  footer { text-align: center; color: var(--muted); font-size: 14px; padding: 32px 16px 48px; border-top: 1px solid var(--border); background: var(--surface); }
+  .hero-img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--border); margin: 0 0 32px; }
+
+  .wrap { max-width: 1040px; }
+  h1.headline { max-width: 900px; }
+  .lede { max-width: 760px; }
+  .principles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 8px 0 8px; }
+  @media (max-width: 860px) { .principles { grid-template-columns: 1fr; } }
+  .principles .card { padding: 18px 20px; }
+  .articles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin: 8px 0; }
+  @media (max-width: 860px) { .articles { grid-template-columns: 1fr; } }
+  .article { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; text-decoration: none; color: var(--ink); transition: border-color .15s, transform .15s, box-shadow .15s; }
+  .article:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 14px 32px rgba(28,26,23,0.10); }
+  .article .thumb { background: var(--accent-light); border-bottom: 1px solid var(--border); }
+  .article .thumb img { display: block; width: 100%; height: auto; aspect-ratio: 1200 / 630; object-fit: cover; transition: transform .3s; }
+  .article:hover .thumb img { transform: scale(1.02); }
+  .article .thumb { overflow: hidden; }
+  .article .body { display: flex; flex-direction: column; flex: 1; padding: 22px 24px 24px; }
+  .article .tag-row { margin-bottom: 12px; }
+  .article h3 { font-family: 'Fraunces', Georgia, serif; font-size: 23px; line-height: 1.28; font-weight: 600; margin: 0 0 10px; }
+  .article p { color: var(--muted); font-size: 15.5px; line-height: 1.55; margin: 0 0 18px; }
+  .article .meta { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-top: 14px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted); }
+  .article .go { color: var(--accent); font-weight: 700; font-size: 14px; white-space: nowrap; }
+  @media (max-width: 768px) { .article h3 { font-size: 20px; } .article .body { padding: 18px 18px 20px; } }
+  .soon { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 12px 0 8px; }
+  @media (max-width: 860px) { .soon { grid-template-columns: 1fr; } }
+  .soon-item { display: flex; flex-direction: column; gap: 8px; padding: 20px 22px; border: 1px dashed #C9BFAE; border-radius: 14px; background: rgba(255,255,255,0.45); }
+  .soon-item .badge-plan { align-self: flex-start; display: inline-block; padding: 3px 9px; border-radius: 999px; background: #FFF1D6; color: #8A5A00; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .soon-item h4 { font-family: 'Fraunces', Georgia, serif; font-size: 18px; line-height: 1.3; font-weight: 600; margin: 0; }
+  .soon-item p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="name" href="index.html">Parth Dave</a>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+  <a class="back-link" href="index.html">&larr; Back to home</a>
+  <div class="tag-row"><span class="primary">Library</span><span class="secondary">AI-powered GTM</span></div>
+  <h1 class="headline">AI GTM systems: practical builds that make marketing and sales consistent, reviewable and on-brand.</h1>
+  <p class="lede">Write-ups of the go-to-market systems I design and run with AI. Each one covers what it does, how it is built, the guardrails around it, what is live, and what it has and has not proven yet.</p>
+
+  <div class="principles">
+    <div class="card"><h4>Real builds</h4><p>Systems I actually run, shown with the files, the rules and the mistakes.</p></div>
+    <div class="card"><h4>Honest status</h4><p>Every piece says what is live and what is only the pattern. No invented results.</p></div>
+    <div class="card"><h4>Reusable</h4><p>Each article ends with how a founder or sales team could set up the same thing.</p></div>
+  </div>
+
+  <h2 style="margin-top:44px">Articles</h2>
+  <div class="articles">
+
+    <a class="article" href="growth-repo.html">
+      <div class="thumb"><img src="images/growth-repo-cover.svg" alt="A growth repo folder tree connected to the tools it feeds" loading="lazy"></div>
+      <div class="body">
+        <div class="tag-row"><span class="primary">Guide</span><span class="secondary">Start here</span></div>
+        <h3>Build a growth repo so your AI marketing and sales stays on-ICP, on-voice and on the record</h3>
+        <p>Why a repo matters in the AI era, what changes with and without one, the folders, the ICP, positioning and voice files, outreach playbooks, and how it connects to your tools.</p>
+        <div class="meta"><span>About 17 min read</span><span class="go">Read the guide &rarr;</span></div>
+      </div>
+    </a>
+
+    <a class="article" href="ai-gtm-system.html">
+      <div class="thumb"><img src="images/linkedin-system-cover.svg" alt="The LinkedIn system loop: find, draft, review, engage and log" loading="lazy"></div>
+      <div class="body">
+        <div class="tag-row"><span class="primary">Build log</span><span class="secondary">LinkedIn</span></div>
+        <h3>I built a LinkedIn growth system with Claude. Here is exactly how it works.</h3>
+        <p>The full build from an empty folder: ICP scoring, the voice file, guardrails, the CRM log, the daily review gate, and what went wrong along the way.</p>
+        <div class="meta"><span>About 13 min read</span><span class="go">Read the build log &rarr;</span></div>
+      </div>
+    </a>
+
+  </div>
+
+  <h2>Coming next</h2>
+  <p class="muted">Planned, not published yet.</p>
+  <div class="soon">
+    <div class="soon-item"><span class="badge-plan">Planned</span><h4>Email outreach playbook</h4><p>Sequence rules, deliverability limits and the review step before anything goes live.</p></div>
+    <div class="soon-item"><span class="badge-plan">Planned</span><h4>Connecting a growth repo to HubSpot and Lemlist</h4><p>What lives in the repo, what lives in the tool, and how they stay in sync.</p></div>
+    <div class="soon-item"><span class="badge-plan">Planned</span><h4>The weekly report, and what to change first</h4><p>How to read acceptance, reply and meeting rates, and turn them into rule changes.</p></div>
+  </div>
+
+  <div class="cta">
+    <h2>Want a system like this for your team?</h2>
+    <p>Tell me who you sell to and which channels matter. I will tell you honestly what is worth building first.</p>
+    <a class="btn" href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call &rarr;</a>
+    <a class="btn ghost" href="index.html">Back to home</a>
+  </div>
+
+</div>
+</main>
+
+<footer>Parth Dave &mdash; Growth &amp; GTM Marketing</footer>
+</body>
+</html>
