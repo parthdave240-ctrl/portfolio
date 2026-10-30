@@ -189,11 +189,11 @@
   <div class="glance">
     <dl>
       <dt>What it does</dt>
-      <dd>Finds relevant posts by people who fit my ideal customer profile, drafts a short comment for each, and after I approve, comments and sends a connection request. Every step is logged and reported weekly.</dd>
+      <dd>Finds relevant posts by people who fit my ideal customer profile, reads their profiles, drafts a short comment for each, then comments, sends a connection request and follows up once they accept. Every step is logged and reported weekly.</dd>
       <dt>Built with</dt>
       <dd>Claude (reads profiles, drafts, operates the browser), Chrome, Brevo as the log, and a Git repo of plain-text rules.</dd>
       <dt>Human in the loop</dt>
-      <dd>I approve, edit or reject every comment before it is posted. Nothing goes out on its own.</dd>
+      <dd>Approval is a setting, not a rule of the system. You can review every comment before it is posted, or let the system act within a daily cap. In my own run I approve, edit or reject every comment today.</dd>
       <dt>Built for</dt>
       <dd>Founders doing their own sales, sales teams that want warmer outreach, and marketing leaders who want a consistent LinkedIn presence.</dd>
       <dt>Status</dt>
@@ -214,6 +214,7 @@
       <li><a href="#guardrails">Guardrails</a></li>
       <li><a href="#log">The log and the report</a></li>
       <li><a href="#batch">The daily batch and review gate</a></li>
+      <li><a href="#results">Results and what is next</a></li>
       <li><a href="#lessons">What went wrong</a></li>
       <li><a href="#who">Who it is useful for</a></li>
       <li><a href="#deploy">Deploying it for your team</a></li>
@@ -234,11 +235,25 @@
     <div class="step"><div class="n">01</div><div><h4>Find</h4><p>Recent posts by people who fit the ICP, in the right regions. Marketing or growth content, or an achievement worth congratulating.</p></div></div>
     <div class="step"><div class="n">02</div><div><h4>Read and score</h4><p>Claude reads the post and the author's profile (read-only), then scores the person out of ten against the ICP. Hard gates come first: if they fail, the person is skipped.</p></div></div>
     <div class="step"><div class="n">03</div><div><h4>Draft</h4><p>One short comment in my voice. Genuine, specific, nothing about me, no links.</p></div></div>
-    <div class="step"><div class="n">04</div><div><h4>Review</h4><p>I see the post, the person and the draft. I approve, edit, or reject each one.</p></div></div>
-    <div class="step"><div class="n">05</div><div><h4>Engage</h4><p>Approved comments are posted. Later, after looking at the profile again, a blank connection request goes out, spaced through the day.</p></div></div>
+    <div class="step"><div class="n">04</div><div><h4>Review (optional)</h4><p>I see the post, the person and the draft. I approve, edit, or reject each one. This gate can be kept on for every item or relaxed once you trust the drafts.</p></div></div>
+    <div class="step"><div class="n">05</div><div><h4>Engage</h4><p>The comment is posted, either by Claude in the browser or by you. Later, after looking at the profile again, a blank connection request goes out, spaced through the day.</p></div></div>
     <div class="step"><div class="n">06</div><div><h4>Log</h4><p>The comment, the post, the dates, and the request are recorded in a CRM-style log. Nothing is kept in anyone's head.</p></div></div>
-    <div class="step"><div class="n">07</div><div><h4>Follow up</h4><p>When someone accepts, a short, warm message goes out with my portfolio as something that might be useful. No pitch, no ask.</p></div></div>
+    <div class="step"><div class="n">07</div><div><h4>Follow up</h4><p>When someone accepts, a short, warm message goes out with my portfolio as something that might be useful. No pitch, no ask. It can be sent after you approve the wording, or sent directly.</p></div></div>
   </div>
+  <p>The five stages are connected on purpose. Research, qualification, messaging and tracking are not four separate activities in four different tools.</p>
+  <h3>How much you hand over is your choice</h3>
+  <p>Commenting, reviewing a profile, sending a request and following up can each be handled in whichever way suits you. The same rules apply in all three set-ups.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Set-up</th><th>What the system does</th><th>What you do</th></tr></thead>
+      <tbody>
+        <tr><td>Prepare only</td><td>Finds, scores and drafts. Logs the research.</td><td>Posts the comment and sends the request yourself.</td></tr>
+        <tr><td>Approve, then act</td><td>Drafts, then posts and sends once you approve each item.</td><td>Reviews every comment and follow-up.</td></tr>
+        <tr><td>Act within caps</td><td>Posts and sends on its own, inside the daily cap, gates and stop rules.</td><td>Reads the log and the weekly report, and changes the rules.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">I started with approve-then-act and recommend anyone does. Moving to the next set-up is a deliberate change to the rulebook, not a default.</p>
 
   <h2 id="foundation">The foundation: a repo of rules</h2>
   <p>The first thing I built was not a script. It was a folder of plain-text files that explain the whole system in words: who to target, how to sound, what is off limits, and what the daily routine is. Claude reads these at the start of every session. A file called <strong>CLAUDE.md</strong> is the rulebook.</p>
@@ -256,7 +271,8 @@
 ├── tracking/linkedin/        log schema, weekly report
 ├── scripts/linkedin/         create fields, log a contact, report
 └── projects/ templates/ skills/ campaigns/ experiments/ archive/</pre>
-  <p>Why plain files in a Git repo? They are readable by anyone on a team, every change is versioned, and nothing is locked inside a tool. If the AI changes, the rules stay.</p>
+  <p>I separated the strategy from the execution. The AI helps carry out the process, but the repo holds the decisions behind it: who to target, what to say, what not to do, and when to stop. It also means I never re-explain my ICP and positioning at the start of a new task.</p>
+  <p>Why plain files in a Git repo? They are readable by anyone on a team, every change is versioned, and nothing is locked inside a tool. The model can change. The growth strategy does not have to.</p>
 
   <h2 id="icp">The ICP</h2>
   <p>A system is only as good as who it points at. I wrote the ideal customer profile before anything else.</p>
@@ -340,10 +356,11 @@
     <div class="step"><div class="n">02</div><div><h4>Verify before every action</h4><p>Before anything on LinkedIn, it confirms the signed-in account is mine. If not, it stops.</p></div></div>
     <div class="step"><div class="n">03</div><div><h4>Secrets stay secret</h4><p>API keys live in one ignored file. They are never printed, logged, or committed.</p></div></div>
     <div class="step"><div class="n">04</div><div><h4>A daily cap</h4><p>Five people a day, counted from the log, not from memory.</p></div></div>
-    <div class="step"><div class="n">05</div><div><h4>Human approval</h4><p>Comments are approved before they are posted. Automation is something I can switch on later, not a starting point.</p></div></div>
+    <div class="step"><div class="n">05</div><div><h4>Approval you can turn on or off</h4><p>Comments can be approved before they are posted. I started with approval on, and moving to less review is a deliberate change, never the starting point.</p></div></div>
     <div class="step"><div class="n">06</div><div><h4>Stop on warnings</h4><p>Any CAPTCHA, verification prompt, or warning from LinkedIn stops the run. It never tries to get around one.</p></div></div>
     <div class="step"><div class="n">07</div><div><h4>Nothing about me, nothing pushy</h4><p>The first touch contains no pitch, no link, and no ask. The portfolio only appears after someone accepts.</p></div></div>
     <div class="step"><div class="n">08</div><div><h4>Privacy</h4><p>Raw profile text and personal details are not stored. Local batch files stay off GitHub.</p></div></div>
+    <div class="step"><div class="n">09</div><div><h4>Know the platform's rules</h4><p>LinkedIn restricts automated activity, and a review step does not remove those restrictions. Volume stays low and spaced out, and no system can guarantee an account is never restricted. Check LinkedIn's current terms before deciding how much to automate.</p></div></div>
   </div>
 
   <h2 id="log">The log and the report</h2>
@@ -361,11 +378,11 @@
       </tbody>
     </table>
   </div>
-  <p>A weekly report reads this log and shows, week on week: comments, requests sent, accepted, still pending, and the acceptance rate. It also compares requests with a note against blank ones, so the numbers can settle arguments that opinions cannot.</p>
+  <p>A weekly report reads this log and shows, week on week: profiles researched, how many qualified (an ICP score of 7 or more), comments, requests sent, accepted, still pending, and the acceptance rate. It also compares requests with a note against blank ones, so the numbers can settle arguments that opinions cannot.</p>
 
   <h2 id="batch">The daily batch and review gate</h2>
   <p>Each morning a scheduled task is set to prepare the day's batch: five posts, five authors, five draft comments. This preparation is read-only. It never comments, never connects, never reacts.</p>
-  <p>Then comes the rule I like best: <strong>if I have not reviewed yesterday's batch, no new batch is created.</strong> It cannot pile up and it cannot run ahead of me. When I have approved, edited, or rejected every item, the approved ones are posted and the next batch can be prepared. Rejected people are logged as skipped, so they never come back.</p>
+  <p>Then comes the rule I like best: <strong>if I have not reviewed yesterday's batch, no new batch is created.</strong> It cannot pile up and it cannot run ahead of me. When I have approved, edited, or rejected every item, the approved ones are posted and the next batch can be prepared. With approval switched off, the same idea applies: the next batch waits until the last one is logged. Rejected people are logged as skipped, so they never come back.</p>
 
   <h2 id="lessons">What went wrong</h2>
   <p>A build log without mistakes is a brochure. Several of the guardrails above exist because something went wrong.</p>
@@ -377,6 +394,10 @@
     <div class="card"><h4>A missing ignore rule</h4><p>Local batch files with people's names would have been committed to GitHub. It was caught before the first batch and is now ignored.</p></div>
   </div>
 
+  <h2 id="results">Results and what is next</h2>
+  <p>The system is new, so I am not claiming it has produced pipeline or revenue. What I can show today is the operating system itself: how people are found, how they are scored, how comments are written and reviewed, and how every action is recorded.</p>
+  <p>Over the coming weeks I will look at acceptance rates, conversations started, meetings booked and, eventually, pipeline. I will publish those numbers here once there is enough data to mean something.</p>
+
   <h2 id="who">Who it is useful for</h2>
   <h3>Founders</h3>
   <p>Early sales are founder-led, and LinkedIn is usually where the first conversations happen. The system replaces hours of finding people and writing messages with a short daily review, while the founder's voice stays intact.</p>
@@ -384,49 +405,51 @@
   <p>Warm up accounts before outbound lands. Keep a consistent presence in the posts your buyers read. Give sales leaders a record of what was done and a weekly view of what is working, instead of relying on each rep's habits.</p>
   <h3>Marketing leaders</h3>
   <p>Support social selling and account-based plays with steady, human engagement, and measure it.</p>
+  <p>It does not have to stop at LinkedIn. The same thinking carries to lead research and qualification, content workflows, lifecycle marketing and sales operations.</p>
   <h3>What changes, and what does not</h3>
   <div class="table-wrap">
     <table>
       <thead><tr><th>Customised per team</th><th>Stays the same</th></tr></thead>
       <tbody>
         <tr><td>ICP, regions, scoring weights</td><td>Hard gates before any action</td></tr>
-        <tr><td>Voice and comment rules</td><td>Human review before posting</td></tr>
-        <tr><td>CRM or log (here Brevo; it could be HubSpot or another)</td><td>Everything logged, reported weekly</td></tr>
-        <tr><td>Daily volume and who approves</td><td>Daily cap and stop-on-warning rules</td></tr>
+        <tr><td>Voice and comment rules</td><td>Everything logged, reported weekly</td></tr>
+        <tr><td>CRM or log (here Brevo; it could be HubSpot or another)</td><td>Daily cap and stop-on-warning rules</td></tr>
+        <tr><td>Daily volume, and whether approval is on</td><td>Qualification before engagement</td></tr>
       </tbody>
     </table>
   </div>
 
   <h2 id="deploy">Deploying it for your team</h2>
-  <p>If you want a system like this set up for you or your team, this is how I would approach it.</p>
+  <p>If you want a system like this set up for you or your team, I would not start by choosing an AI tool. I would start with the business: who you are trying to reach, what makes a good prospect, what your messaging should say, and which steps need human judgment. Then I would turn those answers into a working system. The tools differ. The thinking does not.</p>
   <h3>What I set up</h3>
   <ul>
     <li>Your ICP and scoring, written down and agreed.</li>
     <li>Your voice file, built from your own writing.</li>
     <li>The rulebook, guardrails, and daily routine.</li>
     <li>A log in your CRM, with the fields and a weekly report.</li>
-    <li>A daily batch with a review gate, so nothing happens without you.</li>
+    <li>A daily batch with a review gate that you can keep on or relax, and your choice of who posts and sends.</li>
   </ul>
   <h3>What I need from you</h3>
   <ul>
     <li>A short working session on who you sell to, and samples of how you write.</li>
     <li>Your own LinkedIn account, signed in on your computer. I do not need your password.</li>
     <li>A CRM or Brevo account for the log.</li>
-    <li>A few minutes a day to review the batch.</li>
+    <li>A few minutes a day to review the batch, if you keep approval on.</li>
   </ul>
   <h3>The phases</h3>
   <ol>
     <li><strong>Define.</strong> ICP, voice, and rules.</li>
     <li><strong>Build.</strong> The repo, the log, and the guardrails.</li>
     <li><strong>Dry run.</strong> Real profiles, nothing sent, until you trust the drafts.</li>
-    <li><strong>Approval phase.</strong> You review every comment before it is posted.</li>
-    <li><strong>Daily batch.</strong> The batch is prepared each morning, and you decide how much to automate over time.</li>
+    <li><strong>Approval phase.</strong> You review every comment before it is posted, and the edits you make improve the rules.</li>
+    <li><strong>Daily batch.</strong> The batch is prepared each morning, and you decide how much to hand over over time.</li>
   </ol>
-  <div class="note">You stay in control throughout: your account, your voice, your approval, your data.</div>
+  <div class="note">You stay in control throughout: your account, your voice, your rules on approval, your data.</div>
 
   <h2 id="faq">Questions</h2>
-  <details><summary>Is this safe for my LinkedIn account?</summary><p>LinkedIn limits automated activity, and no tool can promise an account will never be restricted. This system is deliberately small, spaced out, and human-approved, and it stops on any warning. That lowers the risk, but it does not remove it.</p></details>
+  <details><summary>Is this safe for my LinkedIn account?</summary><p>LinkedIn limits automated activity, and no tool can promise an account will never be restricted. LinkedIn also restricts automated engagement and connection activity, and a human review step does not remove those restrictions. This system is deliberately small, spaced out, and stops on any warning, and you can keep a person doing the posting and sending. That lowers the risk, but it does not remove it.</p></details>
   <details><summary>Do I need LinkedIn Premium?</summary><p>No. I built this on a free account. The free tier limits personalised connection notes to a few a month, so the routine uses comments first and blank requests after.</p></details>
+  <details><summary>Can it run without my approval?</summary><p>Yes, it can be set up that way, inside a daily cap and with the same gates and stop rules. I would still start with approval on, review the edits you make, and relax it only once the drafts earn your trust.</p></details>
   <details><summary>Does it write my posts?</summary><p>No. It engages with other people's posts. Writing your own content is a separate job, and one I would do with you, not automatically.</p></details>
   <details><summary>Does it replace an SDR or a marketer?</summary><p>No. It handles finding, reading, drafting and logging, so a person can spend their time on the conversations that follow.</p></details>
   <details><summary>Which tools does it use?</summary><p>Claude, a Chrome browser, a CRM or Brevo for the log, and a Git repo for the rules. Nothing proprietary.</p></details>
