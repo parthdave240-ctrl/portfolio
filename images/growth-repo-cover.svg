@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="A growth repo folder tree on the left connected by an arrow to the tools it feeds: CRM log, email tool, LinkedIn and weekly report">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F1ECFA"/>
+      <stop offset="1" stop-color="#E8E0F5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1120" cy="60" r="150" fill="#4B2A8C" opacity="0.06"/>
+  <circle cx="60" cy="600" r="120" fill="#4B2A8C" opacity="0.06"/>
+  <g font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="60" y="95" font-size="54" font-weight="700" fill="#4B2A8C">Growth repo</text>
+    <text x="60" y="140" font-size="27" fill="#5A5650">Rules in the repo. Data in your tools.</text>
+  </g>
+  <!-- repo panel -->
+  <rect x="60" y="180" width="500" height="400" rx="20" fill="#1C1A17"/>
+  <circle cx="92" cy="212" r="7" fill="#FF6B6B"/><circle cx="116" cy="212" r="7" fill="#FFC857"/><circle cx="140" cy="212" r="7" fill="#5BD08B"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="27" fill="#F3EFF8">
+    <text x="92" y="276" fill="#A48BFA" font-weight="700">growth-repo/</text>
+    <text x="92" y="322"><tspan fill="#8D87A0">├─ </tspan><tspan fill="#C9B8FF">knowledge/</tspan><tspan fill="#8D87A0" font-size="20">  ICP, voice</tspan></text>
+    <text x="92" y="366"><tspan fill="#8D87A0">├─ </tspan><tspan fill="#C9B8FF">playbooks/</tspan><tspan fill="#8D87A0" font-size="20">  outreach</tspan></text>
+    <text x="92" y="410"><tspan fill="#8D87A0">├─ </tspan><tspan fill="#C9B8FF">tracking/</tspan><tspan fill="#8D87A0" font-size="20">  log, report</tspan></text>
+    <text x="92" y="454"><tspan fill="#8D87A0">├─ </tspan><tspan fill="#C9B8FF">scripts/</tspan><tspan fill="#8D87A0" font-size="20">  automation</tspan></text>
+    <text x="92" y="498"><tspan fill="#8D87A0">└─ </tspan><tspan fill="#F3EFF8">CLAUDE.md</tspan><tspan fill="#8D87A0" font-size="20">  the rulebook</tspan></text>
+  </g>
+  <!-- arrow -->
+  <g stroke="#4B2A8C" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="582" y1="380" x2="676" y2="380"/>
+    <polyline points="660,362 678,380 660,398"/>
+  </g>
+  <!-- tools panel -->
+  <rect x="700" y="180" width="440" height="400" rx="20" fill="#FFFFFF" stroke="#D9CFEA" stroke-width="2"/>
+  <g font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="736" y="228" font-size="19" font-weight="700" fill="#5A5650" letter-spacing="2">YOUR TOOLS</text>
+    <g font-size="27" font-weight="600" fill="#1C1A17">
+      <rect x="736" y="256" width="368" height="64" rx="14" fill="#F1ECFA"/><text x="762" y="297">CRM log</text>
+      <rect x="736" y="336" width="368" height="64" rx="14" fill="#F1ECFA"/><text x="762" y="377">Email tool</text>
+      <rect x="736" y="416" width="368" height="64" rx="14" fill="#F1ECFA"/><text x="762" y="457">LinkedIn</text>
+      <rect x="736" y="496" width="368" height="64" rx="14" fill="#4B2A8C"/><text x="762" y="537" fill="#FFFFFF">Weekly report</text>
+    </g>
+  </g>
+</svg>
