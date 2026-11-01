@@ -26,3 +26,9 @@
   .sn-cta { padding: 10px 14px; }
 }
 @media (max-width: 380px) { .sn-cta { display: none; } }
+
+.sn-links a.ai-hl, .sn-panel a.ai-hl { color: #E4DBFF; background: rgba(164, 139, 250, 0.16); border: 1px solid #6B55C9; border-radius: 999px; font-weight: 600; }
+.sn-links a.ai-hl { padding: 6px 14px; }
+.sn-panel a.ai-hl { border-radius: 10px; }
+.sn-links a.ai-hl::before, .sn-panel a.ai-hl::before { content: "\2726"; color: #A48BFA; margin-right: 7px; }
+.sn-links a.ai-hl:hover, .sn-panel a.ai-hl:hover { background: rgba(164, 139, 250, 0.3); color: #fff; }
