@@ -55,6 +55,7 @@
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: border-color .15s, transform .15s, box-shadow .15s; }
   a.card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35); }
   .thumb { aspect-ratio: 16 / 10; background: var(--panel); border-bottom: 1px solid var(--line); position: relative; padding: 22px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .vp { position: absolute; left: 14px; top: 14px; z-index: 2; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #E4DBFF; background: rgba(21, 18, 30, 0.88); border: 1px solid #5A4A8A; border-radius: 999px; padding: 5px 10px; line-height: 1.4; }
   .thumb img.main { max-width: 100%; max-height: 100%; border-radius: 8px; border: 1px solid rgba(243, 239, 248, 0.1); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45); display: block; }
   .thumb img.second { position: absolute; right: 14px; bottom: 14px; width: 46%; border-radius: 6px; border: 1px solid rgba(243, 239, 248, 0.12); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45); }
   .panel { width: 100%; height: 100%; border-radius: 8px; padding: 10px 14px; display: flex; flex-direction: column; justify-content: center; gap: 4px; font-size: 11px; }
@@ -128,7 +129,7 @@
   <div class="grid">
 
     <a class="card" href="/case-studies/repositioning-freighttiger.html">
-      <div class="thumb">
+      <div class="thumb"><span class="vp">B2B SaaS</span>
         <img class="main" src="/images/case-repositioning-freighttiger.jpg" alt="Repositioned Freight Tiger" loading="lazy">
         <img class="second" src="/images/case-repositioning-freighttiger-2.jpg" alt="" loading="lazy">
       </div>
@@ -142,7 +143,7 @@
     </a>
 
     <a class="card" href="/case-studies/freighttiger-brand.html">
-      <div class="thumb">
+      <div class="thumb"><span class="vp">B2B SaaS</span>
         <img class="main" src="/images/case-freighttiger-brand.jpg" alt="Made a complex AI product legible" loading="lazy">
       </div>
       <div class="body">
@@ -155,7 +156,7 @@
     </a>
 
     <a class="card" href="/case-studies/scaling-spend.html">
-      <div class="thumb">
+      <div class="thumb"><span class="vp">D2C</span>
         <img class="main" src="/images/case-scaling-spend.png" alt="Doubled ad spend without losing efficiency" loading="lazy">
       </div>
       <div class="body">
@@ -168,7 +169,7 @@
     </a>
 
     <a class="card" href="/case-studies/inside-sales-system.html">
-      <div class="thumb">
+      <div class="thumb"><span class="vp">D2C</span>
         <div class="panel sales">
           <div class="cap">Each layer catches what the last can’t</div>
           <div class="row"><b>On-site chatbot</b><span>self-serve questions</span></div>
@@ -188,7 +189,7 @@
     </a>
 
     <a class="card" href="/case-studies/turning-email.html">
-      <div class="thumb">
+      <div class="thumb"><span class="vp">D2C</span>
         <div class="panel email">
           <div class="cap">Top campaigns by revenue</div>
           <div class="row"><span>Founder launch note</span><span class="bar"><b style="width:100%"></b></span><span>$43.3K</span></div>
@@ -208,7 +209,7 @@
     </a>
 
     <a class="card" href="/case-studies/launching-india.html">
-      <div class="thumb">
+      <div class="thumb"><span class="vp">D2C</span>
         <img class="main" src="/images/case-launching-india.png" alt="Launched a new market" loading="lazy">
       </div>
       <div class="body">
@@ -221,7 +222,7 @@
     </a>
 
     <div class="card pending">
-      <div class="thumb"><div class="panel stat"><div class="big">$337.9K</div><div class="sub">revenue in a single day</div></div></div>
+      <div class="thumb"><span class="vp">D2C</span><div class="panel stat"><div class="big">$337.9K</div><div class="sub">revenue in a single day</div></div></div>
       <div class="body">
         <div class="meta"><span>Paid + email</span><b>07</b></div>
         <h2>Drove the year’s biggest revenue day</h2>
@@ -231,7 +232,7 @@
     </div>
 
     <div class="card pending">
-      <div class="thumb"><div class="panel stat"><div class="big">53%</div><div class="sub">warranty attach rate, up from 43%</div></div></div>
+      <div class="thumb"><span class="vp">D2C</span><div class="panel stat"><div class="big">53%</div><div class="sub">warranty attach rate, up from 43%</div></div></div>
       <div class="body">
         <div class="meta"><span>CRO</span><b>08</b></div>
         <h2>Lifted warranty attach rate</h2>
@@ -241,7 +242,7 @@
     </div>
 
     <div class="card pending">
-      <div class="thumb"><div class="panel stat"><div class="big">+42%</div><div class="sub">organic search clicks</div></div></div>
+      <div class="thumb"><span class="vp">D2C</span><div class="panel stat"><div class="big">+42%</div><div class="sub">organic search clicks</div></div></div>
       <div class="body">
         <div class="meta"><span>SEO</span><b>09</b></div>
         <h2>Grew organic search clicks</h2>
@@ -251,7 +252,7 @@
     </div>
 
     <div class="card pending">
-      <div class="thumb"><div class="panel stat"><div class="big">+13.45%</div><div class="sub">repeat leads, +11.5% orders</div></div></div>
+      <div class="thumb"><span class="vp">B2C</span><div class="panel stat"><div class="big">+13.45%</div><div class="sub">repeat leads, +11.5% orders</div></div></div>
       <div class="body">
         <div class="meta"><span>Automation</span><b>10</b></div>
         <h2>Beat targets on a 600K-user program</h2>
