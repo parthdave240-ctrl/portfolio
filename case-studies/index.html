@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All case studies — Parth Dave</title>
+<meta name="description" content="Positioning, websites, paid acquisition, lifecycle and sales systems across B2B SaaS, D2C and B2C, each with the numbers that moved.">
+<meta property="og:title" content="All case studies — Parth Dave">
+<meta property="og:description" content="Growth and GTM work across B2B SaaS, D2C and B2C, with the numbers that moved.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Lato:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #15121E;
+    --card: #1A1626;
+    --panel: #1E1930;
+    --line: #2C2738;
+    --ink: #F3EFF8;
+    --soft: #C9C3D6;
+    --muted: #A8A3B3;
+    --accent: #A48BFA;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(900px 520px at 100% 0%, rgba(110, 70, 220, 0.38), transparent 70%),
+      radial-gradient(700px 420px at 0% 100%, rgba(110, 70, 220, 0.22), transparent 70%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
+
+  header.hero { padding: clamp(40px, 6vw, 72px) 0 clamp(32px, 4vw, 48px); }
+  .eyebrow { display: flex; align-items: center; gap: 20px; max-width: 760px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: clamp(20px, 3vw, 32px); }
+  .eyebrow span:first-child { white-space: nowrap; }
+  .eyebrow span:last-child { flex: 1; height: 1px; background: var(--line); }
+  h1 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: clamp(48px, 8vw, 104px); line-height: 1; letter-spacing: -0.035em; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .lede { font-size: clamp(18px, 2vw, 22px); line-height: 1.5; color: var(--soft); max-width: 640px; margin-top: 24px; }
+
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding-bottom: clamp(48px, 6vw, 80px); }
+  @media (max-width: 1000px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 640px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: border-color .15s, transform .15s, box-shadow .15s; }
+  a.card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35); }
+  .thumb { aspect-ratio: 16 / 10; background: var(--panel); border-bottom: 1px solid var(--line); position: relative; padding: 22px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .thumb img.main { max-width: 100%; max-height: 100%; border-radius: 8px; border: 1px solid rgba(243, 239, 248, 0.1); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45); display: block; }
+  .thumb img.second { position: absolute; right: 14px; bottom: 14px; width: 46%; border-radius: 6px; border: 1px solid rgba(243, 239, 248, 0.12); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45); }
+  .panel { width: 100%; height: 100%; border-radius: 8px; padding: 10px 14px; display: flex; flex-direction: column; justify-content: center; gap: 4px; font-size: 11px; }
+  .thumb:has(.panel.sales), .thumb:has(.panel.email) { padding: 12px; }
+  .panel .cap { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 2px; }
+  .panel.email { background: #15121E; border: 1px solid var(--line); }
+  .panel.email .row { display: grid; grid-template-columns: minmax(0, 1fr) 80px 44px; gap: 10px; align-items: center; }
+  .panel.email .row span:first-child { color: var(--soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .panel.email .bar { height: 6px; border-radius: 3px; background: var(--line); display: block; }
+  .panel.email .bar b { display: block; height: 100%; border-radius: 3px; background: var(--accent); }
+  .panel.email .row span:last-child { font-weight: 700; text-align: right; }
+  .panel.sales { background: #15121E; border: 1px solid var(--line); }
+  .panel.sales .row { display: flex; justify-content: space-between; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 3px 10px; }
+  .panel.sales .row span:last-child { color: var(--muted); }
+  .panel.stat { background: linear-gradient(160deg, #241C3D, #15121E); border: 1px solid var(--line); align-items: flex-start; justify-content: flex-end; padding: 22px; gap: 8px; }
+  .panel.stat .big { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: clamp(44px, 5vw, 60px); line-height: 1; letter-spacing: -0.03em; color: var(--accent); }
+  .panel.stat .sub { font-size: 14px; color: var(--soft); }
+
+  .body { padding: 24px 26px 26px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .meta { display: flex; justify-content: space-between; gap: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .meta b { color: var(--accent); font-weight: 500; }
+  h2 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 24px; line-height: 1.2; letter-spacing: -0.01em; }
+  .desc { font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.5; color: var(--soft); }
+  .kpis { display: flex; gap: 12px 20px; flex-wrap: wrap; padding-top: 4px; }
+  .kpis > div { min-width: 0; }
+  .kpis strong { display: block; font-size: 16px; }
+  .kpis span { font-size: 12px; color: var(--muted); }
+  .read { margin-top: auto; padding-top: 10px; font-size: 16px; color: var(--accent); }
+  .soon { margin-top: auto; padding-top: 10px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); }
+  .soon span { border: 1px solid #5A4A8A; background: #2A2240; color: #E4DBFF; border-radius: 999px; padding: 4px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .card.pending { opacity: 0.92; }
+
+  .back { display: inline-block; margin-bottom: 72px; border: 1px solid #4A4458; border-radius: 999px; padding: 12px 26px; font-size: 15px; }
+  .back:hover { border-color: var(--accent); color: var(--accent); }
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 13px; color: var(--muted); }
+</style>
+<link rel="stylesheet" href="/assets/site-nav.css">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="sn">
+  <div class="sn-in">
+    <a class="sn-brand" href="/"><i></i>Parth Dave</a>
+    <div class="sn-links" role="navigation" aria-label="Main">
+      <a href="/case-studies/" class="on">Case studies</a>
+      <a href="/ai-gtm-systems/">AI GTM systems</a>
+      <a href="/#engage">Work with me</a>
+    </div>
+    <a class="sn-cta" href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call →</a>
+    <details class="sn-menu">
+      <summary aria-label="Menu"><span></span></summary>
+      <div class="sn-panel" role="navigation" aria-label="Main">
+        <a href="/case-studies/" class="on">Case studies</a>
+        <a href="/ai-gtm-systems/">AI GTM systems</a>
+        <a href="/#engage">Work with me</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span>Case studies</span><span></span></div>
+    <h1>All the <em>work.</em></h1>
+    <p class="lede">Positioning, websites, paid acquisition, lifecycle and sales systems across B2B SaaS, D2C and B2C, each with the numbers that moved.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="grid">
+
+    <a class="card" href="/case-studies/repositioning-freighttiger.html">
+      <div class="thumb">
+        <img class="main" src="/images/case-repositioning-freighttiger.jpg" alt="Repositioned Freight Tiger" loading="lazy">
+        <img class="second" src="/images/case-repositioning-freighttiger-2.jpg" alt="" loading="lazy">
+      </div>
+      <div class="body">
+        <div class="meta"><span>Positioning · Website design &amp; development</span><b>01</b></div>
+        <h2>Repositioned Freight Tiger</h2>
+        <p class="desc">Defined the category, India’s AI-native freight operating system, gave each product one job and one buyer, and shipped it to two live sites.</p>
+        <div class="kpis"><div><strong>3 → 1</strong><span>module pitches unified</span></div><div><strong>2</strong><span>websites launched</span></div></div>
+        <span class="read">Read case study →</span>
+      </div>
+    </a>
+
+    <a class="card" href="/case-studies/freighttiger-brand.html">
+      <div class="thumb">
+        <img class="main" src="/images/case-freighttiger-brand.jpg" alt="Made a complex AI product legible" loading="lazy">
+      </div>
+      <div class="body">
+        <div class="meta"><span>Product story</span><b>02</b></div>
+        <h2>Made a complex AI product legible</h2>
+        <p class="desc">Positioned TigerSight as the intelligence layer above ERP and TMS, with its own domain and use cases organised by buyer.</p>
+        <div class="kpis"><div><strong>0 → 1</strong><span>standalone brand and site</span></div><div><strong>20+</strong><span>AI agents in one story</span></div></div>
+        <span class="read">Read case study →</span>
+      </div>
+    </a>
+
+    <a class="card" href="/case-studies/scaling-spend.html">
+      <div class="thumb">
+        <img class="main" src="/images/case-scaling-spend.png" alt="Doubled ad spend without losing efficiency" loading="lazy">
+      </div>
+      <div class="body">
+        <div class="meta"><span>Paid media</span><b>03</b></div>
+        <h2>Doubled ad spend without losing efficiency</h2>
+        <p class="desc">Monthly spend went from $60.8K to $125.8K (Jul–Nov 2025). Paid revenue rose from $445K to $857K a month while CAC moved 6%.</p>
+        <div class="kpis"><div><strong>6.8x</strong><span>blended ROAS</span></div><div><strong>$857K</strong><span>monthly paid revenue</span></div></div>
+        <span class="read">Read case study →</span>
+      </div>
+    </a>
+
+    <a class="card" href="/case-studies/inside-sales-system.html">
+      <div class="thumb">
+        <div class="panel sales">
+          <div class="cap">Each layer catches what the last can’t</div>
+          <div class="row"><b>On-site chatbot</b><span>self-serve questions</span></div>
+          <div class="row"><b>AI pre-qualifier</b><span>routes sales vs support</span></div>
+          <div class="row"><b>Live chat</b><span>3 agents, real-time</span></div>
+          <div class="row"><b>Calling team</b><span>abandoners within 2 hrs</span></div>
+          <div class="row"><b>Email nurture</b><span>follow-up after first touch</span></div>
+        </div>
+      </div>
+      <div class="body">
+        <div class="meta"><span>Inside sales + AI</span><b>04</b></div>
+        <h2>A human + AI inside-sales layer</h2>
+        <p class="desc">Chatbot, AI pre-qualifier, live chat and a two-person calling team. High-ticket cart abandoners got a call within two hours.</p>
+        <div class="kpis"><div><strong>779</strong><span>machines sold via chat and calls</span></div><div><strong>~$1.17M</strong><span>estimated revenue</span></div></div>
+        <span class="read">Read case study →</span>
+      </div>
+    </a>
+
+    <a class="card" href="/case-studies/turning-email.html">
+      <div class="thumb">
+        <div class="panel email">
+          <div class="cap">Top campaigns by revenue</div>
+          <div class="row"><span>Founder launch note</span><span class="bar"><b style="width:100%"></b></span><span>$43.3K</span></div>
+          <div class="row"><span>Diwali gift</span><span class="bar"><b style="width:83%"></b></span><span>$35.9K</span></div>
+          <div class="row"><span>Weekend offer</span><span class="bar"><b style="width:70%"></b></span><span>$30.3K</span></div>
+          <div class="row"><span>Festive cart recovery</span><span class="bar"><b style="width:61%"></b></span><span>$26.3K</span></div>
+          <div class="row"><span>Black Friday</span><span class="bar"><b style="width:53%"></b></span><span>$23.1K</span></div>
+        </div>
+      </div>
+      <div class="body">
+        <div class="meta"><span>Lifecycle email</span><b>05</b></div>
+        <h2>Built email into a core revenue channel</h2>
+        <p class="desc">285 campaigns in ten months on a festive calendar. A plain founder-voiced note beat every discount send.</p>
+        <div class="kpis"><div><strong>$1.74M</strong><span>attributed email revenue</span></div><div><strong>41.9%</strong><span>median open rate</span></div></div>
+        <span class="read">Read case study →</span>
+      </div>
+    </a>
+
+    <a class="card" href="/case-studies/launching-india.html">
+      <div class="thumb">
+        <img class="main" src="/images/case-launching-india.png" alt="Launched a new market" loading="lazy">
+      </div>
+      <div class="body">
+        <div class="meta"><span>Market launch</span><b>06</b></div>
+        <h2>Launched a new market</h2>
+        <p class="desc">Customer interviews moved the pitch from premium to everyday utility. Persona landing pages and national press followed.</p>
+        <div class="kpis"><div><strong>+91%</strong><span>orders after launch</span></div><div><strong>+48%</strong><span>total sales</span></div></div>
+        <span class="read">Read case study →</span>
+      </div>
+    </a>
+
+    <div class="card pending">
+      <div class="thumb"><div class="panel stat"><div class="big">$337.9K</div><div class="sub">revenue in a single day</div></div></div>
+      <div class="body">
+        <div class="meta"><span>Paid + email</span><b>07</b></div>
+        <h2>Drove the year’s biggest revenue day</h2>
+        <p class="desc">$337.9K in revenue in a single day, driven by paid and email.</p>
+        <div class="soon"><span>Coming soon</span>Detailed case study</div>
+      </div>
+    </div>
+
+    <div class="card pending">
+      <div class="thumb"><div class="panel stat"><div class="big">53%</div><div class="sub">warranty attach rate, up from 43%</div></div></div>
+      <div class="body">
+        <div class="meta"><span>CRO</span><b>08</b></div>
+        <h2>Lifted warranty attach rate</h2>
+        <p class="desc">Warranty attach rate went from 43% to 53%.</p>
+        <div class="soon"><span>Coming soon</span>Detailed case study</div>
+      </div>
+    </div>
+
+    <div class="card pending">
+      <div class="thumb"><div class="panel stat"><div class="big">+42%</div><div class="sub">organic search clicks</div></div></div>
+      <div class="body">
+        <div class="meta"><span>SEO</span><b>09</b></div>
+        <h2>Grew organic search clicks</h2>
+        <p class="desc">Organic search clicks rose 42%.</p>
+        <div class="soon"><span>Coming soon</span>Detailed case study</div>
+      </div>
+    </div>
+
+    <div class="card pending">
+      <div class="thumb"><div class="panel stat"><div class="big">+13.45%</div><div class="sub">repeat leads, +11.5% orders</div></div></div>
+      <div class="body">
+        <div class="meta"><span>Automation</span><b>10</b></div>
+        <h2>Beat targets on a 600K-user program</h2>
+        <p class="desc">Repeat leads rose 13.45% and orders 11.5% on a 600K-user automation program.</p>
+        <div class="soon"><span>Coming soon</span>Detailed case study</div>
+      </div>
+    </div>
+
+  </div>
+  <a class="back" href="/">← Back to home</a>
+</main>
+
+<footer>
+  <div class="wrap">Parth Dave · GTM &amp; Growth Operator</div>
+</footer>
+
+</body>
+</html>

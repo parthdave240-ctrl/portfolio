@@ -1,0 +1,11 @@
+/* Shared mobile fixes for the detailed case study pages. */
+body > .wrap, .wrap.content { width: 100%; }
+.wrap.content img, .wrap.content video { max-width: 100%; height: auto; }
+.wrap.content { overflow-wrap: break-word; }
+.wrap.content table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.wrap.content pre { max-width: 100%; overflow-x: auto; }
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .wrap.content { padding-left: 20px; padding-right: 20px; }
+  .back-link { margin-bottom: 18px; }
+}
