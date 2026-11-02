@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portolan-gtm.netlify.app/sitemap.xml
