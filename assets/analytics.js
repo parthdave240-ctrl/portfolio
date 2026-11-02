@@ -1,5 +1,21 @@
 /* PostHog (US cloud). Skips localhost unless ?ph_test=1 so previews don't pollute data. */
 (function () {
+  // Visit /?notrack once on a device to stop sending events from it; /?track turns it back on.
+  function note(msg) {
+    setTimeout(function () {
+      var d = document.createElement('div');
+      d.textContent = msg;
+      d.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:99999;background:#F3EFF8;color:#15121E;font:600 14px/1.3 system-ui,sans-serif;padding:12px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.35)';
+      document.body.appendChild(d);
+      setTimeout(function () { d.remove(); }, 3500);
+    }, 1500);
+  }
+  try {
+    if (/[?&]notrack\b/.test(location.search)) { localStorage.setItem('ph_optout', '1'); note('Tracking is off on this device'); }
+    else if (/[?&]track\b/.test(location.search)) { localStorage.removeItem('ph_optout'); note('Tracking is on for this device'); }
+    if (localStorage.getItem('ph_optout')) return;
+  } catch (e) {}
+
   var h = location.hostname;
   if ((h === 'localhost' || h === '127.0.0.1') && location.search.indexOf('ph_test=1') < 0) return;
 
