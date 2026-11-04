@@ -1,8 +1,10 @@
-// Receives the D2C audit form and adds the lead to the "D2C Leads" list in Brevo.
-// Needs the BREVO_API_KEY environment variable in Netlify. Optional: BREVO_D2C_LIST_ID (default 4).
+// Receives the audit forms and adds the lead to Brevo: "D2C Leads" (list 4) from the D2C page,
+// "GTM Leads" (list 5) from the home page. Needs BREVO_API_KEY in Netlify.
+// Optional: BREVO_D2C_LIST_ID (default 4), BREVO_GTM_LIST_ID (default 5).
 const API = 'https://api.brevo.com/v3';
 const REVENUE = ['Under $1M', '$1M to $5M', '$5M to $10M', '$10M to $25M', '$25M to $50M', '$50M+'];
-const AUDIT_TYPES = ['Free 1-day audit', '2-week growth audit'];
+const AUDIT_TYPES = ['Free 1-day audit', '2-week growth audit', 'Full GTM audit'];
+const INDUSTRIES = ['B2B SaaS', 'D2C', 'E-learning', 'B2C', 'Other'];
 
 const json = (statusCode, body) => ({
   statusCode,
@@ -50,9 +52,11 @@ exports.handler = async (event) => {
 
   const key = process.env.BREVO_API_KEY;
   if (!key) { console.error('BREVO_API_KEY is not set'); return json(500, { error: 'config' }); }
-  const listId = Number(process.env.BREVO_D2C_LIST_ID || 4);
+  const home = clean(p.source, 10) === 'home';
+  const listId = home ? Number(process.env.BREVO_GTM_LIST_ID || 5) : Number(process.env.BREVO_D2C_LIST_ID || 4);
+  const industry = home ? (INDUSTRIES.includes(clean(p.industry, 20)) ? clean(p.industry, 20) : 'Other') : 'D2C';
 
-  const attributes = { FIRSTNAME: name, COMPANY: company, REVENUE: revenue, WEBSITE: website, INDUSTRY: 'D2C', SMS: phone };
+  const attributes = { FIRSTNAME: name, COMPANY: company, REVENUE: revenue, WEBSITE: website, INDUSTRY: industry, SMS: phone };
   let r = await brevo(key, 'POST', '/contacts', { email, attributes, listIds: [listId], updateEnabled: true });
   let phoneInNote = false;
   if (r.status >= 400 && r.status < 500) {
