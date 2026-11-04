@@ -54,9 +54,10 @@ exports.handler = async (event) => {
   if (!key) { console.error('BREVO_API_KEY is not set'); return json(500, { error: 'config' }); }
   const home = clean(p.source, 10) === 'home';
   const listId = home ? Number(process.env.BREVO_GTM_LIST_ID || 5) : Number(process.env.BREVO_D2C_LIST_ID || 4);
-  const industry = home ? (INDUSTRIES.includes(clean(p.industry, 20)) ? clean(p.industry, 20) : 'Other') : 'D2C';
+  const industry = home ? (INDUSTRIES.includes(clean(p.industry, 20)) ? clean(p.industry, 20) : '') : 'D2C';
 
-  const attributes = { FIRSTNAME: name, COMPANY: company, REVENUE: revenue, WEBSITE: website, INDUSTRY: industry, SMS: phone };
+  const attributes = { FIRSTNAME: name, COMPANY: company, REVENUE: revenue, WEBSITE: website, SMS: phone };
+  if (industry) attributes.INDUSTRY = industry;
   let r = await brevo(key, 'POST', '/contacts', { email, attributes, listIds: [listId], updateEnabled: true });
   let phoneInNote = false;
   if (r.status >= 400 && r.status < 500) {

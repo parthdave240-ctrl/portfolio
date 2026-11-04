@@ -40,7 +40,7 @@
     var digits = String(fd.get('phone') || '').replace(/\D/g, '').replace(/^0+/, '');
     var payload = {
       name: fd.get('name'), email: fd.get('email'), phone: String(fd.get('country_code')) + digits,
-      company: fd.get('company'), industry: fd.get('industry'), revenue: fd.get('revenue'),
+      company: fd.get('company'), revenue: fd.get('revenue'),
       website: fd.get('website'), extras: fd.get('extras') || '', audit_type: fd.get('audit_type'),
       page: location.href, source: 'home', company_url: fd.get('company_url') || ''
     };
