@@ -2,7 +2,7 @@
 (function () {
   var TYPES = {
     free: { eyebrow: 'Free 1-day audit', title: 'Apply for your free 1-day audit.', lede: 'The free audit is based on eligibility and your current revenue. Tell us about your brand and we will confirm if you qualify.', btn: 'Apply for Free 1-Day Audit', type: 'Free 1-day audit' },
-    audit: { eyebrow: 'Full GTM audit', title: 'Request your full GTM audit.', lede: 'A two-week assessment and plan. $1,000 flat, 100% credited toward the retainer.', btn: 'Request a Full Audit', type: 'Full GTM audit' }
+    audit: { eyebrow: 'GTM audit sprint', title: 'Request your GTM audit sprint.', lede: 'A two-week assessment and plan. $2,000 flat, 100% credited toward the retainer.', btn: 'Request a GTM Audit Sprint', type: 'GTM audit sprint' }
   };
   var BASE_NOTE = 'We reply from a personal inbox, usually within one working day.';
 

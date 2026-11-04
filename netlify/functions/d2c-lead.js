@@ -3,7 +3,7 @@
 // Optional: BREVO_D2C_LIST_ID (default 4), BREVO_GTM_LIST_ID (default 5).
 const API = 'https://api.brevo.com/v3';
 const REVENUE = ['Under $1M', '$1M to $5M', '$5M to $10M', '$10M to $25M', '$25M to $50M', '$50M+'];
-const AUDIT_TYPES = ['Free 1-day audit', '2-week growth audit', 'Full GTM audit'];
+const AUDIT_TYPES = ['Free 1-day audit', '2-week growth audit', 'GTM audit sprint', 'Full GTM audit'];
 const INDUSTRIES = ['B2B SaaS', 'D2C', 'E-learning', 'B2C', 'Other'];
 
 const json = (statusCode, body) => ({
