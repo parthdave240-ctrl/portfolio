@@ -4,3 +4,8 @@
 /growth-repo.html       /ai-gtm-systems/growth-repo               301
 /ai-gtm-system          /ai-gtm-systems/linkedin-engagement-system 301
 /ai-gtm-system.html     /ai-gtm-systems/linkedin-engagement-system 301
+
+# Industry pages
+/industry       /industry/d2c-growth/  302
+/industry/      /industry/d2c-growth/  302
+/industry/d2c   /industry/d2c-growth/  301

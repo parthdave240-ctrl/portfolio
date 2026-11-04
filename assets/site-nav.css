@@ -29,3 +29,16 @@
 
 .sn-links a.ai-hl, .sn-panel a.ai-hl { color: #B9A5FF; font-weight: 600; }
 .sn-links a.ai-hl:hover, .sn-panel a.ai-hl:hover { color: #fff; }
+
+/* Industry dropdown */
+.sn-dd { position: relative; }
+.sn-dd-t { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; white-space: nowrap; }
+.sn-dd-t svg { transition: transform .2s; }
+.sn-dd:hover .sn-dd-t, .sn-dd:focus-within .sn-dd-t, .sn-dd-t.on { color: #F3EFF8; }
+.sn-dd:hover .sn-dd-t svg, .sn-dd:focus-within .sn-dd-t svg { transform: rotate(180deg); }
+.sn-dd-m { position: absolute; left: -14px; top: 100%; padding-top: 14px; min-width: 190px; display: none; z-index: 250; }
+.sn-dd:hover .sn-dd-m, .sn-dd:focus-within .sn-dd-m { display: block; }
+.sn-dd-m a { display: block; padding: 11px 16px; background: #1E1930; border: 1px solid #2C2738; border-radius: 12px; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45); color: #F3EFF8; white-space: nowrap; }
+.sn-dd-m a:hover, .sn-dd-m a.on { background: #2A2240; color: #E4DBFF; }
+.sn-pl { padding: 12px 16px 4px; font: 500 11px/1 'IBM Plex Mono', ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; color: #8F89A0; }
+.sn-panel a.sn-sub { padding-left: 28px; }
