@@ -53,4 +53,17 @@
         n.innerHTML = 'Sorry, that did not go through. Please try again, or <a href="https://cal.id/parth-dave" target="_blank" rel="noopener" style="text-decoration:underline">book a call</a> instead.';
       });
   });
+
+  // What I do: all four stages open on desktop; on mobile only the first, to keep the page short.
+  var mq = window.matchMedia('(max-width: 760px)');
+  function syncStages() {
+    var mobile = mq.matches;
+    document.querySelectorAll('details.stg').forEach(function (d, i) {
+      var mode = mobile ? 'm' : 'd';
+      if (d.dataset.mode !== mode) { d.dataset.mode = mode; d.open = mobile ? i === 0 : true; }
+    });
+  }
+  var tries = 0, timer = setInterval(function () { syncStages(); if (++tries > 20) clearInterval(timer); }, 300);
+  window.addEventListener('resize', syncStages);
+  if (mq.addEventListener) mq.addEventListener('change', syncStages);
 })();
