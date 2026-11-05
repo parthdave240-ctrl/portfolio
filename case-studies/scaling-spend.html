@@ -19,15 +19,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
     :root {
-      --bg: #FAF6EF;
-      --surface: #FFFFFF;
-      --accent: #4B2A8C;
-      --accent-light: #F1ECFA;
-      --accent-tint: #E8E0F5;
-      --ink: #1C1A17;
-      --muted: #5A5650;
-      --border: #E8E2D9;
-    }
+    --bg: #090A0F; --surface: #101119; --accent: #8B5CF6; --accent-text: #B9A5FF; --accent-light: rgba(99, 76, 230, 0.14); --accent-tint: rgba(99, 76, 230, 0.24); --ink: #F3EFF8; --muted: #A8A3B3; --border: #23222E;
+  }
 
     * {
       margin: 0;
@@ -42,7 +35,7 @@
     body {
       background-color: var(--bg);
       color: var(--ink);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
       font-size: 17px;
       line-height: 1.6;
       min-height: 100vh;
@@ -86,7 +79,7 @@
     }
 
     nav a:hover {
-      color: var(--accent);
+      color: var(--accent-text);
     }
 
     main {
@@ -116,7 +109,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: var(--accent);
+      color: var(--accent-text);
       text-decoration: none;
       font-weight: 600;
       font-size: 14px;
@@ -151,11 +144,11 @@
 
     .detail-tag-row .channel {
       background-color: var(--accent-tint);
-      color: var(--accent);
+      color: var(--accent-text);
     }
 
     h1.headline {
-      font-family: 'Fraunces', Georgia, serif;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
       font-size: 44px;
       font-weight: 600;
       line-height: 1.15;
@@ -198,7 +191,7 @@
       border-left: 3px solid var(--accent);
       padding-left: 24px;
       margin-bottom: 64px;
-      font-family: 'Fraunces', Georgia, serif;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
       font-style: italic;
       font-size: 20px;
       line-height: 1.6;
@@ -243,10 +236,10 @@
     }
 
     .approach-row .a-num {
-      font-family: 'Fraunces', Georgia, serif;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
       font-weight: 600;
       font-size: 18px;
-      color: var(--accent);
+      color: var(--accent-text);
       align-self: baseline;
       padding-top: 2px;
     }
@@ -281,7 +274,7 @@
     }
 
     .proof h2 {
-      font-family: 'Fraunces', Georgia, serif;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
       font-size: 28px;
       font-weight: 600;
       line-height: 1.2;
@@ -360,7 +353,7 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--accent-text);
       margin-bottom: 16px;
     }
 
@@ -409,10 +402,10 @@
     }
 
     .detail-cell .num {
-      font-family: 'Fraunces', Georgia, serif;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
       font-size: 44px;
       font-weight: 600;
-      color: var(--accent);
+      color: var(--accent-text);
       line-height: 1;
       margin-bottom: 8px;
     }
@@ -447,7 +440,7 @@
     }
 
     a {
-      color: var(--accent);
+      color: var(--accent-text);
       text-decoration: none;
     }
 
@@ -508,7 +501,15 @@
     .lightbox-close:hover {
       opacity: 0.8;
     }
-  </style>
+  
+  /* Shared dark design language (matches the home page) */
+  body { background-image: radial-gradient(900px 420px at 50% -80px, rgba(99, 76, 230, 0.16), transparent 70%); background-repeat: no-repeat; }
+  h1, h2, h3 { letter-spacing: -0.02em; }
+  .cta { background: var(--surface) !important; border: 1px solid var(--border); }
+  .badge.live { background: rgba(52, 211, 153, 0.12) !important; color: #34D399 !important; }
+  .pair .good .lbl { color: #34D399 !important; }
+  .soon-item { border-color: #2B2A38 !important; background: rgba(255, 255, 255, 0.03) !important; }
+</style>
 <link rel="stylesheet" href="/assets/site-nav.css?v=5">
 <link rel="stylesheet" href="/assets/case-study.css">
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
