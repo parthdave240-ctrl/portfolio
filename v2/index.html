@@ -41,12 +41,12 @@ header.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);bac
 .btn.light{background:var(--soft);color:var(--text);border:1px solid var(--line);box-shadow:none}.btn.light:hover{background:#E2E8F0}
 /* hero */
 .hero{padding:clamp(64px,8vw,112px) 0}
-.hero-g{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,5vw,64px);align-items:start}
+.hero-g{display:grid;grid-template-columns:6fr 5fr;gap:clamp(32px,5vw,64px);align-items:center}
 .hero h1{font-size:clamp(38px,5.4vw,62px);line-height:1.08}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:48px;padding-top:32px;border-top:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px;padding-top:28px;border-top:1px solid var(--line)}
 .stats b{display:block;font:700 clamp(26px,3vw,34px) 'Space Grotesk',sans-serif;letter-spacing:-0.02em}
 .stats span{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-top:4px;max-width:24ch}
-.hero .sub{font-size:clamp(17px,1.6vw,20px);color:var(--text);padding-top:8px}
+.hero .sub{font-size:clamp(17px,1.6vw,20px);color:var(--text);margin-top:20px;max-width:52ch}
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .who{display:flex;align-items:center;gap:14px;margin-top:32px;padding-top:24px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
 .who img{width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:center 20%}
@@ -72,6 +72,43 @@ header.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);bac
 .quote figcaption{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid #F1F5F9;font-size:12px;color:var(--muted)}
 .quote figcaption img{width:40px;height:40px;border-radius:50%;object-fit:cover}
 .quote figcaption b{display:block;font-size:13px;color:var(--ink)}
+.shot{display:block;margin:-24px -24px 0;border-radius:8px 8px 0 0;overflow:hidden;border-bottom:1px solid var(--line);background:var(--soft)}
+.shot img{width:100%;height:auto}
+.tile.dark .shot{border-color:#1E293B}
+.feat{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 40px rgba(15,23,42,.10);overflow:hidden}
+.feat img{width:100%;height:auto;border-bottom:1px solid var(--line)}
+.feat div{padding:18px 22px}.feat .big{font-size:34px;margin-top:6px}.feat p.lab{margin-top:4px}
+.feat a{display:inline-block;margin-top:10px;font-size:13px;font-weight:600;color:var(--blue);text-decoration:none}
+.ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px;margin-top:40px}
+.ba .b,.ba .a{border-radius:10px;padding:clamp(20px,2.4vw,28px);display:flex;flex-direction:column;gap:12px}
+.ba .b{background:var(--soft);border:1px solid var(--line)}
+.ba .a{background:#EFF6FF;border:1px solid #BFDBFE}
+.ba em{font-style:normal;font:700 11px 'Space Grotesk',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8}
+.ba .a em{color:var(--blue)}
+.ba .b p{color:var(--muted)}.ba .a p{font:600 clamp(17px,1.8vw,20px) 'Space Grotesk',sans-serif;letter-spacing:-0.01em;line-height:1.35;color:var(--ink)}
+.ai{background:var(--ink);color:#fff;border-bottom:1px solid #1E293B}
+.ai h2{color:#fff}.ai .eyebrow{color:#60A5FA}
+.ai .head2 p.d{color:#94A3B8}
+.arts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.art{background:#111C33;border:1px solid #1E293B;border-radius:12px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column}
+.art:hover{border-color:#334155}
+.art img{width:100%;height:auto;aspect-ratio:16/8;object-fit:cover;background:#0B1220}
+.art div{padding:24px;display:flex;flex-direction:column;gap:8px;flex:1}
+.art .mini{color:#60A5FA}.art h3{font-size:20px;line-height:1.25;color:#fff}.art p{font-size:14px;color:#94A3B8}
+.art span.go{margin-top:auto;padding-top:12px;font-size:13px;font-weight:600;color:#93C5FD}
+.soon{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:24px}
+.soon div{border:1px dashed #334155;border-radius:10px;padding:18px}
+.soon .mini{color:#64748B}.soon b{display:block;font-size:14px;margin-top:6px;color:#E2E8F0}.soon p{font-size:12px;color:#94A3B8;margin-top:6px}
+.ai .nb{margin-top:28px;font-size:13px;color:#94A3B8}
+.inds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:8px}
+.ind{background:#fff;border:1px solid var(--line);border-radius:12px;padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:14px;box-shadow:0 1px 2px rgba(15,23,42,.05)}
+.ind.live{border:2px solid var(--blue)}
+.ind h3{font-size:24px}.ind p.d{font-size:14px;color:var(--text)}
+.ind ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:13px;color:var(--text)}
+.ind li{display:flex;gap:8px}.ind li span{color:var(--blue);font-weight:700}
+.ind .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:8px}
+.ind .st{align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background:#ECFDF5;color:#047857}
+.ind .st.n{background:#F1F5F9;color:#475569}
 .refs{margin-top:40px}
 .refs p.t{font-weight:600;font-size:15px;margin-bottom:12px}
 .refs ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0 28px;border-top:1px solid var(--line)}
@@ -144,7 +181,7 @@ form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--b
 .pg{display:grid;grid-template-columns:minmax(0,130px) minmax(0,1fr);gap:8px}
 .hp{position:absolute;left:-9999px}
 #fnote{font-size:13px;color:var(--muted)}#thanks{display:none}
-@media (max-width:1000px){.hero-g,.head2,.fg{grid-template-columns:minmax(0,1fr)}.grid3,.offers,.stk{grid-template-columns:minmax(0,1fr)}.dash{grid-template-columns:minmax(0,1fr)}.side{border-right:0;border-bottom:1px solid var(--line);padding:0 0 16px;flex-direction:row;overflow-x:auto;gap:8px}.side .mini{display:none}.mod{white-space:nowrap;width:auto}.c4,.c3{grid-template-columns:repeat(2,minmax(0,1fr))}.fb{justify-content:flex-start}.nav nav{display:none}}
+@media (max-width:1000px){.arts,.soon,.inds,.ba{grid-template-columns:minmax(0,1fr)}.hero-g,.head2,.fg{grid-template-columns:minmax(0,1fr)}.grid3,.offers,.stk{grid-template-columns:minmax(0,1fr)}.dash{grid-template-columns:minmax(0,1fr)}.side{border-right:0;border-bottom:1px solid var(--line);padding:0 0 16px;flex-direction:row;overflow-x:auto;gap:8px}.side .mini{display:none}.mod{white-space:nowrap;width:auto}.c4,.c3{grid-template-columns:repeat(2,minmax(0,1fr))}.fb{justify-content:flex-start}.nav nav{display:none}}
 @media (max-width:640px){.wrap{padding:0 18px}.stats{gap:14px}.stats b{font-size:24px}.c4,.c3,.c2{grid-template-columns:minmax(0,1fr)}.shift{grid-template-columns:minmax(0,1fr);gap:8px}.arr{transform:rotate(90deg);justify-self:start}.cta .btn,.fb .btn{width:100%}.nav .r>a:first-child{display:none}.banner .in span{display:none}.ph{flex-direction:column}}
 </style>
 </head>
@@ -154,7 +191,7 @@ form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--b
 
 <header class="nav"><div class="wrap">
   <a class="brand" href="/v2/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Parth Dave</a>
-  <nav><a href="#what-i-do">What I do</a><a href="#customers">Case studies</a><a href="#pricing">Pricing</a></nav>
+  <nav><a href="#what-i-do">What I do</a><a href="#customers">Case studies</a><a href="#ai-gtm">AI GTM systems</a><a href="#industries">Industries</a><a href="#pricing">Pricing</a></nav>
   <div class="r"><a href="#contact">Contact</a><a class="btn" href="#" data-audit="free">Apply for the free audit</a></div>
 </div></header>
 
@@ -163,15 +200,17 @@ form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--b
   <div class="hero-g">
     <div>
       <h1>I build GTM engines that scale revenue from $0 to $50M.</h1>
+      <p class="sub">I step in to build your messaging, automate your growth loops, and drive pipeline without agency overhead.</p>
+      <div class="cta"><a class="btn lg" href="#" data-audit="free">Apply for a free 1-day audit</a><a class="btn lg light" href="#what-i-do">See what I do</a></div>
       <div class="stats">
         <div><b>$35M</b><span>Revenue and pipeline generated across B2B, B2C and D2C</span></div>
         <div><b>$15.4M</b><span>Direct D2C revenue from channels I owned</span></div>
         <div><b>$1.1M+</b><span>Ad spend managed across Google and Meta in the last year</span></div>
       </div>
     </div>
-    <div class="sub">
-      <p>I step in to build your messaging, automate your growth loops, and drive pipeline without agency overhead.</p>
-      <div class="cta"><a class="btn lg" href="#" data-audit="free">Apply for a free 1-day audit</a><a class="btn lg light" href="#what-i-do">See what I do</a></div>
+    <div>
+      <div class="feat"><img src="/assets/img/case-03-doubled-ad-spend-without-losin.png" alt="Ad spend dashboard from the case study">
+        <div><p class="mini">Featured result · D2C paid media</p><p class="big">2x ad spend</p><p class="lab">ROAS held near 7x while monthly spend went from $60.8K to $125.8K.</p><a href="/case-studies/scaling-spend.html">Read the case study &rarr;</a></div></div>
       <div class="who"><img src="/assets/img/parth-dave.jpg" alt="Parth Dave"><p><b>Parth Dave</b>Fractional GTM lead and growth architect. 10+ years building revenue engines.</p></div>
     </div>
   </div>
@@ -182,9 +221,9 @@ form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--b
 <section class="proof" id="customers"><div class="wrap">
   <p class="eyebrow">Proof and testimonials</p>
   <h2>What changed for the companies I have worked with.</h2>
-  <div class="grid3"><div class="tile"><div><p class="mini">Freight Tiger · B2B SaaS</p><p class="big">3 → 1</p><p class="lab">module pitches unified into one position</p><p class="ttl">Repositioned Freight Tiger as India&#x27;s AI-native freight operating system.</p></div><a class="lnk" href="/case-studies/repositioning-freighttiger.html">Read the case study &rarr;</a></div><div class="tile dark"><div><p class="mini">D2C paid media</p><p class="big">2x</p><p class="lab">ad spend, ROAS held near 7x</p><p class="ttl">Spend went from $60.8K to $125.8K a month while CAC moved 6%.</p></div><div class="foot"><span>Jul to Nov 2025</span><span>Read the case study</span></div></div><figure class="tile quote"><p class="mini">Campaign strategy &amp; data-driven marketing</p><blockquote>&ldquo;He has <b>exceptional expertise in strategizing marketing campaigns</b> and a <b>strong data-driven marketing approach</b>. His enthusiasm and dedication are both inspiring and motivating. Parth would be an asset to any company.&rdquo;</blockquote>
+  <div class="grid3"><div class="tile"><a class="shot" href="/case-studies/repositioning-freighttiger.html"><img src="/assets/img/case-01-repositioned-freight-tiger.jpg" alt="" loading="lazy"></a><div><p class="mini">Freight Tiger · B2B SaaS</p><p class="big">3 → 1</p><p class="lab">module pitches unified into one position</p><p class="ttl">Repositioned Freight Tiger as India&#x27;s AI-native freight operating system.</p></div><a class="lnk" href="/case-studies/repositioning-freighttiger.html">Read the case study &rarr;</a></div><div class="tile dark"><a class="shot" href="/case-studies/scaling-spend.html"><img src="/assets/img/case-03-doubled-ad-spend-without-losin.png" alt="" loading="lazy"></a><div><p class="mini">D2C paid media</p><p class="big">2x</p><p class="lab">ad spend, ROAS held near 7x</p><p class="ttl">Spend went from $60.8K to $125.8K a month while CAC moved 6%.</p></div><div class="foot"><span>Jul to Nov 2025</span><span>Read the case study</span></div></div><figure class="tile quote"><p class="mini">Campaign strategy &amp; data-driven marketing</p><blockquote>&ldquo;He has <b>exceptional expertise in strategizing marketing campaigns</b> and a <b>strong data-driven marketing approach</b>. His enthusiasm and dedication are both inspiring and motivating. Parth would be an asset to any company.&rdquo;</blockquote>
       <figcaption><img src="/assets/img/quote-krishna-kumar.png" alt="Krishna Kumar" loading="lazy"><span><b>Krishna Kumar</b>Engineering Manager, Gojek</span></figcaption></figure><figure class="tile quote"><p class="mini">Process improvement &amp; fast tool adoption</p><blockquote>&ldquo;He was able to take on new tasks, <b>suggest better ways of approaching issues</b>, and <b>adapted well to using new software or technologies</b>. He was a good team player and an asset.&rdquo;</blockquote>
-      <figcaption><img src="/assets/img/quote-pratik-dattani.png" alt="Pratik Dattani" loading="lazy"><span><b>Pratik Dattani</b>Managing Director, EPG</span></figcaption></figure><div class="tile"><div><p class="mini">D2C lifecycle email</p><p class="big">$1.74M</p><p class="lab">attributed email revenue</p><p class="ttl">285 campaigns in ten months. A plain founder-voiced note beat every discount send.</p></div><a class="lnk" href="/case-studies/turning-email.html">Read the case study &rarr;</a></div><div class="tile"><div><p class="mini">D2C market launch</p><p class="big">+91%</p><p class="lab">orders after a new-market launch</p><p class="ttl">Customer interviews moved the pitch from premium to everyday utility.</p></div><a class="lnk" href="/case-studies/launching-india.html">Read the case study &rarr;</a></div></div>
+      <figcaption><img src="/assets/img/quote-pratik-dattani.png" alt="Pratik Dattani" loading="lazy"><span><b>Pratik Dattani</b>Managing Director, EPG</span></figcaption></figure><div class="tile"><div><p class="mini">D2C lifecycle email</p><p class="big">$1.74M</p><p class="lab">attributed email revenue</p><p class="ttl">285 campaigns in ten months. A plain founder-voiced note beat every discount send.</p></div><a class="lnk" href="/case-studies/turning-email.html">Read the case study &rarr;</a></div><div class="tile"><a class="shot" href="/case-studies/launching-india.html"><img src="/assets/img/case-06-launched-a-new-market.png" alt="" loading="lazy"></a><div><p class="mini">D2C market launch</p><p class="big">+91%</p><p class="lab">orders after a new-market launch</p><p class="ttl">Customer interviews moved the pitch from premium to everyday utility.</p></div><a class="lnk" href="/case-studies/launching-india.html">Read the case study &rarr;</a></div></div>
   <a class="more" href="/case-studies/">See every case study &rarr;</a>
   <div class="refs"><p class="t">Ask them about the work.</p><ul><li><a href="https://www.linkedin.com/in/swapnilvshah" target="_blank" rel="noopener"><img src="/assets/img/ref-swapnil-shah.jpg" alt="Swapnil Shah" loading="lazy"><span><b>Swapnil Shah</b>Founder &amp; CEO, Freight Tiger</span></a></li><li><a href="https://www.linkedin.com/in/pandeyratnesh/" target="_blank" rel="noopener"><img src="/assets/img/ref-ratnesh-pandey.jpg" alt="Ratnesh Pandey" loading="lazy"><span><b>Ratnesh Pandey</b>Fractional CMO</span></a></li><li><a href="https://www.linkedin.com/in/pradeepgode/" target="_blank" rel="noopener"><img src="/assets/img/ref-pradeep-gode.jpg" alt="Pradeep Gode" loading="lazy"><span><b>Pradeep Gode</b>SVP, Mahindra Finance</span></a></li><li><a href="https://www.linkedin.com/in/kylekahveci/" target="_blank" rel="noopener"><img src="/assets/img/ref-kyle-kahveci.jpg" alt="Kyle Kahveci" loading="lazy"><span><b>Kyle Kahveci</b>President, ACEA</span></a></li></ul></div>
 </div></section>
@@ -221,13 +260,43 @@ form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--b
 <section class="diff"><div class="wrap">
   <p class="eyebrow">02 / The difference</p>
   <h2>What changes when you work with me.</h2>
-  <div class="shifts"><div class="shift"><p class="from">Messaging is scattered across your homepage, ads, outbound emails and sales decks.</p><span class="arr">&rarr;</span><p class="to">One clear story that prospects understand everywhere.</p></div><div class="shift"><p class="from">Growth relies on trial and error and vanity metrics, with no one accountable.</p><span class="arr">&rarr;</span><p class="to">A quarterly roadmap, an owner for each channel, and dashboards that show what drives revenue.</p></div><div class="shift"><p class="from">Marketing, sales outreach and ads each run on their own.</p><span class="arr">&rarr;</span><p class="to">One growth loop, where data from the channels that convert helps the others.</p></div><div class="shift"><p class="from">Your team is stretched thin on repetitive admin work.</p><span class="arr">&rarr;</span><p class="to">AI workflows handle the routine tasks so your team can spend its time on growth.</p></div></div>
+  <div class="ba"><div class="b"><em>Before</em><p>Messaging is scattered across your homepage, ads, outbound emails and sales decks.</p></div><div class="a"><em>After</em><p>One clear story that prospects understand everywhere.</p></div><div class="b"><em>Before</em><p>Growth relies on trial and error and vanity metrics, with no one accountable.</p></div><div class="a"><em>After</em><p>A quarterly roadmap, an owner for each channel, and dashboards that show what drives revenue.</p></div><div class="b"><em>Before</em><p>Marketing, sales outreach and ads each run on their own.</p></div><div class="a"><em>After</em><p>One growth loop, where data from the channels that convert helps the others.</p></div><div class="b"><em>Before</em><p>Your team is stretched thin on repetitive admin work.</p></div><div class="a"><em>After</em><p>AI workflows handle the routine tasks so your team can spend its time on growth.</p></div></div>
 </div></section>
 
 <section class="proof"><div class="wrap">
   <p class="eyebrow">The stack</p>
   <h2>Tools I use hands-on every week.</h2>
   <div class="stk"><div class="sk"><p class="mini">CRM and sales</p><p>HubSpot, Attio, Apollo, Clay, Gong, HeyReach</p></div><div class="sk"><p class="mini">Lifecycle</p><p>Klaviyo, Brevo, Mailchimp, WebEngage</p></div><div class="sk"><p class="mini">Paid media</p><p>Google Ads, Meta Ads</p></div><div class="sk"><p class="mini">Web and content</p><p>Figma, Shopify, Strapi, Sanity, Ploy</p></div><div class="sk"><p class="mini">Automation and AI</p><p>Zapier, n8n, Claude Code, Codex</p></div><div class="sk"><p class="mini">Analytics</p><p>GA4, PostHog</p></div></div>
+</div></section>
+
+<section class="ai" id="ai-gtm"><div class="wrap">
+  <div class="head2"><div><p class="eyebrow">AI GTM systems</p><h2>AI-powered GTM, built and run for real.</h2></div>
+  <p class="d">AI-assisted workflows across the marketing and sales lifecycle, from ICP to follow-up. Every write-up shows the files, the rules, what went wrong and what is not proven yet.</p></div>
+  <div class="arts">
+    <a class="art" href="/ai-gtm-systems/growth-repo.html"><img src="/images/growth-repo-cover.svg" alt="" loading="lazy"><div><p class="mini">Guide · start here</p><h3>Build a growth repo so your AI marketing and sales stays on-ICP, on-voice and on the record</h3><p>Why a repo matters in the AI era, the folders, the ICP, positioning and voice files, and how it connects to your tools. About 17 min read.</p><span class="go">Read the guide &rarr;</span></div></a>
+    <a class="art" href="/ai-gtm-systems/linkedin-engagement-system.html"><img src="/images/linkedin-system-cover.svg" alt="" loading="lazy"><div><p class="mini">Build log · LinkedIn</p><h3>I built a LinkedIn growth system with Claude. Here is exactly how it works.</h3><p>ICP scoring, the voice file, guardrails, the CRM log, the daily review gate, and what went wrong along the way. About 13 min read.</p><span class="go">Read the build log &rarr;</span></div></a>
+  </div>
+  <div class="soon">
+    <div><p class="mini">Planned</p><b>Email outreach playbook</b><p>Sequence rules, deliverability limits and the review step before anything goes live.</p></div>
+    <div><p class="mini">Planned</p><b>Connecting a growth repo to HubSpot and Lemlist</b><p>What lives in the repo, what lives in the tool, and how they stay in sync.</p></div>
+    <div><p class="mini">Planned</p><b>The weekly report, and what to change first</b><p>How to read acceptance, reply and meeting rates and turn them into rule changes.</p></div>
+  </div>
+  <a class="more" style="color:#93C5FD" href="/ai-gtm-systems/">All AI GTM systems &rarr;</a>
+</div></section>
+
+<section class="proof" id="industries"><div class="wrap">
+  <div class="head2"><div><p class="eyebrow">Industries</p><h2>Where I go deep.</h2></div>
+  <p class="d">The same four-stage system, tuned to how each type of business actually grows.</p></div>
+  <div class="inds">
+    <div class="ind live"><span class="st">Live page</span><h3>D2C growth, $5M to $50M</h3>
+      <p class="d">For D2C brands that want to scale without destroying unit economics. Broken funnels, leaky retention and unpredictable ad spend are the usual stall points.</p>
+      <ul><li><span>✓</span>Scaling trap: spend rules and creative frameworks that protect CAC</li><li><span>✓</span>Leaky bucket: email and CRM flows that build repeat buyers</li><li><span>✓</span>Blind funnel: conversion work tied to real revenue</li></ul>
+      <div class="row"><a class="btn" href="/industry/d2c-growth/">See the D2C page</a><a class="btn light" href="/case-studies/scaling-spend.html">D2C case study</a></div></div>
+    <div class="ind"><span class="st n">Case studies</span><h3>B2B SaaS</h3>
+      <p class="d">Positioning and brand for software companies selling into complex markets, from a repositioned logistics platform to a brand built from zero.</p>
+      <ul><li><span>✓</span>Freight Tiger: three module pitches unified into one position</li><li><span>✓</span>TigerSight: a brand built from zero</li></ul>
+      <div class="row"><a class="btn light" href="/case-studies/repositioning-freighttiger.html">Freight Tiger case</a><a class="btn light" href="/case-studies/">All case studies</a></div></div>
+  </div>
 </div></section>
 
 <section class="price-s" id="pricing"><div class="wrap">
@@ -252,7 +321,7 @@ form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--b
 
 <footer id="contact"><div class="wrap">
   <div class="fg">
-    <div><h2>What are you trying to grow?</h2><p class="s">Tell me where growth is stuck and I will tell you where to start.</p></div>
+    <div><h2>One clear story. One growth loop. Less manual work.</h2><p class="s">Tell me where growth is stuck and I will tell you where to start.</p></div>
     <div class="fb"><a class="btn lg" href="#" data-audit="free">Apply for the free audit &rarr;</a><a class="btn lg ghost" href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call</a><a class="btn lg ghost" href="mailto:parthdave240@gmail.com">Email directly</a></div>
   </div>
   <div class="copy"><span>© 2026 Parth Dave, Fractional GTM Operator</span><div><span>B2B SaaS</span><span>D2C</span><span>E-learning</span><span>B2C</span></div></div>
