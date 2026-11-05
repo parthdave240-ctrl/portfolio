@@ -261,6 +261,27 @@ dialog .cv b,dialog .nv b{display:block;color:var(--fg);font-size:14px}
 .thanks{display:none;text-align:left;padding:8px 0}
 .thanks h3{font-size:24px;margin-bottom:10px}
 .thanks p{color:var(--soft);margin:0 0 20px}
+
+/* tabbed framework, same pattern as the home page */
+.dtabs{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:28px;margin-top:32px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:clamp(16px,2.4vw,28px)}
+.dside{display:flex;flex-direction:column;gap:6px;border-right:1px solid var(--line);padding-right:22px}
+.dside .mono{font:700 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;margin-bottom:8px}
+.dtb{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;text-align:left;border:1px solid transparent;background:transparent;border-radius:6px;padding:9px 12px;font:500 12.5px var(--sans);color:var(--soft);cursor:pointer}
+.dtb i{width:6px;height:6px;border-radius:50%;flex:none}
+.dtb:hover{background:#fff;color:var(--fg)}
+.dtb.on{background:#fff;border-color:var(--line);color:var(--accent);font-weight:600;box-shadow:0 1px 2px rgba(15,23,42,.05)}.dtb.on i{background:var(--accent)}
+.dpn{background:#fff;border:1px solid var(--line);border-radius:8px;padding:clamp(16px,2vw,26px);box-shadow:0 1px 2px rgba(15,23,42,.05)}
+.dpn[hidden]{display:none}
+.dph{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding-bottom:16px;margin-bottom:18px;border-bottom:1px solid #F1F5F9}
+.dph .w{font:700 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
+.dph h3{font-size:18px}
+.chipb{flex:none;background:var(--chip);color:#1D4ED8;border:1px solid var(--chip-line);font:600 12px var(--sans);padding:6px 12px;border-radius:6px;cursor:pointer}.chipb:hover{background:#DBEAFE}
+.dcs{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.dcl{background:var(--bg2);border:1px solid #E8EEF5;border-radius:6px;padding:16px}
+.dcl .mono{font:700 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:#94A3B8}
+.dcl h4{margin:6px 0 0;font:600 14px/1.3 var(--sans);color:var(--fg)}
+.dcl p{margin:6px 0 0;font-size:12.5px;line-height:1.5;color:var(--mute)}
+@media (max-width:900px){.dtabs{grid-template-columns:minmax(0,1fr)}.dside{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line);padding:0 0 14px}.dside .mono{display:none}.dtb{white-space:nowrap;width:auto}.dph{flex-direction:column}}
 </style>
 </head>
 <body>
@@ -271,7 +292,7 @@ dialog .cv b,dialog .nv b{display:block;color:var(--fg);font-size:14px}
       <a href="/case-studies/">Case studies</a>
       <a href="/ai-gtm-systems/" class="ai-hl">AI GTM systems</a>
       <div class="sn-dd"><span class="sn-dd-t on" tabindex="0">Industry <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2 3.5l3 3 3-3"/></svg></span><div class="sn-dd-m"><a href="/industry/d2c-growth/" class="on">D2C Growth</a></div></div>
-      <a href="/#engage">Work with me</a>
+      <a href="/#engage">Engagement options</a>
     </div>
     <a class="sn-cta" href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call →</a>
     <details class="sn-menu">
@@ -281,14 +302,13 @@ dialog .cv b,dialog .nv b{display:block;color:var(--fg);font-size:14px}
         <a href="/ai-gtm-systems/" class="ai-hl">AI GTM systems</a>
         <span class="sn-pl">Industry</span>
         <a href="/industry/d2c-growth/" class="sn-sub on">D2C Growth</a>
-        <a href="/#engage">Work with me</a>
+        <a href="/#engage">Engagement options</a>
       </div>
     </details>
   </div>
 </header>
 
 <header class="hero"><div class="wrap">
-  <span class="pill">For D2C brands scaling $5M to $50M</span>
   <h1>We take D2C brands from $5M to <span class="acc">$50M</span> without destroying your unit economics.</h1>
   <p class="lede">Stop letting broken funnels, leaky retention, and unpredictable ad spend cap your growth. We execute the exact multi-step machinery required to scale your revenue predictably from first click to lifetime loyalty.</p>
   <div class="cta-row"><a class="btn" href="#audit" data-open>Apply for a Free 1-Day Audit</a><a class="btn ghost" href="#proof">See Proof &amp; Pricing Tiers</a></div>
@@ -308,8 +328,7 @@ dialog .cv b,dialog .nv b{display:block;color:var(--fg);font-size:14px}
   <p class="eyebrow">The framework</p>
   <h2>How it runs, month by month.</h2>
   <p class="chain">The 7-block strategic chain sets your core decisions (ICP, Positioning, Messaging, Collateral, Channels, Conversion Process, Pricing). These steps dictate how it gets executed.</p>
-  <div class="phs"><div class="card phb"><div class="phh"><span class="w">Month 1</span><h3>Foundation, audit and positioning</h3><button class="btn ghost phd" type="button" data-deal="p1">See deliverables</button></div><div class="wrs"><div class="wr"><span class="n">01</span><div><h4>Audit &amp; Establish Baseline</h4><p>Complete GTM assessment, identifying immediate quick wins and setting 3-, 6-, and 12-month revenue goals.</p></div></div><div class="wr"><span class="n">02</span><div><h4>ICP Realignment</h4><p>Define your core buyer demographics, psychographics, and explicit anti-ICPs.</p></div></div><div class="wr"><span class="n">03</span><div><h4>Positioning Architecture</h4><p>Anchor your brand correctly (Activity, Use Case, Category, or Competitive Alternative) with sharp differentiators.</p></div></div><div class="wr"><span class="n">04</span><div><h4>Master Messaging Framework</h4><p>Build status-quo narratives, pain points, objection handling, and core product messaging blocks.</p></div></div></div></div><div class="card phb"><div class="phh"><span class="w">Months 2 &amp; 3</span><h3>Motion, assets and acquisition engine</h3><button class="btn ghost phd" type="button" data-deal="p2">See deliverables</button></div><div class="wrs"><div class="wr"><span class="n">05</span><div><h4>Growth Motion Design</h4><p>Scale what already works: take your existing acquisition channels (paid social, creator-led, search-driven, or hybrid) and design how to scale them.</p></div></div><div class="wr"><span class="n">06</span><div><h4>Asset Production</h4><p>Brief and direct your creative team or agency so your store, landing pages, ad creatives, and case studies match your positioning. Video ads and social static images are produced by your team or agency, not by us.</p></div></div><div class="wr"><span class="n">07</span><div><h4>Customer Acquisition Engine</h4><p>Build the system that brings in new buyers: high-intent paid social and search, creator partnerships and organic search, each with a clear goal and spend rule.</p></div></div></div></div><div class="card phb"><div class="phh"><span class="w">Months 4 &amp; 5</span><h3>Conversion, CRO, pricing and scaling</h3><button class="btn ghost phd" type="button" data-deal="p3">See deliverables</button></div><div class="wrs"><div class="wr"><span class="n">08</span><div><h4>Conversion &amp; Checkout Process</h4><p>Streamline site architecture, frictionless checkouts, and high-margin bump offers.</p></div></div><div class="wr"><span class="n">09</span><div><h4>CRO Coaching</h4><p>Continuously review funnel drop-offs and test product page variations to compound conversion quality.</p></div></div><div class="wr"><span class="n">10</span><div><h4>Pricing &amp; Bundle Packaging</h4><p>Optimize value metrics, bundles, multi-packs, and subscription tiers to maximize Average Order Value (AOV).</p></div></div><div class="wr"><span class="n">11</span><div><h4>Channel Scaling</h4><p>Scale spend and reach on the channels that already work, step by step, with spend rules that protect CAC.</p></div></div></div></div><div class="card phb"><div class="phh"><span class="w">Month 6</span><h3>Retention and growth dashboards</h3><button class="btn ghost phd" type="button" data-deal="p4">See deliverables</button></div><div class="wrs"><div class="wr"><span class="n">12</span><div><h4>Retention &amp; Lifecycle Management</h4><p>Build lifecycle management across email and WhatsApp (Welcome, Replenishment, Win-back) to drive repeat purchase, LTV and user-generated content.</p></div></div><div class="wr"><span class="n">13</span><div><h4>Reporting &amp; Growth Dashboards</h4><p>Track weekly and monthly leading indicators across CAC, ROAS, AOV, LTV, and revenue.</p></div></div></div></div></div>
-</div></section>
+  <div class="dtabs"><div class="dside" role="tablist"><span class="mono">Stages</span><button type="button" class="dtb on" data-dt="1" role="tab" aria-selected="true"><span>Month 1: Foundation</span><i></i></button><button type="button" class="dtb" data-dt="2" role="tab" aria-selected="false"><span>Months 2 &amp; 3: Motion</span><i></i></button><button type="button" class="dtb" data-dt="3" role="tab" aria-selected="false"><span>Months 4 &amp; 5: Conversion</span><i></i></button><button type="button" class="dtb" data-dt="4" role="tab" aria-selected="false"><span>Month 6: Retention and growth dashboards</span><i></i></button></div><div><div class="dpn" data-dp="1" role="tabpanel"><div class="dph"><div><span class="w">Month 1</span><h3>Foundation, audit and positioning</h3></div><button class="chipb" type="button" data-deal="p1">See deliverables</button></div><div class="dcs"><div class="dcl"><span class="mono">Step 01</span><h4>Audit &amp; Establish Baseline</h4><p>Complete GTM assessment, identifying immediate quick wins and setting 3-, 6-, and 12-month revenue goals.</p></div><div class="dcl"><span class="mono">Step 02</span><h4>ICP Realignment</h4><p>Define your core buyer demographics, psychographics, and explicit anti-ICPs.</p></div><div class="dcl"><span class="mono">Step 03</span><h4>Positioning Architecture</h4><p>Anchor your brand correctly (Activity, Use Case, Category, or Competitive Alternative) with sharp differentiators.</p></div><div class="dcl"><span class="mono">Step 04</span><h4>Master Messaging Framework</h4><p>Build status-quo narratives, pain points, objection handling, and core product messaging blocks.</p></div></div></div><div class="dpn" data-dp="2" role="tabpanel" hidden><div class="dph"><div><span class="w">Months 2 &amp; 3</span><h3>Motion, assets and acquisition engine</h3></div><button class="chipb" type="button" data-deal="p2">See deliverables</button></div><div class="dcs"><div class="dcl"><span class="mono">Step 05</span><h4>Growth Motion Design</h4><p>Scale what already works: take your existing acquisition channels (paid social, creator-led, search-driven, or hybrid) and design how to scale them.</p></div><div class="dcl"><span class="mono">Step 06</span><h4>Asset Production</h4><p>Brief and direct your creative team or agency so your store, landing pages, ad creatives, and case studies match your positioning. Video ads and social static images are produced by your team or agency, not by us.</p></div><div class="dcl"><span class="mono">Step 07</span><h4>Customer Acquisition Engine</h4><p>Build the system that brings in new buyers: high-intent paid social and search, creator partnerships and organic search, each with a clear goal and spend rule.</p></div></div></div><div class="dpn" data-dp="3" role="tabpanel" hidden><div class="dph"><div><span class="w">Months 4 &amp; 5</span><h3>Conversion, CRO, pricing and scaling</h3></div><button class="chipb" type="button" data-deal="p3">See deliverables</button></div><div class="dcs"><div class="dcl"><span class="mono">Step 08</span><h4>Conversion &amp; Checkout Process</h4><p>Streamline site architecture, frictionless checkouts, and high-margin bump offers.</p></div><div class="dcl"><span class="mono">Step 09</span><h4>CRO Coaching</h4><p>Continuously review funnel drop-offs and test product page variations to compound conversion quality.</p></div><div class="dcl"><span class="mono">Step 10</span><h4>Pricing &amp; Bundle Packaging</h4><p>Optimize value metrics, bundles, multi-packs, and subscription tiers to maximize Average Order Value (AOV).</p></div><div class="dcl"><span class="mono">Step 11</span><h4>Channel Scaling</h4><p>Scale spend and reach on the channels that already work, step by step, with spend rules that protect CAC.</p></div></div></div><div class="dpn" data-dp="4" role="tabpanel" hidden><div class="dph"><div><span class="w">Month 6</span><h3>Retention and growth dashboards</h3></div><button class="chipb" type="button" data-deal="p4">See deliverables</button></div><div class="dcs"><div class="dcl"><span class="mono">Step 12</span><h4>Retention &amp; Lifecycle Management</h4><p>Build lifecycle management across email and WhatsApp (Welcome, Replenishment, Win-back) to drive repeat purchase, LTV and user-generated content.</p></div><div class="dcl"><span class="mono">Step 13</span><h4>Reporting &amp; Growth Dashboards</h4><p>Track weekly and monthly leading indicators across CAC, ROAS, AOV, LTV, and revenue.</p></div></div></div></div></div></div></section>
 
 <section id="proof"><div class="wrap">
   <p class="eyebrow">Proof</p>
@@ -467,5 +486,6 @@ f.addEventListener('submit',function(e){
 })();
 </script>
 <script src="/assets/analytics.js" defer></script>
+<script>document.addEventListener('click',function(e){var m=e.target.closest('[data-dt]');if(!m)return;var k=m.getAttribute('data-dt');document.querySelectorAll('.dtb').forEach(function(b){var on=b===m;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});document.querySelectorAll('.dpn').forEach(function(p){p.hidden=p.getAttribute('data-dp')!==k})});</script>
 </body>
 </html>
