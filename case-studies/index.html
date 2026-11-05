@@ -23,38 +23,27 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Lato:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #090A0F;
-    --card: #101119;
-    --panel: #14151E;
-    --line: #23222E;
-    --ink: #F3EFF8;
-    --soft: #C9C3D6;
-    --muted: #A8A3B3;
-    --accent: #A78BFA;
+    --bg: #FFFFFF; --card: #FFFFFF; --panel: #F8FAFC; --line: #E2E8F0; --ink: #0F172A; --soft: #334155; --muted: #64748B; --accent: #2563EB;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     background: var(--bg);
     color: var(--ink);
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    background-image:
-      radial-gradient(900px 520px at 100% 0%, rgba(110, 70, 220, 0.38), transparent 70%),
-      radial-gradient(700px 420px at 0% 100%, rgba(110, 70, 220, 0.22), transparent 70%);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    
   }
   a { color: inherit; text-decoration: none; }
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
 
   header.hero { padding: clamp(40px, 6vw, 72px) 0 clamp(32px, 4vw, 48px); }
-  .eyebrow { display: flex; align-items: center; gap: 20px; max-width: 760px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: clamp(20px, 3vw, 32px); }
+  .eyebrow { display: flex; align-items: center; gap: 20px; max-width: 760px; font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: clamp(20px, 3vw, 32px); }
   .eyebrow span:first-child { white-space: nowrap; }
   .eyebrow span:last-child { flex: 1; height: 1px; background: var(--line); }
-  h1 { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 600; font-size: clamp(48px, 8vw, 104px); line-height: 1; letter-spacing: -0.035em; }
+  h1 { font-family: 'Inter', system-ui, sans-serif; font-weight: 700; font-size: clamp(40px, 6vw, 64px); line-height: 1.08; letter-spacing: -0.02em; }
   h1 em { font-style: normal; color: var(--accent); }
   .lede { font-size: clamp(18px, 2vw, 22px); line-height: 1.5; color: var(--soft); max-width: 640px; margin-top: 24px; }
 
@@ -62,45 +51,48 @@
   @media (max-width: 1000px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 640px) { .grid { grid-template-columns: minmax(0, 1fr); } }
 
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: border-color .15s, transform .15s, box-shadow .15s; }
-  a.card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: border-color .15s, transform .15s, box-shadow .15s; }
+  a.card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 14px 32px rgba(15, 23, 42, 0.12); }
   .thumb { aspect-ratio: 16 / 10; background: var(--panel); border-bottom: 1px solid var(--line); position: relative; padding: 22px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  .vp { position: absolute; left: 14px; top: 14px; z-index: 2; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #E4DBFF; background: rgba(21, 18, 30, 0.88); border: 1px solid #5A4A8A; border-radius: 999px; padding: 5px 10px; line-height: 1.4; }
-  .thumb img.main { max-width: 100%; max-height: 100%; border-radius: 8px; border: 1px solid rgba(243, 239, 248, 0.1); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45); display: block; }
-  .thumb img.second { position: absolute; right: 14px; bottom: 14px; width: 46%; border-radius: 6px; border: 1px solid rgba(243, 239, 248, 0.12); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45); }
+  .vp { position: absolute; left: 14px; top: 14px; z-index: 2; font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #1D4ED8; background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 999px; padding: 5px 10px; line-height: 1.4; }
+  .thumb img.main { max-width: 100%; max-height: 100%; border-radius: 8px; border: 1px solid #E2E8F0; box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12); display: block; }
+  .thumb img.second { position: absolute; right: 14px; bottom: 14px; width: 46%; border-radius: 6px; border: 1px solid #E2E8F0; box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12); }
   .panel { width: 100%; height: 100%; border-radius: 8px; padding: 10px 14px; display: flex; flex-direction: column; justify-content: center; gap: 4px; font-size: 11px; }
   .thumb:has(.panel.sales), .thumb:has(.panel.email) { padding: 12px; }
-  .panel .cap { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 2px; }
-  .panel.email { background: #0D0E16; border: 1px solid var(--line); }
+  .panel .cap { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 2px; }
+  .panel.email { background: #F8FAFC; border: 1px solid var(--line); }
   .panel.email .row { display: grid; grid-template-columns: minmax(0, 1fr) 80px 44px; gap: 10px; align-items: center; }
   .panel.email .row span:first-child { color: var(--soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .panel.email .bar { height: 6px; border-radius: 3px; background: var(--line); display: block; }
   .panel.email .bar b { display: block; height: 100%; border-radius: 3px; background: var(--accent); }
   .panel.email .row span:last-child { font-weight: 700; text-align: right; }
-  .panel.sales { background: #0D0E16; border: 1px solid var(--line); }
+  .panel.sales { background: #F8FAFC; border: 1px solid var(--line); }
   .panel.sales .row { display: flex; justify-content: space-between; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 3px 10px; }
   .panel.sales .row span:last-child { color: var(--muted); }
-  .panel.stat { background: linear-gradient(160deg, #241C3D, #0D0E16); border: 1px solid var(--line); align-items: flex-start; justify-content: flex-end; padding: 22px; gap: 8px; }
-  .panel.stat .big { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 600; font-size: clamp(44px, 5vw, 60px); line-height: 1; letter-spacing: -0.03em; color: var(--accent); }
+  .panel.stat { background: #EFF6FF; border: 1px solid var(--line); align-items: flex-start; justify-content: flex-end; padding: 22px; gap: 8px; }
+  .panel.stat .big { font-family: 'Inter', system-ui, sans-serif; font-weight: 600; font-size: clamp(44px, 5vw, 60px); line-height: 1; letter-spacing: -0.03em; color: var(--accent); }
   .panel.stat .sub { font-size: 14px; color: var(--soft); }
 
   .body { padding: 24px 26px 26px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
-  .meta { display: flex; justify-content: space-between; gap: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .meta { display: flex; justify-content: space-between; gap: 10px; font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
   .meta b { color: var(--accent); font-weight: 500; }
-  h2 { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 600; font-size: 24px; line-height: 1.2; letter-spacing: -0.01em; }
-  .desc { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.5; color: var(--soft); }
+  h2 { font-family: 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 24px; line-height: 1.2; letter-spacing: -0.01em; }
+  .desc { font-family: 'Inter', system-ui, sans-serif; font-size: 16px; line-height: 1.5; color: var(--soft); }
   .kpis { display: flex; gap: 12px 20px; flex-wrap: wrap; padding-top: 4px; }
   .kpis > div { min-width: 0; }
   .kpis strong { display: block; font-size: 16px; }
   .kpis span { font-size: 12px; color: var(--muted); }
   .read { margin-top: auto; padding-top: 10px; font-size: 16px; color: var(--accent); }
   .soon { margin-top: auto; padding-top: 10px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); }
-  .soon span { border: 1px solid #5A4A8A; background: #2A2240; color: #E4DBFF; border-radius: 999px; padding: 4px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .soon span { border: 1px solid #BFDBFE; background: #2A2240; color: #E4DBFF; border-radius: 999px; padding: 4px 12px; font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
   .card.pending { opacity: 0.92; }
 
-  .back { display: inline-block; margin-bottom: 72px; border: 1px solid #4A4458; border-radius: 999px; padding: 12px 26px; font-size: 15px; }
+  .back { display: inline-block; margin-bottom: 72px; border: 1px solid #E2E8F0; border-radius: 6px; padding: 12px 26px; font-size: 15px; }
   .back:hover { border-color: var(--accent); color: var(--accent); }
   footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 13px; color: var(--muted); }
+
+  h1, h2, .panel.stat .big { font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 700; }
+  .eyebrow { font-weight: 700; letter-spacing: .08em; }
 </style>
 <link rel="stylesheet" href="/assets/site-nav.css?v=5">
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
@@ -243,7 +235,6 @@
         <div class="meta"><span>Paid + email</span><b>07</b></div>
         <h2>Drove the year’s biggest revenue day</h2>
         <p class="desc">$337.9K in revenue in a single day, driven by paid and email.</p>
-        <div class="soon"><span>Coming soon</span>Detailed case study</div>
       </div>
     </div>
 
@@ -253,7 +244,6 @@
         <div class="meta"><span>CRO</span><b>08</b></div>
         <h2>Lifted warranty attach rate</h2>
         <p class="desc">Warranty attach rate went from 43% to 53%.</p>
-        <div class="soon"><span>Coming soon</span>Detailed case study</div>
       </div>
     </div>
 
@@ -263,7 +253,6 @@
         <div class="meta"><span>SEO</span><b>09</b></div>
         <h2>Grew organic search clicks</h2>
         <p class="desc">Organic search clicks rose 42%.</p>
-        <div class="soon"><span>Coming soon</span>Detailed case study</div>
       </div>
     </div>
 
@@ -273,7 +262,6 @@
         <div class="meta"><span>Automation</span><b>10</b></div>
         <h2>Beat targets on a 600K-user program</h2>
         <p class="desc">Repeat leads rose 13.45% and orders 11.5% on a 600K-user automation program.</p>
-        <div class="soon"><span>Coming soon</span>Detailed case study</div>
       </div>
     </div>
 

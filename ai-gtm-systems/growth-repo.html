@@ -22,14 +22,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #090A0F; --surface: #101119; --accent: #8B5CF6; --accent-text: #B9A5FF; --accent-light: rgba(99, 76, 230, 0.14); --accent-tint: rgba(99, 76, 230, 0.24); --ink: #F3EFF8; --muted: #A8A3B3; --border: #23222E;
+    --bg: #FFFFFF; --surface: #FFFFFF; --accent: #2563EB; --accent-text: #1D4ED8; --accent-light: #EFF6FF; --accent-tint: #DBEAFE; --ink: #0F172A; --muted: #64748B; --border: #E2E8F0;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     background-color: var(--bg);
     color: var(--ink);
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     font-size: 17px;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
@@ -63,7 +63,7 @@
   .tag-row .secondary { background-color: var(--accent-tint); color: var(--accent-text); }
 
   h1.headline {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 46px; font-weight: 600;
+    font-family: 'Inter', system-ui, sans-serif; font-size: 46px; font-weight: 600;
     line-height: 1.12; margin-bottom: 20px;
   }
   @media (max-width: 768px) { h1.headline { font-size: 31px; } }
@@ -71,7 +71,7 @@
   @media (max-width: 768px) { .lede { font-size: 18px; } }
 
   h2 {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 30px; font-weight: 600;
+    font-family: 'Inter', system-ui, sans-serif; font-size: 30px; font-weight: 600;
     line-height: 1.2; margin: 64px 0 16px;
   }
   @media (max-width: 768px) { h2 { font-size: 24px; margin-top: 48px; } }
@@ -107,7 +107,7 @@
 
   .callout {
     border-left: 3px solid var(--accent); padding-left: 24px; margin: 28px 0;
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-style: italic; font-size: 20px; line-height: 1.55;
+    font-family: 'Inter', system-ui, sans-serif; font-style: italic; font-size: 20px; line-height: 1.55;
   }
   @media (max-width: 768px) { .callout { font-size: 18px; } }
 
@@ -117,7 +117,7 @@
     padding: 22px 0; border-bottom: 1px solid var(--border);
   }
   .step:first-child { border-top: 1px solid var(--border); }
-  .step .n { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 600; font-size: 18px; color: var(--accent-text); padding-top: 2px; }
+  .step .n { font-family: 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 18px; color: var(--accent-text); padding-top: 2px; }
   .step h4 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
   .step p { font-size: 16px; color: var(--muted); margin: 0; }
 
@@ -126,11 +126,11 @@
   th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
   th { background: var(--accent-light); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-text); }
   tr:last-child td { border-bottom: none; }
-  td.hl, th.hl { background: rgba(99, 76, 230, 0.14); font-weight: 600; }
+  td.hl, th.hl { background: #EFF6FF; font-weight: 600; }
   @media (max-width: 768px) { table { font-size: 14px; } }
 
   pre.tree {
-    background: #1C1A17; color: #F3EFF8; border-radius: 10px; padding: 18px 20px;
+    background: #0F172A; color: #E2E8F0; border-radius: 10px; padding: 18px 20px;
     font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 13.5px; line-height: 1.6;
     overflow-x: auto; margin: 16px 0 24px;
   }
@@ -154,18 +154,18 @@
   .note { background: var(--accent-light); border-radius: 10px; padding: 14px 18px; font-size: 15px; color: var(--muted); margin: 16px 0 24px; }
 
   .cta {
-    background: var(--ink); color: #F3EFF8; border-radius: 14px; padding: 36px 32px; margin-top: 64px;
+    background: var(--ink); color: #0F172A; border-radius: 14px; padding: 36px 32px; margin-top: 64px;
   }
   .cta h2 { color: #fff; margin: 0 0 12px; font-size: 28px; }
   .cta p { color: #C9C3D6; }
   .cta .btn {
-    display: inline-block; background: linear-gradient(90deg, #4F46E5, #9333EA); color: #fff; padding: 14px 24px;
+    display: inline-block; background: #2563EB; color: #fff; padding: 14px 24px;
     border-radius: 12px; font-weight: 700; font-size: 15px; text-decoration: none; margin-right: 12px; margin-top: 8px;
-    box-shadow: 0 10px 28px rgba(79, 70, 229, 0.28);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.1);
   }
   .cta .btn:hover { filter: brightness(1.1); }
-  .cta .btn.ghost { background: transparent; color: #F3EFF8; border: 1.5px solid #5A4A8A; box-shadow: none; }
-  .cta .btn.ghost:hover { border-color: #A48BFA; filter: none; }
+  .cta .btn.ghost { background: transparent; color: #0F172A; border: 1.5px solid #475569; box-shadow: none; }
+  .cta .btn.ghost:hover { border-color: #93C5FD; filter: none; }
 
   footer { text-align: center; color: var(--muted); font-size: 14px; padding: 32px 16px 48px; border-top: 1px solid var(--border); background: var(--surface); }
 
@@ -183,12 +183,19 @@
   .hero-img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--border); margin: 0 0 32px; }
 
   /* Shared dark design language (matches the home page) */
-  body { background-image: radial-gradient(900px 420px at 50% -80px, rgba(99, 76, 230, 0.16), transparent 70%); background-repeat: no-repeat; }
+  body { background-image: radial-gradient(900px 420px at 50% -80px, rgba(37, 99, 235, 0.08), transparent 70%); background-repeat: no-repeat; }
   h1, h2, h3 { letter-spacing: -0.02em; }
-  .cta { background: var(--surface) !important; border: 1px solid var(--border); }
-  .badge.live { background: rgba(52, 211, 153, 0.12) !important; color: #34D399 !important; }
-  .pair .good .lbl { color: #34D399 !important; }
-  .soon-item { border-color: #2B2A38 !important; background: rgba(255, 255, 255, 0.03) !important; }
+  .cta { background: #0F172A !important; border: 1px solid #1E293B; color: #fff; }
+  .cta p { color: #CBD5E1; }
+  .cta .btn.ghost { color: #fff; border-color: #475569; }
+  .cta .btn.ghost:hover { border-color: #93C5FD; }
+  .badge.live { background: #ECFDF5 !important; color: #047857 !important; }
+  .pair .good .lbl { color: #047857 !important; }
+  .soon-item { border-color: #E2E8F0 !important; background: rgba(255, 255, 255, 0.03) !important; }
+
+  /* Flow design language */
+  h1, h2, h3, h4 { font-family: 'Space Grotesk', system-ui, sans-serif !important; letter-spacing: -0.02em; }
+  nav { background-color: rgba(255,255,255,.92) !important; backdrop-filter: blur(10px); }
 </style>
 <link rel="stylesheet" href="/assets/site-nav.css?v=5">
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">

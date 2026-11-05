@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
     :root {
-    --bg: #090A0F; --surface: #101119; --accent: #8B5CF6; --accent-text: #B9A5FF; --accent-light: rgba(99, 76, 230, 0.14); --accent-tint: rgba(99, 76, 230, 0.24); --ink: #F3EFF8; --muted: #A8A3B3; --border: #23222E;
+    --bg: #FFFFFF; --surface: #FFFFFF; --accent: #2563EB; --accent-text: #1D4ED8; --accent-light: #EFF6FF; --accent-tint: #DBEAFE; --ink: #0F172A; --muted: #64748B; --border: #E2E8F0;
   }
 
     * {
@@ -35,7 +35,7 @@
     body {
       background-color: var(--bg);
       color: var(--ink);
-      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       font-size: 17px;
       line-height: 1.6;
       min-height: 100vh;
@@ -148,7 +148,7 @@
     }
 
     h1.headline {
-      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       font-size: 44px;
       font-weight: 600;
       line-height: 1.15;
@@ -191,7 +191,7 @@
       border-left: 3px solid var(--accent);
       padding-left: 24px;
       margin-bottom: 64px;
-      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       font-style: italic;
       font-size: 20px;
       line-height: 1.6;
@@ -236,7 +236,7 @@
     }
 
     .approach-row .a-num {
-      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       font-weight: 600;
       font-size: 18px;
       color: var(--accent-text);
@@ -274,7 +274,7 @@
     }
 
     .proof h2 {
-      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       font-size: 28px;
       font-weight: 600;
       line-height: 1.2;
@@ -402,7 +402,7 @@
     }
 
     .detail-cell .num {
-      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       font-size: 44px;
       font-weight: 600;
       color: var(--accent-text);
@@ -515,7 +515,7 @@
       border-radius: 12px; border: 1px solid var(--border); background: var(--surface); cursor: zoom-in; }
     .img-cap { margin: 12px 0 48px; font-size: 13px; line-height: 1.55; color: var(--muted); }
 
-    .section-label { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 28px; font-weight: 600;
+    .section-label { font-family: 'Inter', system-ui, sans-serif; font-size: 28px; font-weight: 600;
       line-height: 1.2; color: var(--ink); margin: 64px 0 20px; }
     @media (max-width: 768px) { .section-label { font-size: 22px; margin-top: 48px; } }
 
@@ -523,7 +523,7 @@
     @media (max-width: 768px) { .pos-block { padding: 24px 20px; } }
     .pos-kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--accent-text); margin-bottom: 10px; }
-    .pos-claim { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 12px; }
+    .pos-claim { font-family: 'Inter', system-ui, sans-serif; font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 12px; }
     .pos-claim em { color: var(--accent-text); }
     @media (max-width: 768px) { .pos-claim { font-size: 26px; } }
     .pos-sub { font-size: 16px; color: var(--muted); margin-bottom: 28px; }
@@ -566,12 +566,16 @@
 
   
   /* Shared dark design language (matches the home page) */
-  body { background-image: radial-gradient(900px 420px at 50% -80px, rgba(99, 76, 230, 0.16), transparent 70%); background-repeat: no-repeat; }
+  body { background-image: radial-gradient(900px 420px at 50% -80px, rgba(37, 99, 235, 0.08), transparent 70%); background-repeat: no-repeat; }
   h1, h2, h3 { letter-spacing: -0.02em; }
   .cta { background: var(--surface) !important; border: 1px solid var(--border); }
-  .badge.live { background: rgba(52, 211, 153, 0.12) !important; color: #34D399 !important; }
-  .pair .good .lbl { color: #34D399 !important; }
-  .soon-item { border-color: #2B2A38 !important; background: rgba(255, 255, 255, 0.03) !important; }
+  .badge.live { background: #ECFDF5 !important; color: #047857 !important; }
+  .pair .good .lbl { color: #047857 !important; }
+  .soon-item { border-color: #E2E8F0 !important; background: rgba(255, 255, 255, 0.03) !important; }
+
+  /* Flow design language */
+  h1, h2, h3, h4 { font-family: 'Space Grotesk', system-ui, sans-serif !important; letter-spacing: -0.02em; }
+  nav { background-color: rgba(255,255,255,.92) !important; backdrop-filter: blur(10px); }
 </style>
 <link rel="stylesheet" href="/assets/site-nav.css?v=5">
 <link rel="stylesheet" href="/assets/case-study.css">
