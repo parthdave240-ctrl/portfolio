@@ -23,21 +23,21 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Lato:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #15121E;
-    --card: #1A1626;
-    --panel: #1E1930;
-    --line: #2C2738;
+    --bg: #090A0F;
+    --card: #101119;
+    --panel: #14151E;
+    --line: #23222E;
     --ink: #F3EFF8;
     --soft: #C9C3D6;
     --muted: #A8A3B3;
-    --accent: #A48BFA;
+    --accent: #A78BFA;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     background: var(--bg);
     color: var(--ink);
-    font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -54,7 +54,7 @@
   .eyebrow { display: flex; align-items: center; gap: 20px; max-width: 760px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: clamp(20px, 3vw, 32px); }
   .eyebrow span:first-child { white-space: nowrap; }
   .eyebrow span:last-child { flex: 1; height: 1px; background: var(--line); }
-  h1 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: clamp(48px, 8vw, 104px); line-height: 1; letter-spacing: -0.035em; }
+  h1 { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 600; font-size: clamp(48px, 8vw, 104px); line-height: 1; letter-spacing: -0.035em; }
   h1 em { font-style: normal; color: var(--accent); }
   .lede { font-size: clamp(18px, 2vw, 22px); line-height: 1.5; color: var(--soft); max-width: 640px; margin-top: 24px; }
 
@@ -71,24 +71,24 @@
   .panel { width: 100%; height: 100%; border-radius: 8px; padding: 10px 14px; display: flex; flex-direction: column; justify-content: center; gap: 4px; font-size: 11px; }
   .thumb:has(.panel.sales), .thumb:has(.panel.email) { padding: 12px; }
   .panel .cap { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 2px; }
-  .panel.email { background: #15121E; border: 1px solid var(--line); }
+  .panel.email { background: #0D0E16; border: 1px solid var(--line); }
   .panel.email .row { display: grid; grid-template-columns: minmax(0, 1fr) 80px 44px; gap: 10px; align-items: center; }
   .panel.email .row span:first-child { color: var(--soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .panel.email .bar { height: 6px; border-radius: 3px; background: var(--line); display: block; }
   .panel.email .bar b { display: block; height: 100%; border-radius: 3px; background: var(--accent); }
   .panel.email .row span:last-child { font-weight: 700; text-align: right; }
-  .panel.sales { background: #15121E; border: 1px solid var(--line); }
+  .panel.sales { background: #0D0E16; border: 1px solid var(--line); }
   .panel.sales .row { display: flex; justify-content: space-between; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 3px 10px; }
   .panel.sales .row span:last-child { color: var(--muted); }
-  .panel.stat { background: linear-gradient(160deg, #241C3D, #15121E); border: 1px solid var(--line); align-items: flex-start; justify-content: flex-end; padding: 22px; gap: 8px; }
-  .panel.stat .big { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: clamp(44px, 5vw, 60px); line-height: 1; letter-spacing: -0.03em; color: var(--accent); }
+  .panel.stat { background: linear-gradient(160deg, #241C3D, #0D0E16); border: 1px solid var(--line); align-items: flex-start; justify-content: flex-end; padding: 22px; gap: 8px; }
+  .panel.stat .big { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 600; font-size: clamp(44px, 5vw, 60px); line-height: 1; letter-spacing: -0.03em; color: var(--accent); }
   .panel.stat .sub { font-size: 14px; color: var(--soft); }
 
   .body { padding: 24px 26px 26px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
   .meta { display: flex; justify-content: space-between; gap: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
   .meta b { color: var(--accent); font-weight: 500; }
-  h2 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 24px; line-height: 1.2; letter-spacing: -0.01em; }
-  .desc { font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.5; color: var(--soft); }
+  h2 { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 600; font-size: 24px; line-height: 1.2; letter-spacing: -0.01em; }
+  .desc { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.5; color: var(--soft); }
   .kpis { display: flex; gap: 12px 20px; flex-wrap: wrap; padding-top: 4px; }
   .kpis > div { min-width: 0; }
   .kpis strong { display: block; font-size: 16px; }
