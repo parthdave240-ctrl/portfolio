@@ -150,7 +150,7 @@ header.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);bac
 .side{border-right:1px solid var(--line);padding-right:24px;display:flex;flex-direction:column;gap:6px}
 .side .mini{margin-bottom:10px;color:#94A3B8}
 .mod{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;border:1px solid transparent;background:transparent;border-radius:6px;padding:9px 12px;font:500 12px 'Inter',sans-serif;color:var(--text);cursor:pointer}
-.mod i{width:6px;height:6px;border-radius:50%;background:transparent}
+.mod i{display:none}
 .mod:hover{background:#fff;color:var(--ink)}
 .mod.on{background:#fff;border-color:var(--line);color:var(--blue);font-weight:600;box-shadow:0 1px 2px rgba(15,23,42,.05)}.mod.on i{background:var(--blue)}
 .panel{background:#fff;border:1px solid var(--line);border-radius:8px;padding:clamp(18px,2vw,28px);box-shadow:0 1px 2px rgba(15,23,42,.05)}
@@ -168,6 +168,14 @@ header.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);bac
 .shift{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1.1fr);gap:20px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line)}
 .from{color:var(--muted)}.arr{color:var(--blue);font-weight:700}
 .to{font:600 clamp(18px,2vw,22px) 'Space Grotesk',sans-serif;letter-spacing:-0.01em;line-height:1.3}
+.stp{display:none}
+@media (max-width:760px){.dash{display:block;background:none;border:0;padding:0;box-shadow:none}.side{display:none}
+.stp{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.sb{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:18px;cursor:pointer;box-shadow:0 1px 2px rgba(15,23,42,.06)}.sb:disabled{opacity:.35;cursor:default}
+.stl{text-align:center;line-height:1.3}.stl b{display:block;font:700 11px 'Space Grotesk',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}.stl i{font-style:normal;font:600 17px 'Space Grotesk',sans-serif;color:var(--ink)}
+.panel{display:flex;flex-direction:column;padding:20px}.panel[hidden]{display:none}.ph{display:contents}.ph>div{order:0;padding-bottom:14px;margin-bottom:6px;border-bottom:1px solid #F1F5F9}.ph h3{display:none}.ph p{max-width:none;font-size:14px;margin:0}
+.cells{order:1;display:block;margin:0}.cell{background:none;border:0;border-bottom:1px solid #F1F5F9;border-radius:0;padding:14px 0}.cell:last-child{border-bottom:0}
+.pf{order:2;border-top:0;padding-top:4px}.ph .dbtn{order:3;width:100%;margin-top:14px;padding:12px;font-size:14px}}
 /* why me */
 .why{background:#fff}
 .wgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
@@ -291,6 +299,7 @@ dialog.deal h2{font-size:26px;margin:6px 0 0}
   <div class="head2"><div><p class="eyebrow">01 / What I do</p><h2>What I do as GTM operator.</h2></div>
   <p class="d">A lean operational setup in four stages. You can also start with a single channel or a specific problem.</p></div>
   <div class="dash">
+    <div class="stp"><button type="button" class="sb" data-step="-1" aria-label="Previous stage" disabled>&larr;</button><span class="stl"><b id="stn">Stage 1 of 4</b><i id="stt">Foundation</i></span><button type="button" class="sb" data-step="1" aria-label="Next stage">&rarr;</button></div>
     <div class="side" role="tablist"><p class="mini">Stages</p><button type="button" class="mod on" data-tab="1" role="tab" aria-selected="true"><span>01. Foundation</span><i></i></button><button type="button" class="mod" data-tab="2" role="tab" aria-selected="false"><span>02. Build</span><i></i></button><button type="button" class="mod" data-tab="3" role="tab" aria-selected="false"><span>03. Growth execution</span><i></i></button><button type="button" class="mod" data-tab="4" role="tab" aria-selected="false"><span>04. Measure and hand over</span><i></i></button></div>
     <div><div class="panel" data-panel="1" role="tabpanel">
         <div class="ph"><div><h3>Stage 1: Foundation</h3><p>Know who you sell to, why you win and what to say, before you spend on anything else.</p></div><button type="button" class="chip dbtn" data-deal="d-s1">See deliverables</button></div>
@@ -450,6 +459,8 @@ dialog.deal h2{font-size:26px;margin:6px 0 0}
 
 <script>
 (function(){
+var curStage=1,SN=['Foundation','Build','Growth execution','Measure and hand over'];
+function showStage(k){k=Math.max(1,Math.min(4,k));curStage=k;document.querySelectorAll('.mod').forEach(function(b){var on=+b.getAttribute('data-tab')===k;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});document.querySelectorAll('.panel').forEach(function(p){p.hidden=+p.getAttribute('data-panel')!==k});document.getElementById('stn').textContent='Stage '+k+' of 4';document.getElementById('stt').textContent=SN[k-1];var s=document.querySelectorAll('.sb');s[0].disabled=k===1;s[1].disabled=k===4}
 var fe=document.getElementById('feat'),cur=0,tm,sl=fe.querySelectorAll('.slide'),dt=fe.querySelectorAll('.fd');
 function go(i){cur=(i+sl.length)%sl.length;sl.forEach(function(s,k){s.classList.toggle('on',k===cur);s.setAttribute('aria-hidden',k!==cur)});dt.forEach(function(b,k){b.classList.toggle('on',k===cur)})}
 function play(){clearInterval(tm);if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;tm=setInterval(function(){go(cur+1)},5000)}
@@ -462,7 +473,8 @@ document.addEventListener('click',function(e){
   var hl=e.target.closest('.hmp a');if(hl){var hm=document.querySelector('.hm');if(hm)hm.removeAttribute('open')}
   var dl=e.target.closest('[data-deal]');if(dl){var dd=document.getElementById(dl.getAttribute('data-deal'));if(dd){document.querySelectorAll('dialog[open]').forEach(function(o){o.close()});dd.showModal();dd.scrollTop=0}return}
   var a=e.target.closest('[data-audit]');if(a){e.preventDefault();document.querySelectorAll('dialog[open]').forEach(function(o){o.close()});openD(a.getAttribute('data-audit'));return}
-  var m=e.target.closest('[data-tab]');if(m){var k=m.getAttribute('data-tab');document.querySelectorAll('.mod').forEach(function(b){var on=b===m;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});document.querySelectorAll('.panel').forEach(function(p){p.hidden=p.getAttribute('data-panel')!==k});return}
+  var m=e.target.closest('[data-tab]');if(m){showStage(+m.getAttribute('data-tab'));return}
+  var sp=e.target.closest('[data-step]');if(sp){showStage(curStage+ +sp.getAttribute('data-step'));return}
   var cl=e.target.closest('[data-close]');if(cl){cl.closest('dialog').close();return}if(e.target.tagName==='DIALOG')e.target.close()});
 f.addEventListener('submit',function(e){e.preventDefault();if(!f.checkValidity()){f.reportValidity();return}
 var fd=new FormData(f),digits=String(fd.get('phone')||'').replace(/\D/g,'').replace(/^0+/,'');
