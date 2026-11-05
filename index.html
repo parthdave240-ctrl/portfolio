@@ -32,11 +32,7 @@ section{padding:clamp(72px,8vw,112px) 0;border-bottom:1px solid var(--line)}
 .eyebrow{font:700 12px 'Space Grotesk',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
 .mini{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#94A3B8}
 h2{font-size:clamp(28px,3.4vw,40px);line-height:1.15;margin-top:8px}
-/* banner + header */
-.banner{background:var(--ink);color:#fff;font-size:12px;padding:9px 16px;border-bottom:1px solid #1E293B}
-.banner .in{display:flex;flex-wrap:wrap;gap:6px 12px;justify-content:center;align-items:center;text-align:center}
-.banner b{background:var(--blue);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:4px}
-.banner span{color:#CBD5E1}.banner a{color:#fff;font-weight:600;text-decoration:underline}
+/* header */
 header.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:20px}
 .brand{display:flex;align-items:center;gap:8px;font:700 20px 'Space Grotesk',sans-serif;letter-spacing:-0.02em;text-decoration:none}
@@ -100,20 +96,21 @@ header.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);bac
 .feat a{display:inline-block;margin-top:10px;font-size:13px;font-weight:600;color:var(--blue);text-decoration:none}
 .fdots{display:flex;gap:8px;padding:6px 22px 18px}
 .fd{width:28px;height:6px;border-radius:3px;border:0;padding:0;background:var(--line);cursor:pointer}.fd.on{background:var(--blue)}
-.ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px;margin-top:40px}
-.ba .b,.ba .a{border-radius:10px;padding:clamp(20px,2.4vw,28px);display:flex;flex-direction:column;gap:12px}
-.ba .b{background:var(--soft);border:1px solid var(--line)}
-.ba .a{background:#EFF6FF;border:1px solid #BFDBFE}
-.ba em{font-style:normal;font:700 11px 'Space Grotesk',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8}
-.ba .a em{color:var(--blue)}
-.ba .b p{color:var(--muted)}.ba .a p{font:600 clamp(17px,1.8vw,20px) 'Space Grotesk',sans-serif;letter-spacing:-0.01em;line-height:1.35;color:var(--ink)}
+.ba{margin-top:32px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.bah,.bar{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
+.bah span{padding:12px 24px;font:700 11px 'Space Grotesk',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8;background:var(--soft);border-bottom:1px solid var(--line)}
+.bah span:last-child{color:var(--blue);background:#EFF6FF;border-left:1px solid #BFDBFE}
+.bar p{padding:16px 24px;margin:0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.5}
+.bar:last-child p{border-bottom:0}
+.bar .b{color:var(--muted)}
+.bar .a{background:#F8FAFF;border-left:1px solid #DBEAFE;color:var(--ink);font:600 16px/1.4 'Space Grotesk',sans-serif;letter-spacing:-0.01em}
 .ai{background:var(--ink);color:#fff;border-bottom:1px solid #1E293B}
 .ai h2{color:#fff}.ai .eyebrow{color:#60A5FA}
 .ai .head2 p.d{color:#94A3B8}
 .arts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .art{background:#111C33;border:1px solid #1E293B;border-radius:12px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column}
 .art:hover{border-color:#334155}
-.art img{width:100%;height:auto;aspect-ratio:16/8;object-fit:cover;background:#0B1220}
+.art img{width:calc(100% - 32px);margin:16px 16px 0;height:auto;aspect-ratio:16/8;object-fit:cover;background:#fff;border-radius:8px}
 .art div{padding:24px;display:flex;flex-direction:column;gap:8px;flex:1}
 .art .mini{color:#60A5FA}.art h3{font-size:20px;line-height:1.25;color:#fff}.art p{font-size:14px;color:#94A3B8}
 .art span.go{margin-top:auto;padding-top:12px;font-size:13px;font-weight:600;color:#93C5FD}
@@ -201,15 +198,24 @@ form input,form select,form textarea{font:400 15px 'Inter',sans-serif;padding:11
 form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:var(--blue)}
 .pg{display:grid;grid-template-columns:minmax(0,130px) minmax(0,1fr);gap:8px}
 .hp{position:absolute;left:-9999px}
+.dlink{display:block;width:100%;margin-top:12px;background:none;border:0;padding:6px;font:600 13px 'Inter',sans-serif;color:var(--blue);cursor:pointer;text-align:center}.dlink:hover{text-decoration:underline}
+.dbtn{cursor:pointer;font-family:'Inter',sans-serif}.dbtn:hover{background:#DBEAFE}
+dialog.deal{width:min(680px,calc(100vw - 32px))}
+dialog.deal h2{font-size:26px;margin:6px 0 0}
+.dh{font:700 12px 'Space Grotesk',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin:22px 0 12px}
+.dl{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.dl li{display:flex;gap:14px}.dn{flex:none;width:28px;height:28px;border-radius:50%;background:#EFF6FF;color:var(--blue);font:700 13px 'Space Grotesk',sans-serif;display:flex;align-items:center;justify-content:center}
+.dl h4{font:600 15px 'Inter',sans-serif;margin:3px 0 0}.dl p{font-size:14px;color:var(--text);margin-top:2px}
+.nc{margin-top:18px;padding:14px 16px;border:1px solid var(--line);background:var(--soft);border-radius:8px;font-size:13px;color:var(--text)}.nc b{display:block;color:var(--ink);margin-bottom:2px}
+.part{border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin-bottom:12px}.part h4{font:700 15px 'Space Grotesk',sans-serif;margin:0 0 8px}.part h4 span{font:500 12px 'Inter',sans-serif;color:var(--muted);margin-left:6px}
+.part ul{margin:0;padding-left:18px;font-size:13px;color:var(--text);display:grid;gap:6px}.part li b{color:var(--ink)}
+.dacts{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 #fnote{font-size:13px;color:var(--muted)}#thanks{display:none}
 @media (max-width:900px){.logos ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:1000px){.arts,.soon,.inds,.ba{grid-template-columns:minmax(0,1fr)}.hero-g,.head2,.fg{grid-template-columns:minmax(0,1fr)}.grid3,.offers,.stk{grid-template-columns:minmax(0,1fr)}.dash{grid-template-columns:minmax(0,1fr)}.side{border-right:0;border-bottom:1px solid var(--line);padding:0 0 16px;flex-direction:row;overflow-x:auto;gap:8px}.side .mini{display:none}.mod{white-space:nowrap;width:auto}.c4,.c3{grid-template-columns:repeat(2,minmax(0,1fr))}.fb{justify-content:flex-start}.nav nav{display:none}}
-@media (max-width:640px){.wrap{padding:0 18px}.brand{white-space:nowrap;font-size:18px}.nav .btn{white-space:nowrap;padding:9px 12px;font-size:13px}.nav .wrap{gap:10px}.stats{gap:14px}.stats b{font-size:24px}.c4,.c3,.c2{grid-template-columns:minmax(0,1fr)}.shift{grid-template-columns:minmax(0,1fr);gap:8px}.arr{transform:rotate(90deg);justify-self:start}.cta .btn,.fb .btn{width:100%}.nav .r>a:first-child{display:none}.banner .in span{display:none}.ph{flex-direction:column}}
-</style>
+@media (max-width:1000px){.arts,.soon,.inds{grid-template-columns:minmax(0,1fr)}.hero-g,.head2,.fg{grid-template-columns:minmax(0,1fr)}.grid3,.offers,.stk{grid-template-columns:minmax(0,1fr)}.dash{grid-template-columns:minmax(0,1fr)}.side{border-right:0;border-bottom:1px solid var(--line);padding:0 0 16px;flex-direction:row;overflow-x:auto;gap:8px}.side .mini{display:none}.mod{white-space:nowrap;width:auto}.c4,.c3{grid-template-columns:repeat(2,minmax(0,1fr))}.fb{justify-content:flex-start}.nav nav{display:none}}
+@media (max-width:640px){.bah{display:none}.bar{grid-template-columns:minmax(0,1fr)}.bar p::before{display:block;font:700 10px "Space Grotesk",sans-serif;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;color:#94A3B8}.bar .b::before{content:"Before"}.bar .a::before{content:"After";color:var(--blue)}.bar .a{border-left:0;border-top:1px dashed #DBEAFE}.wrap{padding:0 18px}.brand{white-space:nowrap;font-size:18px}.nav .btn{white-space:nowrap;padding:9px 12px;font-size:13px}.nav .wrap{gap:10px}.stats{gap:14px}.stats b{font-size:24px}.c4,.c3,.c2{grid-template-columns:minmax(0,1fr)}.shift{grid-template-columns:minmax(0,1fr);gap:8px}.arr{transform:rotate(90deg);justify-self:start}.cta .btn,.fb .btn{width:100%}.nav .r>a:first-child{display:none}</style>
 </head>
 <body>
-
-<div class="banner"><div class="in"><b>GTM system</b><span>Free 1-day GTM audit for qualifying B2B and D2C brands.</span><a href="#" data-audit="free">Apply now &rarr;</a></div></div>
 
 <header class="nav"><div class="wrap">
   <a class="brand" href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Parth Dave</a>
@@ -258,22 +264,22 @@ form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--b
   <div class="dash">
     <div class="side" role="tablist"><p class="mini">Stages</p><button type="button" class="mod on" data-tab="1" role="tab" aria-selected="true"><span>01. Foundation</span><i></i></button><button type="button" class="mod" data-tab="2" role="tab" aria-selected="false"><span>02. Build</span><i></i></button><button type="button" class="mod" data-tab="3" role="tab" aria-selected="false"><span>03. Growth execution</span><i></i></button><button type="button" class="mod" data-tab="4" role="tab" aria-selected="false"><span>04. Measure and hand over</span><i></i></button></div>
     <div><div class="panel" data-panel="1" role="tabpanel">
-        <div class="ph"><div><h3>Stage 1: Foundation</h3><p>Know who you sell to, why you win and what to say, before you spend on anything else.</p></div><span class="chip">Stage 1 of 4</span></div>
+        <div class="ph"><div><h3>Stage 1: Foundation</h3><p>Know who you sell to, why you win and what to say, before you spend on anything else.</p></div><button type="button" class="chip dbtn" data-deal="d-s1">See deliverables</button></div>
         <div class="cells c4"><div class="cell"><p class="mini">Step 1</p><p class="cn">Audit and plan</p><p class="cd">A clear baseline, what to fix first, and goals for 3, 6 and 12 months.</p></div><div class="cell"><p class="mini">Step 2</p><p class="cn">Ideal customer</p><p class="cd">Your best buyers, what triggers a purchase, and who to say no to.</p></div><div class="cell"><p class="mini">Step 3</p><p class="cn">Positioning</p><p class="cd">Pick your anchor, weigh options ranked by risk, and lock the exact words for what you are and who it is for.</p></div><div class="cell"><p class="mini">Step 4</p><p class="cn">Messaging</p><p class="cd">The words that explain your value and why you win, the same everywhere buyers look.</p></div></div>
         <div class="pf"><span>You leave with: <b>ICP, positioning and messaging your team agrees on.</b></span></div>
       </div>
 <div class="panel" data-panel="2" role="tabpanel" hidden>
-        <div class="ph"><div><h3>Stage 2: Build</h3><p>Make your assets and website match, and set your channel strategy.</p></div><span class="chip">Stage 2 of 4</span></div>
+        <div class="ph"><div><h3>Stage 2: Build</h3><p>Make your assets and website match, and set your channel strategy.</p></div><button type="button" class="chip dbtn" data-deal="d-s2">See deliverables</button></div>
         <div class="cells c3"><div class="cell"><p class="mini">Step 1</p><p class="cn">Marketing and sales assets</p><p class="cd">The website, product pages, decks and creatives buyers see, rebuilt to match your positioning.</p></div><div class="cell"><p class="mini">Step 2</p><p class="cn">Website fixes and landing pages</p><p class="cd">Fix what costs you conversions on your site, and build landing pages that match your positioning.</p></div><div class="cell"><p class="mini">Step 3</p><p class="cn">Growth engine</p><p class="cd">Pipeline and channel strategy: the channels you use, how each performs (paid, email, SEO and more), and where to focus.</p></div></div>
         <div class="pf"><span>You leave with: <b>Assets and a website that match, and a clear channel strategy.</b></span></div>
       </div>
 <div class="panel" data-panel="3" role="tabpanel" hidden>
-        <div class="ph"><div><h3>Stage 3: Growth execution</h3><p>Put the growth system to work: your channels, AI workflows and funnel.</p></div><span class="chip">Stage 3 of 4</span></div>
+        <div class="ph"><div><h3>Stage 3: Growth execution</h3><p>Put the growth system to work: your channels, AI workflows and funnel.</p></div><button type="button" class="chip dbtn" data-deal="d-s3">See deliverables</button></div>
         <div class="cells c3"><div class="cell"><p class="mini">Step 1</p><p class="cn">Channel execution</p><p class="cd">Run the channels and campaigns from your growth plan, week to week.</p></div><div class="cell"><p class="mini">Step 2</p><p class="cn">AI readiness and workflows</p><p class="cd">Check how ready your team is for AI, then build workflows that take repeat work off your plate.</p></div><div class="cell"><p class="mini">Step 3</p><p class="cn">Funnel and conversion setup</p><p class="cd">Fix and connect the path from first visit to customer: lead capture, forms, add to cart and checkout.</p></div></div>
         <div class="pf"><span>You leave with: <b>A running growth system, with AI workflows and a connected funnel.</b></span></div>
       </div>
 <div class="panel" data-panel="4" role="tabpanel" hidden>
-        <div class="ph"><div><h3>Stage 4: Measure and hand over</h3><p>Track what is working, then hand everything over so your team can run it.</p></div><span class="chip">Stage 4 of 4</span></div>
+        <div class="ph"><div><h3>Stage 4: Measure and hand over</h3><p>Track what is working, then hand everything over so your team can run it.</p></div><button type="button" class="chip dbtn" data-deal="d-s4">See deliverables</button></div>
         <div class="cells c2"><div class="cell"><p class="mini">Step 1</p><p class="cn">Reporting and planning</p><p class="cd">Dashboards that show what is working and what to do next.</p></div><div class="cell"><p class="mini">Step 2</p><p class="cn">Handover</p><p class="cd">Everything documented and handed to your team, with playbooks they can run.</p></div></div>
         <div class="pf"><span>You leave with: <b>Dashboards that guide decisions, and a clean handover to your team.</b></span></div>
       </div>
@@ -284,7 +290,13 @@ form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--b
 <section class="diff"><div class="wrap">
   <p class="eyebrow">02 / The difference</p>
   <h2>What changes when you work with me.</h2>
-  <div class="ba"><div class="b"><em>Before</em><p>Messaging is scattered across your homepage, ads, outbound emails and sales decks.</p></div><div class="a"><em>After</em><p>One clear story that prospects understand everywhere.</p></div><div class="b"><em>Before</em><p>Growth relies on trial and error and vanity metrics, with no one accountable.</p></div><div class="a"><em>After</em><p>A quarterly roadmap, an owner for each channel, and dashboards that show what drives revenue.</p></div><div class="b"><em>Before</em><p>Marketing, sales outreach and ads each run on their own.</p></div><div class="a"><em>After</em><p>One growth loop, where data from the channels that convert helps the others.</p></div><div class="b"><em>Before</em><p>Your team is stretched thin on repetitive admin work.</p></div><div class="a"><em>After</em><p>AI workflows handle the routine tasks so your team can spend its time on growth.</p></div></div>
+  <div class="ba">
+    <div class="bah"><span>Before</span><span>After</span></div>
+    <div class="bar"><p class="b">Scattered messaging across site, ads, outbound and decks.</p><p class="a">One clear story prospects understand everywhere.</p></div>
+    <div class="bar"><p class="b">Trial and error, vanity metrics, no clear owner.</p><p class="a">A quarterly roadmap, a channel owner, and dashboards tied to revenue.</p></div>
+    <div class="bar"><p class="b">Marketing, outreach and ads run separately.</p><p class="a">One growth loop where winning channels feed the others.</p></div>
+    <div class="bar"><p class="b">Your team is stuck on repetitive admin.</p><p class="a">AI workflows take routine work so the team can focus on growth.</p></div>
+  </div>
 </div></section>
 
 <section class="proof"><div class="wrap">
@@ -297,8 +309,8 @@ form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--b
   <div class="head2"><div><p class="eyebrow">AI GTM systems</p><h2>AI-powered GTM, built and run for real.</h2></div>
   <p class="d">AI-assisted workflows across the marketing and sales lifecycle, from ICP to follow-up. Every write-up shows the files, the rules, what went wrong and what is not proven yet.</p></div>
   <div class="arts">
-    <a class="art" href="/ai-gtm-systems/growth-repo.html"><img src="/images/growth-repo-cover.svg" alt="" decoding="async"><div><p class="mini">Guide · start here</p><h3>Build a growth repo so your AI marketing and sales stays on-ICP, on-voice and on the record</h3><p>Why a repo matters in the AI era, the folders, the ICP, positioning and voice files, and how it connects to your tools. About 17 min read.</p><span class="go">Read the guide &rarr;</span></div></a>
-    <a class="art" href="/ai-gtm-systems/linkedin-engagement-system.html"><img src="/images/linkedin-system-cover.svg" alt="" decoding="async"><div><p class="mini">Build log · LinkedIn</p><h3>I built a LinkedIn growth system with Claude. Here is exactly how it works.</h3><p>ICP scoring, the voice file, guardrails, the CRM log, the daily review gate, and what went wrong along the way. About 13 min read.</p><span class="go">Read the build log &rarr;</span></div></a>
+    <a class="art" href="/ai-gtm-systems/growth-repo.html"><img src="/images/growth-repo-cover.svg?v=2" alt="" decoding="async"><div><p class="mini">Guide · start here</p><h3>Build a growth repo so your AI marketing and sales stays on-ICP, on-voice and on the record</h3><p>Why a repo matters in the AI era, the folders, the ICP, positioning and voice files, and how it connects to your tools. About 17 min read.</p><span class="go">Read the guide &rarr;</span></div></a>
+    <a class="art" href="/ai-gtm-systems/linkedin-engagement-system.html"><img src="/images/linkedin-system-cover.svg?v=2" alt="" decoding="async"><div><p class="mini">Build log · LinkedIn</p><h3>I built a LinkedIn growth system with Claude. Here is exactly how it works.</h3><p>ICP scoring, the voice file, guardrails, the CRM log, the daily review gate, and what went wrong along the way. About 13 min read.</p><span class="go">Read the build log &rarr;</span></div></a>
   </div>
   <a class="more" style="color:#93C5FD" href="/ai-gtm-systems/">All AI GTM systems &rarr;</a>
 </div></section>
@@ -307,11 +319,11 @@ form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--b
   <div class="head2"><div><p class="eyebrow">Industries</p><h2>Where I go deep.</h2></div>
   <p class="d">The same four-stage system, tuned to how each type of business actually grows.</p></div>
   <div class="inds">
-    <div class="ind live"><span class="st">Live page</span><h3>D2C growth, $5M to $50M</h3>
+    <div class="ind live"><h3>D2C growth, $5M to $50M</h3>
       <p class="d">For D2C brands that want to scale without destroying unit economics. Broken funnels, leaky retention and unpredictable ad spend are the usual stall points.</p>
       <ul><li><span>✓</span>Scaling trap: spend rules and creative frameworks that protect CAC</li><li><span>✓</span>Leaky bucket: email and CRM flows that build repeat buyers</li><li><span>✓</span>Blind funnel: conversion work tied to real revenue</li></ul>
       <div class="row"><a class="btn" href="/industry/d2c-growth/">See the D2C page</a><a class="btn light" href="/case-studies/scaling-spend.html">D2C case study</a></div></div>
-    <div class="ind"><span class="st n">Case studies</span><h3>B2B SaaS</h3>
+    <div class="ind"><h3>B2B SaaS</h3>
       <p class="d">Positioning and brand for software companies selling into complex markets, from a repositioned logistics platform to a brand built from zero.</p>
       <ul><li><span>✓</span>Freight Tiger: three module pitches unified into one position</li><li><span>✓</span>TigerSight: a brand built from zero</li></ul>
       <div class="row"><a class="btn light" href="/case-studies/repositioning-freighttiger.html">Freight Tiger case</a><a class="btn light" href="/case-studies/">All case studies</a></div></div>
@@ -324,15 +336,15 @@ form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--b
     <div class="offer"><p class="mini">Start here</p><h3>Free 1-day audit and strategy call</h3>
       <div class="pr"><b>$0</b><span>Based on eligibility and current revenue</span></div>
       <div class="ul-wrap"><ul><li><span>✓</span>A GTM snapshot with your top 3 priorities</li><li><span>✓</span>A website or landing page wireframe with content</li><li><span>✓</span>A 1-hour strategy call</li></ul></div>
-      <a class="btn dark" href="#" data-audit="free">Apply for the free audit</a></div>
+      <a class="btn dark" href="#" data-audit="free">Apply for the free audit</a><button type="button" class="dlink" data-deal="d-free">See the deliverables</button></div>
     <div class="offer hi"><span class="tag">Credited toward Operator</span><p class="mini" style="color:var(--blue)">Go deeper</p><h3>GTM audit sprint</h3>
       <div class="pr"><b>$2,000</b><span>Two weeks, fixed fee</span></div>
       <div class="ul-wrap"><ul><li><span>✓</span>Complete GTM assessment as a slide deck</li><li><span>✓</span>Channel performance review</li><li><span>✓</span>ICP, positioning and messaging</li><li><span>✓</span>Homepage wireframe with ready-to-use copy</li><li><span>✓</span>A 3, 6 and 12-month roadmap</li><li><span>✓</span>Live walkthrough with your leadership team</li></ul></div>
-      <a class="btn" href="#" data-audit="sprint">Request a GTM audit sprint</a></div>
+      <a class="btn" href="#" data-audit="sprint">Request a GTM audit sprint</a><button type="button" class="dlink" data-deal="d-sprint">See the deliverables</button></div>
     <div class="offer"><p class="mini">Work together</p><h3>Operator</h3>
       <div class="pr"><b>Custom</b><span>Priced to your scope, 6-month minimum</span></div>
       <div class="ul-wrap"><ul><li><span>✓</span>Choose channel growth or GTM execution</li><li><span>✓</span>Foundation, build, growth execution and handover</li><li><span>✓</span>Weekly and monthly reporting and planning</li></ul></div>
-      <a class="btn dark" href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call to check eligibility</a></div>
+      <a class="btn dark" href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call to check eligibility</a><button type="button" class="dlink" data-deal="d-op">See the deliverables</button></div>
   </div>
   <p class="notcov"><b>Not covered in Operator:</b> ad spend and tool costs, creative production such as brand shoots, video ads and statics (your team or agency produces them and I brief and direct), and lead generation such as prospecting and outbound, which is a separate service.</p>
 </div></section>
@@ -345,6 +357,21 @@ form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--b
   </div>
   <div class="copy"><span>© 2026 Parth Dave, Fractional GTM Operator</span><div><span>B2B SaaS</span><span>D2C</span><span>E-learning</span><span>B2C</span></div></div>
 </div></footer>
+
+<dialog id="d-free" class="deal" aria-labelledby="d-freet"><button class="x" type="button" aria-label="Close" data-close>&times;</button>
+  <p class="mini">Free 1-day audit</p><h2 id="d-freet">What you get in the free 1-day audit.</h2><p class="l">A one-day look at where your GTM stands, plus a live strategy call. Based on eligibility and your current revenue.</p><h3 class="dh">Deliverables</h3><ol class="dl"><li><span class="dn">1</span><div><h4>GTM snapshot</h4><p>Where you stand across ICP, positioning, messaging and channels, with your top 3 priorities and what not to do.</p></div></li><li><span class="dn">2</span><div><h4>Website or landing page wireframe with content</h4><p>A wireframe of one page you choose, with the copy written in, built around your positioning.</p></div></li><li><span class="dn">3</span><div><h4>1-hour strategy call</h4><p>We walk through the findings and the wireframe, and agree your next steps.</p></div></li></ol><div class="nc"><b>Not included</b>Implementation, a full ICP or messaging build, ad account or funnel audits, and lead generation (a separate service).</div><div class="dacts"><a class="btn" href="#" data-audit="free">Apply for the free audit</a><button class="btn light" type="button" data-close>Back to page</button></div></dialog>
+<dialog id="d-sprint" class="deal" aria-labelledby="d-sprintt"><button class="x" type="button" aria-label="Close" data-close>&times;</button>
+  <p class="mini">GTM audit sprint</p><h2 id="d-sprintt">What you get in the GTM audit sprint.</h2><p class="l">A two-week assessment and plan, built on the first steps of the GTM system. $2,000 flat, 100% credited toward Operator.</p><h3 class="dh">Deliverables</h3><ol class="dl"><li><span class="dn">1</span><div><h4>Complete GTM assessment</h4><p>A full baseline across ICP, positioning, messaging, channels, sales process and pricing, summed up in a one-page scorecard.</p></div></li><li><span class="dn">2</span><div><h4>Channel performance review</h4><p>How each channel you already run is performing, and what to keep, fix or stop.</p></div></li><li><span class="dn">3</span><div><h4>ICP definition</h4><p>Your ideal company, the personas behind the decision, the intent signals that show someone is in-market, and who to disqualify.</p></div></li><li><span class="dn">4</span><div><h4>Positioning</h4><p>4 to 6 positioning options ranked by risk, then a 6-slide deck with the exact words for what you are, who it is for, the problem you solve and the value you deliver.</p></div></li><li><span class="dn">5</span><div><h4>Messaging foundation</h4><p>The core messaging blocks: the market problem, your alternatives, proof, tagline and elevator pitch.</p></div></li><li><span class="dn">6</span><div><h4>Homepage wireframe with ready-to-use copy</h4><p>A full homepage outline with real copy mapped to your new positioning.</p></div></li><li><span class="dn">7</span><div><h4>3, 6 and 12-month roadmap</h4><p>Goals for each horizon, with initiatives prioritized against them.</p></div></li><li><span class="dn">8</span><div><h4>Strategy presentation</h4><p>A live review of the deck and the roadmap with your leadership team.</p></div></li></ol><div class="nc"><b>Time from your team</b>Under 3 hours of total leadership time across the two weeks.</div><div class="nc"><b>Not included</b>Execution of the roadmap, lead generation (a separate service), ad spend, tool costs, and creative production.</div><div class="dacts"><a class="btn" href="#" data-audit="sprint">Request a GTM audit sprint</a><button class="btn light" type="button" data-close>Back to page</button></div></dialog>
+<dialog id="d-op" class="deal" aria-labelledby="d-opt"><button class="x" type="button" aria-label="Close" data-close>&times;</button>
+  <p class="mini">Operator</p><h2 id="d-opt">What you get as Operator.</h2><p class="l">A 6-month minimum, priced to the scope of execution. All 12 steps of your GTM, in order, each built on the last.</p><h3 class="dh">Deliverables, in four parts</h3><div class="part"><h4>Part 1: Foundation <span>Steps 1 to 4</span></h4><ul><li><b>Audit and plan:</b> a GTM assessment, what to fix first, goals for 3, 6 and 12 months, and a roadmap</li><li><b>ICP:</b> your ideal company and personas, intent signals and anti-ICP</li><li><b>Positioning:</b> your primary anchor, 4 to 6 options ranked by risk, and the exact words for what you are, who it is for and the value you deliver</li><li><b>Messaging:</b> the master messaging framework, consistent across your homepage, ads and sales or product pages</li></ul></div><div class="part"><h4>Part 2: Build <span>Steps 5 to 7</span></h4><ul><li><b>Marketing and sales assets:</b> website, product pages, decks, creatives and case studies rebuilt to match your ICP, positioning and messaging</li><li><b>Website fixes and landing pages:</b> fixes for what costs you conversions, and landing pages that match your positioning</li><li><b>Growth engine:</b> pipeline and channel strategy: the channels you use, how each one performs (paid, email, SEO and more), where to focus and how they fill your pipeline</li></ul></div><div class="part"><h4>Part 3: Growth execution <span>Steps 8 to 10</span></h4><ul><li><b>Channel execution:</b> running the channels and campaigns from your growth plan, week to week</li><li><b>AI readiness and workflows:</b> a check on how ready your team and tools are for AI, then workflows that take repeat work off your plate</li><li><b>Funnel and conversion setup:</b> lead capture, forms, add to cart and checkout connected, so every visitor and lead is captured and followed up</li></ul></div><div class="part"><h4>Part 4: Measure and hand over <span>Steps 11 and 12</span></h4><ul><li><b>Reporting and planning:</b> dashboards, weekly and monthly review, and plan adjustments</li><li><b>Handover:</b> everything documented and handed to your team, with playbooks they can run</li></ul></div><div class="nc"><b>Every month</b>Weekly and monthly reporting against the goals set in the audit, and a monthly review that adjusts the plan.</div><div class="nc"><b>Not covered</b>Execution of growth systems and campaigns, which is scoped separately. Lead generation, such as prospecting and outbound, which is a separate service. Ad spend and tool costs. Creative production such as brand shoots, video ads and statics: your team or agency produces them, and I brief and direct.</div><div class="dacts"><a class="btn" href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call to check eligibility</a><button class="btn light" type="button" data-close>Back to page</button></div></dialog>
+<dialog id="d-s1" class="deal" aria-labelledby="d-s1t"><button class="x" type="button" aria-label="Close" data-close>&times;</button>
+  <p class="mini">Stage 1 · Steps 1 to 4</p><h2 id="d-s1t">Deliverables: Foundation.</h2><p class="l">Know who you sell to, why you win and what to say, before you spend on anything else.</p><h3 class="dh">What you get</h3><ol class="dl"><li><span class="dn">1</span><div><h4>Audit and plan</h4><p>a GTM assessment, what to fix first, goals for 3, 6 and 12 months, and a roadmap</p></div></li><li><span class="dn">2</span><div><h4>ICP</h4><p>your ideal company and personas, intent signals and anti-ICP</p></div></li><li><span class="dn">3</span><div><h4>Positioning</h4><p>your primary anchor, 4 to 6 options ranked by risk, and the exact words for what you are, who it is for and the value you deliver</p></div></li><li><span class="dn">4</span><div><h4>Messaging</h4><p>the master messaging framework, consistent across your homepage, ads and sales or product pages</p></div></li></ol><div class="dacts"><a class="btn" href="#" data-audit="free">Apply for the free audit</a><button class="btn light" type="button" data-close>Back to page</button></div></dialog>
+<dialog id="d-s2" class="deal" aria-labelledby="d-s2t"><button class="x" type="button" aria-label="Close" data-close>&times;</button>
+  <p class="mini">Stage 2 · Steps 5 to 7</p><h2 id="d-s2t">Deliverables: Build.</h2><p class="l">Make your assets and website match, and set your channel strategy.</p><h3 class="dh">What you get</h3><ol class="dl"><li><span class="dn">1</span><div><h4>Marketing and sales assets</h4><p>website, product pages, decks, creatives and case studies rebuilt to match your ICP, positioning and messaging</p></div></li><li><span class="dn">2</span><div><h4>Website fixes and landing pages</h4><p>fixes for what costs you conversions, and landing pages that match your positioning</p></div></li><li><span class="dn">3</span><div><h4>Growth engine</h4><p>pipeline and channel strategy: the channels you use, how each one performs (paid, email, SEO and more), where to focus and how they fill your pipeline</p></div></li></ol><div class="dacts"><a class="btn" href="#" data-audit="free">Apply for the free audit</a><button class="btn light" type="button" data-close>Back to page</button></div></dialog>
+<dialog id="d-s3" class="deal" aria-labelledby="d-s3t"><button class="x" type="button" aria-label="Close" data-close>&times;</button>
+  <p class="mini">Stage 3 · Steps 8 to 10</p><h2 id="d-s3t">Deliverables: Growth execution.</h2><p class="l">Put the growth system to work: your channels, AI workflows and funnel.</p><h3 class="dh">What you get</h3><ol class="dl"><li><span class="dn">1</span><div><h4>Channel execution</h4><p>running the channels and campaigns from your growth plan, week to week</p></div></li><li><span class="dn">2</span><div><h4>AI readiness and workflows</h4><p>a check on how ready your team and tools are for AI, then workflows that take repeat work off your plate</p></div></li><li><span class="dn">3</span><div><h4>Funnel and conversion setup</h4><p>lead capture, forms, add to cart and checkout connected, so every visitor and lead is captured and followed up</p></div></li></ol><div class="dacts"><a class="btn" href="#" data-audit="free">Apply for the free audit</a><button class="btn light" type="button" data-close>Back to page</button></div></dialog>
+<dialog id="d-s4" class="deal" aria-labelledby="d-s4t"><button class="x" type="button" aria-label="Close" data-close>&times;</button>
+  <p class="mini">Stage 4 · Steps 11 and 12</p><h2 id="d-s4t">Deliverables: Measure and hand over.</h2><p class="l">Track what is working, then hand everything over so your team can run it.</p><h3 class="dh">What you get</h3><ol class="dl"><li><span class="dn">1</span><div><h4>Reporting and planning</h4><p>dashboards, weekly and monthly review, and plan adjustments</p></div></li><li><span class="dn">2</span><div><h4>Handover</h4><p>everything documented and handed to your team, with playbooks they can run</p></div></li></ol><div class="dacts"><a class="btn" href="#" data-audit="free">Apply for the free audit</a><button class="btn light" type="button" data-close>Back to page</button></div></dialog>
 
 <dialog id="dlg" aria-labelledby="dt">
   <button class="x" type="button" aria-label="Close" data-close>&times;</button>
@@ -377,9 +404,10 @@ var d=document.getElementById('dlg'),f=document.getElementById('f'),n=document.g
 var T={free:{t:'Apply for your free 1-day audit.',l:'The free audit is based on eligibility and your current revenue. Tell us about your brand and we will confirm if you qualify.',b:'Apply for the free audit',ty:'Free 1-day audit'},sprint:{t:'Request your GTM audit sprint.',l:'A two-week assessment and plan. $2,000 flat, 100% credited toward Operator.',b:'Request a GTM audit sprint',ty:'GTM audit sprint'}};
 function openD(k){var c=T[k]||T.free;document.getElementById('dt').textContent=c.t;document.getElementById('dl').textContent=c.l;sub.textContent=c.b;document.getElementById('atype').value=c.ty;n.textContent='We reply from a personal inbox, usually within one working day.';n.style.color='';f.style.display='';th.style.display='none';sub.disabled=false;d.showModal()}
 document.addEventListener('click',function(e){
-  var a=e.target.closest('[data-audit]');if(a){e.preventDefault();openD(a.getAttribute('data-audit'));return}
+  var dl=e.target.closest('[data-deal]');if(dl){var dd=document.getElementById(dl.getAttribute('data-deal'));if(dd){document.querySelectorAll('dialog[open]').forEach(function(o){o.close()});dd.showModal();dd.scrollTop=0}return}
+  var a=e.target.closest('[data-audit]');if(a){e.preventDefault();document.querySelectorAll('dialog[open]').forEach(function(o){o.close()});openD(a.getAttribute('data-audit'));return}
   var m=e.target.closest('[data-tab]');if(m){var k=m.getAttribute('data-tab');document.querySelectorAll('.mod').forEach(function(b){var on=b===m;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});document.querySelectorAll('.panel').forEach(function(p){p.hidden=p.getAttribute('data-panel')!==k});return}
-  if(e.target.closest('[data-close]'))d.close();if(e.target===d)d.close()});
+  var cl=e.target.closest('[data-close]');if(cl){cl.closest('dialog').close();return}if(e.target.tagName==='DIALOG')e.target.close()});
 f.addEventListener('submit',function(e){e.preventDefault();if(!f.checkValidity()){f.reportValidity();return}
 var fd=new FormData(f),digits=String(fd.get('phone')||'').replace(/\D/g,'').replace(/^0+/,'');
 var p={name:fd.get('name'),email:fd.get('email'),phone:String(fd.get('country_code'))+digits,company:fd.get('company'),revenue:fd.get('revenue'),website:fd.get('website'),extras:fd.get('extras')||'',audit_type:fd.get('audit_type'),page:location.href,source:'home',company_url:fd.get('company_url')||''};
