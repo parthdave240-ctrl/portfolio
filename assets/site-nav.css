@@ -1,25 +1,26 @@
-@font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 500 800; font-display: swap; src: url('/assets/fonts/PlusJakartaSans.woff2') format('woff2'); }
-/* Shared site header: matches the home page nav. Used by /case-studies/ pages. */
-.sn { position: sticky; top: 0; z-index: 200; background: rgba(9, 10, 15, 0.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255, 255, 255, 0.06); color: #F3EFF8; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 14px; line-height: 1.4; }
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(/assets/fonts/Inter.woff2) format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:swap;src:url(/assets/fonts/SpaceGrotesk.woff2) format('woff2')}
+/* Shared site header, Flow design language. Used by /case-studies/, /ai-gtm-systems/ and /industry/ pages. */
+.sn { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid #E2E8F0; color: #334155; font-family: 'Inter', system-ui, sans-serif; font-size: 14px; line-height: 1.4; }
 .sn *, .sn *::before, .sn *::after { box-sizing: border-box; }
-.sn a { color: inherit; text-decoration: none; font-weight: 400; font-size: inherit; }
-.sn-in { max-width: 1200px; margin: 0 auto; padding: 14px clamp(16px, 4vw, 48px); display: flex; align-items: center; gap: 12px 28px; }
-.sn-brand { padding: 8px 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 700 !important; font-size: 20px !important; margin-right: auto; display: flex; align-items: center; gap: 10px; white-space: nowrap; color: #F3EFF8; }
-.sn-brand i { width: 10px; height: 10px; border-radius: 50%; background: #A48BFA; display: block; }
-.sn-links { display: flex; gap: 24px; color: #C9C3D6; }
+.sn a { color: inherit; text-decoration: none; font-weight: 500; font-size: inherit; }
+.sn-in { max-width: 1200px; margin: 0 auto; padding: 10px clamp(16px, 4vw, 48px); display: flex; align-items: center; gap: 12px 28px; }
+.sn-brand { padding: 8px 0; font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 700 !important; font-size: 20px !important; letter-spacing: -0.02em; margin-right: auto; display: flex; align-items: center; gap: 10px; white-space: nowrap; color: #0F172A; }
+.sn-brand i { width: 10px; height: 10px; border-radius: 3px; background: #2563EB; display: block; }
+.sn-links { display: flex; gap: 24px; color: #334155; }
 .sn-links a { white-space: nowrap; }
-.sn-links a:hover, .sn-links a.on { color: #F3EFF8; }
-.sn-cta { background: linear-gradient(90deg, #4F46E5, #9333EA); color: #fff !important; padding: 10px 18px; border-radius: 12px; font-weight: 700 !important; white-space: nowrap; box-shadow: 0 10px 28px rgba(79, 70, 229, 0.28); }
-.sn-cta:hover { filter: brightness(1.1); }
+.sn-links a:hover, .sn-links a.on { color: #0F172A; }
+.sn-cta { background: #2563EB; color: #fff !important; padding: 10px 16px; border-radius: 6px; font-weight: 600 !important; white-space: nowrap; box-shadow: 0 1px 2px rgba(15,23,42,.1); }
+.sn-cta:hover { background: #1D4ED8; }
 .sn-menu { display: none; position: relative; background: transparent !important; border: 0 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important; border-radius: 0 !important; width: auto !important; }
-.sn-menu summary { list-style: none; cursor: pointer; width: 42px; height: 42px; padding: 0 !important; margin: 0 !important; border: 1px solid #4A4458; border-radius: 999px; display: flex; align-items: center; justify-content: center; font-size: 0; }
+.sn-menu summary { list-style: none; cursor: pointer; width: 42px; height: 42px; padding: 0 !important; margin: 0 !important; border: 1px solid #E2E8F0; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0; }
 .sn-menu summary::-webkit-details-marker { display: none; }
 .sn-menu summary span { display: none; }
-.sn-menu summary { background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%20fill%3D%22none%22%20stroke%3D%22%23F3EFF8%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M2%205h14M2%209h14M2%2013h14%22/%3E%3C/svg%3E") center / 18px 18px no-repeat; }
-.sn-menu[open] summary { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%20fill%3D%22none%22%20stroke%3D%22%23F3EFF8%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M3%203l12%2012M15%203L3%2015%22/%3E%3C/svg%3E"); }
-.sn-panel { position: absolute; right: 0; top: 52px; width: min(280px, calc(100vw - 32px)); background: #1E1930; border: 1px solid #2C2738; border-radius: 16px; padding: 8px; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45); display: flex; flex-direction: column; }
-.sn-panel a { padding: 14px 16px; border-radius: 10px; font-size: 16px; color: #F3EFF8; }
-.sn-panel a:hover, .sn-panel a.on { background: #2A2240; color: #E4DBFF; }
+.sn-menu summary { background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%20fill%3D%22none%22%20stroke%3D%22%230F172A%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M2%205h14M2%209h14M2%2013h14%22/%3E%3C/svg%3E") center / 18px 18px no-repeat; }
+.sn-menu[open] summary { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%20fill%3D%22none%22%20stroke%3D%22%230F172A%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M3%203l12%2012M15%203L3%2015%22/%3E%3C/svg%3E"); }
+.sn-panel { position: absolute; right: 0; top: 52px; width: min(280px, calc(100vw - 32px)); background: #fff; border: 1px solid #E2E8F0; border-radius: 12px; padding: 8px; box-shadow: 0 18px 40px rgba(15,23,42,.15); display: flex; flex-direction: column; }
+.sn-panel a { padding: 14px 16px; border-radius: 8px; font-size: 16px; color: #0F172A; }
+.sn-panel a:hover, .sn-panel a.on { background: #EFF6FF; color: #1D4ED8; }
 @media (max-width: 700px) {
   .sn-links { display: none; }
   .sn-menu { display: block; }
@@ -28,18 +29,18 @@
 }
 @media (max-width: 380px) { .sn-cta { display: none; } }
 
-.sn-links a.ai-hl, .sn-panel a.ai-hl { color: #B9A5FF; font-weight: 600; }
-.sn-links a.ai-hl:hover, .sn-panel a.ai-hl:hover { color: #fff; }
+.sn-links a.ai-hl, .sn-panel a.ai-hl { color: #1D4ED8; font-weight: 600; }
+.sn-links a.ai-hl:hover, .sn-panel a.ai-hl:hover { color: #0F172A; }
 
 /* Industry dropdown */
 .sn-dd { position: relative; }
 .sn-dd-t { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; white-space: nowrap; }
 .sn-dd-t svg { transition: transform .2s; }
-.sn-dd:hover .sn-dd-t, .sn-dd:focus-within .sn-dd-t, .sn-dd-t.on { color: #F3EFF8; }
+.sn-dd:hover .sn-dd-t, .sn-dd:focus-within .sn-dd-t, .sn-dd-t.on { color: #0F172A; }
 .sn-dd:hover .sn-dd-t svg, .sn-dd:focus-within .sn-dd-t svg { transform: rotate(180deg); }
 .sn-dd-m { position: absolute; left: -14px; top: 100%; padding-top: 14px; min-width: 190px; display: none; z-index: 250; }
 .sn-dd:hover .sn-dd-m, .sn-dd:focus-within .sn-dd-m { display: block; }
-.sn-dd-m a { display: block; padding: 11px 16px; background: #1E1930; border: 1px solid #2C2738; border-radius: 12px; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45); color: #F3EFF8; white-space: nowrap; }
-.sn-dd-m a:hover, .sn-dd-m a.on { background: #2A2240; color: #E4DBFF; }
-.sn-pl { padding: 12px 16px 4px; font: 500 11px/1 'IBM Plex Mono', ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; color: #8F89A0; }
+.sn-dd-m a { display: block; padding: 11px 16px; background: #fff; border: 1px solid #E2E8F0; border-radius: 8px; box-shadow: 0 18px 40px rgba(15,23,42,.15); color: #0F172A; white-space: nowrap; }
+.sn-dd-m a:hover, .sn-dd-m a.on { background: #EFF6FF; color: #1D4ED8; }
+.sn-pl { padding: 12px 16px 4px; font: 700 11px/1 'Inter', system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: #94A3B8; }
 .sn-panel a.sn-sub { padding-left: 28px; }
