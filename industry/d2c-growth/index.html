@@ -262,6 +262,18 @@ dialog .cv b,dialog .nv b{display:block;color:var(--fg);font-size:14px}
 .thanks h3{font-size:24px;margin-bottom:10px}
 .thanks p{color:var(--soft);margin:0 0 20px}
 
+
+/* Typography aligned with the home page */
+body{font:16px/1.6 var(--sans)}
+.wrap{max-width:1280px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+section{padding-block:clamp(72px,8vw,112px)}
+h1,h2,h3,h4{font-family:'Space Grotesk',system-ui,sans-serif;font-weight:700;letter-spacing:-.02em}
+.hero h1,h1{font-size:clamp(38px,5.4vw,62px);line-height:1.08;letter-spacing:-.02em}
+section h2{font-size:clamp(28px,3.4vw,40px);line-height:1.15;margin-top:8px}
+.eyebrow{font:700 12px/1.2 'Space Grotesk',system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0}
+.lede{font-size:clamp(17px,1.6vw,20px);color:var(--soft);max-width:56ch;margin-top:20px}
+.hero .lede{margin-top:20px}
+
 /* tabbed framework, same pattern as the home page */
 .dtabs{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:28px;margin-top:32px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:clamp(16px,2.4vw,28px)}
 .dside{display:flex;flex-direction:column;gap:6px;border-right:1px solid var(--line);padding-right:22px}
@@ -287,7 +299,7 @@ dialog .cv b,dialog .nv b{display:block;color:var(--fg);font-size:14px}
 <body>
 <header class="sn">
   <div class="sn-in">
-    <a class="sn-brand" href="/"><i></i>Parth Dave</a>
+    <a class="sn-brand" href="/">Parth Dave</a>
     <div class="sn-links" role="navigation" aria-label="Main">
       <a href="/case-studies/">Case studies</a>
       <a href="/ai-gtm-systems/" class="ai-hl">AI GTM systems</a>
