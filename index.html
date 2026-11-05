@@ -165,6 +165,12 @@ header.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);bac
 .sk p:last-child{margin-top:8px;font-size:14px;color:var(--ink);font-weight:500}
 /* pricing */
 .price-s{background:var(--soft)}
+.me{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center;margin-bottom:56px}
+.me img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 15%;border-radius:12px;border:1px solid var(--line);box-shadow:0 12px 40px rgba(15,23,42,.10)}
+.me h2{font-size:clamp(30px,3.6vw,44px)}
+.mp{font-size:clamp(16px,1.5vw,18px);color:var(--text);margin-top:16px;max-width:52ch}
+.ms{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}.ms b{display:block;color:var(--ink);font-size:16px}
+.ways{margin-bottom:16px}
 .center{text-align:center;max-width:640px;margin:0 auto 56px}
 .center p.s{color:var(--text);font-size:14px;margin-top:8px}
 .offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;align-items:stretch}
@@ -172,6 +178,7 @@ header.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);bac
 .offer.hi{border:2px solid var(--blue);box-shadow:0 8px 24px rgba(37,99,235,.10)}
 .tag{position:absolute;top:-12px;right:24px;background:var(--blue);color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 12px;border-radius:999px}
 .offer h3{font-size:20px;margin-top:8px}
+.dlv{display:inline-block;align-self:flex-start;margin-top:12px;background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE;font-size:12px;font-weight:600;padding:3px 10px;border-radius:6px}
 .pr{display:flex;align-items:baseline;gap:6px;margin-top:16px}.pr b{font:700 40px 'Space Grotesk',sans-serif;letter-spacing:-0.02em}.pr span{font-size:12px;color:var(--muted)}
 .offer ul{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:12px;font-size:13px;color:var(--text)}
 .offer li{display:flex;gap:8px}.offer li span{color:var(--blue);font-weight:700}
@@ -211,6 +218,7 @@ dialog.deal h2{font-size:26px;margin:6px 0 0}
 .part ul{margin:0;padding-left:18px;font-size:13px;color:var(--text);display:grid;gap:6px}.part li b{color:var(--ink)}
 .dacts{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 #fnote{font-size:13px;color:var(--muted)}#thanks{display:none}
+@media (max-width:760px){.me{grid-template-columns:minmax(0,1fr)}.me img{max-width:260px;aspect-ratio:1/1}}
 @media (max-width:900px){.logos ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:1000px){.arts,.soon,.inds{grid-template-columns:minmax(0,1fr)}.hero-g,.head2,.fg{grid-template-columns:minmax(0,1fr)}.grid3,.offers,.stk{grid-template-columns:minmax(0,1fr)}.dash{grid-template-columns:minmax(0,1fr)}.side{border-right:0;border-bottom:1px solid var(--line);padding:0 0 16px;flex-direction:row;overflow-x:auto;gap:8px}.side .mini{display:none}.mod{white-space:nowrap;width:auto}.c4,.c3{grid-template-columns:repeat(2,minmax(0,1fr))}.fb{justify-content:flex-start}.nav nav{display:none}}
 @media (max-width:640px){.bah{display:none}.bar{grid-template-columns:minmax(0,1fr)}.bar p::before{display:block;font:700 10px "Space Grotesk",sans-serif;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;color:#94A3B8}.bar .b::before{content:"Before"}.bar .a::before{content:"After";color:var(--blue)}.bar .a{border-left:0;border-top:1px dashed #DBEAFE}.wrap{padding:0 18px}.brand{white-space:nowrap;font-size:18px}.nav .btn{white-space:nowrap;padding:9px 12px;font-size:13px}.nav .wrap{gap:10px}.stats{gap:14px}.stats b{font-size:24px}.c4,.c3,.c2{grid-template-columns:minmax(0,1fr)}.shift{grid-template-columns:minmax(0,1fr);gap:8px}.arr{transform:rotate(90deg);justify-self:start}.cta .btn,.fb .btn{width:100%}.nav .r>a:first-child{display:none}</style>
@@ -219,7 +227,7 @@ dialog.deal h2{font-size:26px;margin:6px 0 0}
 
 <header class="nav"><div class="wrap">
   <a class="brand" href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Parth Dave</a>
-  <nav><a href="#what-i-do">What I do</a><a href="#customers">Case studies</a><a href="#ai-gtm">AI GTM systems</a><a href="#industries">Industries</a><a href="#pricing">Pricing</a></nav>
+  <nav><a href="#what-i-do">What I do</a><a href="#customers">Case studies</a><a href="#ai-gtm">AI GTM systems</a><a href="#industries">Industries</a><a href="#pricing">Work with me</a></nav>
   <div class="r"><a href="#contact">Contact</a><a class="btn" href="#" data-audit="free">Apply for the free audit</a></div>
 </div></header>
 
@@ -331,10 +339,20 @@ dialog.deal h2{font-size:26px;margin:6px 0 0}
 </div></section>
 
 <section class="price-s" id="pricing"><span id="engage"></span><div class="wrap">
-  <div class="center"><p class="eyebrow">Transparent engagement</p><h2>Ways to work together.</h2><p class="s">The price and the deliverables up front. Start free and go deeper when it makes sense.</p></div>
+  <div class="me">
+    <img src="/assets/img/parth-dave.jpg" alt="Parth Dave" decoding="async">
+    <div>
+      <p class="eyebrow">Work with me</p>
+      <h2>You work with me, not an agency.</h2>
+      <p class="mp">I am Parth. When we work together it is me on your calls, in your accounts and in your numbers. Start with the free audit and see how I think. If it is useful, we go deeper from there.</p>
+      <p class="ms"><b>Parth Dave</b>Fractional GTM lead and growth architect</p>
+    </div>
+  </div>
+  <p class="mini ways">Three ways to start</p>
   <div class="offers">
     <div class="offer"><p class="mini">Start here</p><h3>Free 1-day audit and strategy call</h3>
       <div class="pr"><b>$0</b><span>Based on eligibility and current revenue</span></div>
+      <p class="dlv">Delivered in 3 days</p>
       <div class="ul-wrap"><ul><li><span>✓</span>A GTM snapshot with your top 3 priorities</li><li><span>✓</span>A website or landing page wireframe with content</li><li><span>✓</span>A 1-hour strategy call</li></ul></div>
       <a class="btn dark" href="#" data-audit="free">Apply for the free audit</a><button type="button" class="dlink" data-deal="d-free">See the deliverables</button></div>
     <div class="offer hi"><span class="tag">Credited toward Operator</span><p class="mini" style="color:var(--blue)">Go deeper</p><h3>GTM audit sprint</h3>
@@ -359,7 +377,7 @@ dialog.deal h2{font-size:26px;margin:6px 0 0}
 </div></footer>
 
 <dialog id="d-free" class="deal" aria-labelledby="d-freet"><button class="x" type="button" aria-label="Close" data-close>&times;</button>
-  <p class="mini">Free 1-day audit</p><h2 id="d-freet">What you get in the free 1-day audit.</h2><p class="l">A one-day look at where your GTM stands, plus a live strategy call. Based on eligibility and your current revenue.</p><h3 class="dh">Deliverables</h3><ol class="dl"><li><span class="dn">1</span><div><h4>GTM snapshot</h4><p>Where you stand across ICP, positioning, messaging and channels, with your top 3 priorities and what not to do.</p></div></li><li><span class="dn">2</span><div><h4>Website or landing page wireframe with content</h4><p>A wireframe of one page you choose, with the copy written in, built around your positioning.</p></div></li><li><span class="dn">3</span><div><h4>1-hour strategy call</h4><p>We walk through the findings and the wireframe, and agree your next steps.</p></div></li></ol><div class="nc"><b>Not included</b>Implementation, a full ICP or messaging build, ad account or funnel audits, and lead generation (a separate service).</div><div class="dacts"><a class="btn" href="#" data-audit="free">Apply for the free audit</a><button class="btn light" type="button" data-close>Back to page</button></div></dialog>
+  <p class="mini">Free 1-day audit</p><h2 id="d-freet">What you get in the free 1-day audit.</h2><p class="l">A look at where your GTM stands, plus a live strategy call. Delivered in 3 days as a solid, actionable PPT. Based on eligibility and your current revenue.</p><h3 class="dh">How it works</h3><ol class="dl"><li><span class="dn">1</span><div><h4>We get on a call</h4><p>A short call so I understand your business, your goals and what you want looked at.</p></div></li><li><span class="dn">2</span><div><h4>You share your assets</h4><p>Your website or landing page, creatives and any numbers you are comfortable sharing.</p></div></li><li><span class="dn">3</span><div><h4>I send the report in 3 days</h4><p>A solid, actionable PPT you can hand straight to your team, then a strategy call to walk through it.</p></div></li></ol><h3 class="dh">Deliverables</h3><ol class="dl"><li><span class="dn">1</span><div><h4>GTM snapshot</h4><p>Where you stand across ICP, positioning, messaging and channels, with your top 3 priorities and what not to do.</p></div></li><li><span class="dn">2</span><div><h4>Website or landing page wireframe with content</h4><p>A wireframe of one page you choose, with the copy written in, built around your positioning.</p></div></li><li><span class="dn">3</span><div><h4>1-hour strategy call</h4><p>We walk through the findings and the wireframe, and agree your next steps.</p></div></li></ol><div class="nc"><b>Not included</b>Implementation, a full ICP or messaging build, ad account or funnel audits, and lead generation (a separate service).</div><div class="dacts"><a class="btn" href="#" data-audit="free">Apply for the free audit</a><button class="btn light" type="button" data-close>Back to page</button></div></dialog>
 <dialog id="d-sprint" class="deal" aria-labelledby="d-sprintt"><button class="x" type="button" aria-label="Close" data-close>&times;</button>
   <p class="mini">GTM audit sprint</p><h2 id="d-sprintt">What you get in the GTM audit sprint.</h2><p class="l">A two-week assessment and plan, built on the first steps of the GTM system. $2,000 flat, 100% credited toward Operator.</p><h3 class="dh">Deliverables</h3><ol class="dl"><li><span class="dn">1</span><div><h4>Complete GTM assessment</h4><p>A full baseline across ICP, positioning, messaging, channels, sales process and pricing, summed up in a one-page scorecard.</p></div></li><li><span class="dn">2</span><div><h4>Channel performance review</h4><p>How each channel you already run is performing, and what to keep, fix or stop.</p></div></li><li><span class="dn">3</span><div><h4>ICP definition</h4><p>Your ideal company, the personas behind the decision, the intent signals that show someone is in-market, and who to disqualify.</p></div></li><li><span class="dn">4</span><div><h4>Positioning</h4><p>4 to 6 positioning options ranked by risk, then a 6-slide deck with the exact words for what you are, who it is for, the problem you solve and the value you deliver.</p></div></li><li><span class="dn">5</span><div><h4>Messaging foundation</h4><p>The core messaging blocks: the market problem, your alternatives, proof, tagline and elevator pitch.</p></div></li><li><span class="dn">6</span><div><h4>Homepage wireframe with ready-to-use copy</h4><p>A full homepage outline with real copy mapped to your new positioning.</p></div></li><li><span class="dn">7</span><div><h4>3, 6 and 12-month roadmap</h4><p>Goals for each horizon, with initiatives prioritized against them.</p></div></li><li><span class="dn">8</span><div><h4>Strategy presentation</h4><p>A live review of the deck and the roadmap with your leadership team.</p></div></li></ol><div class="nc"><b>Time from your team</b>Under 3 hours of total leadership time across the two weeks.</div><div class="nc"><b>Not included</b>Execution of the roadmap, lead generation (a separate service), ad spend, tool costs, and creative production.</div><div class="dacts"><a class="btn" href="#" data-audit="sprint">Request a GTM audit sprint</a><button class="btn light" type="button" data-close>Back to page</button></div></dialog>
 <dialog id="d-op" class="deal" aria-labelledby="d-opt"><button class="x" type="button" aria-label="Close" data-close>&times;</button>
