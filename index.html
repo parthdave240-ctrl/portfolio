@@ -42,6 +42,12 @@ header.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);bac
 .dd{position:relative}.ddt{display:inline-flex;align-items:center;gap:6px}.ddt svg{transition:transform .2s}.dd:hover .ddt svg,.dd:focus-within .ddt svg{transform:rotate(180deg)}
 .ddm{position:absolute;left:-14px;top:100%;padding-top:14px;min-width:170px;display:none;z-index:40}.dd:hover .ddm,.dd:focus-within .ddm{display:block}
 .ddm a{display:block;padding:11px 16px;background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 18px 40px rgba(15,23,42,.15);color:var(--ink);white-space:nowrap}.ddm a:hover{background:#EFF6FF;color:var(--blue)}
+.hm{display:none;position:relative}
+.hm summary{list-style:none;cursor:pointer;width:40px;height:40px;border:1px solid var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--ink);background:#fff}
+.hm summary::-webkit-details-marker{display:none}.hm .c{display:none}.hm[open] .c{display:block}.hm[open] .o{display:none}
+.hmp{position:absolute;right:0;top:52px;width:min(280px,calc(100vw - 32px));background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;box-shadow:0 18px 40px rgba(15,23,42,.15);display:flex;flex-direction:column;z-index:50}
+.hmp a{padding:13px 16px;border-radius:8px;font-size:16px;font-weight:500;color:var(--ink);text-decoration:none}.hmp a:hover{background:#EFF6FF;color:var(--blue)}
+.hmp .hs{padding-left:28px}.hml{padding:10px 16px 2px;font:700 11px 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#94A3B8}
 .nav .r{display:flex;align-items:center;gap:18px;font-size:14px;font-weight:500;color:var(--text)}
 .nav .r>a:first-child{text-decoration:none}
 .btn{display:inline-block;border:0;border-radius:6px;padding:10px 16px;font:600 14px 'Inter',sans-serif;text-align:center;text-decoration:none;cursor:pointer;background:var(--blue);color:#fff;box-shadow:0 1px 2px rgba(15,23,42,.1)}
@@ -233,7 +239,7 @@ dialog.deal h2{font-size:26px;margin:6px 0 0}
 @media (max-width:760px){.me{grid-template-columns:minmax(0,1fr)}.me img{max-width:260px;aspect-ratio:1/1}}
 @media (max-width:760px){.wgrid{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:900px){.logos ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:1000px){.arts,.soon,.inds{grid-template-columns:minmax(0,1fr)}.hero-g,.head2,.fg{grid-template-columns:minmax(0,1fr)}.grid3,.offers,.stk{grid-template-columns:minmax(0,1fr)}.dash{grid-template-columns:minmax(0,1fr)}.side{border-right:0;border-bottom:1px solid var(--line);padding:0 0 16px;flex-direction:row;overflow-x:auto;gap:8px}.side .mini{display:none}.mod{white-space:nowrap;width:auto}.c4,.c3{grid-template-columns:repeat(2,minmax(0,1fr))}.fb{justify-content:flex-start}.nav nav{display:none}}
+@media (max-width:1000px){.arts,.soon,.inds{grid-template-columns:minmax(0,1fr)}.hero-g,.head2,.fg{grid-template-columns:minmax(0,1fr)}.grid3,.offers,.stk{grid-template-columns:minmax(0,1fr)}.dash{grid-template-columns:minmax(0,1fr)}.side{border-right:0;border-bottom:1px solid var(--line);padding:0 0 16px;flex-direction:row;overflow-x:auto;gap:8px}.side .mini{display:none}.mod{white-space:nowrap;width:auto}.c4,.c3{grid-template-columns:repeat(2,minmax(0,1fr))}.fb{justify-content:flex-start}.nav nav{display:none}.hm{display:block}.nav .r .ct{display:none}}
 @media (max-width:640px){.bah{display:none}.bar{grid-template-columns:minmax(0,1fr)}.bar p::before{display:block;font:700 10px "Space Grotesk",sans-serif;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;color:#94A3B8}.bar .b::before{content:"Before"}.bar .a::before{content:"After";color:var(--blue)}.bar .a{border-left:0;border-top:1px dashed #DBEAFE}.wrap{padding:0 18px}.brand{white-space:nowrap;font-size:18px}.nav .btn{white-space:nowrap;padding:9px 12px;font-size:13px}.nav .wrap{gap:10px}.stats{gap:14px}.stats b{font-size:24px}.c4,.c3,.c2{grid-template-columns:minmax(0,1fr)}.shift{grid-template-columns:minmax(0,1fr);gap:8px}.arr{transform:rotate(90deg);justify-self:start}.cta .btn,.fb .btn{width:100%}.nav .r>a:first-child{display:none}</style>
 </head>
 <body>
@@ -241,7 +247,9 @@ dialog.deal h2{font-size:26px;margin:6px 0 0}
 <header class="nav"><div class="wrap">
   <a class="brand" href="/">Parth Dave</a>
   <nav><a href="#what-i-do">What I do</a><a href="#customers">Case studies</a><a href="/ai-gtm-systems/">AI GTM systems</a><div class="dd"><a href="#industries" class="ddt">Industries <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2 3.5l3 3 3-3"/></svg></a><div class="ddm"><a href="/industry/d2c-growth/">D2C growth</a></div></div><a href="#pricing">Engagement options</a></nav>
-  <div class="r"><a href="#contact">Contact</a><a class="btn" href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call</a></div>
+  <div class="r"><a href="#contact" class="ct">Contact</a><a class="btn" href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call</a>
+    <details class="hm"><summary aria-label="Menu"><svg class="o" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 5h14M2 9h14M2 13h14"/></svg><svg class="c" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3l12 12M15 3L3 15"/></svg></summary>
+      <div class="hmp"><a href="#what-i-do">What I do</a><a href="#customers">Case studies</a><a href="/ai-gtm-systems/">AI GTM systems</a><span class="hml">Industries</span><a href="/industry/d2c-growth/" class="hs">D2C growth</a><a href="#pricing">Engagement options</a><a href="#contact">Contact</a></div></details></div>
 </div></header>
 
 <main>
@@ -451,6 +459,7 @@ var d=document.getElementById('dlg'),f=document.getElementById('f'),n=document.g
 var T={free:{t:'Apply for your free 1-day audit.',l:'The free audit is based on eligibility and your current revenue. Tell us about your brand and we will confirm if you qualify.',b:'Apply for the free audit',ty:'Free 1-day audit'},sprint:{t:'Request your GTM audit sprint.',l:'A two-week assessment and plan. $2,000 flat, 100% credited toward Operator.',b:'Request a GTM audit sprint',ty:'GTM audit sprint'}};
 function openD(k){var c=T[k]||T.free;document.getElementById('dt').textContent=c.t;document.getElementById('dl').textContent=c.l;sub.textContent=c.b;document.getElementById('atype').value=c.ty;n.textContent='We reply from a personal inbox, usually within one working day.';n.style.color='';f.style.display='';th.style.display='none';sub.disabled=false;d.showModal()}
 document.addEventListener('click',function(e){
+  var hl=e.target.closest('.hmp a');if(hl){var hm=document.querySelector('.hm');if(hm)hm.removeAttribute('open')}
   var dl=e.target.closest('[data-deal]');if(dl){var dd=document.getElementById(dl.getAttribute('data-deal'));if(dd){document.querySelectorAll('dialog[open]').forEach(function(o){o.close()});dd.showModal();dd.scrollTop=0}return}
   var a=e.target.closest('[data-audit]');if(a){e.preventDefault();document.querySelectorAll('dialog[open]').forEach(function(o){o.close()});openD(a.getAttribute('data-audit'));return}
   var m=e.target.closest('[data-tab]');if(m){var k=m.getAttribute('data-tab');document.querySelectorAll('.mod').forEach(function(b){var on=b===m;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});document.querySelectorAll('.panel').forEach(function(p){p.hidden=p.getAttribute('data-panel')!==k});return}
