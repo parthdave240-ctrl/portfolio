@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Parth Dave · GTM and growth operator</title>
+<meta name="description" content="I build GTM engines that scale revenue from $0 to $50M, for B2B SaaS and D2C teams.">
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(/assets/fonts/Inter.woff2) format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400 700;font-display:swap;src:url(/assets/fonts/SpaceGrotesk.woff2) format('woff2')}
+:root{--blue:#2563EB;--blue-d:#1D4ED8;--ink:#0F172A;--muted:#64748B;--soft:#F8FAFC;--line:#E2E8F0;--text:#334155}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.6 'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}a{color:inherit}p{margin:0}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.02em;margin:0;font-weight:700}
+section{padding:clamp(72px,8vw,112px) 0;border-bottom:1px solid var(--line)}
+.eyebrow{font:700 12px 'Space Grotesk',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.mini{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#94A3B8}
+h2{font-size:clamp(28px,3.4vw,40px);line-height:1.15;margin-top:8px}
+/* banner + header */
+.banner{background:var(--ink);color:#fff;font-size:12px;padding:9px 16px;border-bottom:1px solid #1E293B}
+.banner .in{display:flex;flex-wrap:wrap;gap:6px 12px;justify-content:center;align-items:center;text-align:center}
+.banner b{background:var(--blue);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:4px}
+.banner span{color:#CBD5E1}.banner a{color:#fff;font-weight:600;text-decoration:underline}
+header.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:20px}
+.brand{display:flex;align-items:center;gap:8px;font:700 20px 'Space Grotesk',sans-serif;letter-spacing:-0.02em;text-decoration:none}
+.brand svg{width:24px;height:24px;color:var(--blue)}
+.nav nav{display:flex;gap:24px;font-size:14px;font-weight:500;color:var(--text);margin-left:32px;margin-right:auto}
+.nav nav a{text-decoration:none}.nav nav a:hover{color:var(--ink)}
+.nav .r{display:flex;align-items:center;gap:18px;font-size:14px;font-weight:500;color:var(--text)}
+.nav .r>a:first-child{text-decoration:none}
+.btn{display:inline-block;border:0;border-radius:6px;padding:10px 16px;font:600 14px 'Inter',sans-serif;text-align:center;text-decoration:none;cursor:pointer;background:var(--blue);color:#fff;box-shadow:0 1px 2px rgba(15,23,42,.1)}
+.btn:hover{background:var(--blue-d)}
+.btn.lg{padding:13px 22px}
+.btn.dark{background:var(--ink)}.btn.dark:hover{background:#1E293B}
+.btn.light{background:var(--soft);color:var(--text);border:1px solid var(--line);box-shadow:none}.btn.light:hover{background:#E2E8F0}
+/* hero */
+.hero{padding:clamp(64px,8vw,112px) 0}
+.hero-g{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,5vw,64px);align-items:start}
+.hero h1{font-size:clamp(38px,5.4vw,62px);line-height:1.08}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:48px;padding-top:32px;border-top:1px solid var(--line)}
+.stats b{display:block;font:700 clamp(26px,3vw,34px) 'Space Grotesk',sans-serif;letter-spacing:-0.02em}
+.stats span{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-top:4px;max-width:24ch}
+.hero .sub{font-size:clamp(17px,1.6vw,20px);color:var(--text);padding-top:8px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.who{display:flex;align-items:center;gap:14px;margin-top:32px;padding-top:24px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+.who img{width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:center 20%}
+.who b{display:block;color:var(--ink);font-size:15px}
+/* logos */
+.logos{padding:48px 0}
+.logos p.t{text-align:center;font-size:14px;font-weight:500;color:var(--blue);margin-bottom:28px}
+.logos ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:20px 44px}
+.logos img{width:auto;filter:grayscale(1) brightness(.3);opacity:.7}
+/* proof */
+.proof{background:var(--soft)}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:48px}
+.tile{background:#fff;border:1px solid var(--line);border-radius:8px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;gap:32px;box-shadow:0 1px 2px rgba(15,23,42,.05);margin:0}
+.tile.dark{background:var(--ink);border-color:#1E293B;color:#fff}
+.tile.dark .mini{color:#60A5FA}.tile.dark .lab,.tile.dark .ttl{color:#94A3B8}
+.big{font:700 clamp(32px,3.4vw,40px) 'Space Grotesk',sans-serif;letter-spacing:-0.02em;line-height:1.05;margin-top:10px}
+.lab{font-size:13px;color:var(--text);margin-top:6px;font-weight:500}
+.ttl{font-size:13px;color:var(--muted);margin-top:14px;line-height:1.55}
+.lnk{font-size:13px;font-weight:600;color:var(--blue);text-decoration:none;padding-top:16px;border-top:1px solid #F1F5F9}.lnk:hover{text-decoration:underline}
+.foot{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:#94A3B8;padding-top:16px;border-top:1px solid #1E293B}
+.quote blockquote{margin:12px 0 0;font-size:15px;line-height:1.6;font-weight:500;color:#334155}
+.quote b{font-weight:700;color:var(--ink)}
+.quote figcaption{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid #F1F5F9;font-size:12px;color:var(--muted)}
+.quote figcaption img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+.quote figcaption b{display:block;font-size:13px;color:var(--ink)}
+.refs{margin-top:40px}
+.refs p.t{font-weight:600;font-size:15px;margin-bottom:12px}
+.refs ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0 28px;border-top:1px solid var(--line)}
+.refs li{border-bottom:1px solid var(--line)}
+.refs a{display:flex;align-items:center;gap:12px;padding:12px 0;text-decoration:none;font-size:12px;color:var(--muted)}
+.refs a:hover b{color:var(--blue)}.refs img{width:44px;height:44px;border-radius:50%;object-fit:cover;flex:none}.refs b{display:block;font-size:14px;color:var(--ink)}
+.more{display:inline-block;margin-top:28px;font-size:14px;font-weight:600;color:var(--blue);text-decoration:none}.more:hover{text-decoration:underline}
+/* what i do */
+.head2{display:grid;grid-template-columns:7fr 5fr;gap:32px;align-items:end;margin-bottom:48px}
+.head2 p.d{font-size:14px;color:var(--text)}
+.dash{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:clamp(16px,2.4vw,32px);box-shadow:0 1px 2px rgba(15,23,42,.05);display:grid;grid-template-columns:3fr 9fr;gap:32px}
+.side{border-right:1px solid var(--line);padding-right:24px;display:flex;flex-direction:column;gap:6px}
+.side .mini{margin-bottom:10px;color:#94A3B8}
+.mod{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;border:1px solid transparent;background:transparent;border-radius:6px;padding:9px 12px;font:500 12px 'Inter',sans-serif;color:var(--text);cursor:pointer}
+.mod i{width:6px;height:6px;border-radius:50%;background:transparent}
+.mod:hover{background:#fff;color:var(--ink)}
+.mod.on{background:#fff;border-color:var(--line);color:var(--blue);font-weight:600;box-shadow:0 1px 2px rgba(15,23,42,.05)}.mod.on i{background:var(--blue)}
+.panel{background:#fff;border:1px solid var(--line);border-radius:8px;padding:clamp(18px,2vw,28px);box-shadow:0 1px 2px rgba(15,23,42,.05)}
+.panel[hidden]{display:none}
+.ph{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding-bottom:16px;margin-bottom:20px;border-bottom:1px solid #F1F5F9}
+.ph h3{font-size:18px}.ph p{font-size:12px;color:var(--muted);margin-top:4px;max-width:60ch}
+.chip{flex:none;background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE;font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px}
+.cells{display:grid;gap:14px;margin-bottom:20px}.c4{grid-template-columns:repeat(4,minmax(0,1fr))}.c3{grid-template-columns:repeat(3,minmax(0,1fr))}.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cell{background:var(--soft);border:1px solid rgba(226,232,240,.7);border-radius:6px;padding:16px}
+.cn{font-size:13px;font-weight:600;margin-top:4px}.cd{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}
+.pf{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-top:16px;border-top:1px solid #F1F5F9;font-size:12px;color:var(--muted)}.pf b{color:var(--ink)}
+/* difference */
+.diff{background:#fff}
+.shifts{margin-top:40px;border-top:1px solid var(--ink)}
+.shift{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1.1fr);gap:20px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line)}
+.from{color:var(--muted)}.arr{color:var(--blue);font-weight:700}
+.to{font:600 clamp(18px,2vw,22px) 'Space Grotesk',sans-serif;letter-spacing:-0.01em;line-height:1.3}
+/* stack */
+.stk{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:40px}
+.sk{border:1px solid var(--line);border-radius:8px;padding:20px;background:#fff}
+.sk p:last-child{margin-top:8px;font-size:14px;color:var(--ink);font-weight:500}
+/* pricing */
+.price-s{background:var(--soft)}
+.center{text-align:center;max-width:640px;margin:0 auto 56px}
+.center p.s{color:var(--text);font-size:14px;margin-top:8px}
+.offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;align-items:stretch}
+.offer{background:#fff;border:1px solid var(--line);border-radius:12px;padding:32px;display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(15,23,42,.05);position:relative}
+.offer.hi{border:2px solid var(--blue);box-shadow:0 8px 24px rgba(37,99,235,.10)}
+.tag{position:absolute;top:-12px;right:24px;background:var(--blue);color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 12px;border-radius:999px}
+.offer h3{font-size:20px;margin-top:8px}
+.pr{display:flex;align-items:baseline;gap:6px;margin-top:16px}.pr b{font:700 40px 'Space Grotesk',sans-serif;letter-spacing:-0.02em}.pr span{font-size:12px;color:var(--muted)}
+.offer ul{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:12px;font-size:13px;color:var(--text)}
+.offer li{display:flex;gap:8px}.offer li span{color:var(--blue);font-weight:700}
+.offer .btn{margin-top:auto;width:100%}
+.offer .ul-wrap{flex:1;margin-bottom:28px}
+.notcov{margin-top:32px;font-size:13px;color:var(--muted);max-width:90ch}
+/* footer */
+footer{background:var(--ink);color:#fff;padding:64px 0;border-top:1px solid #1E293B}
+.fg{display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:center}
+footer h2{font-size:clamp(28px,3.6vw,40px);margin:0}
+footer .s{color:#94A3B8;font-size:14px;margin-top:12px;max-width:44ch}
+.fb{display:flex;flex-wrap:wrap;gap:14px;justify-content:flex-end}
+.btn.ghost{background:#1E293B;border:1px solid #334155;box-shadow:none}.btn.ghost:hover{background:#334155}
+.copy{margin-top:56px;padding-top:28px;border-top:1px solid #1E293B;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:12px;color:#64748B}
+.copy div{display:flex;gap:20px}
+/* dialog */
+dialog{border:0;border-radius:12px;padding:32px;width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;background:#fff;color:var(--ink);box-shadow:0 20px 60px rgba(15,23,42,.3)}
+dialog::backdrop{background:rgba(15,23,42,.6)}
+dialog h2{font-size:26px;margin:0;padding-right:36px}
+dialog .l{font-size:14px;color:var(--muted);margin:10px 0 20px}
+.x{position:absolute;top:14px;right:14px;width:34px;height:34px;border:1px solid var(--line);background:#fff;border-radius:6px;font-size:20px;cursor:pointer}
+form{display:grid;gap:14px}form label{display:grid;gap:6px;font-size:13px;font-weight:600}
+form input,form select,form textarea{font:400 15px 'Inter',sans-serif;padding:11px 13px;border:1px solid #CBD5E1;border-radius:6px;background:#fff;color:var(--ink);min-width:0;width:100%}
+form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:var(--blue)}
+.pg{display:grid;grid-template-columns:minmax(0,130px) minmax(0,1fr);gap:8px}
+.hp{position:absolute;left:-9999px}
+#fnote{font-size:13px;color:var(--muted)}#thanks{display:none}
+@media (max-width:1000px){.hero-g,.head2,.fg{grid-template-columns:minmax(0,1fr)}.grid3,.offers,.stk{grid-template-columns:minmax(0,1fr)}.dash{grid-template-columns:minmax(0,1fr)}.side{border-right:0;border-bottom:1px solid var(--line);padding:0 0 16px;flex-direction:row;overflow-x:auto;gap:8px}.side .mini{display:none}.mod{white-space:nowrap;width:auto}.c4,.c3{grid-template-columns:repeat(2,minmax(0,1fr))}.fb{justify-content:flex-start}.nav nav{display:none}}
+@media (max-width:640px){.wrap{padding:0 18px}.stats{gap:14px}.stats b{font-size:24px}.c4,.c3,.c2{grid-template-columns:minmax(0,1fr)}.shift{grid-template-columns:minmax(0,1fr);gap:8px}.arr{transform:rotate(90deg);justify-self:start}.cta .btn,.fb .btn{width:100%}.nav .r>a:first-child{display:none}.banner .in span{display:none}.ph{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<div class="banner"><div class="in"><b>GTM system</b><span>Free 1-day GTM audit for qualifying B2B and D2C brands.</span><a href="#" data-audit="free">Apply now &rarr;</a></div></div>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="/v2/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Parth Dave</a>
+  <nav><a href="#what-i-do">What I do</a><a href="#customers">Case studies</a><a href="#pricing">Pricing</a></nav>
+  <div class="r"><a href="#contact">Contact</a><a class="btn" href="#" data-audit="free">Apply for the free audit</a></div>
+</div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <div class="hero-g">
+    <div>
+      <h1>I build GTM engines that scale revenue from $0 to $50M.</h1>
+      <div class="stats">
+        <div><b>$35M</b><span>Revenue and pipeline generated across B2B, B2C and D2C</span></div>
+        <div><b>$15.4M</b><span>Direct D2C revenue from channels I owned</span></div>
+        <div><b>$1.1M+</b><span>Ad spend managed across Google and Meta in the last year</span></div>
+      </div>
+    </div>
+    <div class="sub">
+      <p>I step in to build your messaging, automate your growth loops, and drive pipeline without agency overhead.</p>
+      <div class="cta"><a class="btn lg" href="#" data-audit="free">Apply for a free 1-day audit</a><a class="btn lg light" href="#what-i-do">See what I do</a></div>
+      <div class="who"><img src="/assets/img/parth-dave.jpg" alt="Parth Dave"><p><b>Parth Dave</b>Fractional GTM lead and growth architect. 10+ years building revenue engines.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="logos"><div class="wrap"><p class="t">Companies I have worked with</p><ul><li><img src="/assets/img/logo-rotimatic.png" alt="Rotimatic" loading="lazy" style="height:26px"></li><li><img src="/assets/img/logo-freight-tiger.png" alt="Freight Tiger" loading="lazy" style="height:26px"></li><li><img src="/assets/img/logo-tigersight.png" alt="TigerSight" loading="lazy" style="height:26px"></li><li><img src="/assets/img/logo-acea.svg" alt="ACEA" loading="lazy" style="height:26px"></li><li><img src="/assets/img/logo-simplilearn.png" alt="Simplilearn" loading="lazy" style="height:26px"></li><li><img src="/assets/img/logo-josh-talks.svg" alt="Josh Talks" loading="lazy" style="height:20px"></li><li><img src="/assets/img/logo-ce-app.svg" alt="CE App" loading="lazy" style="height:20px"></li><li><img src="/assets/img/logo-azavista.png" alt="Azavista" loading="lazy" style="height:26px"></li><li><img src="/assets/img/logo-epg.png" alt="EPG" loading="lazy" style="height:26px"></li><li><img src="/assets/img/logo-faneuil-hall-dental.png" alt="Faneuil Hall Dental" loading="lazy" style="height:26px"></li></ul></div></section>
+
+<section class="proof" id="customers"><div class="wrap">
+  <p class="eyebrow">Proof and testimonials</p>
+  <h2>What changed for the companies I have worked with.</h2>
+  <div class="grid3"><div class="tile"><div><p class="mini">Freight Tiger · B2B SaaS</p><p class="big">3 → 1</p><p class="lab">module pitches unified into one position</p><p class="ttl">Repositioned Freight Tiger as India&#x27;s AI-native freight operating system.</p></div><a class="lnk" href="/case-studies/repositioning-freighttiger.html">Read the case study &rarr;</a></div><div class="tile dark"><div><p class="mini">D2C paid media</p><p class="big">2x</p><p class="lab">ad spend, ROAS held near 7x</p><p class="ttl">Spend went from $60.8K to $125.8K a month while CAC moved 6%.</p></div><div class="foot"><span>Jul to Nov 2025</span><span>Read the case study</span></div></div><figure class="tile quote"><p class="mini">Campaign strategy &amp; data-driven marketing</p><blockquote>&ldquo;He has <b>exceptional expertise in strategizing marketing campaigns</b> and a <b>strong data-driven marketing approach</b>. His enthusiasm and dedication are both inspiring and motivating. Parth would be an asset to any company.&rdquo;</blockquote>
+      <figcaption><img src="/assets/img/quote-krishna-kumar.png" alt="Krishna Kumar" loading="lazy"><span><b>Krishna Kumar</b>Engineering Manager, Gojek</span></figcaption></figure><figure class="tile quote"><p class="mini">Process improvement &amp; fast tool adoption</p><blockquote>&ldquo;He was able to take on new tasks, <b>suggest better ways of approaching issues</b>, and <b>adapted well to using new software or technologies</b>. He was a good team player and an asset.&rdquo;</blockquote>
+      <figcaption><img src="/assets/img/quote-pratik-dattani.png" alt="Pratik Dattani" loading="lazy"><span><b>Pratik Dattani</b>Managing Director, EPG</span></figcaption></figure><div class="tile"><div><p class="mini">D2C lifecycle email</p><p class="big">$1.74M</p><p class="lab">attributed email revenue</p><p class="ttl">285 campaigns in ten months. A plain founder-voiced note beat every discount send.</p></div><a class="lnk" href="/case-studies/turning-email.html">Read the case study &rarr;</a></div><div class="tile"><div><p class="mini">D2C market launch</p><p class="big">+91%</p><p class="lab">orders after a new-market launch</p><p class="ttl">Customer interviews moved the pitch from premium to everyday utility.</p></div><a class="lnk" href="/case-studies/launching-india.html">Read the case study &rarr;</a></div></div>
+  <a class="more" href="/case-studies/">See every case study &rarr;</a>
+  <div class="refs"><p class="t">Ask them about the work.</p><ul><li><a href="https://www.linkedin.com/in/swapnilvshah" target="_blank" rel="noopener"><img src="/assets/img/ref-swapnil-shah.jpg" alt="Swapnil Shah" loading="lazy"><span><b>Swapnil Shah</b>Founder &amp; CEO, Freight Tiger</span></a></li><li><a href="https://www.linkedin.com/in/pandeyratnesh/" target="_blank" rel="noopener"><img src="/assets/img/ref-ratnesh-pandey.jpg" alt="Ratnesh Pandey" loading="lazy"><span><b>Ratnesh Pandey</b>Fractional CMO</span></a></li><li><a href="https://www.linkedin.com/in/pradeepgode/" target="_blank" rel="noopener"><img src="/assets/img/ref-pradeep-gode.jpg" alt="Pradeep Gode" loading="lazy"><span><b>Pradeep Gode</b>SVP, Mahindra Finance</span></a></li><li><a href="https://www.linkedin.com/in/kylekahveci/" target="_blank" rel="noopener"><img src="/assets/img/ref-kyle-kahveci.jpg" alt="Kyle Kahveci" loading="lazy"><span><b>Kyle Kahveci</b>President, ACEA</span></a></li></ul></div>
+</div></section>
+
+<section id="what-i-do"><div class="wrap">
+  <div class="head2"><div><p class="eyebrow">01 / What I do</p><h2>What I do as GTM operator.</h2></div>
+  <p class="d">A lean operational setup in four stages. You can also start with a single channel or a specific problem.</p></div>
+  <div class="dash">
+    <div class="side" role="tablist"><p class="mini">Stages</p><button type="button" class="mod on" data-tab="1" role="tab" aria-selected="true"><span>01. Foundation</span><i></i></button><button type="button" class="mod" data-tab="2" role="tab" aria-selected="false"><span>02. Build</span><i></i></button><button type="button" class="mod" data-tab="3" role="tab" aria-selected="false"><span>03. Growth execution</span><i></i></button><button type="button" class="mod" data-tab="4" role="tab" aria-selected="false"><span>04. Measure and hand over</span><i></i></button></div>
+    <div><div class="panel" data-panel="1" role="tabpanel">
+        <div class="ph"><div><h3>Stage 1: Foundation</h3><p>Know who you sell to, why you win and what to say, before you spend on anything else.</p></div><span class="chip">Stage 1 of 4</span></div>
+        <div class="cells c4"><div class="cell"><p class="mini">Step 1</p><p class="cn">Audit and plan</p><p class="cd">A clear baseline, what to fix first, and goals for 3, 6 and 12 months.</p></div><div class="cell"><p class="mini">Step 2</p><p class="cn">Ideal customer</p><p class="cd">Your best buyers, what triggers a purchase, and who to say no to.</p></div><div class="cell"><p class="mini">Step 3</p><p class="cn">Positioning</p><p class="cd">Pick your anchor, weigh options ranked by risk, and lock the exact words for what you are and who it is for.</p></div><div class="cell"><p class="mini">Step 4</p><p class="cn">Messaging</p><p class="cd">The words that explain your value and why you win, the same everywhere buyers look.</p></div></div>
+        <div class="pf"><span>You leave with: <b>ICP, positioning and messaging your team agrees on.</b></span><span>Tools: <b>HubSpot, Apollo, Clay, Gong</b></span></div>
+      </div>
+<div class="panel" data-panel="2" role="tabpanel" hidden>
+        <div class="ph"><div><h3>Stage 2: Build</h3><p>Make your assets and website match, and set your channel strategy.</p></div><span class="chip">Stage 2 of 4</span></div>
+        <div class="cells c3"><div class="cell"><p class="mini">Step 1</p><p class="cn">Marketing and sales assets</p><p class="cd">The website, product pages, decks and creatives buyers see, rebuilt to match your positioning.</p></div><div class="cell"><p class="mini">Step 2</p><p class="cn">Website fixes and landing pages</p><p class="cd">Fix what costs you conversions on your site, and build landing pages that match your positioning.</p></div><div class="cell"><p class="mini">Step 3</p><p class="cn">Growth engine</p><p class="cd">Pipeline and channel strategy: the channels you use, how each performs (paid, email, SEO and more), and where to focus.</p></div></div>
+        <div class="pf"><span>You leave with: <b>Assets and a website that match, and a clear channel strategy.</b></span><span>Tools: <b>Webflow, Figma, Shopify, Mailchimp</b></span></div>
+      </div>
+<div class="panel" data-panel="3" role="tabpanel" hidden>
+        <div class="ph"><div><h3>Stage 3: Growth execution</h3><p>Put the growth system to work: your channels, AI workflows and funnel.</p></div><span class="chip">Stage 3 of 4</span></div>
+        <div class="cells c3"><div class="cell"><p class="mini">Step 1</p><p class="cn">Channel execution</p><p class="cd">Run the channels and campaigns from your growth plan, week to week.</p></div><div class="cell"><p class="mini">Step 2</p><p class="cn">AI readiness and workflows</p><p class="cd">Check how ready your team is for AI, then build workflows that take repeat work off your plate.</p></div><div class="cell"><p class="mini">Step 3</p><p class="cn">Funnel and conversion setup</p><p class="cd">Fix and connect the path from first visit to customer: lead capture, forms, add to cart and checkout.</p></div></div>
+        <div class="pf"><span>You leave with: <b>A running growth system, with AI workflows and a connected funnel.</b></span><span>Tools: <b>Claude, Zapier, PostHog, Google Ads, Meta Ads</b></span></div>
+      </div>
+<div class="panel" data-panel="4" role="tabpanel" hidden>
+        <div class="ph"><div><h3>Stage 4: Measure and hand over</h3><p>Track what is working, then hand everything over so your team can run it.</p></div><span class="chip">Stage 4 of 4</span></div>
+        <div class="cells c2"><div class="cell"><p class="mini">Step 1</p><p class="cn">Reporting and planning</p><p class="cd">Dashboards that show what is working and what to do next.</p></div><div class="cell"><p class="mini">Step 2</p><p class="cn">Handover</p><p class="cd">Everything documented and handed to your team, with playbooks they can run.</p></div></div>
+        <div class="pf"><span>You leave with: <b>Dashboards that guide decisions, and a clean handover to your team.</b></span><span>Tools: <b>GA4, PostHog, Looker Studio, Notion</b></span></div>
+      </div>
+</div>
+  </div>
+</div></section>
+
+<section class="diff"><div class="wrap">
+  <p class="eyebrow">02 / The difference</p>
+  <h2>What changes when you work with me.</h2>
+  <div class="shifts"><div class="shift"><p class="from">Messaging is scattered across your homepage, ads, outbound emails and sales decks.</p><span class="arr">&rarr;</span><p class="to">One clear story that prospects understand everywhere.</p></div><div class="shift"><p class="from">Growth relies on trial and error and vanity metrics, with no one accountable.</p><span class="arr">&rarr;</span><p class="to">A quarterly roadmap, an owner for each channel, and dashboards that show what drives revenue.</p></div><div class="shift"><p class="from">Marketing, sales outreach and ads each run on their own.</p><span class="arr">&rarr;</span><p class="to">One growth loop, where data from the channels that convert helps the others.</p></div><div class="shift"><p class="from">Your team is stretched thin on repetitive admin work.</p><span class="arr">&rarr;</span><p class="to">AI workflows handle the routine tasks so your team can spend its time on growth.</p></div></div>
+</div></section>
+
+<section class="proof"><div class="wrap">
+  <p class="eyebrow">The stack</p>
+  <h2>Tools I use hands-on every week.</h2>
+  <div class="stk"><div class="sk"><p class="mini">CRM and sales</p><p>HubSpot, Attio, Apollo, Clay, Gong, HeyReach</p></div><div class="sk"><p class="mini">Lifecycle</p><p>Klaviyo, Brevo, Mailchimp, WebEngage</p></div><div class="sk"><p class="mini">Paid media</p><p>Google Ads, Meta Ads</p></div><div class="sk"><p class="mini">Web and content</p><p>Figma, Shopify, Strapi, Sanity, Ploy</p></div><div class="sk"><p class="mini">Automation and AI</p><p>Zapier, n8n, Claude Code, Codex</p></div><div class="sk"><p class="mini">Analytics</p><p>GA4, PostHog</p></div></div>
+</div></section>
+
+<section class="price-s" id="pricing"><div class="wrap">
+  <div class="center"><p class="eyebrow">Transparent engagement</p><h2>Ways to work together.</h2><p class="s">The price and the deliverables up front. Start free and go deeper when it makes sense.</p></div>
+  <div class="offers">
+    <div class="offer"><p class="mini">Start here</p><h3>Free 1-day audit and strategy call</h3>
+      <div class="pr"><b>$0</b><span>Based on eligibility and current revenue</span></div>
+      <div class="ul-wrap"><ul><li><span>✓</span>A GTM snapshot with your top 3 priorities</li><li><span>✓</span>A website or landing page wireframe with content</li><li><span>✓</span>A 1-hour strategy call</li></ul></div>
+      <a class="btn dark" href="#" data-audit="free">Apply for the free audit</a></div>
+    <div class="offer hi"><span class="tag">Credited toward Operator</span><p class="mini" style="color:var(--blue)">Go deeper</p><h3>GTM audit sprint</h3>
+      <div class="pr"><b>$2,000</b><span>Two weeks, fixed fee</span></div>
+      <div class="ul-wrap"><ul><li><span>✓</span>Complete GTM assessment as a slide deck</li><li><span>✓</span>Channel performance review</li><li><span>✓</span>ICP, positioning and messaging</li><li><span>✓</span>Homepage wireframe with ready-to-use copy</li><li><span>✓</span>A 3, 6 and 12-month roadmap</li><li><span>✓</span>Live walkthrough with your leadership team</li></ul></div>
+      <a class="btn" href="#" data-audit="sprint">Request a GTM audit sprint</a></div>
+    <div class="offer"><p class="mini">Work together</p><h3>Operator</h3>
+      <div class="pr"><b>Custom</b><span>Priced to your scope, 6-month minimum</span></div>
+      <div class="ul-wrap"><ul><li><span>✓</span>Choose channel growth or GTM execution</li><li><span>✓</span>Foundation, build, growth execution and handover</li><li><span>✓</span>Weekly and monthly reporting and planning</li></ul></div>
+      <a class="btn dark" href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call to check eligibility</a></div>
+  </div>
+  <p class="notcov"><b>Not covered in Operator:</b> ad spend and tool costs, creative production such as brand shoots, video ads and statics (your team or agency produces them and I brief and direct), and lead generation such as prospecting and outbound, which is a separate service.</p>
+</div></section>
+</main>
+
+<footer id="contact"><div class="wrap">
+  <div class="fg">
+    <div><h2>What are you trying to grow?</h2><p class="s">Tell me where growth is stuck and I will tell you where to start.</p></div>
+    <div class="fb"><a class="btn lg" href="#" data-audit="free">Apply for the free audit &rarr;</a><a class="btn lg ghost" href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call</a><a class="btn lg ghost" href="mailto:parthdave240@gmail.com">Email directly</a></div>
+  </div>
+  <div class="copy"><span>© 2026 Parth Dave, Fractional GTM Operator</span><div><span>B2B SaaS</span><span>D2C</span><span>E-learning</span><span>B2C</span></div></div>
+</div></footer>
+
+<dialog id="dlg" aria-labelledby="dt">
+  <button class="x" type="button" aria-label="Close" data-close>&times;</button>
+  <h2 id="dt">Apply for your free 1-day audit.</h2>
+  <p class="l" id="dl">The free audit is based on eligibility and your current revenue. Tell us about your brand and we will confirm if you qualify.</p>
+  <form id="f" novalidate>
+    <input type="hidden" name="audit_type" id="atype" value="Free 1-day audit">
+    <label class="hp" aria-hidden="true">Leave blank<input name="company_url" type="text" tabindex="-1" autocomplete="off"></label>
+    <label>Name<input name="name" type="text" autocomplete="name" required></label>
+    <label>Business email<input name="email" type="email" autocomplete="email" required></label>
+    <label>Phone number<span class="pg"><select name="country_code" aria-label="Country code"><option value="+1" selected>US / CA +1</option><option value="+44">UK +44</option><option value="+91">India +91</option><option value="+971">UAE +971</option><option value="+61">Australia +61</option><option value="+65">Singapore +65</option><option value="+49">Germany +49</option><option value="+33">France +33</option><option value="+31">Netherlands +31</option><option value="+966">Saudi Arabia +966</option><option value="+974">Qatar +974</option><option value="+64">New Zealand +64</option><option value="+27">South Africa +27</option><option value="+353">Ireland +353</option></select><input name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="Phone number" required></span></label>
+    <label>Company name<input name="company" type="text" autocomplete="organization" required></label>
+    <label>Current annual revenue<select name="revenue" required><option value="" selected disabled>Select a range</option><option>Under $1M</option><option>$1M to $5M</option><option>$5M to $10M</option><option>$10M to $25M</option><option>$25M to $50M</option><option>$50M+</option></select></label>
+    <label>Website link<input name="website" type="url" placeholder="https://" required></label>
+    <label>Landing page and creatives<textarea name="extras" rows="3" placeholder="Optional, but it will help us get right into it. Paste links to your landing page and creatives."></textarea></label>
+    <button class="btn lg" type="submit" id="sub">Apply for the free audit</button>
+    <p id="fnote">We reply from a personal inbox, usually within one working day.</p>
+  </form>
+  <div id="thanks"><h2 style="font-size:24px">Thanks, you are in.</h2><p class="l">I will review your details and reply by email shortly.</p><button class="btn light" type="button" data-close>Back to page</button></div>
+</dialog>
+
+<script>
+(function(){
+var d=document.getElementById('dlg'),f=document.getElementById('f'),n=document.getElementById('fnote'),sub=document.getElementById('sub'),th=document.getElementById('thanks');
+var T={free:{t:'Apply for your free 1-day audit.',l:'The free audit is based on eligibility and your current revenue. Tell us about your brand and we will confirm if you qualify.',b:'Apply for the free audit',ty:'Free 1-day audit'},sprint:{t:'Request your GTM audit sprint.',l:'A two-week assessment and plan. $2,000 flat, 100% credited toward Operator.',b:'Request a GTM audit sprint',ty:'GTM audit sprint'}};
+function openD(k){var c=T[k]||T.free;document.getElementById('dt').textContent=c.t;document.getElementById('dl').textContent=c.l;sub.textContent=c.b;document.getElementById('atype').value=c.ty;n.textContent='We reply from a personal inbox, usually within one working day.';n.style.color='';f.style.display='';th.style.display='none';sub.disabled=false;d.showModal()}
+document.addEventListener('click',function(e){
+  var a=e.target.closest('[data-audit]');if(a){e.preventDefault();openD(a.getAttribute('data-audit'));return}
+  var m=e.target.closest('[data-tab]');if(m){var k=m.getAttribute('data-tab');document.querySelectorAll('.mod').forEach(function(b){var on=b===m;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});document.querySelectorAll('.panel').forEach(function(p){p.hidden=p.getAttribute('data-panel')!==k});return}
+  if(e.target.closest('[data-close]'))d.close();if(e.target===d)d.close()});
+f.addEventListener('submit',function(e){e.preventDefault();if(!f.checkValidity()){f.reportValidity();return}
+var fd=new FormData(f),digits=String(fd.get('phone')||'').replace(/\D/g,'').replace(/^0+/,'');
+var p={name:fd.get('name'),email:fd.get('email'),phone:String(fd.get('country_code'))+digits,company:fd.get('company'),revenue:fd.get('revenue'),website:fd.get('website'),extras:fd.get('extras')||'',audit_type:fd.get('audit_type'),page:location.href,source:'home',company_url:fd.get('company_url')||''};
+var lab=sub.textContent;sub.disabled=true;sub.textContent='Sending...';
+fetch('/.netlify/functions/d2c-lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(p)}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(){f.style.display='none';th.style.display='block';f.reset()}).catch(function(){sub.disabled=false;sub.textContent=lab;n.style.color='#DC2626';n.innerHTML='Sorry, that did not go through. Please try again, or <a href="https://cal.id/parth-dave" target="_blank" rel="noopener">book a call</a> instead.'})});
+})();
+</script>
+<script src="/assets/analytics.js" defer></script>
+</body>
+</html>
