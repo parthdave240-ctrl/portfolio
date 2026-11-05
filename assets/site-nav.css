@@ -4,7 +4,7 @@
 .sn { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid #E2E8F0; color: #334155; font-family: 'Inter', system-ui, sans-serif; font-size: 14px; line-height: 1.4; }
 .sn *, .sn *::before, .sn *::after { box-sizing: border-box; }
 .sn a { color: inherit; text-decoration: none; font-weight: 500; font-size: inherit; }
-.sn-in { max-width: 1200px; margin: 0 auto; padding: 10px clamp(16px, 4vw, 48px); display: flex; align-items: center; gap: 12px 28px; }
+.sn-in { max-width: 1280px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; gap: 12px 28px; }
 .sn-brand { padding: 8px 0; font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 700 !important; font-size: 20px !important; letter-spacing: -0.02em; margin-right: auto; display: flex; align-items: center; gap: 10px; white-space: nowrap; color: #0F172A; }
 .sn-brand i { width: 10px; height: 10px; border-radius: 3px; background: #2563EB; display: block; }
 .sn-links { display: flex; gap: 24px; color: #334155; }
