@@ -76,9 +76,17 @@ header.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);bac
 .shot img{width:100%;height:auto}
 .tile.dark .shot{border-color:#1E293B}
 .feat{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 40px rgba(15,23,42,.10);overflow:hidden}
-.feat img{width:100%;height:auto;border-bottom:1px solid var(--line)}
-.feat div{padding:18px 22px}.feat .big{font-size:34px;margin-top:6px}.feat p.lab{margin-top:4px}
+.slides{display:grid}
+.slide{grid-area:1/1;opacity:0;visibility:hidden;transition:opacity .5s,visibility .5s;display:flex;flex-direction:column}
+.slide.on{opacity:1;visibility:visible}
+.slide img,.numpanel{width:100%;aspect-ratio:16/10;object-fit:contain;object-position:center top;background:var(--soft);border-bottom:1px solid var(--line)}
+.numpanel{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--ink);color:#fff}
+.numpanel b{font:700 clamp(48px,6vw,72px) 'Space Grotesk',sans-serif;letter-spacing:-0.03em;color:#fff}
+.numpanel span{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#60A5FA;font-weight:700}
+.slide div:not(.numpanel){padding:18px 22px 8px}.feat .big{font-size:34px;margin-top:6px}.feat p.lab{margin-top:4px}
 .feat a{display:inline-block;margin-top:10px;font-size:13px;font-weight:600;color:var(--blue);text-decoration:none}
+.fdots{display:flex;gap:8px;padding:6px 22px 18px}
+.fd{width:28px;height:6px;border-radius:3px;border:0;padding:0;background:var(--line);cursor:pointer}.fd.on{background:var(--blue)}
 .ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px;margin-top:40px}
 .ba .b,.ba .a{border-radius:10px;padding:clamp(20px,2.4vw,28px);display:flex;flex-direction:column;gap:12px}
 .ba .b{background:var(--soft);border:1px solid var(--line)}
@@ -209,8 +217,10 @@ form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--b
       </div>
     </div>
     <div>
-      <div class="feat"><img src="/assets/img/case-03-doubled-ad-spend-without-losin.png" alt="Ad spend dashboard from the case study">
-        <div><p class="mini">Featured result · D2C paid media</p><p class="big">2x ad spend</p><p class="lab">ROAS held near 7x while monthly spend went from $60.8K to $125.8K.</p><a href="/case-studies/scaling-spend.html">Read the case study &rarr;</a></div></div>
+      <div class="feat" id="feat" aria-roledescription="carousel" aria-label="Featured case studies">
+        <div class="slides"><div class="slide on" data-i="0" aria-hidden="false"><img src="/assets/img/case-01-repositioned-freight-tiger.jpg" alt="" loading="eager"><div><p class="mini">Featured result · Freight Tiger · B2B SaaS</p><p class="big">3 → 1</p><p class="lab">Three module pitches unified into one position.</p><a href="/case-studies/repositioning-freighttiger.html">Read the case study &rarr;</a></div></div><div class="slide" data-i="1" aria-hidden="true"><img src="/assets/img/case-03-doubled-ad-spend-without-losin.png" alt="" loading="lazy"><div><p class="mini">Featured result · D2C paid media</p><p class="big">2x ad spend</p><p class="lab">ROAS held near 7x while monthly spend went from $60.8K to $125.8K.</p><a href="/case-studies/scaling-spend.html">Read the case study &rarr;</a></div></div><div class="slide" data-i="2" aria-hidden="true"><div class="numpanel"><b>$1.74M</b><span>D2C lifecycle email</span></div><div><p class="mini">Featured result · D2C lifecycle email</p><p class="big">$1.74M</p><p class="lab">Attributed email revenue from 285 campaigns in ten months.</p><a href="/case-studies/turning-email.html">Read the case study &rarr;</a></div></div><div class="slide" data-i="3" aria-hidden="true"><img src="/assets/img/case-06-launched-a-new-market.png" alt="" loading="lazy"><div><p class="mini">Featured result · D2C market launch</p><p class="big">+91% orders</p><p class="lab">Customer interviews moved the pitch from premium to everyday utility.</p><a href="/case-studies/launching-india.html">Read the case study &rarr;</a></div></div><div class="slide" data-i="4" aria-hidden="true"><img src="/assets/img/case-02-built-the-tigersight-brand-fro.jpg" alt="" loading="lazy"><div><p class="mini">Featured result · TigerSight · B2B SaaS</p><p class="big">0 → 1</p><p class="lab">A standalone brand, domain and website built for an AI product.</p><a href="/case-studies/freighttiger-brand.html">Read the case study &rarr;</a></div></div></div>
+        <div class="fdots" role="tablist" aria-label="Choose case study"><button type="button" class="fd on" data-go="0" aria-label="Case study 1"></button><button type="button" class="fd" data-go="1" aria-label="Case study 2"></button><button type="button" class="fd" data-go="2" aria-label="Case study 3"></button><button type="button" class="fd" data-go="3" aria-label="Case study 4"></button><button type="button" class="fd" data-go="4" aria-label="Case study 5"></button></div>
+      </div>
       <div class="who"><img src="/assets/img/parth-dave.jpg" alt="Parth Dave"><p><b>Parth Dave</b>Fractional GTM lead and growth architect. 10+ years building revenue engines.</p></div>
     </div>
   </div>
@@ -236,22 +246,22 @@ form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--b
     <div><div class="panel" data-panel="1" role="tabpanel">
         <div class="ph"><div><h3>Stage 1: Foundation</h3><p>Know who you sell to, why you win and what to say, before you spend on anything else.</p></div><span class="chip">Stage 1 of 4</span></div>
         <div class="cells c4"><div class="cell"><p class="mini">Step 1</p><p class="cn">Audit and plan</p><p class="cd">A clear baseline, what to fix first, and goals for 3, 6 and 12 months.</p></div><div class="cell"><p class="mini">Step 2</p><p class="cn">Ideal customer</p><p class="cd">Your best buyers, what triggers a purchase, and who to say no to.</p></div><div class="cell"><p class="mini">Step 3</p><p class="cn">Positioning</p><p class="cd">Pick your anchor, weigh options ranked by risk, and lock the exact words for what you are and who it is for.</p></div><div class="cell"><p class="mini">Step 4</p><p class="cn">Messaging</p><p class="cd">The words that explain your value and why you win, the same everywhere buyers look.</p></div></div>
-        <div class="pf"><span>You leave with: <b>ICP, positioning and messaging your team agrees on.</b></span><span>Tools: <b>HubSpot, Apollo, Clay, Gong</b></span></div>
+        <div class="pf"><span>You leave with: <b>ICP, positioning and messaging your team agrees on.</b></span></div>
       </div>
 <div class="panel" data-panel="2" role="tabpanel" hidden>
         <div class="ph"><div><h3>Stage 2: Build</h3><p>Make your assets and website match, and set your channel strategy.</p></div><span class="chip">Stage 2 of 4</span></div>
         <div class="cells c3"><div class="cell"><p class="mini">Step 1</p><p class="cn">Marketing and sales assets</p><p class="cd">The website, product pages, decks and creatives buyers see, rebuilt to match your positioning.</p></div><div class="cell"><p class="mini">Step 2</p><p class="cn">Website fixes and landing pages</p><p class="cd">Fix what costs you conversions on your site, and build landing pages that match your positioning.</p></div><div class="cell"><p class="mini">Step 3</p><p class="cn">Growth engine</p><p class="cd">Pipeline and channel strategy: the channels you use, how each performs (paid, email, SEO and more), and where to focus.</p></div></div>
-        <div class="pf"><span>You leave with: <b>Assets and a website that match, and a clear channel strategy.</b></span><span>Tools: <b>Webflow, Figma, Shopify, Mailchimp</b></span></div>
+        <div class="pf"><span>You leave with: <b>Assets and a website that match, and a clear channel strategy.</b></span></div>
       </div>
 <div class="panel" data-panel="3" role="tabpanel" hidden>
         <div class="ph"><div><h3>Stage 3: Growth execution</h3><p>Put the growth system to work: your channels, AI workflows and funnel.</p></div><span class="chip">Stage 3 of 4</span></div>
         <div class="cells c3"><div class="cell"><p class="mini">Step 1</p><p class="cn">Channel execution</p><p class="cd">Run the channels and campaigns from your growth plan, week to week.</p></div><div class="cell"><p class="mini">Step 2</p><p class="cn">AI readiness and workflows</p><p class="cd">Check how ready your team is for AI, then build workflows that take repeat work off your plate.</p></div><div class="cell"><p class="mini">Step 3</p><p class="cn">Funnel and conversion setup</p><p class="cd">Fix and connect the path from first visit to customer: lead capture, forms, add to cart and checkout.</p></div></div>
-        <div class="pf"><span>You leave with: <b>A running growth system, with AI workflows and a connected funnel.</b></span><span>Tools: <b>Claude, Zapier, PostHog, Google Ads, Meta Ads</b></span></div>
+        <div class="pf"><span>You leave with: <b>A running growth system, with AI workflows and a connected funnel.</b></span></div>
       </div>
 <div class="panel" data-panel="4" role="tabpanel" hidden>
         <div class="ph"><div><h3>Stage 4: Measure and hand over</h3><p>Track what is working, then hand everything over so your team can run it.</p></div><span class="chip">Stage 4 of 4</span></div>
         <div class="cells c2"><div class="cell"><p class="mini">Step 1</p><p class="cn">Reporting and planning</p><p class="cd">Dashboards that show what is working and what to do next.</p></div><div class="cell"><p class="mini">Step 2</p><p class="cn">Handover</p><p class="cd">Everything documented and handed to your team, with playbooks they can run.</p></div></div>
-        <div class="pf"><span>You leave with: <b>Dashboards that guide decisions, and a clean handover to your team.</b></span><span>Tools: <b>GA4, PostHog, Looker Studio, Notion</b></span></div>
+        <div class="pf"><span>You leave with: <b>Dashboards that guide decisions, and a clean handover to your team.</b></span></div>
       </div>
 </div>
   </div>
@@ -349,6 +359,11 @@ form input:focus,form select:focus,form textarea:focus{outline:2px solid var(--b
 
 <script>
 (function(){
+var fe=document.getElementById('feat'),cur=0,tm,sl=fe.querySelectorAll('.slide'),dt=fe.querySelectorAll('.fd');
+function go(i){cur=(i+sl.length)%sl.length;sl.forEach(function(s,k){s.classList.toggle('on',k===cur);s.setAttribute('aria-hidden',k!==cur)});dt.forEach(function(b,k){b.classList.toggle('on',k===cur)})}
+function play(){clearInterval(tm);if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;tm=setInterval(function(){go(cur+1)},5000)}
+fe.addEventListener('mouseenter',function(){clearInterval(tm)});fe.addEventListener('mouseleave',play);fe.addEventListener('focusin',function(){clearInterval(tm)});
+dt.forEach(function(b){b.addEventListener('click',function(){go(+b.getAttribute('data-go'));play()})});play();
 var d=document.getElementById('dlg'),f=document.getElementById('f'),n=document.getElementById('fnote'),sub=document.getElementById('sub'),th=document.getElementById('thanks');
 var T={free:{t:'Apply for your free 1-day audit.',l:'The free audit is based on eligibility and your current revenue. Tell us about your brand and we will confirm if you qualify.',b:'Apply for the free audit',ty:'Free 1-day audit'},sprint:{t:'Request your GTM audit sprint.',l:'A two-week assessment and plan. $2,000 flat, 100% credited toward Operator.',b:'Request a GTM audit sprint',ty:'GTM audit sprint'}};
 function openD(k){var c=T[k]||T.free;document.getElementById('dt').textContent=c.t;document.getElementById('dl').textContent=c.l;sub.textContent=c.b;document.getElementById('atype').value=c.ty;n.textContent='We reply from a personal inbox, usually within one working day.';n.style.color='';f.style.display='';th.style.display='none';sub.disabled=false;d.showModal()}
