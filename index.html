@@ -218,7 +218,6 @@ header.nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);bac
 .offer li{display:flex;gap:8px}.offer li span{color:var(--blue);font-weight:700}
 .offer .btn{margin-top:auto;width:100%}
 .offer .ul-wrap{flex:1;margin-bottom:28px}
-.notcov{margin-top:32px;font-size:13px;color:var(--muted);max-width:90ch}
 /* footer */
 footer{background:var(--ink);color:#fff;padding:64px 0;border-top:1px solid #1E293B}
 .fg{display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:center}
@@ -256,7 +255,27 @@ dialog.deal h2{font-size:26px;margin:6px 0 0}
 @media (max-width:760px){.wgrid{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:900px){.logos ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:1000px){.arts,.soon,.inds{grid-template-columns:minmax(0,1fr)}.hero-g,.head2,.fg{grid-template-columns:minmax(0,1fr)}.grid3,.offers,.stk{grid-template-columns:minmax(0,1fr)}.dash{grid-template-columns:minmax(0,1fr)}.side{border-right:0;border-bottom:1px solid var(--line);padding:0 0 16px;flex-direction:row;overflow-x:auto;gap:8px}.side .mini{display:none}.mod{white-space:nowrap;width:auto}.c4,.c3{grid-template-columns:repeat(2,minmax(0,1fr))}.fb{justify-content:flex-start}.nav nav{display:none}.hm{display:block}.nav .r .ct{display:none}}
-@media (max-width:640px){.bah{display:none}.bar{grid-template-columns:minmax(0,1fr)}.bar p::before{display:block;font:700 10px "Space Grotesk",sans-serif;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;color:#94A3B8}.bar .b::before{content:"Before"}.bar .a::before{content:"After";color:var(--blue)}.bar .a{border-left:0;border-top:1px dashed #DBEAFE}.wrap{padding:0 18px}.brand{white-space:nowrap;font-size:18px}.nav .btn{white-space:nowrap;padding:9px 12px;font-size:13px}.nav .wrap{gap:10px}.stats{gap:14px}.stats b{font-size:24px}.c4,.c3,.c2{grid-template-columns:minmax(0,1fr)}.shift{grid-template-columns:minmax(0,1fr);gap:8px}.arr{transform:rotate(90deg);justify-self:start}.cta .btn,.fb .btn{width:100%}.nav .r>a:first-child{display:none}</style>
+@media (max-width:640px){.bah{display:none}.bar{grid-template-columns:minmax(0,1fr)}.bar p::before{display:block;font:700 10px "Space Grotesk",sans-serif;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;color:#94A3B8}.bar .b::before{content:"Before"}.bar .a::before{content:"After";color:var(--blue)}.bar .a{border-left:0;border-top:1px dashed #DBEAFE}.wrap{padding:0 18px}.brand{white-space:nowrap;font-size:18px}.nav .btn{white-space:nowrap;padding:9px 12px;font-size:13px}.nav .wrap{gap:10px}.stats{gap:14px}.stats b{font-size:24px}.c4,.c3,.c2{grid-template-columns:minmax(0,1fr)}.shift{grid-template-columns:minmax(0,1fr);gap:8px}.arr{transform:rotate(90deg);justify-self:start}.cta .btn,.fb .btn{width:100%}.nav .r>a:first-child{display:none}
+/* shorter on phones: swipe rows instead of long stacks */
+@media (max-width:760px){
+section{padding:48px 0}.logos{padding:32px 0}
+.logos li{height:56px;padding:0 12px}.logos img{width:96px;height:24px}
+.grid3,.offers,.arts,.wgrid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-left:-18px;margin-right:-18px;padding:4px 18px 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.grid3::-webkit-scrollbar,.offers::-webkit-scrollbar,.arts::-webkit-scrollbar,.wgrid::-webkit-scrollbar{display:none}
+.grid3>*,.offers>*,.arts>*,.wgrid>*{flex:0 0 84%;scroll-snap-align:center;min-width:0}
+.grid3{margin-top:28px}.offers{align-items:stretch}.offer{padding:24px}
+.refs{margin-top:24px}.refs ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}.refs a{padding:10px 0}
+.head2{gap:12px;margin-bottom:28px}.head2 p.d{font-size:14px}
+.ai .head2 p.d{display:none}.art .go{display:none}.art p:not(.mini){display:none}.art h3{font-size:17px}.art div{padding:16px}
+.ind ul{display:none}.ind{padding:20px;gap:10px}.inds{gap:14px}
+.stk{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:24px}.sk{padding:14px}
+.wc{padding:20px}.wc h3{font-size:18px}
+.wled{margin-top:24px;padding-top:24px;gap:12px}.wled b{font-size:22px}
+.me{margin-bottom:28px;gap:20px}.me img{max-width:132px;aspect-ratio:1/1;border-radius:50%}
+.ba{margin-top:24px}.bar p{padding:12px 16px}
+footer{padding:44px 0}.copy{margin-top:32px}
+}
+</style>
 </head>
 <body>
 
@@ -419,7 +438,6 @@ dialog.deal h2{font-size:26px;margin:6px 0 0}
       <div class="ul-wrap"><ul><li><span>✓</span>Choose channel growth or GTM execution</li><li><span>✓</span>Foundation, build, growth execution and handover</li><li><span>✓</span>Weekly and monthly reporting and planning</li></ul></div>
       <a class="btn dark" href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call to check eligibility</a><button type="button" class="dlink" data-deal="d-op">See the deliverables</button></div>
   </div>
-  <p class="notcov"><b>Not covered in Operator:</b> ad spend and tool costs, creative production such as brand shoots, video ads and statics (your team or agency produces them and I brief and direct), and lead generation such as prospecting and outbound, which is a separate service.</p>
 </div></section>
 </main>
 
