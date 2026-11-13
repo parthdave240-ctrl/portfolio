@@ -451,7 +451,7 @@ section h2{font-size:clamp(28px,3.4vw,40px);line-height:1.15;margin-top:8px}
     <button class="btn ghost back" type="button" data-close>Back to page</button>
     <p class="fnote" id="fnote">We reply from a personal inbox, usually within one working day.</p>
   </form>
-  <div class="thanks" id="thanks"><h3>Thanks, you are in.</h3><p>I will review your details and reply by email shortly.</p><button class="btn ghost" type="button" data-close>Back to page</button></div>
+  <div class="thanks" id="thanks"><p class="eyebrow">Application received</p><h3>Boom. You are on my radar.</h3><p>Your application just landed in my inbox, and a real human (me) is about to read every word. Expect a reply within one working day, from my personal email, not a bot.</p><p>Check your spam folder just in case. And in the meantime, go get a coffee. You have earned it.</p><button class="btn ghost" type="button" data-close>Back to the site</button></div>
 </dialog>
 
 <dialog id="t1" class="deal" aria-labelledby="t1T">
@@ -487,7 +487,7 @@ var base=n.textContent;
 var T={free:{eyebrow:'Free 1-day audit',title:'Apply for your free 1-day audit.',lede:'The free audit is based on eligibility and your current revenue. Tell us about your brand and we will confirm if you qualify.',btn:'Apply for Free 1-Day Audit',type:'Free 1-day audit'},
 paid:{eyebrow:'GTM audit sprint',title:'Request your GTM audit sprint.',lede:'A 14-day teardown of your funnel, ad accounts, lifecycle flows and tracking. $2,000 flat, 100% credited toward the retainer.',btn:'Request a GTM Audit Sprint',type:'GTM audit sprint'}};
 function closeAll(){document.querySelectorAll('dialog[open]').forEach(function(d){d.close()})}
-function openAudit(k){var t=T[k]||T.free;document.getElementById('auditEyebrow').textContent=t.eyebrow;document.getElementById('auditTitle').textContent=t.title;document.getElementById('auditLede').textContent=t.lede;btn.textContent=t.btn;document.getElementById('auditType').value=t.type;n.textContent=base;n.style.color='';f.style.display='';thanks.style.display='none';btn.disabled=false;closeAll();audit.showModal();audit.scrollTop=0}
+function openAudit(k){var t=T[k]||T.free;['auditEyebrow','auditTitle','auditLede'].forEach(function(i){document.getElementById(i).style.display=''});document.getElementById('auditEyebrow').textContent=t.eyebrow;document.getElementById('auditTitle').textContent=t.title;document.getElementById('auditLede').textContent=t.lede;btn.textContent=t.btn;document.getElementById('auditType').value=t.type;n.textContent=base;n.style.color='';f.style.display='';thanks.style.display='none';btn.disabled=false;closeAll();audit.showModal();audit.scrollTop=0}
 document.querySelectorAll('[data-open]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();openAudit(a.getAttribute('data-open'))})});
 document.querySelectorAll('[data-deal]').forEach(function(b){b.addEventListener('click',function(){var d=document.getElementById(b.getAttribute('data-deal'));d.showModal();d.scrollTop=0})});
 document.querySelectorAll('dialog').forEach(function(d){d.addEventListener('click',function(e){if(e.target===d)d.close()});d.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',function(){d.close()})})});
@@ -500,7 +500,7 @@ f.addEventListener('submit',function(e){
   var label=btn.textContent;btn.disabled=true;btn.textContent='Sending...';n.style.color='';
   fetch('/.netlify/functions/d2c-lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)})
     .then(function(r){if(!r.ok)throw new Error('bad');return r.json()})
-    .then(function(){f.style.display='none';thanks.style.display='block';audit.scrollTop=0;f.reset()})
+    .then(function(){f.style.display='none';['auditEyebrow','auditTitle','auditLede'].forEach(function(i){document.getElementById(i).style.display='none'});thanks.style.display='block';audit.scrollTop=0;f.reset()})
     .catch(function(){btn.disabled=false;btn.textContent=label;n.style.color='#F87171';n.innerHTML='Sorry, that did not go through. Please try again, or <a href="https://cal.id/parth-dave" target="_blank" rel="noopener" style="text-decoration:underline">book a call</a> instead.'});
 });
 })();
