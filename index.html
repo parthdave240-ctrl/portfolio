@@ -418,7 +418,7 @@ footer{padding:44px 0}.copy{margin-top:32px}
     <div>
       <p class="eyebrow">Work with me</p>
       <h2>You work with me, not an agency.</h2>
-      <p class="mp">I am Parth. When we work together it is me on your calls, in your accounts and in your numbers. Start with the free audit and see how I think. If it is useful, we go deeper from there.</p>
+      <p class="mp">Hi, I am Parth. No account managers, no handoffs. When you hire me, I am the one on your calls, inside your ad accounts and staring at your numbers. Start with the free audit, see how I think, and if it is useful, we take it from there.</p>
       <p class="ms"><b>Parth Dave</b>Fractional GTM lead and growth architect</p>
     </div>
   </div>
@@ -481,7 +481,7 @@ footer{padding:44px 0}.copy{margin-top:32px}
     <button class="btn lg" type="submit" id="sub">Apply for the free audit</button>
     <p id="fnote">We reply from a personal inbox, usually within one working day.</p>
   </form>
-  <div id="thanks"><h2 style="font-size:24px">Thanks, you are in.</h2><p class="l">I will review your details and reply by email shortly.</p><button class="btn light" type="button" data-close>Back to page</button></div>
+  <div id="thanks"><p class="mini">Application received</p><h2 style="font-size:28px;margin-top:6px">Thanks, I got it.</h2><p class="l">I will review your details and reply from my personal inbox within one working day. Check your spam folder just in case.</p><button class="btn light" type="button" data-close>Back to the site</button></div>
 </dialog>
 
 <script>
@@ -501,7 +501,7 @@ fe.addEventListener('mouseenter',function(){clearInterval(tm)});fe.addEventListe
 dt.forEach(function(b){b.addEventListener('click',function(){go(+b.getAttribute('data-go'));play()})});play();
 var d=document.getElementById('dlg'),f=document.getElementById('f'),n=document.getElementById('fnote'),sub=document.getElementById('sub'),th=document.getElementById('thanks');
 var T={free:{t:'Apply for your free 1-day audit.',l:'The free audit is based on eligibility and your current revenue. Tell us about your brand and we will confirm if you qualify.',b:'Apply for the free audit',ty:'Free 1-day audit'},sprint:{t:'Request your GTM audit sprint.',l:'A two-week assessment and plan. $2,000 flat, 100% credited toward Operator.',b:'Request a GTM audit sprint',ty:'GTM audit sprint'}};
-function openD(k){var c=T[k]||T.free;document.getElementById('dt').textContent=c.t;document.getElementById('dl').textContent=c.l;sub.textContent=c.b;document.getElementById('atype').value=c.ty;n.textContent='We reply from a personal inbox, usually within one working day.';n.style.color='';f.style.display='';th.style.display='none';sub.disabled=false;d.showModal()}
+function openD(k){var c=T[k]||T.free;document.getElementById('dt').style.display='';document.getElementById('dl').style.display='';document.getElementById('dt').textContent=c.t;document.getElementById('dl').textContent=c.l;sub.textContent=c.b;document.getElementById('atype').value=c.ty;n.textContent='We reply from a personal inbox, usually within one working day.';n.style.color='';f.style.display='';th.style.display='none';sub.disabled=false;d.showModal()}
 document.addEventListener('click',function(e){
   var hl=e.target.closest('.hmp a');if(hl){var hm=document.querySelector('.hm');if(hm)hm.removeAttribute('open')}
   var dl=e.target.closest('[data-deal]');if(dl){var dd=document.getElementById(dl.getAttribute('data-deal'));if(dd){document.querySelectorAll('dialog[open]').forEach(function(o){o.close()});dd.showModal();dd.scrollTop=0}return}
@@ -513,7 +513,7 @@ f.addEventListener('submit',function(e){e.preventDefault();if(!f.checkValidity()
 var fd=new FormData(f),digits=String(fd.get('phone')||'').replace(/\D/g,'').replace(/^0+/,'');
 var p={name:fd.get('name'),email:fd.get('email'),phone:String(fd.get('country_code'))+digits,company:fd.get('company'),revenue:fd.get('revenue'),website:fd.get('website'),extras:fd.get('extras')||'',audit_type:fd.get('audit_type'),page:location.href,source:'home',company_url:fd.get('company_url')||''};
 var lab=sub.textContent;sub.disabled=true;sub.textContent='Sending...';
-fetch('/.netlify/functions/d2c-lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(p)}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(){f.style.display='none';th.style.display='block';f.reset()}).catch(function(){sub.disabled=false;sub.textContent=lab;n.style.color='#DC2626';n.innerHTML='Sorry, that did not go through. Please try again, or <a href="https://cal.id/parth-dave" target="_blank" rel="noopener">book a call</a> instead.'})});
+fetch('/.netlify/functions/d2c-lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(p)}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(){f.style.display='none';document.getElementById('dt').style.display='none';document.getElementById('dl').style.display='none';th.style.display='block';f.reset()}).catch(function(){sub.disabled=false;sub.textContent=lab;n.style.color='#DC2626';n.innerHTML='Sorry, that did not go through. Please try again, or <a href="https://cal.id/parth-dave" target="_blank" rel="noopener">book a call</a> instead.'})});
 })();
 </script>
 <script src="/assets/analytics.js" defer></script>
