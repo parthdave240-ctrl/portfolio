@@ -1,6 +1,8 @@
 // Receives the audit forms and adds the lead to Brevo: "D2C Leads" (list 4) from the D2C page,
 // "GTM Leads" (list 5) from the home page. Needs BREVO_API_KEY in Netlify.
 // Optional: BREVO_D2C_LIST_ID (default 4), BREVO_GTM_LIST_ID (default 5).
+// Every lead also sends an alert email through Brevo to LEAD_NOTIFY_EMAIL (default parthdave240@gmail.com),
+// from LEAD_NOTIFY_SENDER (a sender verified in Brevo, default parthdave240@gmail.com). Alert failures never block the lead.
 const API = 'https://api.brevo.com/v3';
 const REVENUE = ['Under $1M', '$1M to $5M', '$5M to $10M', '$10M to $25M', '$25M to $50M', '$50M+'];
 const AUDIT_TYPES = ['Free 1-day audit', '2-week growth audit', 'GTM audit sprint', 'Full GTM audit'];
@@ -23,6 +25,35 @@ async function brevo(key, method, path, body) {
   let data = {};
   try { data = text ? JSON.parse(text) : {}; } catch (e) { /* non-JSON body */ }
   return { status: res.status, data };
+}
+
+const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+async function notify(key, lead) {
+  const to = process.env.LEAD_NOTIFY_EMAIL || 'parthdave240@gmail.com';
+  const sender = process.env.LEAD_NOTIFY_SENDER || 'parthdave240@gmail.com';
+  const rows = [
+    ['Name', lead.name], ['Email', lead.email], ['Phone', lead.phone], ['Company', lead.company],
+    ['Revenue', lead.revenue], ['Website', lead.website], ['Request', lead.auditType],
+    ['Came from', lead.home ? 'Home page (GTM Leads)' : 'D2C page (D2C Leads)'], ['Page', lead.page || 'unknown'],
+  ];
+  if (lead.extras) rows.push(['Landing page and creatives', lead.extras]);
+  const html = '<div style="font-family:Arial,sans-serif;color:#0F172A;max-width:560px">' +
+    '<h2 style="margin:0 0 4px">New lead: ' + esc(lead.name) + '</h2>' +
+    '<p style="margin:0 0 16px;color:#64748B">' + esc(lead.auditType) + ' request from ' + esc(lead.company) + '</p>' +
+    '<table style="border-collapse:collapse;width:100%">' +
+    rows.map((r) => '<tr><td style="padding:8px 12px;border:1px solid #E2E8F0;background:#F8FAFC;font-weight:bold;white-space:nowrap">' + esc(r[0]) +
+      '</td><td style="padding:8px 12px;border:1px solid #E2E8F0">' + esc(r[1]).replace(/\n/g, '<br>') + '</td></tr>').join('') +
+    '</table><p style="margin-top:16px;color:#64748B">Reply to this email to answer ' + esc(lead.name) + ' directly. The lead is also saved in Brevo.</p></div>';
+  const r = await brevo(key, 'POST', '/smtp/email', {
+    sender: { name: 'Lead alerts', email: sender },
+    to: [{ email: to }],
+    replyTo: { email: lead.email, name: lead.name },
+    subject: 'New lead: ' + lead.name + ', ' + lead.company + ' (' + lead.auditType + ')',
+    htmlContent: html,
+    tags: ['lead-alert'],
+  });
+  if (r.status >= 300) console.error('Brevo alert email error', r.status, JSON.stringify(r.data).slice(0, 300));
 }
 
 exports.handler = async (event) => {
@@ -81,6 +112,8 @@ exports.handler = async (event) => {
     const n = await brevo(key, 'POST', '/crm/notes', { text: lines.join('\n'), contactIds: [id] });
     if (n.status >= 300) console.error('Brevo note error', n.status, JSON.stringify(n.data).slice(0, 300));
   }
+
+  try { await notify(key, { name, email, phone, company, revenue, website, auditType, extras, page, home }); } catch (e) { console.error('Lead alert failed', e && e.message); }
 
   return json(200, { ok: true });
 };
