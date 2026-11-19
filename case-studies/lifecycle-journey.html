@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rebuilding the Rotimatic customer lifecycle — Parth Dave</title>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Parth Dave">
+  <meta property="og:title" content="Rebuilding the Rotimatic customer lifecycle — Parth Dave">
+  <meta property="og:description" content="How I rebuilt Rotimatic's lifecycle across email, WhatsApp and delivery updates: cart nurture, a ten-stage delivery tracker through an 8 to 10 week wait, onboarding, referral, warranty recovery and upsell.">
+  <meta property="og:url" content="https://portolan-gtm.netlify.app/case-studies/lifecycle-journey.html">
+  <meta property="og:image" content="https://portolan-gtm.netlify.app/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://portolan-gtm.netlify.app/images/og-image.png">
+  <meta name="description" content="How I rebuilt Rotimatic's lifecycle across email, WhatsApp and delivery updates: cart nurture, a ten-stage delivery tracker through an 8 to 10 week wait, onboarding, referral, warranty recovery and upsell.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+    --bg: #FFFFFF; --surface: #FFFFFF; --accent: #2563EB; --accent-text: #1D4ED8; --accent-light: #EFF6FF; --accent-tint: #DBEAFE; --ink: #0F172A; --muted: #64748B; --border: #E2E8F0;
+  }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      height: 64px;
+      background-color: var(--surface);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+    }
+
+    nav .wrap {
+      max-width: 760px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (max-width: 390px) {
+      nav .wrap {
+        padding: 0 16px;
+      }
+    }
+
+    nav a {
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    nav a:hover {
+      color: var(--accent-text);
+    }
+
+    main {
+      flex: 1;
+      padding-top: 48px;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        padding-top: 32px;
+      }
+    }
+
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    @media (max-width: 390px) {
+      .wrap {
+        padding: 0 16px;
+      }
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .detail-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .detail-tag-row span {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .detail-tag-row .vertical {
+      background-color: var(--accent);
+      color: white;
+    }
+
+    .detail-tag-row .channel {
+      background-color: var(--accent-tint);
+      color: var(--accent-text);
+    }
+
+    h1.headline {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 44px;
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 32px;
+      color: var(--ink);
+    }
+
+    @media (max-width: 768px) {
+      h1.headline {
+        font-size: 30px;
+      }
+    }
+
+    .detail-shot {
+      margin-bottom: 64px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .detail-shot {
+        margin-bottom: 48px;
+      }
+    }
+
+    .detail-shot img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      background-color: var(--surface);
+    }
+
+    .detail-shot figcaption {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .detail-problem {
+      border-left: 3px solid var(--accent);
+      padding-left: 24px;
+      margin-bottom: 64px;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-style: italic;
+      font-size: 20px;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+
+    @media (max-width: 768px) {
+      .detail-problem {
+        font-size: 18px;
+        margin-bottom: 48px;
+      }
+    }
+
+    .approach-list {
+      margin-bottom: 64px;
+    }
+
+    @media (max-width: 768px) {
+      .approach-list {
+        margin-bottom: 48px;
+      }
+    }
+
+    .approach-row {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .approach-row:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 768px) {
+      .approach-row {
+        grid-template-columns: 40px 1fr;
+        gap: 16px;
+        padding: 24px 0;
+      }
+    }
+
+    .approach-row .a-num {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      color: var(--accent-text);
+      align-self: baseline;
+      padding-top: 2px;
+    }
+
+    .approach-row h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+
+    @media (max-width: 768px) {
+      .approach-row h4 {
+        font-size: 17px;
+      }
+    }
+
+    .approach-row p {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .proof {
+      margin-bottom: 64px;
+    }
+
+    @media (max-width: 768px) {
+      .proof {
+        margin-bottom: 48px;
+      }
+    }
+
+    .proof h2 {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      color: var(--ink);
+    }
+
+    @media (max-width: 768px) {
+      .proof h2 {
+        font-size: 22px;
+      }
+    }
+
+    .proof-intro {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .proof-shot {
+      margin-bottom: 32px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    @media (max-width: 768px) {
+      .proof-shot::before {
+        content: "Swipe →";
+        display: block;
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+    }
+
+    .proof-shot img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .cv {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+
+    .cv img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .cv figcaption {
+      padding: 8px 0 0 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .cv figcaption strong {
+      display: block;
+      color: var(--ink);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .detail-outcome-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      margin-bottom: 16px;
+    }
+
+    .detail-outcome-grid {
+      background-color: var(--accent-light);
+      border-radius: 16px;
+      padding: 32px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    @media (max-width: 768px) {
+      .detail-outcome-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 24px;
+      }
+    }
+
+    .detail-cell {
+      padding: 0 28px;
+      border-right: 1px solid var(--accent-tint);
+      text-align: left;
+    }
+
+    .detail-cell:first-child {
+      padding-left: 0;
+    }
+
+    .detail-cell:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+
+    @media (max-width: 768px) {
+      .detail-cell {
+        padding: 24px 0;
+        border-right: none;
+        border-bottom: 1px solid var(--accent-tint);
+      }
+
+      .detail-cell:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .detail-cell .num {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 44px;
+      font-weight: 600;
+      color: var(--accent-text);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .detail-cell .num {
+        font-size: 36px;
+      }
+    }
+
+    .detail-cell .lbl {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .detail-foot {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 32px;
+      text-align: center;
+    }
+
+    footer {
+      width: 100%;
+      background-color: var(--accent-light);
+      padding: 40px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: auto;
+    }
+
+    a {
+      color: var(--accent-text);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+
+    .lightbox-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-close:hover {
+      opacity: 0.8;
+    }
+  
+    /* ---- Page components restored in the new design system ---- */
+    .content { width: 100%; min-width: 0; padding-top: 48px; padding-bottom: 80px; }
+    @media (max-width: 768px) { .content { padding-top: 32px; padding-bottom: 56px; } }
+
+    figure.cover { margin: 0 0 64px; }
+    figure.cover img { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 12px;
+      border: 1px solid var(--border); background: var(--surface); }
+    figure.cover figcaption { margin-top: 12px; font-size: 13px; line-height: 1.55; color: var(--muted); }
+    @media (max-width: 768px) { figure.cover { margin-bottom: 48px; } }
+
+    .detail-outcome-grid .detail-cell .num { white-space: nowrap; }
+    @media (min-width: 769px) and (max-width: 900px) { .detail-cell .num { font-size: 38px; } }
+
+  
+    /* Revenue-by-channel chart */
+    .chart { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px 32px; }
+    .ch-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; margin-bottom: 20px; }
+    .ch-title { font-family: 'Inter', system-ui, sans-serif; font-size: 22px; font-weight: 600; }
+    .ch-sub { font-size: 12px; color: var(--muted); }
+    .ch-rows { display: flex; flex-direction: column; gap: 10px; }
+    .ch-row { display: grid; grid-template-columns: 136px 1fr 150px; gap: 14px; align-items: center; }
+    .ch-lbl { font-size: 14px; color: var(--muted); }
+    .ch-track { height: 22px; }
+    .ch-track i { display: block; height: 100%; border-radius: 4px; background: var(--accent-tint); }
+    .ch-val { font-size: 14px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .ch-val em { font-style: normal; font-weight: 400; color: var(--muted); margin-left: 8px; font-size: 13px; }
+    .ch-row.hl .ch-lbl, .ch-row.hl .ch-val { color: var(--accent-text); font-weight: 700; }
+    .ch-row.hl .ch-track i { background: var(--accent); }
+    @media (max-width: 768px) {
+      .chart { padding: 22px 18px; }
+      .ch-title { font-size: 19px; }
+      .ch-row { grid-template-columns: 1fr auto; gap: 4px 12px; }
+      .ch-lbl { grid-column: 1; grid-row: 1; }
+      .ch-val { grid-column: 2; grid-row: 1; text-align: right; }
+      .ch-track { grid-column: 1 / -1; grid-row: 2; height: 14px; }
+    }
+  
+  /* Shared dark design language (matches the home page) */
+  body { background-image: radial-gradient(900px 420px at 50% -80px, rgba(37, 99, 235, 0.08), transparent 70%); background-repeat: no-repeat; }
+  h1, h2, h3 { letter-spacing: -0.02em; }
+  .cta { background: var(--surface) !important; border: 1px solid var(--border); }
+  .badge.live { background: #ECFDF5 !important; color: #047857 !important; }
+  .pair .good .lbl { color: #047857 !important; }
+  .soon-item { border-color: #E2E8F0 !important; background: rgba(255, 255, 255, 0.03) !important; }
+
+  /* Flow design language */
+  h1, h2, h3, h4 { font-family: 'Space Grotesk', system-ui, sans-serif !important; letter-spacing: -0.02em; }
+  nav { background-color: rgba(255,255,255,.92) !important; backdrop-filter: blur(10px); }
+</style>
+<link rel="stylesheet" href="/assets/site-nav.css?v=5">
+<link rel="stylesheet" href="/assets/case-study.css">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+  <script src="/assets/analytics.js" defer></script>
+  <link rel="canonical" href="https://portolan-gtm.netlify.app/case-studies/lifecycle-journey.html">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Rebuilding the Rotimatic customer lifecycle", "description": "How I rebuilt Rotimatic's lifecycle across email, WhatsApp and delivery updates: cart nurture, a ten-stage delivery tracker through an 8 to 10 week wait, onboarding, referral, warranty recovery and upsell.", "image": "https://portolan-gtm.netlify.app/images/og-image.png", "author": {"@type": "Person", "name": "Parth Dave", "url": "https://portolan-gtm.netlify.app/"}, "publisher": {"@type": "Person", "name": "Parth Dave", "url": "https://portolan-gtm.netlify.app/"}, "mainEntityOfPage": "https://portolan-gtm.netlify.app/case-studies/lifecycle-journey.html", "dateModified": "2026-11-02"}</script>
+<style>
+.lc h2{font-family:'Inter',system-ui,sans-serif;font-size:30px;font-weight:600;line-height:1.2;margin:64px 0 12px}
+@media(max-width:768px){.lc h2{font-size:24px;margin-top:48px}}
+.lc h3{font-size:18px;font-weight:600;margin:28px 0 8px}
+.lc p{margin-bottom:16px}
+.lc .sub{color:var(--muted);margin-bottom:20px}
+.lc ul.clean{margin:0 0 16px 22px}
+.lc ul.clean li{margin-bottom:8px}
+.lc em{font-style:italic}
+.lc .glance{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:8px 24px;margin-bottom:32px}
+.lc .glance dl{display:grid;grid-template-columns:150px 1fr}
+.lc .glance dt,.lc .glance dd{padding:14px 0;border-bottom:1px solid var(--border)}
+.lc .glance dt{font-weight:600;font-size:14px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.lc .glance dt:last-of-type,.lc .glance dd:last-of-type{border-bottom:none}
+@media(max-width:600px){.lc .glance dl{grid-template-columns:1fr}.lc .glance dt{padding-bottom:0;border-bottom:none}}
+.lc .toc{background:var(--accent-light);border-radius:12px;padding:20px 24px;margin-bottom:16px}
+.lc .toc h4{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.lc .toc ol{margin:0 0 0 20px;columns:2;column-gap:32px;font-size:15px}
+.lc .toc li{margin-bottom:4px;break-inside:avoid}
+.lc .toc a{color:var(--ink);text-decoration:none}
+.lc .toc a:hover{color:var(--accent);text-decoration:underline}
+@media(max-width:600px){.lc .toc ol{columns:1}}
+.lc section{padding:0}
+.lc .grid{display:grid;gap:14px;margin:16px 0}
+.lc .g2{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.lc .g3{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.lc .g4{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.lc .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px}
+.lc .card h4{font-size:16px;font-weight:600;margin-bottom:6px}
+.lc .card p{margin:0;color:var(--muted);font-size:15px}
+.lc .stat b{display:block;font-family:'Inter',system-ui,sans-serif;font-size:32px;line-height:1.1;color:var(--accent);margin-bottom:6px;font-weight:600}
+.lc .stat span{color:var(--muted);font-size:14px;line-height:1.4;display:block}
+.lc .tag{display:inline-block;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--accent-tint);color:var(--accent);margin-bottom:8px}
+.lc .tag.dark{background:var(--ink);color:#fff}
+.lc .callout{border-left:3px solid var(--accent);padding-left:24px;margin:28px 0;font-family:'Inter',system-ui,sans-serif;font-style:italic;font-size:20px;line-height:1.55}
+.lc .callout b{font-style:normal;font-family:'Inter',sans-serif;font-weight:600}
+.lc .callout.sales{border-color:var(--ink)}
+@media(max-width:768px){.lc .callout{font-size:18px}}
+.lc figure{margin:20px 0 28px}
+.lc figure img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border);cursor:zoom-in;background:#fff}
+.lc figcaption{font-size:13.5px;color:var(--muted);margin-top:8px}
+.lc .journey{display:flex;overflow-x:auto;padding:6px 0 14px}
+.lc .stage{flex:1 0 118px;position:relative;text-align:center;padding:0 4px;background:none;border:0;color:var(--ink);font:inherit;cursor:pointer}
+.lc .stage::before{content:"";position:absolute;top:19px;left:-50%;width:100%;height:2px;background:var(--border)}
+.lc .stage:first-child::before{display:none}
+.lc .dot{position:relative;z-index:1;width:40px;height:40px;border-radius:50%;margin:0 auto 8px;display:grid;place-items:center;background:var(--surface);border:2px solid var(--border);font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:16px;color:var(--muted);transition:.2s}
+.lc .stage small{display:block;color:var(--muted);font-size:12px}
+.lc .stage span{font-size:14px;font-weight:600}
+.lc .stage.on .dot,.lc .stage:hover .dot{background:var(--accent);border-color:var(--accent);color:#fff}
+.lc .stage.done::before,.lc .stage.on::before{background:var(--accent)}
+.lc .panel{display:none}
+.lc .panel.on{display:block}
+.lc .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}
+.lc .tab{font:inherit;font-size:14px;font-weight:600;padding:8px 16px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--ink);cursor:pointer}
+.lc .tab.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.lc details{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:0 20px;margin:10px 0}
+.lc summary{cursor:pointer;padding:14px 0;font-weight:600;list-style:none;display:flex;justify-content:space-between}
+.lc summary::after{content:"+";color:var(--accent);font-size:20px;line-height:1}
+.lc details[open] summary::after{content:"\2013"}
+.lc details .body{padding:0 0 16px;color:var(--muted);font-size:15.5px}
+.lc details .body ul{margin:6px 0 0 20px}
+.lc .ba{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+@media(max-width:640px){.lc .ba{grid-template-columns:1fr}}
+.lc .ba .b{background:#F7F2EA}
+.lc .ba .a{border-color:var(--accent);background:var(--accent-light)}
+.lc .ba ul{margin-bottom:0}
+.lc footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 48px;border-top:1px solid var(--border);background:var(--surface)}
+.lc .gallery{display:flex;gap:14px;overflow-x:auto;padding:4px 2px 14px;margin:16px 0 24px;scroll-snap-type:x proximity}
+.lc .shot{flex:0 0 232px;scroll-snap-align:start;background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:zoom-in;text-align:left;padding:0;font:inherit;color:inherit}
+.lc .shot .crop{height:380px;overflow:hidden;position:relative;background:#fff}
+.lc .shot .crop img{width:100%;display:block}
+.lc .shot .crop::after{content:"";position:absolute;left:0;right:0;bottom:0;height:70px;background:linear-gradient(transparent,#fff)}
+.lc .shot b{display:block;font-size:13.5px;padding:10px 12px 2px}
+.lc .shot small{display:block;color:var(--muted);font-size:12.5px;padding:0 12px 12px;line-height:1.4}
+.lc .hint{font-size:13px;color:var(--muted);margin:-8px 0 8px}
+.lc .stages10{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;counter-reset:s;margin:16px 0}
+.lc .stages10 div{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:14px;font-weight:600;counter-increment:s}
+.lc .stages10 div::before{content:counter(s);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-size:12px;margin-right:8px}
+.lc .tldr{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin:0 0 24px}
+.lc .tldr h4{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.lc .tldr dl{display:grid;grid-template-columns:130px 1fr;gap:10px 16px}
+.lc .tldr dt{font-weight:600;font-size:14px}
+.lc .tldr dd{color:var(--muted);font-size:15.5px}
+@media(max-width:600px){.lc .tldr dl{grid-template-columns:1fr}.lc .tldr dd{margin-bottom:6px}}
+.lc .reader a{display:block;text-decoration:none;color:inherit}
+.lc .reader .card:hover{border-color:var(--accent)}
+.lc .reader .card b{color:var(--accent);font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:4px}
+.lc .table-wrap{overflow-x:auto;margin:16px 0 24px}
+.lc table{width:100%;border-collapse:collapse;font-size:14.5px;background:var(--surface);border:1px solid var(--border)}
+.lc th,.lc td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--border);vertical-align:top}
+.lc th{background:var(--accent-light);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+.lc tr:last-child td{border-bottom:none}
+.lc td.y{color:var(--ink)}
+.lc td.n{color:#b9b2a8;text-align:center}
+.lc td b{font-weight:600}
+.lc .chips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}
+.lc .chip{font:inherit;font-size:13.5px;font-weight:600;padding:7px 14px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--ink);cursor:pointer}
+.lc .chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.lc .fl{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin:14px 0}
+.lc .fl.hide{display:none}
+.lc .fl h4{font-family:'Inter',system-ui,sans-serif;font-size:20px;font-weight:600;margin:0 0 4px}
+.lc .fl .sub2{color:var(--muted);font-size:15px;margin-bottom:12px}
+.lc .fl dl{display:grid;grid-template-columns:110px 1fr;gap:8px 16px;font-size:15px}
+.lc .fl dt{font-weight:600;color:var(--accent);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding-top:3px}
+.lc .fl dd{color:var(--ink)}
+@media(max-width:600px){.lc .fl dl{grid-template-columns:1fr;gap:2px}.lc .fl dd{margin-bottom:8px}}
+.lc .ch{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;margin:0 6px 4px 0}
+.lc .ch.email{background:#DBEAFE;color:#1D4ED8}
+.lc .ch.wa{background:#DDF3E4;color:#1F7A4D}
+.lc .ch.trans{background:#FFF1D6;color:#8A5A00}
+.lc .ch.sales{background:#1C1A17;color:#fff}
+.lc .sysmap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.lc .node{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;font-size:14px}
+.lc .node b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.lc .node.hl{border-color:var(--accent);background:var(--accent-light)}
+#lb{position:fixed;inset:0;background:rgba(15,23,42,.9);display:none;align-items:flex-start;justify-content:center;z-index:200;padding:20px;cursor:zoom-out;overflow:auto}
+#lb.on{display:flex}#lb img{max-width:min(650px,100%);height:auto;margin:0 auto;background:#fff;border-radius:8px}
+.lc .tldr,.lc .toc{margin-bottom:24px}
+.lc h2{font-size:28px;line-height:1.2;margin:56px 0 12px;font-weight:600}
+.lc .toc{background:var(--accent-light);border-radius:12px;padding:20px 24px}
+.lc .toc h4{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text);margin-bottom:10px}
+@media(max-width:768px){.lc h2{font-size:22px;margin-top:44px}}
+
+</style>
+</head>
+<body>
+
+<header class="sn">
+  <div class="sn-in">
+    <a class="sn-brand" href="/">Parth Dave</a>
+    <div class="sn-links" role="navigation" aria-label="Main">
+      <a href="/case-studies/" class="on">Case studies</a>
+      <a href="/ai-gtm-systems/" class="ai-hl">AI GTM systems</a>
+      <div class="sn-dd"><span class="sn-dd-t" tabindex="0">Industry <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2 3.5l3 3 3-3"/></svg></span><div class="sn-dd-m"><a href="/industry/d2c-growth/">D2C Growth</a></div></div>
+      <a href="/#engage">Engagement options</a>
+    </div>
+    <a class="sn-cta" href="https://cal.id/parth-dave" target="_blank" rel="noopener">Book a call →</a>
+    <details class="sn-menu">
+      <summary aria-label="Menu"><span></span></summary>
+      <div class="sn-panel" role="navigation" aria-label="Main">
+        <a href="/case-studies/" class="on">Case studies</a>
+        <a href="/ai-gtm-systems/" class="ai-hl">AI GTM systems</a>
+        <span class="sn-pl">Industry</span>
+        <a href="/industry/d2c-growth/" class="sn-sub">D2C Growth</a>
+        <a href="/#engage">Engagement options</a>
+      </div>
+    </details>
+  </div>
+</header>
+<div class="wrap content lc">
+  <a class="back-link" href="/case-studies/">&larr; All case studies</a>
+  <div class="detail-tag-row"><span class="vertical">D2C</span><span class="channel">LIFECYCLE / EMAIL / WHATSAPP</span></div>
+  <h1 class="headline">Rebuilding the Rotimatic customer lifecycle across email, WhatsApp and delivery updates</h1>
+  <p class="detail-problem">&ldquo;A $1,400-plus machine with an 8 to 10 week delivery wait, and a program that was one cart email and a delivery notice sent after pickup. Customers waited in silence, and about 20 to 22% of orders were cancelled.&rdquo;</p>
+<div class="tldr"><h4>The 60-second version</h4><dl>
+  <dt>Problem</dt><dd>One abandoned-cart email, carts going straight to sales calls, and a delivery email only after pickup. Customers waited 8 to 10 weeks in silence and about 20 to 22% of orders were cancelled, largely because the delivery date wasn't clear.</dd>
+  <dt>My role</dt><dd>I owned the strategy, the copy and the design of every sequence. An email consultant worked directly with me and implemented them in Klaviyo, plugging each sequence into the existing setup.</dd>
+  <dt>What I designed</dt><dd>Cart nurture by urgency window, a ten-stage "Where is my Rotimatic?" tracker in weekly emails, excitement emails during the wait, delivery updates, onboarding, referral, warranty recovery and accessory upsell.</dd>
+  <dt>Channels</dt><dd>Email, WhatsApp (cart campaigns), transactional email (delivery updates), and inside sales and chat, working as one system rather than four separate tools.</dd>
+  <dt>Result</dt><dd>Cancellations fell from 20 to 22% to 15% within two months. Cart recovery rate increased by roughly 2.5%. Warranty attach rate rose from 43 to 44% to 52 to 53%. Email and referral drove about 24% of revenue from about 4% of sessions. The calling and chat layer sold 779 machines in the months tracked.</dd>
+</dl></div>
+
+<div class="grid g3 reader">
+  <div class="card"><a href="#journey"><b>Hiring manager</b><h4>See the system on one page</h4><p>Lifecycle map, channels and the outcomes.</p></a></div>
+  <div class="card"><a href="#flows"><b>Lifecycle / CRM lead</b><h4>Flow-by-flow detail</h4><p>Trigger, audience, timing, channels and message job for each program.</p></a></div>
+  <div class="card"><a href="#systems"><b>Growth / ops</b><h4>Systems and testing</h4><p>How data moved, how channels were orchestrated, what testing taught.</p></a></div>
+</div>
+
+<div class="toc"><h4>Contents</h4><ol>
+  <li><a href="#problem">Where it started</a></li>
+  <li><a href="#goals">Goals and audience</a></li>
+  <li><a href="#journey">The lifecycle map</a></li>
+  <li><a href="#channels">Channel roles</a></li>
+  <li><a href="#flows">Flow library</a></li>
+  <li><a href="#systems">Systems and orchestration</a></li>
+  <li><a href="#testing">Testing and learnings</a></li>
+  <li><a href="#sales">Sales campaigns (separate)</a></li>
+  <li><a href="#outcome">Results and takeaways</a></li>
+</ol></div>
+
+<section id="problem">
+  <h2>Where it started</h2>
+  <p class="sub">The email program was one abandoned-cart email plus a few transactional delivery updates. Everything between "add to cart" and "parcel picked up" was silent, and so was everything after the box arrived.</p>
+  <div class="grid g2">
+    <div class="card"><span class="tag">Gap 1</span><h4>Carts weren't nurtured</h4>
+      <p>After the single cart email, abandoners went directly to inside sales. The calling team's relationship-first approach worked, but the call was doing work a nurture sequence should have done first.</p></div>
+    <div class="card"><span class="tag">Gap 2</span><h4>The wait was invisible</h4>
+      <p>Delivery took 8 to 10 weeks and the delivery email went out only when the parcel was picked up. Roughly 20 to 22% of orders were cancelled, largely from not knowing the delivery date.</p></div>
+    <div class="card"><span class="tag">Gap 3</span><h4>No post-purchase journey</h4>
+      <p>Nothing taught a new owner to unbox, make a first roti or care for the machine, and nothing asked for feedback, reviews or referrals.</p></div>
+    <div class="card"><span class="tag">Gap 4</span><h4>No view of why people left</h4>
+      <p>There was no structured way to learn why a visitor who added to cart did not buy.</p></div>
+  </div>
+  <div class="grid g4">
+    <div class="card stat"><b>20–22%</b><span>of orders cancelled before the rebuild</span></div>
+    <div class="card stat"><b>8–10 wks</b><span>order to delivery</span></div>
+    <div class="card stat"><b>$1,400+</b><span>core machine price, a considered purchase</span></div>
+    <div class="card stat"><b>$1,195</b><span>blended AOV across all orders</span></div>
+  </div>
+</section>
+
+<section id="goals">
+  <div class="callout"><b>My role:</b> strategy, copywriting and design for every sequence, done in-house. The email consultant implemented them in Klaviyo with me, plugging each one into the existing setup.</div>
+  <h2>Goals and audience</h2>
+  <p class="sub">One goal per stage, and a segment definition for each, so every send had a single job.</p>
+  <div class="table-wrap"><table>
+    <tr><th>Stage</th><th>Who is in it</th><th>What it is built to move</th></tr>
+    <tr><td><b>Pre-purchase</b></td><td>Added to cart or started checkout, not bought. Split by cart age: within 7 days, within 30 days, stale. High-ticket carts flagged for a call.</td><td>Recover the order, and learn why people didn't buy.</td></tr>
+    <tr><td><b>Awaiting delivery</b></td><td>Paid, machine not yet delivered (up to 12 weeks).</td><td>Fewer cancellations, fewer "where is my order" queries, app installed and community joined before arrival.</td></tr>
+    <tr><td><b>New owner</b></td><td>Machine delivered.</td><td>A successful first roti, regular use and correct care.</td></tr>
+    <tr><td><b>Established owner</b></td><td>A couple of months into ownership, and those who skipped extended warranty at checkout.</td><td>Referrals, reviews, warranty attach and accessory sales.</td></tr>
+  </table></div>
+  <p class="sub">Markets covered: US, Canada, UK, Australia and UAE, with the US the largest.</p>
+</section>
+
+<section id="journey">
+  <h2>The lifecycle map</h2>
+  <p class="sub">Click a stage to see what ran there and on which channels. Sales campaigns are kept separate (see Sales campaigns).</p>
+  <div class="journey" id="jr">
+    <button class="stage on" data-p="p1"><div class="dot">1</div><span>Cart</span><small>Day 0 → stale</small></button>
+    <button class="stage" data-p="p2"><div class="dot">2</div><span>Order placed</span><small>Week 0</small></button>
+    <button class="stage" data-p="p3"><div class="dot">3</div><span>The wait</span><small>Day 7 → 84</small></button>
+    <button class="stage" data-p="p4"><div class="dot">4</div><span>Delivery</span><small>Updates</small></button>
+    <button class="stage" data-p="p5"><div class="dot">5</div><span>Onboarding</span><small>First roti → care</small></button>
+    <button class="stage" data-p="p6"><div class="dot">6</div><span>Advocacy</span><small>Review · refer</small></button>
+    <button class="stage" data-p="p7"><div class="dot">7</div><span>Expansion</span><small>Warranty · upsell</small></button>
+  </div>
+  <div class="card">
+    <div class="panel on" id="p1"><h4>Cart</h4><p><span class="ch email">Email</span><span class="ch wa">WhatsApp</span><span class="ch sales">Inside sales / chat</span></p><p style="margin-top:10px">Email nurture by cart age, WhatsApp abandoned-cart messages triggered with the email, and inside sales calling high-ticket abandoners within 2 hours. Emails also ask why the visitor hasn't bought.</p></div>
+    <div class="panel" id="p2"><h4>Order placed</h4><p><span class="ch email">Email</span></p><p style="margin-top:10px">The customer enters a staged journey and sees "Order Placed" as step one of ten on the tracker.</p></div>
+    <div class="panel" id="p3"><h4>The wait</h4><p><span class="ch email">Email</span><span class="ch trans">Transactional email</span><span class="ch sales">Inside sales / chat</span></p><p style="margin-top:10px">Weekly emails from Day 7 to Day 84 carry the "Where is my Rotimatic?" tracker. Three more emails (TD 15, 30, 45) cover setup, a real owner's unboxing and the owner community. Live chat handles questions in real time.</p></div>
+    <div class="panel" id="p4"><h4>Delivery</h4><p><span class="ch trans">Transactional email</span></p><p style="margin-top:10px">Transactional delivery updates: out for delivery and everything after. Previously this was the only email, and it went out only at pickup.</p></div>
+    <div class="panel" id="p5"><h4>Onboarding</h4><p><span class="ch email">Email</span><span class="ch sales">Inside sales / chat</span></p><p style="margin-top:10px">"Your Rotimatic is home and ready to cook", cleaning, recipes, troubleshooting. Support through the app and chat.</p></div>
+    <div class="panel" id="p6"><h4>Advocacy</h4><p><span class="ch email">Email</span></p><p style="margin-top:10px">Experience check-in, "would you recommend it?", referral campaigns, Trustpilot and community asks.</p></div>
+    <div class="panel" id="p7"><h4>Expansion</h4><p><span class="ch email">Email</span></p><p style="margin-top:10px">Warranty recovery for those who skipped it at checkout, and accessory campaigns a couple of months into ownership.</p></div>
+  </div>
+</section>
+
+<section id="channels">
+  <h2>Channel roles</h2>
+  <p class="sub">Each channel had a distinct job. The point was not more channels, it was the right channel at the right moment.</p>
+  <div class="grid g2">
+    <div class="card"><span class="ch email">Email</span><h4>The relationship channel</h4><p>Where the story, proof and education live: cart nurture, the wait series, onboarding, advocacy and warranty. Email converted at 1.71%, well above paid social.</p></div>
+    <div class="card"><span class="ch wa">WhatsApp</span><h4>The fast nudge</h4><p>Abandoned-cart campaigns ran on WhatsApp alongside email, triggered automatically the moment a cart was abandoned, for the shopper who sees a message sooner than they open an email.</p></div>
+    <div class="card"><span class="ch trans">Transactional email</span><h4>The delivery promise</h4><p>Delivery updates: out for delivery and the updates after. This is the channel people rely on once they have paid, so it carries the delivery clarity.</p></div>
+    <div class="card"><span class="ch sales">Inside sales and chat</span><h4>The human layer</h4><p>Calls and messages to high-ticket abandoners within 2 hours, a "request a callback" option, and live chat for real-time questions. The brief was relationship over sales: build trust and remove friction around financing, delivery and warranty.</p></div>
+  </div>
+
+  <h3>Which channel at which stage</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Stage</th><th>Email</th><th>WhatsApp</th><th>Transactional</th><th>Sales / chat</th></tr>
+    <tr><td><b>Cart</b></td><td class="y">7-day, 30-day, stale sequences</td><td class="y">Abandoned-cart campaigns</td><td class="n">&mdash;</td><td class="y">Calls within 2 hours (high-ticket)</td></tr>
+    <tr><td><b>Order placed</b></td><td class="y">Tracker begins</td><td class="n">&mdash;</td><td class="n">&mdash;</td><td class="n">&mdash;</td></tr>
+    <tr><td><b>The wait</b></td><td class="y">Day 7 to 84 tracker, TD 15/30/45</td><td class="n">&mdash;</td><td class="y">Delivery updates</td><td class="y">Live chat</td></tr>
+    <tr><td><b>Delivery</b></td><td class="n">&mdash;</td><td class="n">&mdash;</td><td class="y">Out for delivery and after</td><td class="n">&mdash;</td></tr>
+    <tr><td><b>Onboarding</b></td><td class="y">First roti, care, recipes</td><td class="n">&mdash;</td><td class="n">&mdash;</td><td class="y">App and chat support</td></tr>
+    <tr><td><b>Advocacy</b></td><td class="y">Feedback, referral, reviews</td><td class="n">&mdash;</td><td class="n">&mdash;</td><td class="n">&mdash;</td></tr>
+    <tr><td><b>Expansion</b></td><td class="y">Warranty recovery, accessories</td><td class="n">&mdash;</td><td class="n">&mdash;</td><td class="n">&mdash;</td></tr>
+  </table></div>
+</section>
+
+<section id="flows">
+  <h2>Flow library</h2>
+  <p class="sub">Every program, with its trigger, audience, timing, channels and message job. Filter by channel.</p>
+  <div class="chips" id="chips">
+    <button class="chip on" data-f="all">All</button>
+    <button class="chip" data-f="email">Email</button>
+    <button class="chip" data-f="wa">WhatsApp</button>
+    <button class="chip" data-f="trans">Transactional</button>
+    <button class="chip" data-f="sales">Sales / chat</button>
+  </div>
+  <div class="fl" data-ch="email wa sales"><h4>A · Cart nurture</h4><div class="sub2">Convert abandoned carts and learn why people left</div><div><span class="ch email">Email</span><span class="ch wa">WhatsApp</span><span class="ch sales">Inside sales / chat</span></div><dl><dt>Trigger</dt><dd>Cart or checkout abandoned.</dd><dt>Audience</dt><dd>Split by cart age: within 7 days, within 30 days, stale. High-ticket carts also go to sales.</dd><dt>Timing</dt><dd>Email and WhatsApp trigger automatically the moment a cart is abandoned. High-ticket abandoners are called and messaged by inside sales within 2 hours.</dd><dt>Message job</dt><dd>7-day: handle objections and make paying easier. 30-day: a new angle, proof and an offer. Stale: re-engage with a different reason to return. All: ask why they didn't buy.</dd><dt>Content</dt><dd>USD 50 offer, No Cost EMI, ROI case, testimonials, FAQs, "will it fit your kitchen?".</dd><dt>Result</dt><dd>Add-to-cart recovery rate increased by roughly 2.5%.</dd></dl><div class="gallery">
+<button class="shot" type="button"><div class="crop"><img alt="Checkout abandonment" src="/images/lifecycle/cart-checkout-abandonment.jpg" loading="lazy"></div><b>Checkout abandonment</b><small>&quot;Still deciding? Here&#x27;s USD 50 off to help.&quot;</small></button>
+<button class="shot" type="button"><div class="crop"><img alt="Discount reminder" src="/images/lifecycle/cart-discount-reminder.jpg" loading="lazy"></div><b>Discount reminder</b><small>&quot;A quick reminder&quot; with the same code</small></button>
+<button class="shot" type="button"><div class="crop"><img alt="No Cost EMI" src="/images/lifecycle/cart-no-cost-emi.jpg" loading="lazy"></div><b>No Cost EMI</b><small>Removes the upfront-price objection</small></button>
+<button class="shot" type="button"><div class="crop"><img alt="ROI" src="/images/lifecycle/cart-roi.jpg" loading="lazy"></div><b>ROI</b><small>&quot;An investment that gives back daily&quot;</small></button>
+<button class="shot" type="button"><div class="crop"><img alt="Testimonials" src="/images/lifecycle/cart-testimonials.jpg" loading="lazy"></div><b>Testimonials</b><small>&quot;In their own words&quot;: customer videos</small></button>
+</div></div>
+<div class="fl" data-ch="email"><h4>B · Order to delivery: the tracker</h4><div class="sub2">Replace silence with visible progress through the 8 to 10 week wait</div><div><span class="ch email">Email</span></div><dl><dt>Trigger</dt><dd>Order placed, then each week since the order (Day 7, 14, 21, 28 up to Day 84).</dd><dt>Audience</dt><dd>Every customer who has paid and is awaiting delivery.</dd><dt>Message job</dt><dd>Show where the machine is on a ten-stage tracker with a "Happening now" line, and give a reason to stay excited.</dd><dt>Stages</dt><dd>Order Placed, Components Sourced, Assembly Begins, In Production, QC Testing, Final Inspection, Ready to Ship, Packed &amp; Labelled, Shipped, Delivered.</dd><dt>Source</dt><dd>Status comes from the Odoo order and production system.</dd><dt>Result</dt><dd>Cancellations fell from 20 to 22% to 15% within two months of the journey going live.</dd></dl><div class="gallery">
+<button class="shot" type="button"><div class="crop"><img alt="Day series" src="/images/lifecycle/wait-day-tracker.jpg" loading="lazy"></div><b>Day series</b><small>&quot;Where is my Rotimatic?&quot; tracker (layout)</small></button>
+</div></div>
+<div class="fl" data-ch="email"><h4>C · Excitement emails during the wait</h4><div class="sub2">Build anticipation, install the app and join the community before arrival</div><div><span class="ch email">Email</span></div><dl><dt>Trigger</dt><dd>Milestones labelled TD 15, TD 30 and TD 45.</dd><dt>TD 15</dt><dd>"More than a purchase": congratulations, what makes it amazing, the app, and a YouTube setup tutorial.</dd><dt>TD 30</dt><dd>"From unboxing to first bite": longtime users Rahul and Dipti show their unboxing and first roti. "Soon, this won't just be their story. It'll be yours."</dd><dt>TD 45</dt><dd>"One community. Endless inspiration.": an invitation to the Changemakers by Rotimatic Facebook group.</dd></dl><div class="gallery">
+<button class="shot" type="button"><div class="crop"><img alt="TD 15" src="/images/lifecycle/wait-td15.jpg" loading="lazy"></div><b>TD 15</b><small>&quot;More than a purchase&quot;</small></button>
+<button class="shot" type="button"><div class="crop"><img alt="TD 30" src="/images/lifecycle/wait-td30.jpg" loading="lazy"></div><b>TD 30</b><small>&quot;From unboxing to first bite&quot;</small></button>
+<button class="shot" type="button"><div class="crop"><img alt="TD 45" src="/images/lifecycle/wait-td45.jpg" loading="lazy"></div><b>TD 45</b><small>&quot;One community. Endless inspiration.&quot;</small></button>
+</div></div>
+<div class="fl" data-ch="trans"><h4>D · Delivery updates</h4><div class="sub2">The delivery promise, once the machine ships</div><div><span class="ch trans">Transactional email</span></div><dl><dt>Trigger</dt><dd>Shipping and delivery status changes.</dd><dt>Audience</dt><dd>Every customer with an order in transit.</dd><dt>Message job</dt><dd>Tell the customer exactly where the parcel is: out for delivery and each update after. Before the rebuild this was the only email, sent only at pickup.</dd></dl></div>
+<div class="fl" data-ch="email sales"><h4>E · Onboarding</h4><div class="sub2">From unboxing to a confident first roti and a habit of daily use</div><div><span class="ch email">Email</span><span class="ch sales">Inside sales / chat</span></div><dl><dt>Trigger</dt><dd>Machine delivered.</dd><dt>Audience</dt><dd>New owners.</dd><dt>Message job</dt><dd>"Your Rotimatic is home and ready to cook": three steps, gentle tips and reassurance that the machine learns with you. Then care ("Regular care, perfect performance" with daily, weekly and deeper routines), recipes and handmade-roti inspiration, and troubleshooting to head off support contacts.</dd><dt>Support</dt><dd>The app connects customers to support, and live chat answers questions in real time.</dd></dl><div class="gallery">
+<button class="shot" type="button"><div class="crop"><img alt="First roti" src="/images/lifecycle/onboard-first-roti.jpg" loading="lazy"></div><b>First roti</b><small>&quot;Your first roti. Fresh and simple.&quot;</small></button>
+<button class="shot" type="button"><div class="crop"><img alt="Care" src="/images/lifecycle/onboard-cleaning.jpg" loading="lazy"></div><b>Care</b><small>&quot;Regular care, perfect performance&quot;</small></button>
+<button class="shot" type="button"><div class="crop"><img alt="Recipes" src="/images/lifecycle/onboard-recipes.jpg" loading="lazy"></div><b>Recipes</b><small>&quot;Cook something new today&quot;</small></button>
+<button class="shot" type="button"><div class="crop"><img alt="Handmade rotis" src="/images/lifecycle/onboard-handmade.jpg" loading="lazy"></div><b>Handmade rotis</b><small>&quot;Keep the tradition, not the strain&quot;</small></button>
+</div></div>
+<div class="fl" data-ch="email"><h4>F · Feedback, referral and reviews</h4><div class="sub2">Turn a good first experience into growth</div><div><span class="ch email">Email</span></div><dl><dt>Trigger</dt><dd>After the owner has used the machine for a while.</dd><dt>Message job</dt><dd>Ask how the experience has been and whether they would recommend Rotimatic to a friend, then move advocates into referral campaigns, a Trustpilot ask and the owner community.</dd><dt>Why it matters</dt><dd>Referral was the best-converting channel at 10.89% and brought $1.73M from 10,050 sessions, yet was under-resourced.</dd></dl><div class="gallery">
+<button class="shot" type="button"><div class="crop"><img alt="Community" src="/images/lifecycle/adv-changemakers.jpg" loading="lazy"></div><b>Community</b><small>Changemakers by Rotimatic</small></button>
+<button class="shot" type="button"><div class="crop"><img alt="Reviews" src="/images/lifecycle/adv-trustpilot.jpg" loading="lazy"></div><b>Reviews</b><small>&quot;Share your Rotimatic story&quot;</small></button>
+</div></div>
+<div class="fl" data-ch="email"><h4>G · Warranty recovery</h4><div class="sub2">Recover extended warranty from customers who skipped it at checkout</div><div><span class="ch email">Email</span></div><dl><dt>Trigger</dt><dd>Order placed without extended warranty.</dd><dt>Timing</dt><dd>Three emails timed to the customer's usage journey, pointing to a post-purchase warranty page open for 30 days.</dd><dt>Message job</dt><dd>Benefit-led cover ("Keep your Rotimatic protected", "Stay covered for longer"), not specs.</dd><dt>Result</dt><dd>Attach rate rose from 43 to 44% (June and July) to 52 to 53% (January and February), together with the checkout redesign.</dd></dl><div class="gallery">
+<button class="shot" type="button"><div class="crop"><img alt="Warranty" src="/images/lifecycle/adv-warranty.jpg" loading="lazy"></div><b>Warranty</b><small>&quot;Keep your Rotimatic protected&quot;</small></button>
+</div></div>
+<div class="fl" data-ch="email"><h4>H · Accessories and upsell</h4><div class="sub2">Extend the relationship a couple of months into ownership</div><div><span class="ch email">Email</span></div><dl><dt>Trigger</dt><dd>A couple of months after purchase.</dd><dt>Audience</dt><dd>Owners who have formed their own view of the machine.</dd><dt>Message job</dt><dd>"The Extras That Matter" and "The Little Upgrades": accessories with add-to-cart buttons.</dd></dl><div class="gallery">
+<button class="shot" type="button"><div class="crop"><img alt="Accessories" src="/images/lifecycle/adv-accessories.jpg" loading="lazy"></div><b>Accessories</b><small>&quot;The Extras That Matter&quot;</small></button>
+</div></div>
+</section>
+
+<section id="systems">
+  <h2>Systems and orchestration</h2>
+  <p class="sub">How data moved between tools, and how the channels were kept from stepping on each other.</p>
+  <div class="sysmap">
+    <div class="node"><b>Shopify</b>Cart, checkout and order events</div>
+    <div class="node hl"><b>Klaviyo</b>Segments, flows, email and WhatsApp sends</div>
+    <div class="node"><b>Odoo</b>Order and production status feeding the tracker</div>
+    <div class="node"><b>HubSpot chatbot</b>First answer to self-serve questions</div>
+    <div class="node"><b>AI triage</b>Separates sales queries from support before a person picks up</div>
+    <div class="node"><b>Calling and chat team</b>Closes high-intent conversations</div>
+  </div>
+  <h3>Orchestration principles</h3>
+  <ul class="clean">
+    <li><b>One job per send.</b> Each message does one thing: remind, reassure, educate, ask or offer. No send repeats the last one.</li>
+    <li><b>Time decides the message.</b> A cart from this week and a cart from last quarter get different emails, not the same one later.</li>
+    <li><b>Speed for high intent.</b> Email and WhatsApp trigger automatically at abandonment, and high-ticket carts get a human call within 2 hours, while hesitation is still real.</li>
+    <li><b>Triage before the human.</b> An AI-assisted layer routes sales queries to callers and support issues to chat, so each team works its own queue.</li>
+    <li><b>Relationship over discount.</b> Callers were briefed to build trust and answer real questions on financing, delivery and warranty, rather than run a discount-led close.</li>
+    <li><b>Status from the source.</b> The tracker reflects the production system rather than a manual update, so what customers see matches what is happening.</li>
+    <li><b>Lead capture feeds the same flows.</b> Visitors who weren't ready to buy could trade contact details for a recorded demo and a $50 code, and then entered the Klaviyo nurture rather than bouncing.</li>
+  </ul>
+</section>
+
+<section id="testing">
+  <h2>Testing and learnings</h2>
+  <div class="grid g2">
+    <div class="card"><h4>Frame the decision, not the discount</h4><p>"Own Rotimatic for $1,599 today only" beat "Save $200" on click-through and conversion, and the same reframing informed email and call scripts. The founder-launch email, a plain personal note, reached a 12.8% click rate, roughly 20 times the campaign median.</p></div>
+    <div class="card"><h4>Units beat clocks</h4><p>A countdown worked for one-off events but lost pull on recurring promotions. "Only 51 units left at this price" outperformed it on festive sales.</p></div>
+    <div class="card"><h4>Fix the decision, not the price</h4><p>Extended warranty attach was flat at 43 to 44%. An audit found the warranty choice itself was badly designed. After the checkout redesign and a three-email recovery flow, attach reached 52 to 53%.</p></div>
+    <div class="card"><h4>Silence was the cancellation driver</h4><p>The 20 to 22% cancellation problem was about clarity on the delivery date, not price or acquisition, so the fix was communication rather than another discount. Cancellations moved from 20 to 22% to 15% within two months.</p></div>
+  </div>
+</section>
+
+<section id="sales">
+  <h2>Sales campaigns (kept separate)</h2>
+  <p class="sub">Most email revenue came from sales email: abandoned-cart offers and festive campaigns such as Black Friday, Christmas and New Year. They are reported separately so lifecycle work isn't credited with promotional revenue.</p>
+  <div class="callout sales"><b>Lifecycle emails build the relationship and cut cancellations. Sales emails drive the revenue spikes.</b></div>
+  <div class="grid g4">
+    <div class="card stat"><b>$1.74M</b><span>email-attributed revenue across 285 campaigns</span></div>
+    <div class="card stat"><b>12.6%</b><span>of total revenue from email, at 1.71% conversion</span></div>
+    <div class="card stat"><b>22%</b><span>of email revenue from 39 festive campaigns (14% of sends)</span></div>
+    <div class="card stat"><b>$337.9K</b><span>revenue on Black Friday 2025, the best day of the year</span></div>
+  </div>
+  <details open><summary>Festive and sale calendar</summary><div class="body">Campaigns were built around moments (Diwali, Black Friday, Navratri, Dussehra, Friendship Day and others), mirroring the festive landing pages. Top performers included the Rotimatic NEXT Founder Launch ($43,330, 12.8% click rate), Diwali Rotimatic Gift ($35,922), Weekend Offer "Last Call: $699 Off" ($30,305) and Festive Season Offer to cart abandoners ($26,300).</div></details>
+  <details><summary>Black Friday 2025 sequence</summary><div class="body"><ul>
+    <li><b>Teaser</b> (T-3 days): anticipation without the offer.</li>
+    <li><b>Early access</b> (T-24 hours): head start for known customers.</li>
+    <li><b>Launch day</b>: broad send, decision-framed.</li>
+    <li><b>Last chance</b>: live countdown timer in the email, the hardest-working send.</li>
+    <li><b>Post-purchase upsell</b>: accessories.</li></ul></div></details>
+</section>
+
+<section id="outcome">
+  <h2>Results and takeaways</h2>
+  <div class="ba">
+    <div class="card b"><h4>Before</h4><ul class="clean">
+      <li>One abandoned-cart email</li><li>Carts straight to inside sales</li><li>Delivery email only at parcel pickup</li><li>8 to 10 weeks of silence</li><li>20 to 22% of orders cancelled</li><li>No post-purchase journey</li></ul></div>
+    <div class="card a"><h4>After</h4><ul class="clean">
+      <li>Cart sequences by urgency, on email and WhatsApp, lifting recovery rate by roughly 2.5%</li><li>Reasons for not buying captured</li><li>Ten-stage tracker in weekly emails, Day 7 to 84</li><li>Excitement emails at TD 15, 30 and 45</li><li>Delivery updates through transactional email</li><li>Onboarding, referral, warranty and upsell</li><li>Cancellations down to 15% within two months</li></ul></div>
+  </div>
+  <h3>What the data showed</h3>
+  <div class="grid g4">
+    <div class="card stat"><b>15%</b><span>order cancellations within two months, down from 20–22%</span></div>
+    <div class="card stat"><b>52–53%</b><span>warranty attach, up from 43–44%</span></div>
+    <div class="card stat"><b>24%</b><span>of revenue from email and referral, from about 4% of sessions</span></div>
+    <div class="card stat"><b>~2.5%</b><span>increase in add-to-cart recovery rate</span></div>
+    
+  </div>
+  <h3>What this shows</h3>
+  <div class="grid g3">
+    <div class="card"><h4>Diagnose the real leak</h4><p>Cancellations came from silence, not price. Fixing the communication took them from 20 to 22% to 15% in two months.</p></div>
+    <div class="card"><h4>Connect systems</h4><p>Customer-facing status tied to the production and order system.</p></div>
+    <div class="card"><h4>Segment by behaviour and time</h4><p>Different messages for different urgency windows lifted add-to-cart recovery by roughly 2.5%.</p></div>
+    <div class="card"><h4>Use the right channel</h4><p>Email for story, WhatsApp for speed, transactional for the delivery promise, people for high intent.</p></div>
+    <div class="card"><h4>Retention feeds growth</h4><p>Onboarding leads to reviews and referral, the channels that already converted best.</p></div>
+    <div class="card"><h4>Keep sales separate</h4><p>Lifecycle and promotion measured as different jobs.</p></div>
+  </div>
+  <p class="sub" style="margin-top:32px;font-size:14px">Source material: the Rotimatic email designs and the program and channel data behind this work, July 2025 to March 2026.</p>
+</section>
+<div class="detail-foot">CLIENT: ROTIMATIC (ZIMPLISTIC) &middot; FULL DATA AVAILABLE ON REQUEST</div>
+</div>
+<footer>Parth Dave &mdash; Growth &amp; GTM Marketing</footer>
+<div id="lb"><img alt=""></div>
+<script>
+  const stages=[...document.querySelectorAll('#jr .stage')];
+  stages.forEach((s,i)=>s.addEventListener('click',()=>{
+    stages.forEach((x,j)=>{x.classList.toggle('on',i===j);x.classList.toggle('done',j<i)});
+    document.querySelectorAll('#journey .panel').forEach(p=>p.classList.toggle('on',p.id===s.dataset.p));
+  }));
+  const chips=[...document.querySelectorAll('#chips .chip')];
+  chips.forEach(c=>c.addEventListener('click',()=>{
+    chips.forEach(x=>x.classList.toggle('on',x===c));
+    document.querySelectorAll('.fl').forEach(f=>f.classList.toggle('hide',c.dataset.f!=='all'&&!f.dataset.ch.split(' ').includes(c.dataset.f)));
+  }));
+  const lb=document.getElementById('lb'), lbi=lb.querySelector('img');
+  document.querySelectorAll('.shot').forEach(s=>s.addEventListener('click',()=>{lbi.src=s.querySelector('img').src;lb.classList.add('on');lb.scrollTop=0}));
+  lb.addEventListener('click',()=>lb.classList.remove('on'));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on')});
+</script>
+</body>
+</html>
